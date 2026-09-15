@@ -12,7 +12,7 @@
       padding: 0;
     }
     body {
-      background: radial-gradient(circle at center, #131c2e 0%, #050811 100%);
+      background: radial-gradient(circle at center, #111b2b 0%, #03050a 100%);
       color: #fff;
       font-family: 'Poppins', sans-serif;
       min-height: 100vh;
@@ -26,32 +26,32 @@
     /* PANTALLA INICIAL */
     #pantalla-inicio {
       position: absolute;
-      z-index: 20;
+      z-index: 30;
       text-align: center;
       transition: opacity 0.8s ease, visibility 0.8s;
     }
     .subtitulo {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       letter-spacing: 2px;
       color: #ffd700;
       margin-bottom: 25px;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
     }
     .btn-abrir {
       background: linear-gradient(135deg, #ffe000, #ff9900);
       color: #111;
       border: none;
-      padding: 16px 38px;
-      font-size: 1.1rem;
+      padding: 18px 42px;
+      font-size: 1.2rem;
       font-weight: 600;
       border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      box-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .btn-abrir:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 45px rgba(255, 215, 0, 0.9);
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.95);
     }
 
     /* PANTALLA PRINCIPAL */
@@ -74,40 +74,136 @@
       position: relative;
       width: 480px;
       max-width: 90vw;
-      height: 520px;
-      max-height: 55vh;
+      height: 500px;
+      max-height: 52vh;
       display: flex;
       justify-content: center;
       align-items: flex-end;
       transform: scale(0);
       transition: transform 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-      filter: drop-shadow(0 0 25px rgba(255, 230, 0, 0.35));
+      filter: drop-shadow(0 0 30px rgba(255, 230, 0, 0.4));
+      cursor: pointer;
     }
 
-    /* ESTILO SVG FLORES */
     svg.ramo-svg {
       width: 100%;
       height: 100%;
       overflow: visible;
     }
 
-    /* TEXTO MEJORADO Y LIMPIO (SIN CUADRO) */
+    /* TEXTO MEJORADO (SIN CUADRO) */
     .mensaje-box {
-      margin-top: 15px;
+      margin-top: 10px;
       text-align: center;
       padding: 0 20px;
       z-index: 10;
     }
     .linea-texto {
       font-family: 'Caveat', cursive;
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       color: #ffee66;
       text-shadow: 0 0 15px rgba(255, 230, 0, 0.8), 0 0 25px rgba(255, 170, 0, 0.4);
-      margin: 6px 0;
+      margin: 4px 0;
       opacity: 0;
       transform: translateY(15px);
       transition: opacity 1.2s ease, transform 1.2s ease;
       line-height: 1.2;
+    }
+
+    /* BOTÓN DE CARTA SECRETA */
+    .btn-carta {
+      margin-top: 15px;
+      background: rgba(255, 230, 0, 0.15);
+      border: 1px solid rgba(255, 230, 0, 0.5);
+      color: #ffe600;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+    .btn-carta:hover {
+      background: rgba(255, 230, 0, 0.35);
+      box-shadow: 0 0 20px rgba(255, 230, 0, 0.6);
+      transform: scale(1.05);
+    }
+
+    /* MODAL DE CARTA SECRETA */
+    .modal-carta {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .modal-carta.activo {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .contenido-carta {
+      background: linear-gradient(135deg, #fffbe6, #fff3b0);
+      color: #332200;
+      padding: 35px 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 85%;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.5s ease;
+    }
+    .modal-carta.activo .contenido-carta {
+      transform: translateY(0);
+    }
+    .btn-cerrar {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #885500;
+    }
+
+    /* MARIPOSAS ANIMADAS */
+    .mariposa {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      pointer-events: none;
+      z-index: 12;
+      animation: flotarMariposa 8s infinite ease-in-out;
+    }
+    .mariposa svg {
+      width: 100%;
+      height: 100%;
+      animation: aleteo 0.4s infinite alternate ease-in-out;
+    }
+
+    @keyframes aleteo {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(0.2); }
+    }
+    @keyframes flotarMariposa {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(60px, -40px) rotate(15deg); }
+      50% { transform: translate(120px, 10px) rotate(-10deg); }
+      75% { transform: translate(40px, -80px) rotate(20deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
     }
 
     /* PÁRTICULAS / LUCIÉRNAGAS */
@@ -122,33 +218,43 @@
     }
 
     @media (max-width: 600px) {
-      .linea-texto {
-        font-size: 1.9rem;
-      }
-      .ramo-container {
-        height: 420px;
-      }
+      .linea-texto { font-size: 1.9rem; }
+      .ramo-container { height: 420px; }
+      .contenido-carta { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- FONDO DE LUCES -->
+  <!-- AUDIO DE FONDO AMBIENTAL (Melodía de piano suave) -->
+  <audio id="musicaFondo" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-10781.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- FONDO DE LUCES Y PÉTALOS CAYENDO -->
   <canvas id="luces"></canvas>
 
   <!-- PANTALLA INICIAL -->
   <div id="pantalla-inicio">
-    <div class="subtitulo">🎁 ESTE DETALLE ES PARA TI 🎁</div>
+    <div class="subtitulo">🎁 UN DETALLE ESPECIAL PARA TI 🎁</div>
     <button class="btn-abrir" onclick="mostrarSorpresa()">PRESIONA AQUÍ</button>
   </div>
 
   <!-- PANTALLA FLOR Y TEXTO -->
   <div id="experiencia">
-    <div class="ramo-container" id="ramo">
+    
+    <!-- MARIPOSAS ANIMADAS EN EL RAMO -->
+    <div class="mariposa" style="top: 25%; left: 20%;">
+      <svg viewBox="0 0 50 50"><path d="M25,25 Q10,0 0,20 Q10,40 25,25 Q40,40 50,20 Q40,0 25,25" fill="#ffe600"/></svg>
+    </div>
+    <div class="mariposa" style="top: 35%; right: 22%; animation-delay: -3s;">
+      <svg viewBox="0 0 50 50"><path d="M25,25 Q10,0 0,20 Q10,40 25,25 Q40,40 50,20 Q40,0 25,25" fill="#ffaa00"/></svg>
+    </div>
+
+    <div class="ramo-container" id="ramo" onclick="crearEstallidoPetalos(event)">
       <!-- RAMO DE FLORES SVG VECTORIAL DETALLADO -->
       <svg class="ramo-svg" viewBox="0 0 500 600">
         <defs>
-          <!-- GRADIENTES PÉTALOS -->
           <radialGradient id="gradPetalo1" cx="50%" cy="80%" r="80%">
             <stop offset="0%" stop-color="#ff9900" />
             <stop offset="50%" stop-color="#ffea00" />
@@ -159,25 +265,21 @@
             <stop offset="60%" stop-color="#ffd700" />
             <stop offset="100%" stop-color="#fff8b3" />
           </radialGradient>
-          <!-- GRADIENTE CENTRO FLOR -->
           <radialGradient id="gradCentro" cx="40%" cy="40%" r="60%">
             <stop offset="0%" stop-color="#6a3805" />
             <stop offset="70%" stop-color="#3a1c02" />
             <stop offset="100%" stop-color="#1a0a00" />
           </radialGradient>
-          <!-- GRADIENTE HOJAS -->
           <linearGradient id="gradHoja" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#2d8a4e" />
             <stop offset="100%" stop-color="#113d20" />
           </linearGradient>
-          <!-- DEGRADADO LAZO -->
           <linearGradient id="gradLazo" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#d90429" />
             <stop offset="50%" stop-color="#ff4d6d" />
             <stop offset="100%" stop-color="#b7094c" />
           </linearGradient>
 
-          <!-- PLANTILLA DE GIRASOL/FLOR -->
           <g id="girasol">
             <!-- Pétalos Traseros -->
             <g fill="url(#gradPetalo2)">
@@ -223,7 +325,7 @@
           </g>
         </defs>
 
-        <!-- TALLOS Y HOJAS DEL RAMO -->
+        <!-- TALLOS Y HOJAS -->
         <g stroke="#1a532c" stroke-width="10" stroke-linecap="round">
           <path d="M250,580 Q240,400 150,220" />
           <path d="M250,580 Q250,400 350,220" />
@@ -232,7 +334,6 @@
           <path d="M250,580 L250,180" />
         </g>
 
-        <!-- HOJAS VERDES FRONDOSAS -->
         <g fill="url(#gradHoja)">
           <path d="M230,450 Q120,420 110,360 Q180,450 230,450" />
           <path d="M270,450 Q380,420 390,360 Q320,450 270,450" />
@@ -240,21 +341,15 @@
           <path d="M260,380 Q400,310 370,240 Q300,350 260,380" />
         </g>
 
-        <!-- COMBO DE FLORES FORMANDO EL RAMO -->
-        <!-- Flor Trasera Izquierda -->
+        <!-- RAMO DE FLORES -->
         <use href="#girasol" x="-100" y="100" transform="scale(0.85)" />
-        <!-- Flor Trasera Derecha -->
         <use href="#girasol" x="180" y="90" transform="scale(0.85)" />
-        <!-- Flor Lateral Izquierda -->
         <use href="#girasol" x="-110" y="-10" transform="scale(0.9)" />
-        <!-- Flor Lateral Derecha -->
         <use href="#girasol" x="150" y="-20" transform="scale(0.9)" />
-        <!-- Flor Superior Central -->
         <use href="#girasol" x="25" y="-110" transform="scale(0.95)" />
-        <!-- FLOR PRINCIPAL CENTRO -->
         <use href="#girasol" x="25" y="10" transform="scale(1.15)" />
 
-        <!-- LAZO ROJO DECORATIVO -->
+        <!-- LAZO ROJO -->
         <g id="lazo" fill="url(#gradLazo)">
           <path d="M250,460 C210,430 170,470 240,490 Z" />
           <path d="M250,460 C290,430 330,470 260,490 Z" />
@@ -265,78 +360,125 @@
       </svg>
     </div>
 
-    <!-- MENSAJE LIMPIO SIN CUADRO -->
+    <!-- MENSAJE LIMPIO -->
     <div class="mensaje-box">
       <div id="txt1" class="linea-texto">Que la alegría de estas flores te acompañe siempre.</div>
       <div id="txt2" class="linea-texto">Que nunca falte en ti la alegría que tanto irradias ✨</div>
+      <button class="btn-carta" id="btnCarta" onclick="abrirCarta()">💌 Abrir Nota Especial</button>
+    </div>
+  </div>
+
+  <!-- MODAL DE CARTA SECRETA -->
+  <div class="modal-carta" id="modalCarta">
+    <div class="contenido-carta">
+      <span class="btn-cerrar" onclick="cerrarCarta()">✕</span>
+      <p>
+        "Para alguien muy especial: <br><br>
+        Que la luz de esta primavera llene tus días de sonrisas, paz y momentos hermosos. Gracias por iluminar todo a tu alrededor tan solo con tu presencia." 🌼💛
+      </p>
     </div>
   </div>
 
   <script>
-    // SISTEMA DE LUCES / LUCIÉRNAGAS EN CANVAS
+    // SISTEMA DE LUCES Y PETALOS CAYENDO
     const canvas = document.getElementById('luces');
     const ctx = canvas.getContext('2d');
-    let width, height, luciernagas = [];
+    let width, height, elementos = [];
 
     function initCanvas() {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-      luciernagas = Array.from({ length: 50 }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 2.5 + 1,
-        dx: (Math.random() - 0.5) * 0.6,
-        dy: (Math.random() - 0.5) * 0.6,
-        a: Math.random()
-      }));
+      
+      elementos = [];
+      // Luciérnagas
+      for(let i=0; i<40; i++) {
+        elementos.push({
+          tipo: 'luz',
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2 + 1,
+          dx: (Math.random() - 0.5) * 0.5,
+          dy: (Math.random() - 0.5) * 0.5,
+          a: Math.random()
+        });
+      }
+      // Pétalos Cayendo
+      for(let i=0; i<25; i++) {
+        elementos.push({
+          tipo: 'petalo',
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 5 + 4,
+          dy: Math.random() * 1.2 + 0.5,
+          dx: Math.sin(Math.random() * Math.PI) * 0.8,
+          rot: Math.random() * 360
+        });
+      }
     }
 
-    function renderLuces() {
+    function renderAnimation() {
       ctx.clearRect(0, 0, width, height);
-      luciernagas.forEach(p => {
-        p.x += p.dx;
-        p.y += p.dy;
-        if (p.x < 0 || p.x > width) p.dx *= -1;
-        if (p.y < 0 || p.y > height) p.dy *= -1;
+      elementos.forEach(p => {
+        if(p.tipo === 'luz') {
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > width) p.dx *= -1;
+          if (p.y < 0 || p.y > height) p.dy *= -1;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 235, 120, ${Math.abs(Math.sin(p.a))})`;
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = '#ffe600';
-        ctx.fill();
-        p.a += 0.025;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 235, 120, ${Math.abs(Math.sin(p.a))})`;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#ffe600';
+          ctx.fill();
+          p.a += 0.02;
+        } else {
+          // Caída de pétalos
+          p.y += p.dy;
+          p.x += Math.sin(p.y * 0.02) * 0.5;
+          p.rot += 1;
+          if (p.y > height) { p.y = -10; p.x = Math.random() * width; }
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(255, 220, 0, 0.7)';
+          ctx.ellipse(0, 0, p.r, p.r * 1.8, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
       });
-      requestAnimationFrame(renderLuces);
+      requestAnimationFrame(renderAnimation);
     }
 
     window.addEventListener('resize', initCanvas);
     initCanvas();
-    renderLuces();
+    renderAnimation();
 
-    // INTERACCIÓN Y REVELADO PANTALLA
+    // MOSTRAR REVELADO
     function mostrarSorpresa() {
       const inicio = document.getElementById('pantalla-inicio');
       const exp = document.getElementById('experiencia');
       const ramo = document.getElementById('ramo');
       const txt1 = document.getElementById('txt1');
       const txt2 = document.getElementById('txt2');
+      const btnCarta = document.getElementById('btnCarta');
+      const audio = document.getElementById('musicaFondo');
 
-      // 1. Ocultar botón inicial
+      // Reproducir música suave
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+
       inicio.style.opacity = '0';
       setTimeout(() => {
         inicio.style.visibility = 'hidden';
         
-        // 2. Mostrar contenedor principal
         exp.style.visibility = 'visible';
         exp.style.opacity = '1';
 
-        // 3. Animación de crecimiento del ramo
-        setTimeout(() => {
-          ramo.style.transform = 'scale(1)';
-        }, 300);
+        setTimeout(() => { ramo.style.transform = 'scale(1)'; }, 300);
 
-        // 4. Aparición elegante de las letras (Línea 1 y Línea 2)
         setTimeout(() => {
           txt1.style.opacity = '1';
           txt1.style.transform = 'translateY(0)';
@@ -347,7 +489,30 @@
           txt2.style.transform = 'translateY(0)';
         }, 3000);
 
+        setTimeout(() => {
+          btnCarta.style.opacity = '1';
+        }, 4200);
+
       }, 800);
+    }
+
+    // CARTA SECRETA MODAL
+    function abrirCarta() { document.getElementById('modalCarta').classList.add('activo'); }
+    function cerrarCarta() { document.getElementById('modalCarta').classList.remove('activo'); }
+
+    // DIVERSIÓN: ESTALLIDO DE PÉTALOS AL TOCAR EL RAMO
+    function crearEstallidoPetalos(e) {
+      for(let i=0; i<15; i++) {
+        elementos.push({
+          tipo: 'petalo',
+          x: e.clientX || width/2,
+          y: e.clientY || height/2,
+          r: Math.random() * 6 + 4,
+          dy: (Math.random() - 0.5) * 4,
+          dx: (Math.random() - 0.5) * 4,
+          rot: Math.random() * 360
+        });
+      }
     }
   </script>
 </body>
