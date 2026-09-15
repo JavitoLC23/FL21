@@ -41,6 +41,27 @@
       pointer-events: none;
     }
 
+    /* BOTÓN CONTROL DE AUDIO SUPERIOR */
+    .btn-audio {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      background: rgba(255, 238, 0, 0.15);
+      border: 1px solid rgba(255, 238, 0, 0.4);
+      color: #ffe600;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 15px rgba(255, 238, 0, 0.2);
+    }
+
     /* PANTALLA INICIAL */
     #pantalla-inicio {
       position: absolute;
@@ -136,7 +157,7 @@
       50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(255, 238, 0, 0.7); }
     }
 
-    /* EXPERIENCIA PRINCIPAL */
+    /* EXPERIENCIA PRINCIPAL CON RAMO MÁS GRANDE Y REINVENTADO */
     #experiencia {
       position: absolute;
       width: 100%;
@@ -144,7 +165,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
+      padding-bottom: 20px;
       opacity: 0;
       visibility: hidden;
       transition: opacity 1.2s ease;
@@ -154,15 +176,15 @@
     .ramo-container {
       position: relative;
       width: 100%;
-      max-width: 440px;
-      height: 52vh;
-      max-height: 480px;
+      max-width: 580px;
+      height: 60vh;
+      max-height: 560px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
       transform: scale(0);
       transition: transform 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-      filter: drop-shadow(0 15px 30px rgba(255, 230, 0, 0.15));
+      filter: drop-shadow(0 20px 40px rgba(255, 230, 0, 0.25));
     }
 
     svg.ramo-svg {
@@ -172,7 +194,7 @@
     }
 
     .mensaje-box {
-      margin-top: 10px;
+      margin-top: 5px;
       text-align: center;
       padding: 0 20px;
       z-index: 10;
@@ -183,7 +205,7 @@
       font-size: 2.2rem;
       color: #ffee66;
       text-shadow: 0 0 15px rgba(255, 230, 0, 0.8);
-      margin: 4px 0;
+      margin: 2px 0;
       opacity: 0;
       transform: translateY(15px);
       transition: opacity 1.2s ease, transform 1.2s ease;
@@ -191,7 +213,7 @@
     }
 
     .botones-grupo {
-      margin-top: 15px;
+      margin-top: 12px;
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -271,11 +293,19 @@
       .titulo-iluminado { font-size: 1.7rem; letter-spacing: 2px; }
       .subtitulo-detalle { font-size: 0.88rem; }
       .linea-texto { font-size: 1.8rem; }
-      .ramo-container { height: 46vh; }
+      .ramo-container { height: 55vh; }
     }
   </style>
 </head>
 <body>
+
+  <!-- BOTÓN DE MÚSICA -->
+  <button class="btn-audio" onclick="toggleAudio()" id="btnAudio">🔊</button>
+
+  <!-- AUDIO DE FONDO RESTAURADO -->
+  <audio id="musicaFondo" loop preload="none">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-10781.mp3" type="audio/mpeg">
+  </audio>
 
   <canvas id="luces"></canvas>
 
@@ -292,152 +322,174 @@
   <!-- PANTALLA PRINCIPAL EXPERIENCIA -->
   <div id="experiencia">
     <div class="ramo-container" id="ramo">
-      <svg class="ramo-svg" viewBox="0 0 600 750">
+      <svg class="ramo-svg" viewBox="0 0 700 850">
         <defs>
-          <!-- GRADIENTES DEDICADOS AL RAMO DE LA FOTO -->
-          <linearGradient id="gradPapelBlanco" x1="0%" y1="0%" x2="100%" y2="100%">
+          <!-- GRADIENTES PREMIUM DE ENVOLTORIO Y FLORES -->
+          <linearGradient id="gradPapelSeda" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#ffffff" />
-            <stop offset="70%" stop-color="#f0efe9" />
-            <stop offset="100%" stop-color="#d8d5ca" />
+            <stop offset="60%" stop-color="#f5f3ec" />
+            <stop offset="100%" stop-color="#dbd6c5" />
+          </linearGradient>
+
+          <linearGradient id="gradPapelCrema" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fffef8" />
+            <stop offset="100%" stop-color="#eae5d8" />
           </linearGradient>
           
-          <linearGradient id="gradBordeDorado" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#c89b3c" />
-            <stop offset="50%" stop-color="#f1d37a" />
-            <stop offset="100%" stop-color="#a07828" />
+          <linearGradient id="gradBordeOro" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b8860b" />
+            <stop offset="50%" stop-color="#ffe17d" />
+            <stop offset="100%" stop-color="#8a6100" />
           </linearGradient>
 
-          <radialGradient id="gradPetaloGirasol" cx="50%" cy="80%" r="80%">
-            <stop offset="0%" stop-color="#ff9900" />
-            <stop offset="50%" stop-color="#ffee00" />
-            <stop offset="100%" stop-color="#fff5aa" />
-          </radialGradient>
-
-          <radialGradient id="gradCentroGirasol" cx="40%" cy="40%" r="60%">
-            <stop offset="0%" stop-color="#3d1d02" />
-            <stop offset="80%" stop-color="#1f0e00" />
-            <stop offset="100%" stop-color="#0a0400" />
-          </radialGradient>
-
-          <linearGradient id="gradTulipan" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stop-color="#ff8800" />
+          <radialGradient id="gradPetaloGirasol" cx="50%" cy="85%" r="85%">
+            <stop offset="0%" stop-color="#ff7700" />
             <stop offset="40%" stop-color="#ffcc00" />
-            <stop offset="100%" stop-color="#ffea66" />
+            <stop offset="90%" stop-color="#ffff88" />
+          </radialGradient>
+
+          <radialGradient id="gradCentroAfelpado" cx="40%" cy="40%" r="65%">
+            <stop offset="0%" stop-color="#4a2404" />
+            <stop offset="70%" stop-color="#210f00" />
+            <stop offset="100%" stop-color="#080300" />
+          </radialGradient>
+
+          <linearGradient id="gradTulipanVivido" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#ff7700" />
+            <stop offset="35%" stop-color="#ffbb00" />
+            <stop offset="85%" stop-color="#ffee55" />
           </linearGradient>
 
-          <linearGradient id="gradMonomio" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ffe600" />
-            <stop offset="50%" stop-color="#ffb700" />
-            <stop offset="100%" stop-color="#d48800" />
+          <linearGradient id="gradMonomioElegante" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffea00" />
+            <stop offset="40%" stop-color="#ffaa00" />
+            <stop offset="100%" stop-color="#cc7700" />
           </linearGradient>
 
-          <!-- MOLDE GIRASOL DE FELPILLA -->
-          <g id="girasol-foto">
-            <!-- 16 Pétalos estilo tejido felpudo -->
-            <g fill="url(#gradPetaloGirasol)" stroke="#e68a00" stroke-width="1.5">
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(0 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(22.5 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(45 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(67.5 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(90 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(112.5 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(135 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(157.5 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(180 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(202.5 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(225 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(247.5 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(270 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(292.5 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(315 200 200)" />
-              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(337.5 200 200)" />
+          <!-- MOLDE GIRASOL GIGANTE DE FELPILLA -->
+          <g id="girasol-grande">
+            <g fill="url(#gradPetaloGirasol)" stroke="#d97700" stroke-width="1.8">
+              <!-- 20 Pétalos afelpados distribuidos -->
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(0 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(18 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(36 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(54 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(72 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(90 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(108 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(126 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(144 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(162 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(180 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(198 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(216 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(234 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(252 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(270 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(288 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(306 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(324 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(342 200 200)" />
             </g>
-            <circle cx="200" cy="200" r="40" fill="url(#gradCentroGirasol)" stroke="#2b1400" stroke-width="3" />
-            <!-- Textura centro afelpado -->
-            <circle cx="200" cy="200" r="32" fill="none" stroke="#5a2e05" stroke-dasharray="4,3" stroke-width="3" />
+            <circle cx="200" cy="200" r="48" fill="url(#gradCentroAfelpado)" stroke="#2b1400" stroke-width="3" />
+            <circle cx="200" cy="200" r="38" fill="none" stroke="#633407" stroke-dasharray="5,3" stroke-width="3.5" />
+            <circle cx="200" cy="200" r="24" fill="none" stroke="#3b1d02" stroke-dasharray="3,3" stroke-width="2.5" />
           </g>
 
-          <!-- MOLDE TULIPÁN DE FELPILLA -->
-          <g id="tulipan-foto">
-            <path d="M 170 230 C 150 160, 180 100, 200 100 C 220 100, 250 160, 230 230 Z" fill="url(#gradTulipan)" stroke="#e67e00" stroke-width="2"/>
-            <path d="M 160 220 C 150 170, 180 130, 195 130 C 205 130, 210 170, 190 225 Z" fill="url(#gradTulipan)" filter="brightness(0.95)"/>
-            <path d="M 240 220 C 250 170, 220 130, 205 130 C 195 130, 190 170, 210 225 Z" fill="url(#gradTulipan)" filter="brightness(0.9)"/>
+          <!-- MOLDE TULIPÁN AFELPADO DE FELPILLA -->
+          <g id="tulipan-grande">
+            <path d="M 160 240 C 130 150, 170 80, 200 80 C 230 80, 270 150, 240 240 Z" fill="url(#gradTulipanVivido)" stroke="#e67300" stroke-width="2.5"/>
+            <path d="M 150 230 C 135 165, 175 115, 195 115 C 208 115, 215 165, 185 235 Z" fill="url(#gradTulipanVivido)" filter="brightness(0.96)"/>
+            <path d="M 250 230 C 265 165, 225 115, 205 115 C 192 115, 185 165, 215 235 Z" fill="url(#gradTulipanVivido)" filter="brightness(0.92)"/>
           </g>
 
-          <!-- MOLDE MARGARITA BLANCA PEQUEÑA -->
-          <g id="margarita-chica">
-            <g fill="#ffffff" stroke="#e6e6e6">
-              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(0 100 100)" />
-              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(45 100 100)" />
-              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(90 100 100)" />
-              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(135 100 100)" />
-              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(180 100 100)" />
-              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(225 100 100)" />
-              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(270 100 100)" />
-              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(315 100 100)" />
+          <!-- MOLDE MARGARITILLA BLANCA -->
+          <g id="margarita-detallada">
+            <g fill="#ffffff" stroke="#dedede" stroke-width="1.2">
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(0 100 100)" />
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(40 100 100)" />
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(80 100 100)" />
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(120 100 100)" />
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(160 100 100)" />
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(200 100 100)" />
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(240 100 100)" />
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(280 100 100)" />
+              <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(320 100 100)" />
             </g>
-            <circle cx="100" cy="100" r="7" fill="#ffcc00" />
+            <circle cx="100" cy="100" r="8" fill="#ffcc00" stroke="#e6b800" stroke-width="1" />
           </g>
         </defs>
 
-        <!-- CAPA 1: PAPEL DE FONDO DE ENVOLTORIO (PLIEGUES TRASEROS CON BORDES DORADOS) -->
-        <g stroke="url(#gradBordeDorado)" stroke-width="4">
-          <polygon points="300,720 50,220 140,80 300,280" fill="url(#gradPapelBlanco)" />
-          <polygon points="300,720 550,220 460,80 300,280" fill="url(#gradPapelBlanco)" />
-          <polygon points="300,720 300,50 180,60" fill="url(#gradPapelBlanco)" />
-          <polygon points="300,720 300,50 420,60" fill="url(#gradPapelBlanco)" />
+        <!-- CAPA 1: PAPEL DE FONDO ABUNDANTE (EN CASCADA MULTICAPA CON BORDES DORADOS) -->
+        <g stroke="url(#gradBordeOro)" stroke-width="4.5">
+          <!-- Pliegues traseros exteriores superiores -->
+          <polygon points="350,820 20,220 130,40 350,280" fill="url(#gradPapelSeda)" />
+          <polygon points="350,820 680,220 570,40 350,280" fill="url(#gradPapelSeda)" />
+          
+          <!-- Capas intermedias altas -->
+          <polygon points="350,820 350,30 200,45 350,300" fill="url(#gradPapelCrema)" />
+          <polygon points="350,820 350,30 500,45 350,300" fill="url(#gradPapelCrema)" />
         </g>
 
-        <!-- TALLOS Y LIMPIAPIPAS VERDES -->
-        <g stroke="#2d8a4e" stroke-width="7" stroke-linecap="round" fill="none">
-          <!-- Limpiapipas verde curvado a la izquierda -->
-          <path d="M 280 500 Q 120 300 80 120" stroke-width="9" stroke-dasharray="6,3" />
-          <!-- Tallos principales -->
-          <path d="M 300 550 L 180 220" />
-          <path d="M 300 550 L 420 220" />
-          <path d="M 300 550 L 300 180" />
+        <!-- TALLOS Y LIMPIAPIPAS VERDES VIBRANTES -->
+        <g stroke="#268c43" stroke-width="8" stroke-linecap="round" fill="none">
+          <!-- Espirales limpiapipas verdes -->
+          <path d="M 320 580 Q 110 360 60 120" stroke-width="10" stroke-dasharray="8,4" />
+          <path d="M 380 580 Q 590 360 640 120" stroke-width="10" stroke-dasharray="8,4" />
+          
+          <!-- Tallos gruesos -->
+          <path d="M 350 620 L 200 240" />
+          <path d="M 350 620 L 500 240" />
+          <path d="M 350 620 L 350 180" />
         </g>
 
-        <!-- CAPA 2: TULIPANES ARRIBA (3 TULIPANES Y 1 POMPÓN) -->
-        <use href="#tulipan-foto" x="-30" y="30" transform="scale(0.85)" />
-        <use href="#tulipan-foto" x="100" y="10" transform="scale(0.9)" />
-        <use href="#tulipan-foto" x="220" y="40" transform="scale(0.85)" />
-        <!-- Pompón amarillo central -->
-        <circle cx="305" cy="145" r="14" fill="#ffee00" stroke="#e6b800" stroke-width="2" />
+        <!-- CAPA 2: TULIPANES Y POMPÓN SUPERIORES -->
+        <use href="#tulipan-grande" x="-5" y="30" transform="scale(1.05)" />
+        <use href="#tulipan-grande" x="145" y="5" transform="scale(1.15)" />
+        <use href="#tulipan-grande" x="290" y="40" transform="scale(1.05)" />
+        
+        <!-- Pompón amarillo central esponjoso -->
+        <circle cx="350" cy="165" r="18" fill="#ffee00" stroke="#dda100" stroke-width="3" />
 
-        <!-- CAPA 3: GIRASOLES AFELPADOS DEL MEDIO (3 GIRASOLES GRANDES) -->
-        <use href="#girasol-foto" x="-30" y="50" transform="scale(0.95)" />
-        <use href="#girasol-foto" x="130" y="65" transform="scale(0.95)" />
-        <use href="#girasol-foto" x="50" y="140" transform="scale(1.05)" />
+        <!-- CAPA 3: TRIO DE GIRASOLES AFELPADOS GRANDES -->
+        <use href="#girasol-grande" x="-50" y="50" transform="scale(1.15)" />
+        <use href="#girasol-grande" x="180" y="70" transform="scale(1.15)" />
+        <use href="#girasol-grande" x="60" y="160" transform="scale(1.3)" />
 
-        <!-- CAPA 4: MARGARITAS BLANCA DETALLADAS A LOS LADOS -->
-        <!-- Ramillete izquierdo -->
-        <use href="#margarita-chica" x="50" y="310" transform="scale(0.7)" />
-        <use href="#margarita-chica" x="85" y="330" transform="scale(0.65)" />
-        <use href="#margarita-chica" x="35" y="340" transform="scale(0.6)" />
+        <!-- CAPA 4: RAMILLETES DE MARGARITAS A LOS LADOS -->
+        <!-- Izquierda -->
+        <use href="#margarita-detallada" x="30" y="380" transform="scale(0.85)" />
+        <use href="#margarita-detallada" x="75" y="410" transform="scale(0.8)" />
+        <use href="#margarita-detallada" x="15" y="430" transform="scale(0.75)" />
 
-        <!-- Ramillete derecho -->
-        <use href="#margarita-chica" x="380" y="320" transform="scale(0.7)" />
-        <use href="#margarita-chica" x="410" y="350" transform="scale(0.65)" />
+        <!-- Derecha -->
+        <use href="#margarita-detallada" x="460" y="390" transform="scale(0.85)" />
+        <use href="#margarita-detallada" x="500" y="420" transform="scale(0.8)" />
 
-        <!-- CAPA 5: PAPEL FRONTAL ENVOLVENTE (CON CRUCE Y DOBLECES) -->
-        <g stroke="url(#gradBordeDorado)" stroke-width="3">
-          <polygon points="300,710 120,420 260,380 300,530" fill="url(#gradPapelBlanco)" />
-          <polygon points="300,710 480,420 340,380 300,530" fill="url(#gradPapelBlanco)" />
-          <!-- Pliegue frontal solapado -->
-          <polygon points="300,710 160,460 300,430 440,460" fill="#f4f3ee" />
+        <!-- CAPA 5: PAPEL DE ENVOLTORIO FRONTAL Y SOLAPAS -->
+        <g stroke="url(#gradBordeOro)" stroke-width="3.5">
+          <polygon points="350,810 100,480 290,440 350,620" fill="url(#gradPapelSeda)" />
+          <polygon points="350,810 600,480 410,440 350,620" fill="url(#gradPapelSeda)" />
+          <!-- Pliegue frontal principal -->
+          <polygon points="350,810 160,520 350,480 540,520" fill="#f7f6f0" />
         </g>
 
-        <!-- CAPA 6: GRAN MOÑO AMARILLO DE SEDA (COMO EL DE LA FOTO) -->
-        <g fill="url(#gradMonomio)" stroke="#cc8800" stroke-width="2">
-          <!-- Lazos del moño -->
-          <path d="M 300 520 Q 210 470 180 520 Q 210 570 300 535 Z" />
-          <path d="M 300 520 Q 390 470 420 520 Q 390 570 300 535 Z" />
-          <!-- Nudo central -->
-          <rect x="282" y="510" width="36" height="30" rx="8" fill="#ffe600" />
-          <!-- Cintas colgantes del moño -->
-          <path d="M 290 538 Q 230 620 180 670 L 220 680 Q 280 610 298 538 Z" />
-          <path d="M 310 538 Q 370 620 440 680 L 470 660 Q 390 600 302 538 Z" />
+        <!-- CAPA 6: GRAN MOÑO AMARILLO SATINADO (MÁS LINDO Y LLAMATIVO) -->
+        <g fill="url(#gradMonomioElegante)" stroke="#b86b00" stroke-width="2.5">
+          <!-- Lazos superiores e inferiores del moño -->
+          <path d="M 350 610 Q 220 540 180 610 Q 220 680 350 630 Z" />
+          <path d="M 350 610 Q 480 540 520 610 Q 480 680 350 630 Z" />
+          
+          <!-- Lazos de profundidad traseros -->
+          <path d="M 350 610 Q 240 580 210 630 Q 260 670 350 630 Z" opacity="0.7"/>
+          <path d="M 350 610 Q 460 580 490 630 Q 440 670 350 630 Z" opacity="0.7"/>
+
+          <!-- Cintas colgantes ondeadas hacia abajo -->
+          <path d="M 335 630 Q 260 730 200 810 L 250 825 Q 320 730 345 630 Z" />
+          <path d="M 365 630 Q 440 730 500 810 L 450 825 Q 380 730 355 630 Z" />
+
+          <!-- Nudo acolchado central -->
+          <rect x="325" y="598" width="50" height="38" rx="12" fill="#ffe600" stroke="#d97700" stroke-width="3" />
         </g>
       </svg>
     </div>
@@ -483,7 +535,7 @@
       elementos = [];
       petalos = [];
 
-      for(let i=0; i<35; i++) {
+      for(let i=0; i<40; i++) {
         elementos.push({
           x: Math.random() * width, y: Math.random() * height,
           r: Math.random() * 2.5 + 1, dx: (Math.random() - 0.5) * 0.5,
@@ -491,7 +543,7 @@
         });
       }
 
-      for(let i=0; i<18; i++) {
+      for(let i=0; i<20; i++) {
         petalos.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -544,7 +596,7 @@
       requestAnimationFrame(renderAnimation);
     }
 
-    // INTERACCIÓN AL TOCAR LA PANTALLA
+    // INTERACCIÓN AL TOCAR PANTALLA
     window.addEventListener('pointerdown', (e) => {
       for(let i=0; i<10; i++) {
         elementos.push({
@@ -560,6 +612,7 @@
     window.addEventListener('resize', initCanvas);
     initCanvas(); renderAnimation();
 
+    // MÚSICA Y MOSTRAR RAMO
     function mostrarSorpresa() {
       const inicio = document.getElementById('pantalla-inicio');
       const exp = document.getElementById('experiencia');
@@ -567,6 +620,11 @@
       const txt1 = document.getElementById('txt1');
       const txt2 = document.getElementById('txt2');
       const grupoBotones = document.getElementById('grupoBotones');
+      const audio = document.getElementById('musicaFondo');
+
+      // Reproducción de música al abrir
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
 
       inicio.style.opacity = '0';
       setTimeout(() => {
@@ -579,6 +637,18 @@
         setTimeout(() => { txt2.style.opacity = '1'; txt2.style.transform = 'translateY(0)'; }, 2200);
         setTimeout(() => { grupoBotones.style.opacity = '1'; }, 3200);
       }, 800);
+    }
+
+    function toggleAudio() {
+      const audio = document.getElementById('musicaFondo');
+      const btn = document.getElementById('btnAudio');
+      if (audio.paused) {
+        audio.play();
+        btn.innerText = "🔊";
+      } else {
+        audio.pause();
+        btn.innerText = "🔇";
+      }
     }
 
     function cambiarFrase() {
@@ -605,18 +675,16 @@
       document.getElementById('modalCarta').classList.remove('activo');
     }
 
-    // NUEVA FUNCIÓN INTERACTIVA "FLORECER"
     function efectoEspecial() {
       const ramo = document.getElementById('ramo');
       ramo.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.27)';
-      ramo.style.transform = 'scale(1.1) rotate(3deg)';
+      ramo.style.transform = 'scale(1.08) rotate(3deg)';
       
-      // Ráfaga de destellos alrededor del ramo
       const rect = ramo.getBoundingClientRect();
       const centroX = rect.left + rect.width / 2;
       const centroY = rect.top + rect.height / 2;
 
-      for(let i=0; i<30; i++) {
+      for(let i=0; i<35; i++) {
         elementos.push({
           x: centroX, y: centroY,
           r: Math.random() * 4 + 2,
