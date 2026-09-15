@@ -8,6 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --gold-primary: #ffee00;
+      --gold-dark: #b8860b;
+      --bg-dark: #000000;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,7 +23,7 @@
     }
 
     body {
-      background: #000000;
+      background: var(--bg-dark);
       color: #fff;
       font-family: 'Poppins', sans-serif;
       min-height: 100vh;
@@ -70,7 +76,7 @@
         #111111 0%, 
         #333333 25%, 
         #ffffff 45%, 
-        #ffee00 50%, 
+        var(--gold-primary) 50%, 
         #ffffff 55%, 
         #333333 75%, 
         #111111 100%
@@ -105,7 +111,7 @@
 
     .btn-rosa {
       background: linear-gradient(135deg, #2b2200 0%, #1a1500 100%);
-      border: 2px solid #ffee00;
+      border: 2px solid var(--gold-primary);
       border-radius: 50px;
       padding: 12px 28px;
       cursor: pointer;
@@ -136,7 +142,7 @@
       50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(255, 238, 0, 0.7); }
     }
 
-    /* EXPERIENCIA PRINCIPAL CON RAMO GRANDE Y VISUALMENTE DESTACADO */
+    /* EXPERIENCIA PRINCIPAL */
     #experiencia {
       position: absolute;
       width: 100%;
@@ -155,15 +161,15 @@
     .ramo-container {
       position: relative;
       width: 100%;
-      max-width: 580px;
-      height: 60vh;
-      max-height: 560px;
+      max-width: 600px;
+      height: 62vh;
+      max-height: 580px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
       transform: scale(0);
       transition: transform 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-      filter: drop-shadow(0 20px 40px rgba(255, 230, 0, 0.25));
+      filter: drop-shadow(0 20px 40px rgba(255, 230, 0, 0.3));
     }
 
     svg.ramo-svg {
@@ -245,7 +251,7 @@
 
     .contenido-carta {
       background: linear-gradient(145deg, #1f1a00, #0d0b00);
-      border: 2px solid #ffee00;
+      border: 2px solid var(--gold-primary);
       border-radius: 20px;
       padding: 30px 25px;
       max-width: 420px;
@@ -255,7 +261,7 @@
     }
 
     .contenido-carta h3 {
-      color: #ffee00;
+      color: var(--gold-primary);
       font-family: 'Caveat', cursive;
       font-size: 2.2rem;
       margin-bottom: 12px;
@@ -300,7 +306,7 @@
     <div class="ramo-container" id="ramo">
       <svg class="ramo-svg" viewBox="0 0 700 850">
         <defs>
-          <!-- GRADIENTES PREMIUM DE ENVOLTORIO Y FLORES -->
+          <!-- GRADIENTES PREMIUM -->
           <linearGradient id="gradPapelSeda" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#ffffff" />
             <stop offset="60%" stop-color="#f5f3ec" />
@@ -319,9 +325,9 @@
           </linearGradient>
 
           <radialGradient id="gradPetaloGirasol" cx="50%" cy="85%" r="85%">
-            <stop offset="0%" stop-color="#ff7700" />
-            <stop offset="40%" stop-color="#ffcc00" />
-            <stop offset="90%" stop-color="#ffff88" />
+            <stop offset="0%" stop-color="#ff6600" />
+            <stop offset="35%" stop-color="#ffbb00" />
+            <stop offset="85%" stop-color="#ffffaa" />
           </radialGradient>
 
           <radialGradient id="gradCentroAfelpado" cx="40%" cy="40%" r="65%">
@@ -331,55 +337,71 @@
           </radialGradient>
 
           <linearGradient id="gradTulipanVivido" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stop-color="#ff7700" />
-            <stop offset="35%" stop-color="#ffbb00" />
-            <stop offset="85%" stop-color="#ffee55" />
+            <stop offset="0%" stop-color="#ff6600" />
+            <stop offset="40%" stop-color="#ffcc00" />
+            <stop offset="90%" stop-color="#ffff77" />
           </linearGradient>
 
-          <linearGradient id="gradMonomioElegante" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ffea00" />
-            <stop offset="40%" stop-color="#ffaa00" />
-            <stop offset="100%" stop-color="#cc7700" />
+          <linearGradient id="gradHojaVerde" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2e7d32" />
+            <stop offset="50%" stop-color="#1b5e20" />
+            <stop offset="100%" stop-color="#0d3b10" />
           </linearGradient>
 
-          <!-- MOLDE GIRASOL GIGANTE DE FELPILLA -->
-          <g id="girasol-grande">
-            <g fill="url(#gradPetaloGirasol)" stroke="#d97700" stroke-width="1.8">
-              <!-- 20 Pétalos afelpados distribuidos -->
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(0 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(18 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(36 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(54 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(72 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(90 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(108 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(126 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(144 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(162 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(180 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(198 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(216 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(234 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(252 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(270 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(288 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(306 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(324 200 200)" />
-              <ellipse cx="200" cy="115" rx="16" ry="55" transform="rotate(342 200 200)" />
+          <!-- GIRASOL DENSO (32 PÉTALOS EN DOS CAPAS) -->
+          <g id="girasol-extra-denso">
+            <!-- Capa Trasera de Pétalos -->
+            <g fill="url(#gradPetaloGirasol)" stroke="#c76800" stroke-width="1.2" opacity="0.9">
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(0 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(22.5 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(45 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(67.5 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(90 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(112.5 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(135 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(157.5 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(180 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(202.5 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(225 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(247.5 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(270 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(292.5 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(315 200 200)" />
+              <ellipse cx="200" cy="110" rx="14" ry="58" transform="rotate(337.5 200 200)" />
             </g>
-            <circle cx="200" cy="200" r="48" fill="url(#gradCentroAfelpado)" stroke="#2b1400" stroke-width="3" />
-            <circle cx="200" cy="200" r="38" fill="none" stroke="#633407" stroke-dasharray="5,3" stroke-width="3.5" />
-            <circle cx="200" cy="200" r="24" fill="none" stroke="#3b1d02" stroke-dasharray="3,3" stroke-width="2.5" />
+            <!-- Capa Frontal de Pétalos -->
+            <g fill="url(#gradPetaloGirasol)" stroke="#e67e00" stroke-width="1.5">
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(11.25 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(33.75 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(56.25 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(78.75 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(101.25 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(123.75 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(146.25 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(168.75 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(191.25 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(213.75 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(236.25 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(258.75 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(281.25 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(303.75 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(326.25 200 200)" />
+              <ellipse cx="200" cy="115" rx="16" ry="52" transform="rotate(348.75 200 200)" />
+            </g>
+            <!-- Centro Texturizado -->
+            <circle cx="200" cy="200" r="46" fill="url(#gradCentroAfelpado)" stroke="#2b1400" stroke-width="3" />
+            <circle cx="200" cy="200" r="36" fill="none" stroke="#633407" stroke-dasharray="6,3" stroke-width="3" />
+            <circle cx="200" cy="200" r="24" fill="none" stroke="#3b1d02" stroke-dasharray="4,2" stroke-width="2" />
           </g>
 
-          <!-- MOLDE TULIPÁN AFELPADO DE FELPILLA -->
+          <!-- TULIPÁN AFELPADO -->
           <g id="tulipan-grande">
-            <path d="M 160 240 C 130 150, 170 80, 200 80 C 230 80, 270 150, 240 240 Z" fill="url(#gradTulipanVivido)" stroke="#e67300" stroke-width="2.5"/>
+            <path d="M 160 240 C 130 150, 170 80, 200 80 C 230 80, 270 150, 240 240 Z" fill="url(#gradTulipanVivido)" stroke="#e67300" stroke-width="2"/>
             <path d="M 150 230 C 135 165, 175 115, 195 115 C 208 115, 215 165, 185 235 Z" fill="url(#gradTulipanVivido)" filter="brightness(0.96)"/>
             <path d="M 250 230 C 265 165, 225 115, 205 115 C 192 115, 185 165, 215 235 Z" fill="url(#gradTulipanVivido)" filter="brightness(0.92)"/>
           </g>
 
-          <!-- MOLDE MARGARITILLA BLANCA -->
+          <!-- MARGARITA -->
           <g id="margarita-detallada">
             <g fill="#ffffff" stroke="#dedede" stroke-width="1.2">
               <ellipse cx="100" cy="80" rx="7" ry="18" transform="rotate(0 100 100)" />
@@ -394,77 +416,67 @@
             </g>
             <circle cx="100" cy="100" r="8" fill="#ffcc00" stroke="#e6b800" stroke-width="1" />
           </g>
+
+          <!-- HOJA DE EUCALIPTO -->
+          <g id="hoja-eucalipto">
+            <path d="M 0 0 C -30 -20, -40 -60, 0 -90 C 40 -60, 30 -20, 0 0 Z" fill="url(#gradHojaVerde)" stroke="#113d14" stroke-width="1.5" />
+            <path d="M 0 0 L 0 -85" stroke="#4caf50" stroke-width="1" opacity="0.6" />
+          </g>
         </defs>
 
-        <!-- CAPA 1: PAPEL DE FONDO ABUNDANTE (EN CASCADA MULTICAPA CON BORDES DORADOS) -->
+        <!-- PAPEL DE FONDO MULTICAPA CON BORDES DORADOS -->
         <g stroke="url(#gradBordeOro)" stroke-width="4.5">
-          <!-- Pliegues traseros exteriores superiores -->
-          <polygon points="350,820 20,220 130,40 350,280" fill="url(#gradPapelSeda)" />
-          <polygon points="350,820 680,220 570,40 350,280" fill="url(#gradPapelSeda)" />
-          
-          <!-- Capas intermedias altas -->
-          <polygon points="350,820 350,30 200,45 350,300" fill="url(#gradPapelCrema)" />
-          <polygon points="350,820 350,30 500,45 350,300" fill="url(#gradPapelCrema)" />
+          <polygon points="350,820 10,200 120,20 350,260" fill="url(#gradPapelSeda)" />
+          <polygon points="350,820 690,200 580,20 350,260" fill="url(#gradPapelSeda)" />
+          <polygon points="350,820 350,10 180,30 350,280" fill="url(#gradPapelCrema)" />
+          <polygon points="350,820 350,10 520,30 350,280" fill="url(#gradPapelCrema)" />
         </g>
 
-        <!-- TALLOS Y LIMPIAPIPAS VERDES VIBRANTES -->
-        <g stroke="#268c43" stroke-width="8" stroke-linecap="round" fill="none">
-          <!-- Espirales limpiapipas verdes -->
-          <path d="M 320 580 Q 110 360 60 120" stroke-width="10" stroke-dasharray="8,4" />
-          <path d="M 380 580 Q 590 360 640 120" stroke-width="10" stroke-dasharray="8,4" />
-          
-          <!-- Tallos gruesos -->
-          <path d="M 350 620 L 200 240" />
-          <path d="M 350 620 L 500 240" />
-          <path d="M 350 620 L 350 180" />
+        <!-- FOLLAJE Y HOJAS DE EUCALIPTO TRASERAS -->
+        <use href="#hoja-eucalipto" x="180" y="220" transform="scale(1.2) rotate(-35 180 220)" />
+        <use href="#hoja-eucalipto" x="520" y="220" transform="scale(1.2) rotate(35 520 220)" />
+        <use href="#hoja-eucalipto" x="350" y="140" transform="scale(1.1) rotate(5 350 140)" />
+
+        <!-- TALLOS VERDES -->
+        <g stroke="#1b5e20" stroke-width="8" stroke-linecap="round" fill="none">
+          <path d="M 350 620 L 150 220" />
+          <path d="M 350 620 L 550 220" />
+          <path d="M 350 620 L 250 180" />
+          <path d="M 350 620 L 450 180" />
+          <path d="M 350 620 L 350 140" />
         </g>
 
-        <!-- CAPA 2: TULIPANES Y POMPÓN SUPERIORES -->
-        <use href="#tulipan-grande" x="-5" y="30" transform="scale(1.05)" />
-        <use href="#tulipan-grande" x="145" y="5" transform="scale(1.15)" />
-        <use href="#tulipan-grande" x="290" y="40" transform="scale(1.05)" />
-        
-        <!-- Pompón amarillo central esponjoso -->
-        <circle cx="350" cy="165" r="18" fill="#ffee00" stroke="#dda100" stroke-width="3" />
+        <!-- CAPA DE TULIPANES -->
+        <use href="#tulipan-grande" x="-30" y="40" transform="scale(0.95)" />
+        <use href="#tulipan-grande" x="150" y="0" transform="scale(1.1)" />
+        <use href="#tulipan-grande" x="320" y="50" transform="scale(0.95)" />
 
-        <!-- CAPA 3: TRIO DE GIRASOLES AFELPADOS GRANDES -->
-        <use href="#girasol-grande" x="-50" y="50" transform="scale(1.15)" />
-        <use href="#girasol-grande" x="180" y="70" transform="scale(1.15)" />
-        <use href="#girasol-grande" x="60" y="160" transform="scale(1.3)" />
+        <!-- BUNCH DENSO DE GIRASOLES PRINCIPALES (5 UNIDADES) -->
+        <use href="#girasol-extra-denso" x="-70" y="40" transform="scale(1.1)" />
+        <use href="#girasol-extra-denso" x="190" y="60" transform="scale(1.1)" />
+        <use href="#girasol-extra-denso" x="60" y="130" transform="scale(1.25)" />
+        <use href="#girasol-extra-denso" x="-10" y="220" transform="scale(1.05)" />
+        <use href="#girasol-extra-denso" x="140" y="230" transform="scale(1.05)" />
 
-        <!-- CAPA 4: RAMILLETES DE MARGARITAS A LOS LADOS -->
-        <!-- Izquierda -->
-        <use href="#margarita-detallada" x="30" y="380" transform="scale(0.85)" />
-        <use href="#margarita-detallada" x="75" y="410" transform="scale(0.8)" />
-        <use href="#margarita-detallada" x="15" y="430" transform="scale(0.75)" />
+        <!-- RAMILLETES DE MARGARITAS INTERCALADAS -->
+        <use href="#margarita-detallada" x="20" y="360" transform="scale(0.9)" />
+        <use href="#margarita-detallada" x="80" y="390" transform="scale(0.85)" />
+        <use href="#margarita-detallada" x="480" y="370" transform="scale(0.9)" />
+        <use href="#margarita-detallada" x="530" y="400" transform="scale(0.85)" />
 
-        <!-- Derecha -->
-        <use href="#margarita-detallada" x="460" y="390" transform="scale(0.85)" />
-        <use href="#margarita-detallada" x="500" y="420" transform="scale(0.8)" />
-
-        <!-- CAPA 5: PAPEL DE ENVOLTORIO FRONTAL Y SOLAPAS -->
+        <!-- ENVOLTORIO FRONTAL Y MOÑO SATINADO -->
         <g stroke="url(#gradBordeOro)" stroke-width="3.5">
-          <polygon points="350,810 100,480 290,440 350,620" fill="url(#gradPapelSeda)" />
-          <polygon points="350,810 600,480 410,440 350,620" fill="url(#gradPapelSeda)" />
-          <!-- Pliegue frontal principal -->
-          <polygon points="350,810 160,520 350,480 540,520" fill="#f7f6f0" />
+          <polygon points="350,810 80,460 280,420 350,600" fill="url(#gradPapelSeda)" />
+          <polygon points="350,810 620,460 420,420 350,600" fill="url(#gradPapelSeda)" />
+          <polygon points="350,810 140,500 350,460 560,500" fill="#f7f6f0" />
         </g>
 
-        <!-- CAPA 6: GRAN MOÑO AMARILLO SATINADO -->
-        <g fill="url(#gradMonomioElegante)" stroke="#b86b00" stroke-width="2.5">
-          <!-- Lazos superiores e inferiores del moño -->
+        <!-- MOÑO AMARILLO -->
+        <g fill="url(#gradTulipanVivido)" stroke="#b86b00" stroke-width="2.5">
           <path d="M 350 610 Q 220 540 180 610 Q 220 680 350 630 Z" />
           <path d="M 350 610 Q 480 540 520 610 Q 480 680 350 630 Z" />
-          
-          <!-- Lazos de profundidad traseros -->
-          <path d="M 350 610 Q 240 580 210 630 Q 260 670 350 630 Z" opacity="0.7"/>
-          <path d="M 350 610 Q 460 580 490 630 Q 440 670 350 630 Z" opacity="0.7"/>
-
-          <!-- Cintas colgantes ondeadas hacia abajo -->
           <path d="M 335 630 Q 260 730 200 810 L 250 825 Q 320 730 345 630 Z" />
           <path d="M 365 630 Q 440 730 500 810 L 450 825 Q 380 730 355 630 Z" />
-
-          <!-- Nudo acolchado central -->
           <rect x="325" y="598" width="50" height="38" rx="12" fill="#ffe600" stroke="#d97700" stroke-width="3" />
         </g>
       </svg>
@@ -482,7 +494,7 @@
     </div>
   </div>
 
-  <!-- POPUP DE LA CARTA DEDICADA -->
+  <!-- POPUP CARTA -->
   <div class="modal-carta" id="modalCarta">
     <div class="contenido-carta">
       <h3>Para Alguien Especial ✨</h3>
@@ -519,7 +531,7 @@
         });
       }
 
-      for(let i=0; i<20; i++) {
+      for(let i=0; i<30; i++) {
         petalos.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -572,7 +584,6 @@
       requestAnimationFrame(renderAnimation);
     }
 
-    // INTERACCIÓN AL TOCAR PANTALLA
     window.addEventListener('pointerdown', (e) => {
       for(let i=0; i<10; i++) {
         elementos.push({
@@ -588,7 +599,6 @@
     window.addEventListener('resize', initCanvas);
     initCanvas(); renderAnimation();
 
-    // MÚSICA AUTOMÁTICA Y MOSTRAR RAMO
     function mostrarSorpresa() {
       const inicio = document.getElementById('pantalla-inicio');
       const exp = document.getElementById('experiencia');
@@ -598,7 +608,6 @@
       const grupoBotones = document.getElementById('grupoBotones');
       const audio = document.getElementById('musicaFondo');
 
-      // Reproducción instantánea e inadvertida de la música al presionar el botón de inicio
       audio.volume = 0.5;
       audio.play().catch(() => {});
 
