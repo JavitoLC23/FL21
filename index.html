@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flores Amarillas de Primavera</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -12,306 +12,342 @@
       padding: 0;
     }
     body {
-      background: radial-gradient(ellipse at bottom, #111e2e 0%, #050811 100%);
+      background: radial-gradient(circle at center, #131c2e 0%, #050811 100%);
       color: #fff;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
 
     /* PANTALLA INICIAL */
-    #inicio {
+    #pantalla-inicio {
       position: absolute;
-      z-index: 10;
+      z-index: 20;
       text-align: center;
-      transition: opacity 0.8s ease;
+      transition: opacity 0.8s ease, visibility 0.8s;
     }
-    .titulo-inicio {
-      font-size: 1.8rem;
-      letter-spacing: 3px;
+    .subtitulo {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: #ffd700;
       margin-bottom: 25px;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
     }
-    .btn-regalo {
-      background: linear-gradient(135deg, #ffd700, #ff9900);
+    .btn-abrir {
+      background: linear-gradient(135deg, #ffe000, #ff9900);
+      color: #111;
       border: none;
-      color: #0d0d0d;
-      padding: 16px 36px;
+      padding: 16px 38px;
       font-size: 1.1rem;
       font-weight: 600;
       border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
-      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .btn-regalo:hover {
+    .btn-abrir:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.9);
+      box-shadow: 0 0 45px rgba(255, 215, 0, 0.9);
     }
 
-    /* CANVAS DE FLORES Y EFECTOS */
-    canvas {
+    /* PANTALLA PRINCIPAL */
+    #experiencia {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.5s ease;
+      z-index: 5;
+    }
+
+    /* ESCENARIO DEL RAMO */
+    .ramo-container {
+      position: relative;
+      width: 480px;
+      max-width: 90vw;
+      height: 520px;
+      max-height: 55vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      transform: scale(0);
+      transition: transform 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+      filter: drop-shadow(0 0 25px rgba(255, 230, 0, 0.35));
+    }
+
+    /* ESTILO SVG FLORES */
+    svg.ramo-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* TEXTO MEJORADO Y LIMPIO (SIN CUADRO) */
+    .mensaje-box {
+      margin-top: 15px;
+      text-align: center;
+      padding: 0 20px;
+      z-index: 10;
+    }
+    .linea-texto {
+      font-family: 'Caveat', cursive;
+      font-size: 2.6rem;
+      color: #ffee66;
+      text-shadow: 0 0 15px rgba(255, 230, 0, 0.8), 0 0 25px rgba(255, 170, 0, 0.4);
+      margin: 6px 0;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      line-height: 1.2;
+    }
+
+    /* PÁRTICULAS / LUCIÉRNAGAS */
+    canvas#luces {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: 1;
-    }
-
-    /* MENSAJE SOBRE EL FONDO (SIN CUADRO) */
-    #mensaje-container {
-      position: absolute;
-      bottom: 8%;
-      width: 100%;
-      text-align: center;
-      z-index: 2;
       pointer-events: none;
-      padding: 0 20px;
-    }
-    .mensaje-linea {
-      font-family: 'Caveat', cursive;
-      font-size: 2.8rem;
-      color: #ffea00;
-      text-shadow: 0 0 12px rgba(255, 234, 0, 0.7), 0 0 25px rgba(255, 180, 0, 0.4);
-      margin: 8px 0;
-      min-height: 3rem;
-      letter-spacing: 1px;
     }
 
-    @media (max-width: 768px) {
-      .mensaje-linea {
-        font-size: 2rem;
+    @media (max-width: 600px) {
+      .linea-texto {
+        font-size: 1.9rem;
+      }
+      .ramo-container {
+        height: 420px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- FONDO DE LUCES -->
+  <canvas id="luces"></canvas>
+
   <!-- PANTALLA INICIAL -->
-  <div id="inicio">
-    <h2 class="titulo-inicio">🎁 ESTE DETALLE ES PARA TI 🎁</h2>
-    <button class="btn-regalo" onclick="comenzar()">PRESIONA AQUÍ</button>
+  <div id="pantalla-inicio">
+    <div class="subtitulo">🎁 ESTE DETALLE ES PARA TI 🎁</div>
+    <button class="btn-abrir" onclick="mostrarSorpresa()">PRESIONA AQUÍ</button>
   </div>
 
-  <!-- CANVAS Y TEXTO LIBRE -->
-  <canvas id="canvasFlor"></canvas>
-  
-  <div id="mensaje-container">
-    <div id="linea1" class="mensaje-linea"></div>
-    <div id="linea2" class="mensaje-linea"></div>
+  <!-- PANTALLA FLOR Y TEXTO -->
+  <div id="experiencia">
+    <div class="ramo-container" id="ramo">
+      <!-- RAMO DE FLORES SVG VECTORIAL DETALLADO -->
+      <svg class="ramo-svg" viewBox="0 0 500 600">
+        <defs>
+          <!-- GRADIENTES PÉTALOS -->
+          <radialGradient id="gradPetalo1" cx="50%" cy="80%" r="80%">
+            <stop offset="0%" stop-color="#ff9900" />
+            <stop offset="50%" stop-color="#ffea00" />
+            <stop offset="100%" stop-color="#ffffaa" />
+          </radialGradient>
+          <radialGradient id="gradPetalo2" cx="50%" cy="80%" r="80%">
+            <stop offset="0%" stop-color="#e67e00" />
+            <stop offset="60%" stop-color="#ffd700" />
+            <stop offset="100%" stop-color="#fff8b3" />
+          </radialGradient>
+          <!-- GRADIENTE CENTRO FLOR -->
+          <radialGradient id="gradCentro" cx="40%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#6a3805" />
+            <stop offset="70%" stop-color="#3a1c02" />
+            <stop offset="100%" stop-color="#1a0a00" />
+          </radialGradient>
+          <!-- GRADIENTE HOJAS -->
+          <linearGradient id="gradHoja" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2d8a4e" />
+            <stop offset="100%" stop-color="#113d20" />
+          </linearGradient>
+          <!-- DEGRADADO LAZO -->
+          <linearGradient id="gradLazo" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d90429" />
+            <stop offset="50%" stop-color="#ff4d6d" />
+            <stop offset="100%" stop-color="#b7094c" />
+          </linearGradient>
+
+          <!-- PLANTILLA DE GIRASOL/FLOR -->
+          <g id="girasol">
+            <!-- Pétalos Traseros -->
+            <g fill="url(#gradPetalo2)">
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(0 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(22.5 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(45 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(67.5 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(90 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(112.5 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(135 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(157.5 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(180 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(202.5 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(225 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(247.5 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(270 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(292.5 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(315 200 200)" />
+              <path d="M200,200 C190,120 210,120 200,200" transform="rotate(337.5 200 200)" />
+            </g>
+            <!-- Pétalos Delanteros -->
+            <g fill="url(#gradPetalo1)">
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(11.25 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(33.75 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(56.25 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(78.75 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(101.25 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(123.75 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(146.25 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(168.75 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(191.25 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(213.75 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(236.25 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(258.75 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(281.25 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(303.75 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(326.25 200 200)" />
+              <ellipse cx="200" cy="135" rx="14" ry="48" transform="rotate(348.75 200 200)" />
+            </g>
+            <!-- Centro con textura -->
+            <circle cx="200" cy="200" r="38" fill="url(#gradCentro)" stroke="#ffaa00" stroke-width="2" />
+            <circle cx="200" cy="200" r="30" fill="none" stroke="#220a00" stroke-width="3" stroke-dasharray="4,4" />
+          </g>
+        </defs>
+
+        <!-- TALLOS Y HOJAS DEL RAMO -->
+        <g stroke="#1a532c" stroke-width="10" stroke-linecap="round">
+          <path d="M250,580 Q240,400 150,220" />
+          <path d="M250,580 Q250,400 350,220" />
+          <path d="M250,580 Q230,420 100,320" />
+          <path d="M250,580 Q270,420 400,310" />
+          <path d="M250,580 L250,180" />
+        </g>
+
+        <!-- HOJAS VERDES FRONDOSAS -->
+        <g fill="url(#gradHoja)">
+          <path d="M230,450 Q120,420 110,360 Q180,450 230,450" />
+          <path d="M270,450 Q380,420 390,360 Q320,450 270,450" />
+          <path d="M240,380 Q100,310 130,240 Q200,350 240,380" />
+          <path d="M260,380 Q400,310 370,240 Q300,350 260,380" />
+        </g>
+
+        <!-- COMBO DE FLORES FORMANDO EL RAMO -->
+        <!-- Flor Trasera Izquierda -->
+        <use href="#girasol" x="-100" y="100" transform="scale(0.85)" />
+        <!-- Flor Trasera Derecha -->
+        <use href="#girasol" x="180" y="90" transform="scale(0.85)" />
+        <!-- Flor Lateral Izquierda -->
+        <use href="#girasol" x="-110" y="-10" transform="scale(0.9)" />
+        <!-- Flor Lateral Derecha -->
+        <use href="#girasol" x="150" y="-20" transform="scale(0.9)" />
+        <!-- Flor Superior Central -->
+        <use href="#girasol" x="25" y="-110" transform="scale(0.95)" />
+        <!-- FLOR PRINCIPAL CENTRO -->
+        <use href="#girasol" x="25" y="10" transform="scale(1.15)" />
+
+        <!-- LAZO ROJO DECORATIVO -->
+        <g id="lazo" fill="url(#gradLazo)">
+          <path d="M250,460 C210,430 170,470 240,490 Z" />
+          <path d="M250,460 C290,430 330,470 260,490 Z" />
+          <circle cx="250" cy="475" r="12" fill="#ff4d6d" />
+          <path d="M245,485 L220,560 L245,540 L250,485 Z" />
+          <path d="M255,485 L280,560 L255,540 L250,485 Z" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- MENSAJE LIMPIO SIN CUADRO -->
+    <div class="mensaje-box">
+      <div id="txt1" class="linea-texto">Que la alegría de estas flores te acompañe siempre.</div>
+      <div id="txt2" class="linea-texto">Que nunca falte en ti la alegría que tanto irradias ✨</div>
+    </div>
   </div>
 
   <script>
-    const canvas = document.getElementById('canvasFlor');
+    // SISTEMA DE LUCES / LUCIÉRNAGAS EN CANVAS
+    const canvas = document.getElementById('luces');
     const ctx = canvas.getContext('2d');
-    
-    let width, height;
-    function resize() {
+    let width, height, luciernagas = [];
+
+    function initCanvas() {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      luciernagas = Array.from({ length: 50 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 2.5 + 1,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6,
+        a: Math.random()
+      }));
     }
-    window.addEventListener('resize', resize);
-    resize();
 
-    // PARTÍCULAS (Luciérnagas)
-    const luciernagas = Array.from({ length: 45 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 2 + 1,
-      dx: (Math.random() - 0.5) * 0.5,
-      dy: (Math.random() - 0.5) * 0.5,
-      alpha: Math.random()
-    }));
-
-    function animarLuciernagas() {
+    function renderLuces() {
+      ctx.clearRect(0, 0, width, height);
       luciernagas.forEach(p => {
         p.x += p.dx;
         p.y += p.dy;
         if (p.x < 0 || p.x > width) p.dx *= -1;
         if (p.y < 0 || p.y > height) p.dy *= -1;
-        
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 235, 130, ${Math.abs(Math.sin(p.alpha))})`;
-        ctx.shadowBlur = 10;
+        ctx.fillStyle = `rgba(255, 235, 120, ${Math.abs(Math.sin(p.a))})`;
+        ctx.shadowBlur = 12;
         ctx.shadowColor = '#ffe600';
         ctx.fill();
-        p.alpha += 0.02;
+        p.a += 0.025;
       });
+      requestAnimationFrame(renderLuces);
     }
 
-    // INICIO DE LA EXPERIENCIA
-    function comenzar() {
-      document.getElementById('inicio').style.opacity = '0';
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+    renderLuces();
+
+    // INTERACCIÓN Y REVELADO PANTALLA
+    function mostrarSorpresa() {
+      const inicio = document.getElementById('pantalla-inicio');
+      const exp = document.getElementById('experiencia');
+      const ramo = document.getElementById('ramo');
+      const txt1 = document.getElementById('txt1');
+      const txt2 = document.getElementById('txt2');
+
+      // 1. Ocultar botón inicial
+      inicio.style.opacity = '0';
       setTimeout(() => {
-        document.getElementById('inicio').style.display = 'none';
-        iniciarAnimacionRamo();
-      }, 800);
-    }
-
-    // DIBUJO DEL RAMO DE FLORES
-    function iniciarAnimacionRamo() {
-      let progreso = 0;
-
-      function loop() {
-        ctx.clearRect(0, 0, width, height);
-        animarLuciernagas();
-
-        // Base/Origen del Ramo
-        const baseX = width / 2;
-        const baseY = height + 20;
-
-        // Estructura de Flores del Ramo
-        const florCentral = { x: baseX, y: height * 0.38, r: 50 };
-        const florIzquierda = { x: baseX - 120, y: height * 0.45, r: 40 };
-        const florDerecha = { x: baseX + 120, y: height * 0.43, r: 42 };
-        const florArribaIzq = { x: baseX - 60, y: height * 0.28, r: 35 };
-        const florArribaDer = { x: baseX + 70, y: height * 0.30, r: 38 };
-
-        if (progreso < 1) progreso += 0.012;
-
-        // 1. DIBUJAR HOJAS Y TALLOS (Progresivo)
-        dibujarTalloCurvo(baseX, baseY, florCentral.x, florCentral.y, progreso, '#1e5e33', 10);
-        dibujarTalloCurvo(baseX, baseY, florIzquierda.x, florIzquierda.y, progreso, '#184f2a', 8);
-        dibujarTalloCurvo(baseX, baseY, florDerecha.x, florDerecha.y, progreso, '#184f2a', 8);
-        dibujarTalloCurvo(baseX, baseY, florArribaIzq.x, florArribaIzq.y, progreso, '#24733e', 7);
-        dibujarTalloCurvo(baseX, baseY, florArribaDer.x, florArribaDer.y, progreso, '#24733e', 7);
-
-        // Hojas frondosas abajo
-        if (progreso > 0.4) {
-          dibujarHoja(baseX - 40, height * 0.7, -0.6, progreso);
-          dibujarHoja(baseX + 40, height * 0.68, 0.6, progreso);
-          dibujarHoja(baseX - 90, height * 0.62, -0.8, progreso);
-          dibujarHoja(baseX + 90, height * 0.6, 0.8, progreso);
-        }
-
-        // 2. DIBUJAR FLORES (Aparecen al completar tallos)
-        if (progreso >= 0.8) {
-          const escalaFlor = Math.min((progreso - 0.8) * 5, 1);
-          dibujarFlorGirasol(florIzquierda.x, florIzquierda.y, florIzquierda.r * escalaFlor);
-          dibujarFlorGirasol(florDerecha.x, florDerecha.y, florDerecha.r * escalaFlor);
-          dibujarFlorGirasol(florArribaIzq.x, florArribaIzq.y, florArribaIzq.r * escalaFlor);
-          dibujarFlorGirasol(florArribaDer.x, florArribaDer.y, florArribaDer.r * escalaFlor);
-          // Flor principal
-          dibujarFlorGirasol(florCentral.x, florCentral.y, florCentral.r * escalaFlor);
-          
-          // Lazo decorativo al centro del ramo
-          dibujarLazo(baseX, height * 0.78, escalaFlor);
-        }
-
-        if (progreso < 1) {
-          requestAnimationFrame(loop);
-        } else {
-          setInterval(loop, 30); // Mantener animación de luces
-          escribirTexto("Que la alegría de estas flores te acompañe siempre", "linea1", () => {
-            escribirTexto("Que nunca falte en ti la alegría que tanto irradias ✨", "linea2");
-          });
-        }
-      }
-      loop();
-    }
-
-    // Funciones Auxiliares de Dibujo
-    function dibujarTalloCurvo(x1, y1, x2, y2, p, color, grosor) {
-      ctx.beginPath();
-      ctx.strokeStyle = color;
-      ctx.lineWidth = grosor;
-      ctx.lineCap = 'round';
-      ctx.moveTo(x1, y1);
-      const cx = (x1 + x2) / 2 + (x1 > x2 ? -30 : 30);
-      const cy = (y1 + y2) / 2;
-      
-      const currX = x1 + (x2 - x1) * p;
-      const currY = y1 + (y2 - y1) * p;
-      
-      ctx.quadraticCurveTo(cx, cy, currX, currY);
-      ctx.stroke();
-    }
-
-    function dibujarHoja(x, y, angulo, p) {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(angulo);
-      ctx.beginPath();
-      ctx.fillStyle = '#226b3a';
-      ctx.ellipse(0, 0, 45 * p, 15 * p, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    function dibujarFlorGirasol(x, y, radio) {
-      if (radio <= 0) return;
-      ctx.save();
-      ctx.translate(x, y);
-
-      const numPetalos = 12;
-      ctx.shadowBlur = 18;
-      ctx.shadowColor = '#ffea00';
-
-      // Pétalos
-      for (let i = 0; i < numPetalos; i++) {
-        ctx.rotate((Math.PI * 2) / numPetalos);
-        ctx.beginPath();
-        let grad = ctx.createLinearGradient(0, 0, 0, -radio * 1.8);
-        grad.addColorStop(0, '#ffa200');
-        grad.addColorStop(0.5, '#ffee00');
-        grad.addColorStop(1, '#fff7a3');
+        inicio.style.visibility = 'hidden';
         
-        ctx.fillStyle = grad;
-        ctx.ellipse(0, -radio, radio * 0.38, radio * 0.9, 0, 0, Math.PI * 2);
-        ctx.fill();
-      }
+        // 2. Mostrar contenedor principal
+        exp.style.visibility = 'visible';
+        exp.style.opacity = '1';
 
-      // Centro de la flor
-      ctx.shadowBlur = 0;
-      ctx.beginPath();
-      let gradCentro = ctx.createRadialGradient(0, 0, 5, 0, 0, radio * 0.6);
-      gradCentro.addColorStop(0, '#5e3205');
-      gradCentro.addColorStop(1, '#2b1401');
-      ctx.fillStyle = gradCentro;
-      ctx.arc(0, 0, radio * 0.55, 0, Math.PI * 2);
-      ctx.fill();
+        // 3. Animación de crecimiento del ramo
+        setTimeout(() => {
+          ramo.style.transform = 'scale(1)';
+        }, 300);
 
-      ctx.restore();
-    }
+        // 4. Aparición elegante de las letras (Línea 1 y Línea 2)
+        setTimeout(() => {
+          txt1.style.opacity = '1';
+          txt1.style.transform = 'translateY(0)';
+        }, 1600);
 
-    function dibujarLazo(x, y, escala) {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.fillStyle = '#d90429';
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = 'rgba(0,0,0,0.5)';
-      
-      // Lazos rojos decorativos
-      ctx.beginPath();
-      ctx.ellipse(-20 * escala, 0, 22 * escala, 12 * escala, -0.3, 0, Math.PI * 2);
-      ctx.ellipse(20 * escala, 0, 22 * escala, 12 * escala, 0.3, 0, Math.PI * 2);
-      ctx.fill();
+        setTimeout(() => {
+          txt2.style.opacity = '1';
+          txt2.style.transform = 'translateY(0)';
+        }, 3000);
 
-      ctx.beginPath();
-      ctx.arc(0, 0, 8 * escala, 0, Math.PI * 2);
-      ctx.fillStyle = '#ef233c';
-      ctx.fill();
-      ctx.restore();
-    }
-
-    // EFECTO TIPEADO (TYPEWRITER) PARA EL TEXTO
-    function escribirTexto(texto, elementoId, callback) {
-      let i = 0;
-      const elem = document.getElementById(elementoId);
-      const interval = setInterval(() => {
-        elem.innerHTML += texto.charAt(i);
-        i++;
-        if (i >= texto.length) {
-          clearInterval(interval);
-          if (callback) setTimeout(callback, 400);
-        }
-      }, 50);
+      }, 800);
     }
   </script>
 </body>
