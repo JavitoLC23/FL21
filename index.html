@@ -41,27 +41,6 @@
       pointer-events: none;
     }
 
-    /* BOTÓN CONTROL DE AUDIO SUPERIOR */
-    .btn-audio {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 100;
-      background: rgba(255, 238, 0, 0.15);
-      border: 1px solid rgba(255, 238, 0, 0.4);
-      color: #ffe600;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      cursor: pointer;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 0 15px rgba(255, 238, 0, 0.2);
-    }
-
     /* PANTALLA INICIAL */
     #pantalla-inicio {
       position: absolute;
@@ -157,7 +136,7 @@
       50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(255, 238, 0, 0.7); }
     }
 
-    /* EXPERIENCIA PRINCIPAL CON RAMO MÁS GRANDE Y REINVENTADO */
+    /* EXPERIENCIA PRINCIPAL CON RAMO GRANDE Y VISUALMENTE DESTACADO */
     #experiencia {
       position: absolute;
       width: 100%;
@@ -299,10 +278,7 @@
 </head>
 <body>
 
-  <!-- BOTÓN DE MÚSICA -->
-  <button class="btn-audio" onclick="toggleAudio()" id="btnAudio">🔊</button>
-
-  <!-- AUDIO DE FONDO RESTAURADO -->
+  <!-- AUDIO DE FONDO AUTOMÁTICO -->
   <audio id="musicaFondo" loop preload="none">
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-10781.mp3" type="audio/mpeg">
   </audio>
@@ -474,7 +450,7 @@
           <polygon points="350,810 160,520 350,480 540,520" fill="#f7f6f0" />
         </g>
 
-        <!-- CAPA 6: GRAN MOÑO AMARILLO SATINADO (MÁS LINDO Y LLAMATIVO) -->
+        <!-- CAPA 6: GRAN MOÑO AMARILLO SATINADO -->
         <g fill="url(#gradMonomioElegante)" stroke="#b86b00" stroke-width="2.5">
           <!-- Lazos superiores e inferiores del moño -->
           <path d="M 350 610 Q 220 540 180 610 Q 220 680 350 630 Z" />
@@ -612,7 +588,7 @@
     window.addEventListener('resize', initCanvas);
     initCanvas(); renderAnimation();
 
-    // MÚSICA Y MOSTRAR RAMO
+    // MÚSICA AUTOMÁTICA Y MOSTRAR RAMO
     function mostrarSorpresa() {
       const inicio = document.getElementById('pantalla-inicio');
       const exp = document.getElementById('experiencia');
@@ -622,7 +598,7 @@
       const grupoBotones = document.getElementById('grupoBotones');
       const audio = document.getElementById('musicaFondo');
 
-      // Reproducción de música al abrir
+      // Reproducción instantánea e inadvertida de la música al presionar el botón de inicio
       audio.volume = 0.5;
       audio.play().catch(() => {});
 
@@ -637,18 +613,6 @@
         setTimeout(() => { txt2.style.opacity = '1'; txt2.style.transform = 'translateY(0)'; }, 2200);
         setTimeout(() => { grupoBotones.style.opacity = '1'; }, 3200);
       }, 800);
-    }
-
-    function toggleAudio() {
-      const audio = document.getElementById('musicaFondo');
-      const btn = document.getElementById('btnAudio');
-      if (audio.paused) {
-        audio.play();
-        btn.innerText = "🔊";
-      } else {
-        audio.pause();
-        btn.innerText = "🔇";
-      }
     }
 
     function cambiarFrase() {
