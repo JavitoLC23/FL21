@@ -13,6 +13,7 @@
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
 
     body {
@@ -32,28 +33,15 @@
       height: -webkit-fill-available;
     }
 
-    /* BOTÓN CONTROL DE AUDIO SUPERIOR */
-    .btn-audio {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 100;
-      background: rgba(255, 238, 0, 0.15);
-      border: 1px solid rgba(255, 238, 0, 0.4);
-      color: #ffe600;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      cursor: pointer;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 0 15px rgba(255, 238, 0, 0.2);
+    canvas#luces {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      pointer-events: none;
     }
 
-    /* PANTALLA INICIAL TIPO ESCÁNER DE NEÓN */
+    /* PANTALLA INICIAL */
     #pantalla-inicio {
       position: absolute;
       z-index: 30;
@@ -68,7 +56,6 @@
       transition: opacity 0.8s ease, visibility 0.8s;
     }
 
-    /* TEXTO CON LUZ QUE RECORRE LAS LETRAS */
     .titulo-iluminado {
       font-family: 'Montserrat', sans-serif;
       font-size: 2.3rem;
@@ -101,7 +88,6 @@
       100% { background-position: 200% 0; }
     }
 
-    /* SUBTÍTULO CON EMOTICONES Y BRILLO */
     .subtitulo-detalle {
       font-size: 1.05rem;
       color: #ffffff;
@@ -117,12 +103,11 @@
       50% { opacity: 1; transform: scale(1.02); }
     }
 
-    /* BOTÓN CON FLORES A AMBOS LADOS */
     .btn-rosa {
       background: linear-gradient(135deg, #2b2200 0%, #1a1500 100%);
       border: 2px solid #ffee00;
       border-radius: 50px;
-      padding: 10px 22px;
+      padding: 12px 28px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -137,17 +122,11 @@
       box-shadow: 0 0 35px rgba(255, 238, 0, 0.8);
     }
 
-    .btn-rosa svg {
-      width: 28px;
-      height: 28px;
-      filter: drop-shadow(0 0 8px #ffee00);
-    }
-
     .btn-rosa span {
       color: #ffffff;
       font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       text-shadow: 0 0 10px rgba(255, 238, 0, 0.8);
     }
@@ -157,7 +136,7 @@
       50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(255, 238, 0, 0.7); }
     }
 
-    /* PANTALLA PRINCIPAL DEL RAMO */
+    /* EXPERIENCIA PRINCIPAL */
     #experiencia {
       position: absolute;
       width: 100%;
@@ -175,15 +154,15 @@
     .ramo-container {
       position: relative;
       width: 100%;
-      max-width: 480px;
-      height: 50vh;
-      max-height: 450px;
+      max-width: 440px;
+      height: 52vh;
+      max-height: 480px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
       transform: scale(0);
       transition: transform 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.9));
+      filter: drop-shadow(0 15px 30px rgba(255, 230, 0, 0.15));
     }
 
     svg.ramo-svg {
@@ -192,7 +171,6 @@
       overflow: visible;
     }
 
-    /* TEXTO DENTRO DE LA EXPERIENCIA */
     .mensaje-box {
       margin-top: 10px;
       text-align: center;
@@ -202,7 +180,7 @@
 
     .linea-texto {
       font-family: 'Caveat', cursive;
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       color: #ffee66;
       text-shadow: 0 0 15px rgba(255, 230, 0, 0.8);
       margin: 4px 0;
@@ -215,7 +193,7 @@
     .botones-grupo {
       margin-top: 15px;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
       opacity: 0;
@@ -226,24 +204,24 @@
       background: rgba(255, 230, 0, 0.15);
       border: 1px solid rgba(255, 230, 0, 0.5);
       color: #ffe600;
-      padding: 9px 18px;
+      padding: 10px 20px;
       border-radius: 30px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
       backdrop-filter: blur(5px);
       transition: all 0.3s;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .btn-accion:active {
       transform: scale(0.95);
-      background: rgba(255, 230, 0, 0.3);
+      background: rgba(255, 230, 0, 0.35);
     }
 
-    /* VENTANA CARTA POPUP */
+    /* MODAL CARTA */
     .modal-carta {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -289,145 +267,178 @@
       margin-bottom: 20px;
     }
 
-    canvas#luces {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* ADAPTACIÓN CELULARES */
     @media (max-width: 480px) {
-      .titulo-iluminado { font-size: 1.6rem; letter-spacing: 2px; }
-      .subtitulo-detalle { font-size: 0.88rem; letter-spacing: 1px; }
+      .titulo-iluminado { font-size: 1.7rem; letter-spacing: 2px; }
+      .subtitulo-detalle { font-size: 0.88rem; }
       .linea-texto { font-size: 1.8rem; }
-      .ramo-container { height: 42vh; }
+      .ramo-container { height: 46vh; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BOTÓN DE MÚSICA ON/OFF -->
-  <button class="btn-audio" onclick="toggleAudio()" id="btnAudio">🔊</button>
-
-  <!-- AUDIO DE FONDO -->
-  <audio id="musicaFondo" loop preload="none">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-10781.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- CANVAS EFECTOS Y PETALOS -->
   <canvas id="luces"></canvas>
 
-  <!-- PANTALLA INICIAL INTERACTIVA -->
+  <!-- PANTALLA INICIAL -->
   <div id="pantalla-inicio">
     <div class="titulo-iluminado">21 DE SEPTIEMBRE</div>
-    
     <div class="subtitulo-detalle">🎁 ·· UN DETALLE ESPECIAL PARA TI ·· 🎁</div>
     
     <button class="btn-rosa" onclick="mostrarSorpresa()">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 58 C32 45 30 38 32 30" stroke="#38a356" stroke-width="3.5" stroke-linecap="round"/>
-        <path d="M32 46 Q24 44 20 38 Q28 38 32 44" fill="#38a356"/>
-        <path d="M32 40 Q40 38 44 32 Q36 32 32 38" fill="#38a356"/>
-        <path d="M32 12 C20 12 16 24 24 30 C32 36 40 30 48 24 C52 16 44 12 32 12 Z" fill="#ffaa00"/>
-        <path d="M22 18 C16 22 20 32 28 32 C36 32 44 26 42 18 C36 12 28 14 22 18 Z" fill="#ffcc00"/>
-        <path d="M26 20 C24 24 28 28 32 28 C36 28 40 24 38 20 C36 16 28 16 26 20 Z" fill="#ffee66"/>
-        <circle cx="32" cy="21" r="3" fill="#ff8800"/>
-      </svg>
-
-      <span>Ver aquí</span>
-
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 58 C32 45 30 38 32 30" stroke="#38a356" stroke-width="3.5" stroke-linecap="round"/>
-        <path d="M32 46 Q24 44 20 38 Q28 38 32 44" fill="#38a356"/>
-        <path d="M32 40 Q40 38 44 32 Q36 32 32 38" fill="#38a356"/>
-        <path d="M32 12 C20 12 16 24 24 30 C32 36 40 30 48 24 C52 16 44 12 32 12 Z" fill="#ffaa00"/>
-        <path d="M22 18 C16 22 20 32 28 32 C36 32 44 26 42 18 C36 12 28 14 22 18 Z" fill="#ffcc00"/>
-        <path d="M26 20 C24 24 28 28 32 28 C36 28 40 24 38 20 C36 16 28 16 26 20 Z" fill="#ffee66"/>
-        <circle cx="32" cy="21" r="3" fill="#ff8800"/>
-      </svg>
+      <span>🌻 Abrir Detalle 🌻</span>
     </button>
   </div>
 
-  <!-- PANTALLA PRINCIPAL EXPERIENCIA RAMO -->
+  <!-- PANTALLA PRINCIPAL EXPERIENCIA -->
   <div id="experiencia">
     <div class="ramo-container" id="ramo">
-      <svg class="ramo-svg" viewBox="0 0 600 700">
+      <svg class="ramo-svg" viewBox="0 0 600 750">
         <defs>
-          <radialGradient id="gradPetalo1" cx="50%" cy="85%" r="85%">
-            <stop offset="0%" stop-color="#ff8800" />
-            <stop offset="40%" stop-color="#ffcc00" />
-            <stop offset="100%" stop-color="#ffffcc" />
-          </radialGradient>
-          <radialGradient id="gradPetalo2" cx="50%" cy="85%" r="85%">
-            <stop offset="0%" stop-color="#d96b00" />
-            <stop offset="50%" stop-color="#ffaa00" />
-            <stop offset="100%" stop-color="#fffae6" />
-          </radialGradient>
-          <radialGradient id="gradCentro" cx="40%" cy="40%" r="70%">
-            <stop offset="0%" stop-color="#542803" />
-            <stop offset="65%" stop-color="#2b1200" />
-            <stop offset="100%" stop-color="#0f0500" />
-          </radialGradient>
-          <linearGradient id="gradHoja" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#38a356" />
-            <stop offset="100%" stop-color="#0d3b18" />
+          <!-- GRADIENTES DEDICADOS AL RAMO DE LA FOTO -->
+          <linearGradient id="gradPapelBlanco" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="70%" stop-color="#f0efe9" />
+            <stop offset="100%" stop-color="#d8d5ca" />
           </linearGradient>
-          <linearGradient id="gradPapel" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#d4a373" />
-            <stop offset="50%" stop-color="#bc8a5f" />
-            <stop offset="100%" stop-color="#8b5e34" />
+          
+          <linearGradient id="gradBordeDorado" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#c89b3c" />
+            <stop offset="50%" stop-color="#f1d37a" />
+            <stop offset="100%" stop-color="#a07828" />
           </linearGradient>
 
-          <g id="girasol">
-            <g fill="url(#gradPetalo2)">
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(0 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(30 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(60 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(90 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(120 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(150 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(180 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(210 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(240 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(270 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(300 200 200)" />
-              <path d="M200,200 C185,100 215,100 200,200" transform="rotate(330 200 200)" />
+          <radialGradient id="gradPetaloGirasol" cx="50%" cy="80%" r="80%">
+            <stop offset="0%" stop-color="#ff9900" />
+            <stop offset="50%" stop-color="#ffee00" />
+            <stop offset="100%" stop-color="#fff5aa" />
+          </radialGradient>
+
+          <radialGradient id="gradCentroGirasol" cx="40%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#3d1d02" />
+            <stop offset="80%" stop-color="#1f0e00" />
+            <stop offset="100%" stop-color="#0a0400" />
+          </radialGradient>
+
+          <linearGradient id="gradTulipan" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#ff8800" />
+            <stop offset="40%" stop-color="#ffcc00" />
+            <stop offset="100%" stop-color="#ffea66" />
+          </linearGradient>
+
+          <linearGradient id="gradMonomio" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffe600" />
+            <stop offset="50%" stop-color="#ffb700" />
+            <stop offset="100%" stop-color="#d48800" />
+          </linearGradient>
+
+          <!-- MOLDE GIRASOL DE FELPILLA -->
+          <g id="girasol-foto">
+            <!-- 16 Pétalos estilo tejido felpudo -->
+            <g fill="url(#gradPetaloGirasol)" stroke="#e68a00" stroke-width="1.5">
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(0 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(22.5 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(45 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(67.5 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(90 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(112.5 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(135 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(157.5 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(180 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(202.5 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(225 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(247.5 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(270 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(292.5 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(315 200 200)" />
+              <ellipse cx="200" cy="130" rx="14" ry="45" transform="rotate(337.5 200 200)" />
             </g>
-            <g fill="url(#gradPetalo1)">
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(15 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(45 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(75 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(105 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(135 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(165 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(195 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(225 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(255 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(285 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(315 200 200)" />
-              <ellipse cx="200" cy="125" rx="15" ry="55" transform="rotate(345 200 200)" />
+            <circle cx="200" cy="200" r="40" fill="url(#gradCentroGirasol)" stroke="#2b1400" stroke-width="3" />
+            <!-- Textura centro afelpado -->
+            <circle cx="200" cy="200" r="32" fill="none" stroke="#5a2e05" stroke-dasharray="4,3" stroke-width="3" />
+          </g>
+
+          <!-- MOLDE TULIPÁN DE FELPILLA -->
+          <g id="tulipan-foto">
+            <path d="M 170 230 C 150 160, 180 100, 200 100 C 220 100, 250 160, 230 230 Z" fill="url(#gradTulipan)" stroke="#e67e00" stroke-width="2"/>
+            <path d="M 160 220 C 150 170, 180 130, 195 130 C 205 130, 210 170, 190 225 Z" fill="url(#gradTulipan)" filter="brightness(0.95)"/>
+            <path d="M 240 220 C 250 170, 220 130, 205 130 C 195 130, 190 170, 210 225 Z" fill="url(#gradTulipan)" filter="brightness(0.9)"/>
+          </g>
+
+          <!-- MOLDE MARGARITA BLANCA PEQUEÑA -->
+          <g id="margarita-chica">
+            <g fill="#ffffff" stroke="#e6e6e6">
+              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(0 100 100)" />
+              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(45 100 100)" />
+              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(90 100 100)" />
+              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(135 100 100)" />
+              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(180 100 100)" />
+              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(225 100 100)" />
+              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(270 100 100)" />
+              <ellipse cx="100" cy="85" rx="6" ry="15" transform="rotate(315 100 100)" />
             </g>
-            <circle cx="200" cy="200" r="42" fill="url(#gradCentro)" stroke="#ffaa00" stroke-width="2" />
+            <circle cx="100" cy="100" r="7" fill="#ffcc00" />
           </g>
         </defs>
 
-        <polygon points="180,680 420,680 520,380 80,380" fill="url(#gradPapel)" />
-        <g stroke="#1a532c" stroke-width="12" stroke-linecap="round">
-          <path d="M300,650 Q280,450 140,240" />
-          <path d="M300,650 Q300,450 460,240" />
-          <path d="M300,650 L300,180" />
-        </g>
-        <g fill="url(#gradHoja)">
-          <path d="M270,520 Q120,480 100,380 Q200,510 270,520" />
-          <path d="M330,520 Q480,480 500,380 Q400,510 330,520" />
+        <!-- CAPA 1: PAPEL DE FONDO DE ENVOLTORIO (PLIEGUES TRASEROS CON BORDES DORADOS) -->
+        <g stroke="url(#gradBordeDorado)" stroke-width="4">
+          <polygon points="300,720 50,220 140,80 300,280" fill="url(#gradPapelBlanco)" />
+          <polygon points="300,720 550,220 460,80 300,280" fill="url(#gradPapelBlanco)" />
+          <polygon points="300,720 300,50 180,60" fill="url(#gradPapelBlanco)" />
+          <polygon points="300,720 300,50 420,60" fill="url(#gradPapelBlanco)" />
         </g>
 
-        <use href="#girasol" x="-130" y="-40" transform="scale(1)" />
-        <use href="#girasol" x="180" y="-50" transform="scale(1)" />
-        <use href="#girasol" x="25" y="-140" transform="scale(1.1)" />
-        <use href="#girasol" x="25" y="30" transform="scale(1.3)" />
+        <!-- TALLOS Y LIMPIAPIPAS VERDES -->
+        <g stroke="#2d8a4e" stroke-width="7" stroke-linecap="round" fill="none">
+          <!-- Limpiapipas verde curvado a la izquierda -->
+          <path d="M 280 500 Q 120 300 80 120" stroke-width="9" stroke-dasharray="6,3" />
+          <!-- Tallos principales -->
+          <path d="M 300 550 L 180 220" />
+          <path d="M 300 550 L 420 220" />
+          <path d="M 300 550 L 300 180" />
+        </g>
+
+        <!-- CAPA 2: TULIPANES ARRIBA (3 TULIPANES Y 1 POMPÓN) -->
+        <use href="#tulipan-foto" x="-30" y="30" transform="scale(0.85)" />
+        <use href="#tulipan-foto" x="100" y="10" transform="scale(0.9)" />
+        <use href="#tulipan-foto" x="220" y="40" transform="scale(0.85)" />
+        <!-- Pompón amarillo central -->
+        <circle cx="305" cy="145" r="14" fill="#ffee00" stroke="#e6b800" stroke-width="2" />
+
+        <!-- CAPA 3: GIRASOLES AFELPADOS DEL MEDIO (3 GIRASOLES GRANDES) -->
+        <use href="#girasol-foto" x="-30" y="50" transform="scale(0.95)" />
+        <use href="#girasol-foto" x="130" y="65" transform="scale(0.95)" />
+        <use href="#girasol-foto" x="50" y="140" transform="scale(1.05)" />
+
+        <!-- CAPA 4: MARGARITAS BLANCA DETALLADAS A LOS LADOS -->
+        <!-- Ramillete izquierdo -->
+        <use href="#margarita-chica" x="50" y="310" transform="scale(0.7)" />
+        <use href="#margarita-chica" x="85" y="330" transform="scale(0.65)" />
+        <use href="#margarita-chica" x="35" y="340" transform="scale(0.6)" />
+
+        <!-- Ramillete derecho -->
+        <use href="#margarita-chica" x="380" y="320" transform="scale(0.7)" />
+        <use href="#margarita-chica" x="410" y="350" transform="scale(0.65)" />
+
+        <!-- CAPA 5: PAPEL FRONTAL ENVOLVENTE (CON CRUCE Y DOBLECES) -->
+        <g stroke="url(#gradBordeDorado)" stroke-width="3">
+          <polygon points="300,710 120,420 260,380 300,530" fill="url(#gradPapelBlanco)" />
+          <polygon points="300,710 480,420 340,380 300,530" fill="url(#gradPapelBlanco)" />
+          <!-- Pliegue frontal solapado -->
+          <polygon points="300,710 160,460 300,430 440,460" fill="#f4f3ee" />
+        </g>
+
+        <!-- CAPA 6: GRAN MOÑO AMARILLO DE SEDA (COMO EL DE LA FOTO) -->
+        <g fill="url(#gradMonomio)" stroke="#cc8800" stroke-width="2">
+          <!-- Lazos del moño -->
+          <path d="M 300 520 Q 210 470 180 520 Q 210 570 300 535 Z" />
+          <path d="M 300 520 Q 390 470 420 520 Q 390 570 300 535 Z" />
+          <!-- Nudo central -->
+          <rect x="282" y="510" width="36" height="30" rx="8" fill="#ffe600" />
+          <!-- Cintas colgantes del moño -->
+          <path d="M 290 538 Q 230 620 180 670 L 220 680 Q 280 610 298 538 Z" />
+          <path d="M 310 538 Q 370 620 440 680 L 470 660 Q 390 600 302 538 Z" />
+        </g>
       </svg>
     </div>
 
@@ -438,7 +449,7 @@
       <div class="botones-grupo" id="grupoBotones">
         <button class="btn-accion" onclick="cambiarFrase()">🎲 Otra Frase</button>
         <button class="btn-accion" onclick="abrirCarta()">✉️ Leer Cartita</button>
-        <button class="btn-accion" onclick="compartirWA()">📲 Compartir</button>
+        <button class="btn-accion" onclick="efectoEspecial()">🌻 Florecer</button>
       </div>
     </div>
   </div>
@@ -448,7 +459,7 @@
     <div class="contenido-carta">
       <h3>Para Alguien Especial ✨</h3>
       <p>
-        Hoy 21 de septiembre florecen las mejores sonrisas. Quería regalarte estas flores amarillas que nunca se marchitan para recordarte lo mucho que iluminas el día a día de quienes te rodean. ¡Que la primavera te traiga infinita felicidad! 🌻💛
+        Hoy 21 de septiembre florecen las mejores sonrisas. Quería regalarte este ramo especial de flores amarillas que nunca se marchitan para recordarte lo mucho que iluminas el día a día. ¡Que la primavera te traiga infinita felicidad! 🌻💛
       </p>
       <button class="btn-accion" onclick="cerrarCarta()">Cerrar 💛</button>
     </div>
@@ -472,8 +483,7 @@
       elementos = [];
       petalos = [];
 
-      // Partículas brillantes
-      for(let i=0; i<30; i++) {
+      for(let i=0; i<35; i++) {
         elementos.push({
           x: Math.random() * width, y: Math.random() * height,
           r: Math.random() * 2.5 + 1, dx: (Math.random() - 0.5) * 0.5,
@@ -481,8 +491,7 @@
         });
       }
 
-      // Lluvia de pétalos flotantes
-      for(let i=0; i<15; i++) {
+      for(let i=0; i<18; i++) {
         petalos.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -498,7 +507,6 @@
     function renderAnimation() {
       ctx.clearRect(0, 0, width, height);
 
-      // Render polvo de estrellas
       elementos.forEach(p => {
         p.x += p.dx; p.y += p.dy;
         if (p.x < 0 || p.x > width) p.dx *= -1;
@@ -511,7 +519,6 @@
         ctx.fill(); p.a += 0.02;
       });
 
-      // Render lluvia de pétalos
       petalos.forEach(pt => {
         pt.y += pt.speedY;
         pt.x += pt.speedX;
@@ -537,14 +544,14 @@
       requestAnimationFrame(renderAnimation);
     }
 
-    // EFECTO TOQUE CON CHISPAS / ESTRELLITAS
+    // INTERACCIÓN AL TOCAR LA PANTALLA
     window.addEventListener('pointerdown', (e) => {
-      for(let i=0; i<8; i++) {
+      for(let i=0; i<10; i++) {
         elementos.push({
           x: e.clientX, y: e.clientY,
-          r: Math.random() * 3 + 1,
-          dx: (Math.random() - 0.5) * 4,
-          dy: (Math.random() - 0.5) * 4,
+          r: Math.random() * 3 + 1.5,
+          dx: (Math.random() - 0.5) * 5,
+          dy: (Math.random() - 0.5) * 5,
           a: 1
         });
       }
@@ -560,10 +567,6 @@
       const txt1 = document.getElementById('txt1');
       const txt2 = document.getElementById('txt2');
       const grupoBotones = document.getElementById('grupoBotones');
-      const audio = document.getElementById('musicaFondo');
-
-      audio.volume = 0.5;
-      audio.play().catch(() => {});
 
       inicio.style.opacity = '0';
       setTimeout(() => {
@@ -594,18 +597,6 @@
       }, 500);
     }
 
-    function toggleAudio() {
-      const audio = document.getElementById('musicaFondo');
-      const btn = document.getElementById('btnAudio');
-      if (audio.paused) {
-        audio.play();
-        btn.innerText = "🔊";
-      } else {
-        audio.pause();
-        btn.innerText = "🔇";
-      }
-    }
-
     function abrirCarta() {
       document.getElementById('modalCarta').classList.add('activo');
     }
@@ -614,9 +605,30 @@
       document.getElementById('modalCarta').classList.remove('activo');
     }
 
-    function compartirWA() {
-      const texto = encodeURIComponent("¡Te envío este detalle especial por el 21 de Septiembre! 🌻✨ Abre el enlace para verlo:");
-      window.open(`https://api.whatsapp.com/send?text=${texto}%20${window.location.href}`, '_blank');
+    // NUEVA FUNCIÓN INTERACTIVA "FLORECER"
+    function efectoEspecial() {
+      const ramo = document.getElementById('ramo');
+      ramo.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.27)';
+      ramo.style.transform = 'scale(1.1) rotate(3deg)';
+      
+      // Ráfaga de destellos alrededor del ramo
+      const rect = ramo.getBoundingClientRect();
+      const centroX = rect.left + rect.width / 2;
+      const centroY = rect.top + rect.height / 2;
+
+      for(let i=0; i<30; i++) {
+        elementos.push({
+          x: centroX, y: centroY,
+          r: Math.random() * 4 + 2,
+          dx: (Math.random() - 0.5) * 12,
+          dy: (Math.random() - 0.5) * 12,
+          a: 1
+        });
+      }
+
+      setTimeout(() => {
+        ramo.style.transform = 'scale(1) rotate(0deg)';
+      }, 500);
     }
   </script>
 </body>
