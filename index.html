@@ -32,6 +32,27 @@
       height: -webkit-fill-available;
     }
 
+    /* BOTÓN CONTROL DE AUDIO SUPERIOR */
+    .btn-audio {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      background: rgba(255, 238, 0, 0.15);
+      border: 1px solid rgba(255, 238, 0, 0.4);
+      color: #ffe600;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 15px rgba(255, 238, 0, 0.2);
+    }
+
     /* PANTALLA INICIAL TIPO ESCÁNER DE NEÓN */
     #pantalla-inicio {
       position: absolute;
@@ -155,8 +176,8 @@
       position: relative;
       width: 100%;
       max-width: 480px;
-      height: 52vh;
-      max-height: 460px;
+      height: 50vh;
+      max-height: 450px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
@@ -205,24 +226,73 @@
       background: rgba(255, 230, 0, 0.15);
       border: 1px solid rgba(255, 230, 0, 0.5);
       color: #ffe600;
-      padding: 10px 22px;
+      padding: 9px 18px;
       border-radius: 30px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      font-weight: 600;
       cursor: pointer;
       backdrop-filter: blur(5px);
       transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .btn-accion:active {
       transform: scale(0.95);
+      background: rgba(255, 230, 0, 0.3);
+    }
+
+    /* VENTANA CARTA POPUP */
+    .modal-carta {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-carta.activo {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .contenido-carta {
+      background: linear-gradient(145deg, #1f1a00, #0d0b00);
+      border: 2px solid #ffee00;
+      border-radius: 20px;
+      padding: 30px 25px;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 238, 0, 0.3);
+      position: relative;
+    }
+
+    .contenido-carta h3 {
+      color: #ffee00;
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .contenido-carta p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #f0f0f0;
+      margin-bottom: 20px;
     }
 
     canvas#luces {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 1;
       pointer-events: none;
     }
@@ -231,19 +301,22 @@
     @media (max-width: 480px) {
       .titulo-iluminado { font-size: 1.6rem; letter-spacing: 2px; }
       .subtitulo-detalle { font-size: 0.88rem; letter-spacing: 1px; }
-      .linea-texto { font-size: 1.9rem; }
-      .ramo-container { height: 44vh; }
+      .linea-texto { font-size: 1.8rem; }
+      .ramo-container { height: 42vh; }
     }
   </style>
 </head>
 <body>
+
+  <!-- BOTÓN DE MÚSICA ON/OFF -->
+  <button class="btn-audio" onclick="toggleAudio()" id="btnAudio">🔊</button>
 
   <!-- AUDIO DE FONDO -->
   <audio id="musicaFondo" loop preload="none">
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-10781.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- CANVAS EFECTOS POLVO DE ESTRELLAS -->
+  <!-- CANVAS EFECTOS Y PETALOS -->
   <canvas id="luces"></canvas>
 
   <!-- PANTALLA INICIAL INTERACTIVA -->
@@ -252,9 +325,7 @@
     
     <div class="subtitulo-detalle">🎁 ·· UN DETALLE ESPECIAL PARA TI ·· 🎁</div>
     
-    <!-- BOTÓN CON FLOR IZQUIERDA Y FLOR DERECHA -->
     <button class="btn-rosa" onclick="mostrarSorpresa()">
-      <!-- Flor Izquierda -->
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M32 58 C32 45 30 38 32 30" stroke="#38a356" stroke-width="3.5" stroke-linecap="round"/>
         <path d="M32 46 Q24 44 20 38 Q28 38 32 44" fill="#38a356"/>
@@ -267,7 +338,6 @@
 
       <span>Ver aquí</span>
 
-      <!-- Flor Derecha -->
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M32 58 C32 45 30 38 32 30" stroke="#38a356" stroke-width="3.5" stroke-linecap="round"/>
         <path d="M32 46 Q24 44 20 38 Q28 38 32 44" fill="#38a356"/>
@@ -366,8 +436,21 @@
       <div id="txt2" class="linea-texto">¡Feliz Comienzo de la Primavera! ✨</div>
 
       <div class="botones-grupo" id="grupoBotones">
-        <button class="btn-accion" onclick="cambiarFrase()">🎲 Ver Otra Frase</button>
+        <button class="btn-accion" onclick="cambiarFrase()">🎲 Otra Frase</button>
+        <button class="btn-accion" onclick="abrirCarta()">✉️ Leer Cartita</button>
+        <button class="btn-accion" onclick="compartirWA()">📲 Compartir</button>
       </div>
+    </div>
+  </div>
+
+  <!-- POPUP DE LA CARTA DEDICADA -->
+  <div class="modal-carta" id="modalCarta">
+    <div class="contenido-carta">
+      <h3>Para Alguien Especial ✨</h3>
+      <p>
+        Hoy 21 de septiembre florecen las mejores sonrisas. Quería regalarte estas flores amarillas que nunca se marchitan para recordarte lo mucho que iluminas el día a día de quienes te rodean. ¡Que la primavera te traiga infinita felicidad! 🌻💛
+      </p>
+      <button class="btn-accion" onclick="cerrarCarta()">Cerrar 💛</button>
     </div>
   </div>
 
@@ -381,23 +464,41 @@
 
     const canvas = document.getElementById('luces');
     const ctx = canvas.getContext('2d');
-    let width, height, elementos = [];
+    let width, height, elementos = [], petalos = [];
 
     function initCanvas() {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       elementos = [];
-      for(let i=0; i<35; i++) {
+      petalos = [];
+
+      // Partículas brillantes
+      for(let i=0; i<30; i++) {
         elementos.push({
           x: Math.random() * width, y: Math.random() * height,
           r: Math.random() * 2.5 + 1, dx: (Math.random() - 0.5) * 0.5,
           dy: (Math.random() - 0.5) * 0.5, a: Math.random()
         });
       }
+
+      // Lluvia de pétalos flotantes
+      for(let i=0; i<15; i++) {
+        petalos.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 8 + 6,
+          speedY: Math.random() * 1.2 + 0.5,
+          speedX: Math.random() * 0.8 - 0.4,
+          rot: Math.random() * 360,
+          rotSpeed: Math.random() * 2 - 1
+        });
+      }
     }
 
     function renderAnimation() {
       ctx.clearRect(0, 0, width, height);
+
+      // Render polvo de estrellas
       elementos.forEach(p => {
         p.x += p.dx; p.y += p.dy;
         if (p.x < 0 || p.x > width) p.dx *= -1;
@@ -409,8 +510,45 @@
         ctx.shadowBlur = 10; ctx.shadowColor = '#ffe600';
         ctx.fill(); p.a += 0.02;
       });
+
+      // Render lluvia de pétalos
+      petalos.forEach(pt => {
+        pt.y += pt.speedY;
+        pt.x += pt.speedX;
+        pt.rot += pt.rotSpeed;
+
+        if(pt.y > height + 20) {
+          pt.y = -20;
+          pt.x = Math.random() * width;
+        }
+
+        ctx.save();
+        ctx.translate(pt.x, pt.y);
+        ctx.rotate((pt.rot * Math.PI) / 180);
+        ctx.beginPath();
+        ctx.ellipse(0, 0, pt.size, pt.size / 2, 0, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffcc00';
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = '#ff8800';
+        ctx.fill();
+        ctx.restore();
+      });
+
       requestAnimationFrame(renderAnimation);
     }
+
+    // EFECTO TOQUE CON CHISPAS / ESTRELLITAS
+    window.addEventListener('pointerdown', (e) => {
+      for(let i=0; i<8; i++) {
+        elementos.push({
+          x: e.clientX, y: e.clientY,
+          r: Math.random() * 3 + 1,
+          dx: (Math.random() - 0.5) * 4,
+          dy: (Math.random() - 0.5) * 4,
+          a: 1
+        });
+      }
+    });
 
     window.addEventListener('resize', initCanvas);
     initCanvas(); renderAnimation();
@@ -454,6 +592,31 @@
         txt1.style.opacity = '1';
         txt2.style.opacity = '1';
       }, 500);
+    }
+
+    function toggleAudio() {
+      const audio = document.getElementById('musicaFondo');
+      const btn = document.getElementById('btnAudio');
+      if (audio.paused) {
+        audio.play();
+        btn.innerText = "🔊";
+      } else {
+        audio.pause();
+        btn.innerText = "🔇";
+      }
+    }
+
+    function abrirCarta() {
+      document.getElementById('modalCarta').classList.add('activo');
+    }
+
+    function cerrarCarta() {
+      document.getElementById('modalCarta').classList.remove('activo');
+    }
+
+    function compartirWA() {
+      const texto = encodeURIComponent("¡Te envío este detalle especial por el 21 de Septiembre! 🌻✨ Abre el enlace para verlo:");
+      window.open(`https://api.whatsapp.com/send?text=${texto}%20${window.location.href}`, '_blank');
     }
   </script>
 </body>
