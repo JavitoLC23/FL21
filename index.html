@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flores Amarillas de Primavera</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* PANTALLA INICIAL */
+    #bienvenida {
+      text-align: center;
+      z-index: 10;
+      transition: opacity 1s ease;
+    }
+    .titulo {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      color: #fce055;
+      text-shadow: 0 0 15px rgba(252, 224, 85, 0.4);
+    }
+    .btn-presionar {
+      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      color: #111;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-presionar:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+    }
+
+    /* PANTALLA FLOR Y MENSAJE */
+    #escena {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* CANVAS DE FLOR Y EFECTOS */
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* MENSAJE FINAL */
+    .mensaje-container {
+      position: relative;
+      z-index: 2;
+      margin-top: 35vh;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 25px 35px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      max-width: 80%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 2s ease forwards;
+    }
+    .mensaje-texto {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #ffe600;
+      text-shadow: 0 0 10px rgba(255, 230, 0, 0.5);
+      line-height: 1.4;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PANTALLA INICIAL -->
+  <div id="bienvenida">
+    <h1 class="titulo">🎁 Un detalle especial para ti 🎁</h1>
+    <button class="btn-presionar" onclick="iniciarExperiencia()">PRESIONA AQUÍ</button>
+  </div>
+
+  <!-- ESCENA CON LA FLOR Y EL TEXTO -->
+  <div id="escena">
+    <canvas id="canvasFlor"></canvas>
+    <div class="mensaje-container">
+      <p class="mensaje-texto">
+        Que la alegría de estas flores te acompañe siempre.<br>
+        ¡Feliz Día de la Primavera! ✨
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function iniciarExperiencia() {
+      document.getElementById('bienvenida').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('bienvenida').style.display = 'none';
+        document.getElementById('escena').style.display = 'flex';
+        dibujarFlorAnimada();
+      }, 1000);
+    }
+
+    function dibujarFlorAnimada() {
+      const canvas = document.getElementById('canvasFlor');
+      const ctx = canvas.getContext('2d');
+      
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const centerX = canvas.width / 2;
+      const startY = canvas.height;
+      const targetY = canvas.height / 2 + 50;
+
+      let currentY = startY;
+
+      // Animación de crecimiento del tallo
+      function animarTallo() {
+        if (currentY > targetY) {
+          currentY -= 4;
+          ctx.beginPath();
+          ctx.strokeStyle = '#2d8a4e';
+          ctx.lineWidth = 8;
+          ctx.moveTo(centerX, startY);
+          ctx.lineTo(centerX, currentY);
+          ctx.stroke();
+          requestAnimationFrame(animarTallo);
+        } else {
+          dibujarFlor(centerX, targetY);
+        }
+      }
+
+      // Dibujo de la flor amarilla con resplandor
+      function dibujarFlor(x, y) {
+        let petalos = 8;
+        let radio = 40;
+
+        // Pétalos
+        ctx.fillStyle = '#ffea00';
+        ctx.shadowColor = '#ffe600';
+        ctx.shadowBlur = 15;
+
+        for (let i = 0; i < petalos; i++) {
+          let angulo = (i * 2 * Math.PI) / petalos;
+          let px = x + Math.cos(angulo) * radio;
+          let py = y + Math.sin(angulo) * radio;
+
+          ctx.beginPath();
+          ctx.arc(px, py, 25, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Centro de la flor
+        ctx.beginPath();
+        ctx.fillStyle = '#ff8c00';
+        ctx.shadowBlur = 0;
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      animarTallo();
+    }
+  </script>
+</body>
+</html>
