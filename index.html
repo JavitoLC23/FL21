@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>21 de Septiembre</title>
+  <title>21 de Septiembre ✨</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -16,7 +16,7 @@
     }
 
     body {
-      background: radial-gradient(circle at center, #182232 0%, #050811 100%);
+      background: #000000;
       color: #fff;
       font-family: 'Poppins', sans-serif;
       min-height: 100vh;
@@ -32,14 +32,14 @@
       height: -webkit-fill-available;
     }
 
-    /* PANTALLA DE ENTRADA OPTIMIZADA PARA CELULARES */
+    /* PANTALLA INICIAL TIPO ESCÁNER DE NEÓN */
     #pantalla-inicio {
       position: absolute;
       z-index: 30;
       text-align: center;
       padding: 20px;
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -47,67 +47,96 @@
       transition: opacity 0.8s ease, visibility 0.8s;
     }
 
-    .fecha-top {
-      font-size: 1.6rem;
-      letter-spacing: 6px;
-      color: rgba(255, 230, 100, 0.9);
+    /* TEXTO CON LUZ QUE RECORRE LAS LETRAS */
+    .titulo-iluminado {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 900;
+      letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 25px;
-      font-weight: 300;
-      text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(
+        90deg, 
+        #111111 0%, 
+        #333333 25%, 
+        #ffffff 45%, 
+        #ffee00 50%, 
+        #ffffff 55%, 
+        #333333 75%, 
+        #111111 100%
+      );
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: brilloScanner 3s linear infinite;
+      filter: drop-shadow(0 0 15px rgba(255, 230, 0, 0.6));
     }
 
-    .banner-detalle {
+    @keyframes brilloScanner {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* SUBTÍTULO CON EMOTICONES Y BRILLO */
+    .subtitulo-detalle {
       font-size: 1.05rem;
       color: #ffffff;
-      letter-spacing: 2px;
-      margin-bottom: 35px;
-      font-weight: 400;
-      opacity: 0.95;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      animation: pulsoSubtitulo 2.5s infinite ease-in-out;
     }
 
-    /* BOTÓN TIPO ROSITA CON "VER AQUÍ" */
+    @keyframes pulsoSubtitulo {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+
+    /* BOTÓN PEQUEÑA ROSITA NEÓN */
     .btn-rosa {
-      background: linear-gradient(135deg, rgba(255, 230, 0, 0.25), rgba(255, 170, 0, 0.15));
-      border: 1px solid rgba(255, 215, 0, 0.6);
+      background: linear-gradient(135deg, #2b2200 0%, #1a1500 100%);
+      border: 2px solid #ffee00;
       border-radius: 50px;
-      padding: 12px 28px 12px 18px;
+      padding: 10px 28px 10px 18px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-      animation: pulso 2.2s infinite ease-in-out;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(255, 238, 0, 0.4), inset 0 0 15px rgba(255, 238, 0, 0.2);
+      animation: latidoBoton 2s infinite ease-in-out;
+      transition: all 0.3s ease;
     }
 
     .btn-rosa:active {
-      transform: scale(0.95);
+      transform: scale(0.92);
+      box-shadow: 0 0 35px rgba(255, 238, 0, 0.8);
     }
 
     .btn-rosa svg {
-      width: 34px;
-      height: 34px;
-      filter: drop-shadow(0 0 6px rgba(255, 230, 0, 0.8));
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 8px #ffee00);
     }
 
     .btn-rosa span {
       color: #ffffff;
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 238, 0, 0.8);
     }
 
-    @keyframes pulso {
-      0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
-      50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(255, 215, 0, 0.7); }
-      100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+    @keyframes latidoBoton {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 238, 0, 0.4); }
+      50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(255, 238, 0, 0.7); }
     }
 
-    /* EXPERIENCIA DE FLORES */
+    /* PANTALLA PRINCIPAL DEL RAMO */
     #experiencia {
       position: absolute;
       width: 100%;
@@ -126,14 +155,14 @@
       position: relative;
       width: 100%;
       max-width: 480px;
-      height: 50vh;
-      max-height: 450px;
+      height: 52vh;
+      max-height: 460px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
       transform: scale(0);
       transition: transform 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.9));
     }
 
     svg.ramo-svg {
@@ -142,7 +171,7 @@
       overflow: visible;
     }
 
-    /* MENSAJE FINAL Y BOTONES */
+    /* TEXTO DENTRO DE LA EXPERIENCIA */
     .mensaje-box {
       margin-top: 10px;
       text-align: center;
@@ -152,7 +181,7 @@
 
     .linea-texto {
       font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       color: #ffee66;
       text-shadow: 0 0 15px rgba(255, 230, 0, 0.8);
       margin: 4px 0;
@@ -176,16 +205,16 @@
       background: rgba(255, 230, 0, 0.15);
       border: 1px solid rgba(255, 230, 0, 0.5);
       color: #ffe600;
-      padding: 10px 20px;
+      padding: 10px 22px;
       border-radius: 30px;
       font-size: 0.9rem;
       cursor: pointer;
       backdrop-filter: blur(5px);
-      transition: background 0.3s, transform 0.2s;
+      transition: all 0.3s;
     }
 
     .btn-accion:active {
-      transform: scale(0.96);
+      transform: scale(0.95);
     }
 
     canvas#luces {
@@ -198,32 +227,37 @@
       pointer-events: none;
     }
 
+    /* ADAPTACIÓN CELULARES */
     @media (max-width: 480px) {
-      .fecha-top { font-size: 1.3rem; letter-spacing: 4px; }
-      .banner-detalle { font-size: 0.95rem; }
-      .linea-texto { font-size: 1.8rem; }
-      .ramo-container { height: 42vh; }
+      .titulo-iluminado { font-size: 1.6rem; letter-spacing: 2px; }
+      .subtitulo-detalle { font-size: 0.88rem; letter-spacing: 1px; }
+      .linea-texto { font-size: 1.9rem; }
+      .ramo-container { height: 44vh; }
     }
   </style>
 </head>
 <body>
 
-  <!-- AUDIO DE FONDO (SIN PRECARGA) -->
+  <!-- AUDIO DE FONDO (TOTALMENTE DESACTIVADO HASTA HACER CLIC) -->
   <audio id="musicaFondo" loop preload="none">
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-10781.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- CANVAS EFECTOS -->
+  <!-- CANVAS EFECTOS POLVO DE ESTRELLAS -->
   <canvas id="luces"></canvas>
 
-  <!-- PANTALLA INICIAL RESPONSIVE -->
+  <!-- PANTALLA INICIAL INTERACTIVA -->
   <div id="pantalla-inicio">
-    <div class="fecha-top">2 1  D E  S E P T I E M B R E</div>
-    <div class="banner-detalle">🎁 ·· UN DETALLE ESPECIAL PARA TI ·· 🎁</div>
+    <!-- TEXTO TIPO SCANNER DE NEÓN ILUMINADO -->
+    <div class="titulo-iluminado">21 DE SEPTIEMBRE</div>
     
+    <!-- SUBTÍTULO CON EMOJIS -->
+    <div class="subtitulo-detalle">🎁 ·· UN DETALLE ESPECIAL PARA TI ·· 🎁</div>
+    
+    <!-- BOTÓN CON ROSITA Y "VER AQUÍ" -->
     <button class="btn-rosa" onclick="mostrarSorpresa()">
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 58 C32 45 30 38 32 30" stroke="#38a356" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 58 C32 45 30 38 32 30" stroke="#38a356" stroke-width="3.5" stroke-linecap="round"/>
         <path d="M32 46 Q24 44 20 38 Q28 38 32 44" fill="#38a356"/>
         <path d="M32 40 Q40 38 44 32 Q36 32 32 38" fill="#38a356"/>
         <path d="M32 12 C20 12 16 24 24 30 C32 36 40 30 48 24 C52 16 44 12 32 12 Z" fill="#ffaa00"/>
@@ -235,7 +269,7 @@
     </button>
   </div>
 
-  <!-- PANTALLA PRINCIPAL CON RAMO -->
+  <!-- PANTALLA PRINCIPAL EXPERIENCIA RAMO -->
   <div id="experiencia">
     <div class="ramo-container" id="ramo">
       <svg class="ramo-svg" viewBox="0 0 600 700">
@@ -342,7 +376,7 @@
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       elementos = [];
-      for(let i=0; i<30; i++) {
+      for(let i=0; i<35; i++) {
         elementos.push({
           x: Math.random() * width, y: Math.random() * height,
           r: Math.random() * 2.5 + 1, dx: (Math.random() - 0.5) * 0.5,
@@ -379,7 +413,7 @@
       const grupoBotones = document.getElementById('grupoBotones');
       const audio = document.getElementById('musicaFondo');
 
-      // INICIA MÚSICA EXCLUSIVAMENTE AL HACER CLIC
+      // INICIA MÚSICA RECIÉN AL HACER CLIC EN EL BOTÓN
       audio.volume = 0.5;
       audio.play().catch(() => {});
 
