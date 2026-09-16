@@ -36,7 +36,7 @@
     }
 
     body.modo-noche {
-      background: #010103;
+      background: #020205;
     }
 
     html {
@@ -172,9 +172,20 @@
       justify-content: center;
       align-items: flex-end;
       transform: scale(0);
-      transition: transform 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+      transition: transform 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.27), filter 0.8s ease;
       filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
-      will-change: transform;
+      will-change: transform, filter;
+    }
+
+    /* EFECTO DE ILUMINACIÓN SÚPER INTENSA CUANDO LAS LUCES ESTÁN ACTIVAS */
+    body.modo-noche .ramo-container {
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) 
+              drop-shadow(0 0 45px rgba(255, 170, 0, 0.6))
+              drop-shadow(0 0 80px rgba(255, 230, 100, 0.3));
+    }
+
+    body.modo-noche .flor-interactive {
+      filter: brightness(1.25) contrast(1.15);
     }
 
     svg.ramo-svg {
@@ -185,7 +196,7 @@
 
     .flor-interactive {
       cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.27), filter 0.8s ease;
     }
     .flor-interactive:active {
       transform: scale(1.2) !important;
@@ -290,8 +301,9 @@
 
     .btn-accion:active, .btn-accion.activo {
       transform: scale(0.95);
-      background: rgba(255, 215, 0, 0.4);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+      background: rgba(255, 215, 0, 0.45);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+      color: #ffffff;
     }
 
     /* MODAL GENERAL & CARTA */
@@ -502,7 +514,7 @@
           </linearGradient>
 
           <g id="girasol-premium">
-            <circle cx="200" cy="200" r="90" fill="#ffaa00" opacity="0.15" filter="blur(10px)" />
+            <circle cx="200" cy="200" r="90" fill="#ffaa00" opacity="0.2" filter="blur(10px)" />
             <g fill="url(#gradPetaloGirasol)" stroke="#c75a00" stroke-width="0.8">
               <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(0 200 200)" />
               <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(20 200 200)" />
@@ -685,7 +697,7 @@
       petalos = [];
       lucesHada = [];
 
-      // Partículas de fondo normales
+      // Partículas de fondo
       for(let i=0; i<45; i++) {
         elementos.push({
           x: Math.random() * width, y: Math.random() * height,
@@ -694,7 +706,7 @@
         });
       }
 
-      // Pétalos flotantes
+      // Pétalos de girasol cayendo
       for(let i=0; i<35; i++) {
         petalos.push({
           x: Math.random() * width,
@@ -707,14 +719,14 @@
         });
       }
 
-      // Luces de Hada (Fairylights concentradas alrededor del ramo)
+      // Luces concentradas en las flores
       const centroX = width / 2;
       const centroY = height * 0.45;
-      for(let i=0; i<60; i++) {
+      for(let i=0; i<70; i++) {
         lucesHada.push({
           x: centroX + (Math.random() - 0.5) * (width < 500 ? 280 : 400),
           y: centroY + (Math.random() - 0.5) * 320,
-          r: Math.random() * 3.5 + 2,
+          r: Math.random() * 4 + 2,
           a: Math.random() * Math.PI * 2,
           speed: Math.random() * 0.05 + 0.02
         });
@@ -724,7 +736,7 @@
     function renderAnimation() {
       ctx.clearRect(0, 0, width, height);
 
-      // Dibujar partículas normales
+      // Dibujar destellos flotantes
       elementos.forEach((p, index) => {
         p.x += p.dx; p.y += p.dy;
         if (p.x < 0 || p.x > width) p.dx *= -1;
@@ -743,7 +755,7 @@
         }
       });
 
-      // Dibujar pétalos
+      // Dibujar pétalos cayendo
       petalos.forEach(pt => {
         pt.y += pt.speedY;
         pt.x += pt.speedX;
@@ -760,13 +772,13 @@
         ctx.beginPath();
         ctx.ellipse(0, 0, pt.size, pt.size / 2, 0, 0, Math.PI * 2);
         ctx.fillStyle = '#ffcc00';
-        ctx.shadowBlur = 5;
+        ctx.shadowBlur = modoNocheActivo ? 12 : 5;
         ctx.shadowColor = '#ff8800';
         ctx.fill();
         ctx.restore();
       });
 
-      // SI MODO NOCHE ESTÁ ACTIVO -> Dibujar Luces de Hada (Fairylights) encendidas
+      // Dibujar luciérnagas si las luces están prendidas
       if (modoNocheActivo) {
         lucesHada.forEach(lh => {
           lh.a += lh.speed;
@@ -774,8 +786,8 @@
 
           ctx.beginPath();
           ctx.arc(lh.x, lh.y, lh.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 240, 150, ${alpha})`;
-          ctx.shadowBlur = 22;
+          ctx.fillStyle = `rgba(255, 245, 160, ${alpha})`;
+          ctx.shadowBlur = 25;
           ctx.shadowColor = '#ffe600';
           ctx.fill();
         });
@@ -812,7 +824,7 @@
       setTimeout(() => { elem.style.transform = ''; }, 600);
     }
 
-    /* GIROSCOPIO / PARALLAX 3D */
+    /* GIROSCOPIO DE MÓVIL */
     window.addEventListener('deviceorientation', (e) => {
       if (!e.gamma || !e.beta) return;
       const ramo = document.getElementById('ramo');
@@ -872,14 +884,13 @@
       const btn = document.getElementById('btnLuces');
       btn.classList.toggle('activo', modoNocheActivo);
 
-      // Lanzar ráfaga de chispas
-      crearChispas(window.innerWidth / 2, window.innerHeight * 0.45, 50);
+      crearChispas(window.innerWidth / 2, window.innerHeight * 0.45, 60);
     }
 
     function abrirCarta() { document.getElementById('modalCarta').classList.add('activo'); }
     function cerrarCarta() { document.getElementById('modalCarta').classList.remove('activo'); }
 
-    /* RASPADITA MÁGICA SETUP */
+    /* RASPADITA SETUP */
     let raspaditaInicializada = false;
     function abrirRaspadita() {
       document.getElementById('modalRaspadita').classList.add('activo');
