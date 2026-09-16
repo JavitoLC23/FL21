@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>21 de Septiembre ✨</title>
+  <title>21 de Septiembre</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -468,7 +468,7 @@
     <div class="subtitulo-detalle">🎁 ·· UN DETALLE ESPECIAL PARA TI ·· 🎁</div>
     
     <button class="btn-rosa" onclick="mostrarSorpresa()">
-      <span>🌻 Abrir Detalle 🌻</span>
+      <span>🌻 Abrir 🌻</span>
     </button>
   </div>
 
@@ -659,10 +659,10 @@
       <div id="txt2" class="linea-texto">¡Feliz Comienzo de la Primavera! ✨</div>
 
       <div class="botones-grupo" id="grupoBotones">
-        <button class="btn-accion" onclick="cambiarFrase()">🎲 Frase</button>
-        <button class="btn-accion" onclick="abrirCarta()">✉️ Cartita</button>
-        <button class="btn-accion" onclick="abrirRaspadita()">🪄 Secreto</button>
-        <button class="btn-accion" id="btnLuces" onclick="toggleLuces()">💡 Luces</button>
+        <button class="btn-accion" onclick="cambiarFrase()">Cambiar Frase</button>
+        <button class="btn-accion" onclick="abrirCarta()">Carta</button>
+        <button class="btn-accion" onclick="abrirRaspadita()">Sorpresa</button>
+        <button class="btn-accion" id="btnLuces" onclick="toggleLuces()">Luces</button>
         
       </div>
     </div>
@@ -672,11 +672,11 @@
   <div class="modal-capa" id="modalCarta">
     <div class="contenido-modal">
       <div class="sello-cera">🌻</div>
-      <h3>Un Detalle Especial ✨</h3>
+      <h3>Un Detalle Especial</h3>
       <p>
         Hoy 21 de septiembre florecen las mejores sonrisas. Quería regalarte este ramo eterno de flores amarillas que nunca se marchitan, para recordarte lo mucho que iluminas el día a día. ¡Que la primavera te traiga infinita felicidad, paz y momentos hermosos! 🌻💛
       </p>
-      <button class="btn-accion" onclick="cerrarCarta()">Cerrar con Cariño 💛</button>
+      <button class="btn-accion" onclick="cerrarCarta()">Cerrar</button>
     </div>
   </div>
 
@@ -685,10 +685,10 @@
     <div class="contenido-modal">
       <div class="sello-cera">✨</div>
       <h3>Mensaje Oculto</h3>
-      <p>Pasa tu dedo sobre el brillo dorado para revelar la sorpresa:</p>
+      <p>Pasa tu dedo sobre el brillo dorado para revelar la sorpresa</p>
       
       <div class="raspadita-container">
-        <div class="mensaje-oculto-texto">"¡Tu sonrisa es la luz que ilumina todo a tu alrededor! ✨🌻"</div>
+        <div class="mensaje-oculto-texto">"✨🌻 ¡Tu sonrisa es la luz que ilumina todo a tu alrededor! ✨🌻"</div>
         <canvas id="canvasRaspadita"></canvas>
       </div>
 
@@ -697,11 +697,16 @@
   </div>
 
   <script>
-    const frases = [
-      ["Que la alegría de estas flores te acompañe siempre.", "¡Feliz Comienzo de la Primavera! ✨"],
-      ["Las flores más hermosas florecen con amor.", "¡Que tengas un día brillante y lleno de luz! 💛"],
-      ["Un detalle amarillo para iluminar tu día.", "Gracias por ser esa luz que llena todo de color. 🌼"]
-    ];
+   const frases = [
+  ["Que la alegría de estas flores ilumine tu día.", "¡Que tengas una jornada radiante y llena de luz"],
+  ["Las cosas hechas con cariño siempre florecen.", "Gracias por compartir siempre tu mejor energía"],
+  ["Un detalle amarillo para recordarte lo especial que eres.", "Que hoy te sobren motivos para sonreír"],
+  ["Hay personas que tienen la hermosa virtud de iluminar todo.", "¡Gracias por ser esa luz a donde sea que vas🌻"],
+  ["Que la paz y la buena vibra te acompañen en cada paso.", "¡Que disfrutes un día maravilloso"],
+  ["Para alguien que siempre hace el mundo un poco más bonito.", "¡Que recibas el doble de la alegría que das"],
+  ["Un pequeño gesto para sacarte una gran sonrisa.", "Nunca dejes de brillar con luz propia"],
+  ["Que hoy la vida te sorprenda con momentos hermosos.", "¡Te deseo un día lleno de paz, salud y felicidad"]
+];
     let indiceFrase = 0;
 
     const canvas = document.getElementById('luces');
