@@ -10,7 +10,7 @@
   <style>
     :root {
       --gold-primary: #ffd700;
-      --bg-dark: #050508;
+      --bg-dark: #08070b;
     }
 
     * {
@@ -32,11 +32,11 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      transition: background 1s ease;
+      transition: background 0.8s ease;
     }
 
     body.modo-noche {
-      background: #020204;
+      background: #010103;
     }
 
     html {
@@ -288,9 +288,10 @@
       gap: 6px;
     }
 
-    .btn-accion:active {
+    .btn-accion:active, .btn-accion.activo {
       transform: scale(0.95);
-      background: rgba(255, 215, 0, 0.3);
+      background: rgba(255, 215, 0, 0.4);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
     }
 
     /* MODAL GENERAL & CARTA */
@@ -423,7 +424,7 @@
 </head>
 <body>
 
-  <!-- COLOCA AQUÍ TU CANCIÓN FAVORITA -->
+  <!-- MÚSICA DE FONDO -->
   <audio id="musicaFondo" loop preload="none">
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
@@ -630,7 +631,7 @@
         <button class="btn-accion" onclick="cambiarFrase()">🎲 Frase</button>
         <button class="btn-accion" onclick="abrirCarta()">✉️ Cartita</button>
         <button class="btn-accion" onclick="abrirRaspadita()">🪄 Secreto</button>
-        <button class="btn-accion" onclick="toggleLuces()">💡 Luces</button>
+        <button class="btn-accion" id="btnLuces" onclick="toggleLuces()">💡 Luces</button>
         <button class="btn-accion" onclick="efectoEspecial()">🌻 Florecer</button>
       </div>
     </div>
@@ -674,7 +675,7 @@
 
     const canvas = document.getElementById('luces');
     const ctx = canvas.getContext('2d');
-    let width, height, elementos = [], petalos = [];
+    let width, height, elementos = [], petalos = [], lucesHada = [];
     let modoNocheActivo = false;
 
     function initCanvas() {
@@ -682,24 +683,40 @@
       height = canvas.height = window.innerHeight;
       elementos = [];
       petalos = [];
+      lucesHada = [];
 
-      for(let i=0; i<50; i++) {
+      // Partículas de fondo normales
+      for(let i=0; i<45; i++) {
         elementos.push({
           x: Math.random() * width, y: Math.random() * height,
-          r: Math.random() * 2.5 + 1, dx: (Math.random() - 0.5) * 0.5,
-          dy: (Math.random() - 0.5) * 0.5, a: Math.random()
+          r: Math.random() * 2.2 + 1, dx: (Math.random() - 0.5) * 0.4,
+          dy: (Math.random() - 0.5) * 0.4, a: Math.random()
         });
       }
 
-      for(let i=0; i<40; i++) {
+      // Pétalos flotantes
+      for(let i=0; i<35; i++) {
         petalos.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          size: Math.random() * 9 + 6,
-          speedY: Math.random() * 1.2 + 0.5,
+          size: Math.random() * 8 + 5,
+          speedY: Math.random() * 1.1 + 0.4,
           speedX: Math.random() * 0.8 - 0.4,
           rot: Math.random() * 360,
           rotSpeed: Math.random() * 2 - 1
+        });
+      }
+
+      // Luces de Hada (Fairylights concentradas alrededor del ramo)
+      const centroX = width / 2;
+      const centroY = height * 0.45;
+      for(let i=0; i<60; i++) {
+        lucesHada.push({
+          x: centroX + (Math.random() - 0.5) * (width < 500 ? 280 : 400),
+          y: centroY + (Math.random() - 0.5) * 320,
+          r: Math.random() * 3.5 + 2,
+          a: Math.random() * Math.PI * 2,
+          speed: Math.random() * 0.05 + 0.02
         });
       }
     }
@@ -707,6 +724,7 @@
     function renderAnimation() {
       ctx.clearRect(0, 0, width, height);
 
+      // Dibujar partículas normales
       elementos.forEach((p, index) => {
         p.x += p.dx; p.y += p.dy;
         if (p.x < 0 || p.x > width) p.dx *= -1;
@@ -714,10 +732,8 @@
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = modoNocheActivo 
-          ? `rgba(255, 245, 180, ${Math.abs(Math.sin(p.a))})`
-          : `rgba(255, 230, 100, ${Math.abs(Math.sin(p.a))})`;
-        ctx.shadowBlur = modoNocheActivo ? 18 : 12; 
+        ctx.fillStyle = `rgba(255, 230, 100, ${Math.abs(Math.sin(p.a))})`;
+        ctx.shadowBlur = 10;
         ctx.shadowColor = '#ffd700';
         ctx.fill(); p.a += 0.02;
 
@@ -727,6 +743,7 @@
         }
       });
 
+      // Dibujar pétalos
       petalos.forEach(pt => {
         pt.y += pt.speedY;
         pt.x += pt.speedX;
@@ -743,17 +760,32 @@
         ctx.beginPath();
         ctx.ellipse(0, 0, pt.size, pt.size / 2, 0, 0, Math.PI * 2);
         ctx.fillStyle = '#ffcc00';
-        ctx.shadowBlur = 6;
+        ctx.shadowBlur = 5;
         ctx.shadowColor = '#ff8800';
         ctx.fill();
         ctx.restore();
       });
 
+      // SI MODO NOCHE ESTÁ ACTIVO -> Dibujar Luces de Hada (Fairylights) encendidas
+      if (modoNocheActivo) {
+        lucesHada.forEach(lh => {
+          lh.a += lh.speed;
+          const alpha = (Math.sin(lh.a) + 1) / 2 * 0.85 + 0.15;
+
+          ctx.beginPath();
+          ctx.arc(lh.x, lh.y, lh.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 240, 150, ${alpha})`;
+          ctx.shadowBlur = 22;
+          ctx.shadowColor = '#ffe600';
+          ctx.fill();
+        });
+      }
+
       requestAnimationFrame(renderAnimation);
     }
 
     window.addEventListener('pointerdown', (e) => {
-      crearChispas(e.clientX, e.clientY, 10);
+      crearChispas(e.clientX, e.clientY, 8);
     });
 
     function crearChispas(x, y, cantidad) {
@@ -763,7 +795,7 @@
           r: Math.random() * 3.5 + 1.5,
           dx: (Math.random() - 0.5) * 6,
           dy: (Math.random() - 0.5) * 6,
-          a: 1, duracion: 100
+          a: 1, duracion: 90
         });
       }
     }
@@ -780,7 +812,7 @@
       setTimeout(() => { elem.style.transform = ''; }, 600);
     }
 
-    /* GIROSCOPIO / EFECTO PARALLAX 3D EN CELULAR */
+    /* GIROSCOPIO / PARALLAX 3D */
     window.addEventListener('deviceorientation', (e) => {
       if (!e.gamma || !e.beta) return;
       const ramo = document.getElementById('ramo');
@@ -836,7 +868,12 @@
     function toggleLuces() {
       modoNocheActivo = !modoNocheActivo;
       document.body.classList.toggle('modo-noche', modoNocheActivo);
-      crearChispas(window.innerWidth / 2, window.innerHeight / 2, 40);
+      
+      const btn = document.getElementById('btnLuces');
+      btn.classList.toggle('activo', modoNocheActivo);
+
+      // Lanzar ráfaga de chispas
+      crearChispas(window.innerWidth / 2, window.innerHeight * 0.45, 50);
     }
 
     function abrirCarta() { document.getElementById('modalCarta').classList.add('activo'); }
