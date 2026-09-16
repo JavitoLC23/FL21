@@ -32,6 +32,11 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      transition: background 1s ease;
+    }
+
+    body.modo-noche {
+      background: #020204;
     }
 
     html {
@@ -169,6 +174,7 @@
       transform: scale(0);
       transition: transform 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.27);
       filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+      will-change: transform;
     }
 
     svg.ramo-svg {
@@ -177,7 +183,6 @@
       overflow: visible;
     }
 
-    /* MOVIMIENTO Y INTERACTIVIDAD DE CADA FLOR */
     .flor-interactive {
       cursor: pointer;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.27);
@@ -212,14 +217,8 @@
       cursor: pointer;
       filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
     }
-    .mariposa-1 {
-      top: 15%; left: 20%;
-      animation: vuelo1 8s infinite ease-in-out;
-    }
-    .mariposa-2 {
-      top: 25%; right: 20%;
-      animation: vuelo2 10s infinite ease-in-out;
-    }
+    .mariposa-1 { top: 15%; left: 20%; animation: vuelo1 8s infinite ease-in-out; }
+    .mariposa-2 { top: 25%; right: 20%; animation: vuelo2 10s infinite ease-in-out; }
 
     @keyframes vuelo1 {
       0%, 100% { transform: translate(0, 0) rotate(5deg); }
@@ -266,7 +265,7 @@
     .botones-grupo {
       margin-top: 12px;
       display: flex;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
       opacity: 0;
@@ -277,16 +276,16 @@
       background: rgba(255, 215, 0, 0.12);
       border: 1px solid rgba(255, 215, 0, 0.4);
       color: #ffd700;
-      padding: 10px 22px;
+      padding: 9px 18px;
       border-radius: 30px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
       backdrop-filter: blur(8px);
       transition: all 0.3s;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .btn-accion:active {
@@ -294,8 +293,8 @@
       background: rgba(255, 215, 0, 0.3);
     }
 
-    /* MODAL CARTA VINTAGE CON SELLO DE CERA */
-    .modal-carta {
+    /* MODAL GENERAL & CARTA */
+    .modal-capa {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.88);
@@ -310,17 +309,18 @@
       backdrop-filter: blur(10px);
     }
 
-    .modal-carta.activo {
+    .modal-capa.activo {
       opacity: 1;
       pointer-events: auto;
     }
 
-    .contenido-carta {
+    .contenido-modal {
       background: linear-gradient(145deg, #181503, #0a0902);
       border: 2px solid var(--gold-primary);
       border-radius: 24px;
-      padding: 35px 28px 28px;
+      padding: 35px 25px 25px;
       max-width: 440px;
+      width: 100%;
       text-align: center;
       box-shadow: 0 0 35px rgba(255, 215, 0, 0.25);
       position: relative;
@@ -328,7 +328,7 @@
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27);
     }
 
-    .modal-carta.activo .contenido-carta {
+    .modal-capa.activo .contenido-modal {
       transform: scale(1);
     }
 
@@ -349,18 +349,49 @@
       border: 2px solid #fff;
     }
 
-    .contenido-carta h3 {
+    .contenido-modal h3 {
       color: var(--gold-primary);
       font-family: 'Caveat', cursive;
-      font-size: 2.4rem;
-      margin-bottom: 14px;
+      font-size: 2.3rem;
+      margin-bottom: 12px;
     }
 
-    .contenido-carta p {
-      font-size: 0.98rem;
-      line-height: 1.65;
+    .contenido-modal p {
+      font-size: 0.95rem;
+      line-height: 1.6;
       color: #f0f0f0;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
+    }
+
+    /* CANVAS RASPADITA */
+    .raspadita-container {
+      position: relative;
+      width: 100%;
+      height: 110px;
+      margin: 15px 0 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px dashed var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #110e02;
+    }
+
+    .mensaje-oculto-texto {
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      color: #ffee77;
+      padding: 10px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    canvas#canvasRaspadita {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      cursor: pointer;
+      touch-action: none;
     }
 
     /* PALABRAS FLOTANTES */
@@ -386,12 +417,13 @@
       .subtitulo-detalle { font-size: 0.88rem; }
       .linea-texto { font-size: 1.8rem; }
       .ramo-container { height: 60vh; }
+      .btn-accion { padding: 8px 14px; font-size: 0.82rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- COLOCA AQUÍ TU CANCIÓN FAVORITA (p. ej. Yellow de Coldplay) -->
+  <!-- COLOCA AQUÍ TU CANCIÓN FAVORITA -->
   <audio id="musicaFondo" loop preload="none">
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
@@ -408,10 +440,10 @@
     </button>
   </div>
 
-  <!-- PANTALLA PRINCIPAL CON MARIPOSAS Y RAMO CUSTOMIADO -->
+  <!-- PANTALLA PRINCIPAL -->
   <div id="experiencia">
     
-    <!-- MARIPOSAS DE LUZ -->
+    <!-- MARIPOSAS -->
     <div class="mariposa mariposa-1" onclick="tocarMariposa(event, this)">
       <svg viewBox="0 0 50 50">
         <path d="M25,25 Q10,0 5,20 Q10,35 25,25 Q40,35 45,20 Q40,0 25,25 Z" fill="#ffd700" opacity="0.9" />
@@ -423,10 +455,10 @@
       </svg>
     </div>
 
+    <!-- RAMO INTERACTIVO -->
     <div class="ramo-container" id="ramo">
       <svg class="ramo-svg" viewBox="0 0 700 850">
         <defs>
-          <!-- GRADIENTES DE FLORES Y ELEMENTOS -->
           <radialGradient id="gradPetaloGirasol" cx="50%" cy="88%" r="85%">
             <stop offset="0%" stop-color="#ff5500" />
             <stop offset="25%" stop-color="#ff9900" />
@@ -468,10 +500,8 @@
             <stop offset="100%" stop-color="#2c4233" />
           </linearGradient>
 
-          <!-- PLANTILLA: GIRASOL ALTA DENSIDAD -->
           <g id="girasol-premium">
             <circle cx="200" cy="200" r="90" fill="#ffaa00" opacity="0.15" filter="blur(10px)" />
-            
             <g fill="url(#gradPetaloGirasol)" stroke="#c75a00" stroke-width="0.8">
               <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(0 200 200)" />
               <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(20 200 200)" />
@@ -530,20 +560,17 @@
           </g>
         </defs>
 
-        <!-- ENVOLTORIO POSTERIOR -->
         <g opacity="0.95">
           <path d="M 120 320 Q 350 150 580 320 L 460 760 Q 350 780 240 760 Z" fill="url(#gradPapelInterior)" />
           <path d="M 60 260 C 180 180 320 220 350 350 L 230 750 C 130 600 50 420 60 260 Z" fill="url(#gradPapelOscuro)" stroke="#3a332c" stroke-width="1.5" />
           <path d="M 640 260 C 520 180 380 220 350 350 L 470 750 C 570 600 650 420 640 260 Z" fill="url(#gradPapelOscuro)" stroke="#3a332c" stroke-width="1.5" />
         </g>
 
-        <!-- FOLLAJE -->
         <use href="#rama-eucalipto" x="140" y="160" transform="scale(1.2) rotate(-35 140 160)" />
         <use href="#rama-eucalipto" x="520" y="180" transform="scale(1.2) rotate(35 520 180) scale(-1, 1)" />
         <use href="#rama-eucalipto" x="250" y="100" transform="scale(1) rotate(-10 250 100)" />
         <use href="#rama-eucalipto" x="420" y="110" transform="scale(1) rotate(15 420 110)" />
 
-        <!-- TALLOS -->
         <g stroke="url(#gradTallo)" stroke-linecap="round" fill="none">
           <path d="M 350 720 Q 200 480 150 300" stroke-width="9" />
           <path d="M 350 720 Q 500 480 550 300" stroke-width="9" />
@@ -554,7 +581,6 @@
           <path d="M 350 720 Q 350 450 350 260" stroke-width="12" />
         </g>
 
-        <!-- FLORES INTERACTIVAS -->
         <g class="flor-mov-1 flor-interactive" onclick="tocarFlor(event, 100, 250)">
           <use href="#girasol-premium" x="-50" y="100" transform="scale(0.82)" />
         </g>
@@ -577,50 +603,64 @@
           <use href="#girasol-premium" x="150" y="60" transform="scale(1.15)" />
         </g>
 
-        <!-- ENVOLTORIO FRONTAL Y CINTA DEDICATORIA -->
         <g>
           <path d="M 120 420 C 220 460 310 520 350 740 C 220 730 140 620 100 500 Z" fill="url(#gradPapelOscuro)" stroke="#4a4035" stroke-width="2" />
           <path d="M 580 420 C 480 460 390 520 350 740 C 480 730 560 620 600 500 Z" fill="url(#gradPapelOscuro)" stroke="#4a4035" stroke-width="2" />
-          
           <path d="M 120 420 C 220 460 310 520 350 740" stroke="url(#gradCintaOro)" stroke-width="3" fill="none" />
           <path d="M 580 420 C 480 460 390 520 350 740" stroke="url(#gradCintaOro)" stroke-width="3" fill="none" />
 
-          <!-- CINTA DE SATÉN Y TEXTO DEDICATORIA -->
           <path d="M 330 630 C 300 680 260 760 220 810 C 240 810 280 780 340 660 Z" fill="url(#gradCintaOro)" />
           <path d="M 370 630 C 400 680 440 760 480 810 C 460 810 420 780 360 660 Z" fill="url(#gradCintaOro)" />
 
-          <!-- DEDICATORIA EN LA CINTA -->
           <text x="260" y="740" font-family="'Caveat', cursive" font-size="22" fill="#3a2200" transform="rotate(-35 260 740)">Para Ti ✨</text>
 
           <path d="M 350 630 C 260 560 180 620 330 650 Z" fill="url(#gradCintaOro)" stroke="#8a5a00" stroke-width="1.5" />
           <path d="M 350 630 C 440 560 520 620 370 650 Z" fill="url(#gradCintaOro)" stroke="#8a5a00" stroke-width="1.5" />
-
           <rect x="330" y="620" width="40" height="30" rx="10" fill="url(#gradCintaOro)" stroke="#fff" stroke-width="1" />
         </g>
       </svg>
     </div>
 
+    <!-- MENSAJE Y CONTROLES -->
     <div class="mensaje-box">
       <div id="txt1" class="linea-texto">Que la alegría de estas flores te acompañe siempre.</div>
       <div id="txt2" class="linea-texto">¡Feliz Comienzo de la Primavera! ✨</div>
 
       <div class="botones-grupo" id="grupoBotones">
-        <button class="btn-accion" onclick="cambiarFrase()">🎲 Otra Frase</button>
-        <button class="btn-accion" onclick="abrirCarta()">✉️ Leer Cartita</button>
+        <button class="btn-accion" onclick="cambiarFrase()">🎲 Frase</button>
+        <button class="btn-accion" onclick="abrirCarta()">✉️ Cartita</button>
+        <button class="btn-accion" onclick="abrirRaspadita()">🪄 Secreto</button>
+        <button class="btn-accion" onclick="toggleLuces()">💡 Luces</button>
         <button class="btn-accion" onclick="efectoEspecial()">🌻 Florecer</button>
       </div>
     </div>
   </div>
 
-  <!-- POPUP CARTA SOBRE CON SELLO DE CERA -->
-  <div class="modal-carta" id="modalCarta">
-    <div class="contenido-carta">
+  <!-- MODAL CARTA VINTAGE -->
+  <div class="modal-capa" id="modalCarta">
+    <div class="contenido-modal">
       <div class="sello-cera">🌻</div>
-      <h3>Para Alguien Especial ✨</h3>
+      <h3>Un Detalle Especial ✨</h3>
       <p>
-        Hoy 21 de septiembre florecen las mejores sonrisas. Quería regalarte este ramo especial de flores amarillas que nunca se marchitan para recordarte lo mucho que iluminas el día a día. ¡Que la primavera te traiga infinita felicidad! 🌻💛
+        Hoy 21 de septiembre florecen las mejores sonrisas. Quería regalarte este ramo eterno de flores amarillas que nunca se marchitan, para recordarte lo mucho que iluminas el día a día. ¡Que la primavera te traiga infinita felicidad, paz y momentos hermosos! 🌻💛
       </p>
-      <button class="btn-accion" onclick="cerrarCarta()">Cerrar 💛</button>
+      <button class="btn-accion" onclick="cerrarCarta()">Cerrar con Cariño 💛</button>
+    </div>
+  </div>
+
+  <!-- MODAL RASPADITA MÁGICA -->
+  <div class="modal-capa" id="modalRaspadita">
+    <div class="contenido-modal">
+      <div class="sello-cera">✨</div>
+      <h3>Mensaje Oculto</h3>
+      <p>Pasa tu dedo sobre el brillo dorado para revelar la sorpresa:</p>
+      
+      <div class="raspadita-container">
+        <div class="mensaje-oculto-texto">"¡Tu sonrisa es la luz que ilumina todo a tu alrededor! ✨🌻"</div>
+        <canvas id="canvasRaspadita"></canvas>
+      </div>
+
+      <button class="btn-accion" onclick="cerrarRaspadita()">Cerrar ✨</button>
     </div>
   </div>
 
@@ -635,6 +675,7 @@
     const canvas = document.getElementById('luces');
     const ctx = canvas.getContext('2d');
     let width, height, elementos = [], petalos = [];
+    let modoNocheActivo = false;
 
     function initCanvas() {
       width = canvas.width = window.innerWidth;
@@ -673,8 +714,11 @@
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 230, 100, ${Math.abs(Math.sin(p.a))})`;
-        ctx.shadowBlur = 12; ctx.shadowColor = '#ffd700';
+        ctx.fillStyle = modoNocheActivo 
+          ? `rgba(255, 245, 180, ${Math.abs(Math.sin(p.a))})`
+          : `rgba(255, 230, 100, ${Math.abs(Math.sin(p.a))})`;
+        ctx.shadowBlur = modoNocheActivo ? 18 : 12; 
+        ctx.shadowColor = '#ffd700';
         ctx.fill(); p.a += 0.02;
 
         if (p.duracion) {
@@ -709,7 +753,7 @@
     }
 
     window.addEventListener('pointerdown', (e) => {
-      crearChispas(e.clientX, e.clientY, 12);
+      crearChispas(e.clientX, e.clientY, 10);
     });
 
     function crearChispas(x, y, cantidad) {
@@ -735,6 +779,15 @@
       elem.style.transform = 'scale(1.5) rotate(360deg)';
       setTimeout(() => { elem.style.transform = ''; }, 600);
     }
+
+    /* GIROSCOPIO / EFECTO PARALLAX 3D EN CELULAR */
+    window.addEventListener('deviceorientation', (e) => {
+      if (!e.gamma || !e.beta) return;
+      const ramo = document.getElementById('ramo');
+      const rotX = (e.beta - 45) * 0.15;
+      const rotY = e.gamma * 0.15;
+      ramo.style.transform = `scale(1) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    });
 
     window.addEventListener('resize', initCanvas);
     initCanvas(); renderAnimation();
@@ -780,15 +833,62 @@
       }, 500);
     }
 
-    function abrirCarta() {
-      document.getElementById('modalCarta').classList.add('activo');
+    function toggleLuces() {
+      modoNocheActivo = !modoNocheActivo;
+      document.body.classList.toggle('modo-noche', modoNocheActivo);
+      crearChispas(window.innerWidth / 2, window.innerHeight / 2, 40);
     }
 
-    function cerrarCarta() {
-      document.getElementById('modalCarta').classList.remove('activo');
+    function abrirCarta() { document.getElementById('modalCarta').classList.add('activo'); }
+    function cerrarCarta() { document.getElementById('modalCarta').classList.remove('activo'); }
+
+    /* RASPADITA MÁGICA SETUP */
+    let raspaditaInicializada = false;
+    function abrirRaspadita() {
+      document.getElementById('modalRaspadita').classList.add('activo');
+      if (!raspaditaInicializada) {
+        initRaspaditaCanvas();
+        raspaditaInicializada = true;
+      }
+    }
+    function cerrarRaspadita() { document.getElementById('modalRaspadita').classList.remove('activo'); }
+
+    function initRaspaditaCanvas() {
+      const c = document.getElementById('canvasRaspadita');
+      const ctxR = c.getContext('2d');
+      const box = c.parentElement;
+      c.width = box.clientWidth;
+      c.height = box.clientHeight;
+
+      ctxR.fillStyle = '#d4af37';
+      ctxR.fillRect(0, 0, c.width, c.height);
+
+      for(let i=0; i<300; i++) {
+        ctxR.fillStyle = 'rgba(255, 255, 255, ' + Math.random() * 0.4 + ')';
+        ctxR.fillRect(Math.random() * c.width, Math.random() * c.height, 2, 2);
+      }
+
+      let raspando = false;
+      function raspar(e) {
+        if(!raspando) return;
+        const rect = c.getBoundingClientRect();
+        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+
+        ctxR.globalCompositeOperation = 'destination-out';
+        ctxR.beginPath();
+        ctxR.arc(x, y, 18, 0, Math.PI * 2);
+        ctxR.fill();
+      }
+
+      c.addEventListener('mousedown', () => raspando = true);
+      c.addEventListener('touchstart', () => raspando = true);
+      window.addEventListener('mouseup', () => raspando = false);
+      window.addEventListener('touchend', () => raspando = false);
+      c.addEventListener('mousemove', raspar);
+      c.addEventListener('touchmove', raspar);
     }
 
-    /* EFECTO "FLORECER" ÉPICO CON PALABRAS FLOTANTES */
     function efectoEspecial() {
       const ramo = document.getElementById('ramo');
       ramo.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27)';
@@ -798,10 +898,8 @@
       const centroX = rect.left + rect.width / 2;
       const centroY = rect.top + rect.height / 3;
 
-      // Explosión masiva de luces
       crearChispas(centroX, centroY, 120);
 
-      // Palabras flotantes de buenos deseos
       const palabras = ["Luz ✨", "Alegría 🌻", "Sonrisas 💛", "Magia ✨", "Felicidad 🌼"];
       palabras.forEach((palabra, i) => {
         setTimeout(() => {
@@ -815,7 +913,6 @@
         }, i * 180);
       });
 
-      // Lluvia de pétalos extras
       for(let i=0; i<30; i++) {
         petalos.push({
           x: centroX + (Math.random() - 0.5) * 250,
