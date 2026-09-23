@@ -1,960 +1,315 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>21 de Septiembre</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --gold-primary: #ffd700;
-      --gold-warm: #ffaa00;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
-
-    /* FONDO CÁLIDO ATARDECER/DORADO EN LUGAR DE NEGRO */
-    body {
-      background: radial-gradient(circle at 50% 35%, #462a0c 0%, #261305 50%, #110802 100%);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      min-height: -webkit-fill-available;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      transition: background 1.2s ease;
-    }
-
-    /* MODO NOCHE: NOCHE MÁGICA EN TONOS PURPURA-DORADO */
-    body.modo-noche {
-      background: radial-gradient(circle at 50% 35%, #381a38 0%, #1c0a22 55%, #0a030c 100%);
-    }
-
-    html {
-      height: -webkit-fill-available;
-    }
-
-    /* HALO DE LUZ RESPLANDECIENTE DETRÁS DEL RAMO */
-    .halo-luz {
-      position: absolute;
-      top: 38%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 380px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(255, 190, 40, 0.35) 0%, rgba(255, 120, 0, 0.12) 55%, transparent 75%);
-      filter: blur(45px);
-      pointer-events: none;
-      z-index: 1;
-      animation: latidoHalo 4s infinite ease-in-out alternate;
-    }
-
-    @keyframes latidoHalo {
-      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
-      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
-    }
-
-    canvas#luces {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* PANTALLA INICIAL */
-    #pantalla-inicio {
-      position: absolute;
-      z-index: 30;
-      text-align: center;
-      padding: 20px;
-      width: 100%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.8s ease, visibility 0.8s;
-    }
-
-    .titulo-iluminado {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.3rem;
-      font-weight: 900;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 25px;
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(
-        90deg, 
-        #221100 0%, 
-        #885500 25%, 
-        #ffffff 45%, 
-        var(--gold-primary) 50%, 
-        #ffffff 55%, 
-        #885500 75%, 
-        #221100 100%
-      );
-      background-size: 200% auto;
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-      animation: brilloScanner 3s linear infinite;
-      filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
-    }
-
-    @keyframes brilloScanner {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-
-    .subtitulo-detalle {
-      font-size: 1.05rem;
-      color: #ffeeaa;
-      letter-spacing: 1.5px;
-      font-weight: 600;
-      margin-bottom: 40px;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-      animation: pulsoSubtitulo 2.5s infinite ease-in-out;
-    }
-
-    @keyframes pulsoSubtitulo {
-      0%, 100% { opacity: 0.85; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.02); }
-    }
-
-    .btn-rosa {
-      background: linear-gradient(135deg, #3d2800 0%, #241700 100%);
-      border: 2px solid var(--gold-primary);
-      border-radius: 50px;
-      padding: 14px 32px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4), inset 0 0 15px rgba(255, 215, 0, 0.2);
-      animation: latidoBoton 2s infinite ease-in-out;
-      transition: all 0.3s ease;
-    }
-
-    .btn-rosa:active {
-      transform: scale(0.92);
-      box-shadow: 0 0 35px rgba(255, 215, 0, 0.8);
-    }
-
-    .btn-rosa span {
-      color: #ffffff;
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-    }
-
-    @keyframes latidoBoton {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
-      50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(255, 215, 0, 0.7); }
-    }
-
-    /* EXPERIENCIA PRINCIPAL */
-    #experiencia {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 15px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1.2s ease;
-      z-index: 5;
-    }
-
-    .ramo-container {
-      position: relative;
-      width: 100%;
-      max-width: 680px;
-      height: 65vh;
-      max-height: 620px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      transform: scale(0);
-      transition: transform 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.27), filter 0.8s ease;
-      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.7));
-      will-change: transform, filter;
-    }
-
-    .ramo-container.floreciendo {
-      animation: florecerSuave 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.27) !important;
-    }
-
-    @keyframes florecerSuave {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.12); filter: drop-shadow(0 0 45px rgba(255, 215, 0, 0.9)); }
-      100% { transform: scale(1); }
-    }
-
-    body.modo-noche .ramo-container {
-      filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9)) 
-              drop-shadow(0 0 50px rgba(255, 170, 0, 0.7));
-    }
-
-    svg.ramo-svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-
-    .flor-interactive {
-      cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-    }
-    .flor-interactive:active {
-      transform: scale(1.18) !important;
-    }
-
-    .flor-mov-1 { transform-origin: 350px 750px; animation: mecer1 4.2s infinite ease-in-out; }
-    .flor-mov-2 { transform-origin: 350px 750px; animation: mecer2 5.0s infinite ease-in-out; }
-    .flor-mov-3 { transform-origin: 350px 750px; animation: mecer3 4.6s infinite ease-in-out; }
-    .flor-mov-4 { transform-origin: 350px 750px; animation: mecer4 5.3s infinite ease-in-out; }
-    .flor-mov-5 { transform-origin: 350px 750px; animation: mecer5 3.9s infinite ease-in-out; }
-    .flor-mov-6 { transform-origin: 350px 750px; animation: mecer6 4.4s infinite ease-in-out; }
-    .flor-mov-7 { transform-origin: 350px 750px; animation: mecer7 4.8s infinite ease-in-out; }
-
-    @keyframes mecer1 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(2.5deg); } }
-    @keyframes mecer2 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-3deg); } }
-    @keyframes mecer3 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(2deg); } }
-    @keyframes mecer4 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-2.5deg); } }
-    @keyframes mecer5 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(3deg); } }
-    @keyframes mecer6 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-1.8deg); } }
-    @keyframes mecer7 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(1.5deg); } }
-
-    /* MARIPOSAS ANIMADAS */
-    .mariposa {
-      position: absolute;
-      width: 34px;
-      height: 34px;
-      z-index: 15;
-      pointer-events: auto;
-      cursor: pointer;
-      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.9));
-    }
-    .mariposa-1 { top: 15%; left: 18%; animation: vuelo1 8s infinite ease-in-out; }
-    .mariposa-2 { top: 25%; right: 18%; animation: vuelo2 10s infinite ease-in-out; }
-
-    @keyframes vuelo1 {
-      0%, 100% { transform: translate(0, 0) rotate(5deg); }
-      25% { transform: translate(30px, -40px) rotate(-10deg); }
-      50% { transform: translate(60px, 10px) rotate(15deg); }
-      75% { transform: translate(15px, -20px) rotate(-5deg); }
-    }
-    @keyframes vuelo2 {
-      0%, 100% { transform: translate(0, 0) rotate(-5deg); }
-      30% { transform: translate(-40px, -30px) rotate(12deg); }
-      60% { transform: translate(-20px, 30px) rotate(-15deg); }
-      80% { transform: translate(-50px, -10px) rotate(8deg); }
-    }
-
-    .mariposa svg {
-      width: 100%; height: 100%;
-      animation: aleteo 0.3s infinite alternate ease-in-out;
-    }
-    @keyframes aleteo {
-      0% { transform: scaleX(1); }
-      100% { transform: scaleX(0.2); }
-    }
-
-    /* MENSAJES Y BOTONES MEJORADOS CON CRISTAL VINTAGE */
-    .mensaje-box {
-      margin-top: 5px;
-      text-align: center;
-      padding: 14px 25px;
-      z-index: 10;
-      background: rgba(28, 16, 5, 0.5);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      border-radius: 22px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      max-width: 90%;
-    }
-
-    .linea-texto {
-      font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      color: #ffee66;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      margin: 2px 0;
-      opacity: 0;
-      transform: translateY(15px);
-      /* TRANSICIÓN DE FRASES MÁS RÁPIDA (0.3s) */
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      line-height: 1.15;
-    }
-
-    .botones-grupo {
-      margin-top: 10px;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .btn-accion {
-      background: rgba(255, 215, 0, 0.15);
-      border: 1px solid rgba(255, 215, 0, 0.5);
-      color: #ffd700;
-      padding: 9px 18px;
-      border-radius: 30px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-accion:active, .btn-accion.activo {
-      transform: scale(0.95);
-      background: rgba(255, 215, 0, 0.45);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-      color: #ffffff;
-    }
-
-    /* MODAL GENERAL & CARTA */
-    .modal-capa {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(12, 6, 2, 0.85);
-      z-index: 200;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .modal-capa.activo {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .contenido-modal {
-      background: linear-gradient(145deg, #2b1807, #120902);
-      border: 2px solid var(--gold-primary);
-      border-radius: 24px;
-      padding: 35px 25px 25px;
-      max-width: 440px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 0 35px rgba(255, 215, 0, 0.25);
-      position: relative;
-      transform: scale(0.8);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-    }
-
-    .modal-capa.activo .contenido-modal {
-      transform: scale(1);
-    }
-
-    .sello-cera {
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, #ffd700, #b8860b);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.4rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 0 8px rgba(255,255,255,0.6);
-      border: 2px solid #fff;
-    }
-
-    .contenido-modal h3 {
-      color: var(--gold-primary);
-      font-family: 'Caveat', cursive;
-      font-size: 2.3rem;
-      margin-bottom: 12px;
-    }
-
-    .contenido-modal p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #f0f0f0;
-      margin-bottom: 20px;
-    }
-
-    /* RASPADITA */
-    .raspadita-container {
-      position: relative;
-      width: 100%;
-      height: 110px;
-      margin: 15px 0 20px;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px dashed var(--gold-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #1d0f04;
-    }
-
-    .mensaje-oculto-texto {
-      font-family: 'Caveat', cursive;
-      font-size: 1.8rem;
-      color: #ffee77;
-      padding: 10px;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-
-    canvas#canvasRaspadita {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      cursor: pointer;
-      touch-action: none;
-    }
-
-    @media (max-width: 480px) {
-      .titulo-iluminado { font-size: 1.7rem; letter-spacing: 2px; }
-      .subtitulo-detalle { font-size: 0.88rem; }
-      .linea-texto { font-size: 1.8rem; }
-      .ramo-container { height: 60vh; }
-      .btn-accion { padding: 8px 14px; font-size: 0.82rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONE PLAYERS | Servicio Técnico, Accesorios y Entretenimiento</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950">
 
-  <!-- MÚSICA DE FONDO -->
-  <audio id="musicaFondo" loop preload="none">
-    <source src="musica.mp3" type="audio/mpeg">
-  </audio>
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2">
+                <div class="bg-cyan-500 text-slate-950 p-2 rounded-xl font-extrabold text-xl tracking-wider flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <span class="text-xl font-black tracking-tight text-white">ONE <span class="text-cyan-400">PLAYERS</span></span>
+            </a>
 
-  <!-- LUZ AMBIENTAL DE FONDO -->
-  <div class="halo-luz"></div>
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#servicio-tecnico" class="hover:text-cyan-400 transition">Servicio Técnico</a>
+                <a href="#accesorios" class="hover:text-cyan-400 transition">Accesorios</a>
+                <a href="#entretenimiento" class="hover:text-cyan-400 transition">Entretenimiento & TV</a>
+                <a href="#contacto" class="hover:text-cyan-400 transition">Contacto</a>
+            </nav>
 
-  <!-- PARTICULAS Y LUCES -->
-  <canvas id="luces"></canvas>
+            <!-- CTA Button -->
+            <div class="hidden md:block">
+                <a href="https://wa.me/" target="_blank" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-5 py-2.5 rounded-xl transition shadow-lg shadow-cyan-500/20 flex items-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Consultar
+                </a>
+            </div>
 
-  <!-- PANTALLA INICIAL -->
-  <div id="pantalla-inicio">
-    <div class="titulo-iluminado">21 DE SEPTIEMBRE</div>
-    <div class="subtitulo-detalle">🎁 ·· UN DETALLE ESPECIAL PARA TI ·· 🎁</div>
-    
-    <button class="btn-rosa" onclick="mostrarSorpresa()">
-      <span>🌻 Abrir 🌻</span>
-    </button>
-  </div>
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
 
-  <!-- PANTALLA PRINCIPAL -->
-  <div id="experiencia">
-    
-    <!-- MARIPOSAS -->
-    <div class="mariposa mariposa-1" onclick="tocarMariposa(event, this)">
-      <svg viewBox="0 0 50 50">
-        <path d="M25,25 Q10,0 5,20 Q10,35 25,25 Q40,35 45,20 Q40,0 25,25 Z" fill="#ffd700" opacity="0.9" />
-      </svg>
-    </div>
-    <div class="mariposa mariposa-2" onclick="tocarMariposa(event, this)">
-      <svg viewBox="0 0 50 50">
-        <path d="M25,25 Q10,0 5,20 Q10,35 25,25 Q40,35 45,20 Q40,0 25,25 Z" fill="#ffe680" opacity="0.9" />
-      </svg>
-    </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#servicio-tecnico" class="block text-slate-300 hover:text-cyan-400 py-2 border-b border-slate-800/50">Servicio Técnico</a>
+            <a href="#accesorios" class="block text-slate-300 hover:text-cyan-400 py-2 border-b border-slate-800/50">Accesorios</a>
+            <a href="#entretenimiento" class="block text-slate-300 hover:text-cyan-400 py-2 border-b border-slate-800/50">Entretenimiento & TV</a>
+            <a href="#contacto" class="block text-slate-300 hover:text-cyan-400 py-2">Contacto</a>
+            <a href="https://wa.me/" target="_blank" class="w-full bg-cyan-500 text-slate-950 font-semibold py-3 rounded-xl flex items-center justify-center gap-2 mt-4">
+                <i class="fa-brands fa-whatsapp text-xl"></i> Consultar por WhatsApp
+            </a>
+        </div>
+    </header>
 
-    <!-- RAMO INTERACTIVO -->
-    <div class="ramo-container" id="ramo">
-      <svg class="ramo-svg" viewBox="0 0 700 850">
-        <defs>
-          <radialGradient id="gradPetaloGirasol" cx="50%" cy="88%" r="85%">
-            <stop offset="0%" stop-color="#ff5500" />
-            <stop offset="25%" stop-color="#ff9900" />
-            <stop offset="65%" stop-color="#ffcc00" />
-            <stop offset="100%" stop-color="#fff5aa" />
-          </radialGradient>
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden border-b border-slate-900">
+        <!-- Background glow effects -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
-          <radialGradient id="gradCentroGirasol" cx="45%" cy="45%" r="65%">
-            <stop offset="0%" stop-color="#3d1d03" />
-            <stop offset="60%" stop-color="#1f0d00" />
-            <stop offset="100%" stop-color="#080300" />
-          </radialGradient>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 text-xs font-semibold mb-6 tracking-wide uppercase">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Tecnología, Soporte y Ocio
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+                Tu tecnología y entretenimiento, <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">en un solo lugar.</span>
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Reparación profesional de celulares con garantía escrita, venta de accesorios de máxima calidad y soluciones de entretenimiento para tu hogar.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#servicio-tecnico" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-xl transition shadow-xl shadow-cyan-500/20 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-mobile-screen-button"></i> Reparar mi celular
+                </a>
+                <a href="#entretenimiento" class="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold px-8 py-4 rounded-xl transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-tv"></i> Ver Entretenimiento & TV
+                </a>
+            </div>
 
-          <linearGradient id="gradPapelOscuro" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#3a3028" />
-            <stop offset="50%" stop-color="#211a14" />
-            <stop offset="100%" stop-color="#0f0b08" />
-          </linearGradient>
+            <!-- Stats/Trust bar -->
+            <div class="mt-16 pt-10 border-t border-slate-900 grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto text-center">
+                <div>
+                    <p class="text-3xl font-extrabold text-white">Garantía</p>
+                    <p class="text-sm text-slate-400 mt-1">Escrita en reparaciones</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-white">Repuestos</p>
+                    <p class="text-sm text-slate-400 mt-1">Calidad Premium</p>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <p class="text-3xl font-extrabold text-white">Atención</p>
+                    <p class="text-sm text-slate-400 mt-1">Personalizada y honesta</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <linearGradient id="gradPapelInterior" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f2ebd9" />
-            <stop offset="100%" stop-color="#c4b89c" />
-          </linearGradient>
+    <!-- SECCIÓN: SERVICIO TÉCNICO -->
+    <section id="servicio-tecnico" class="py-24 bg-slate-900/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-cyan-400 text-sm font-bold uppercase tracking-wider mb-2">Servicio Técnico Especializado</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Devolvele la vida a tu dispositivo</h3>
+                <p class="mt-4 text-slate-400 text-base">Diagnósticos rápidos, repuestos de primera y técnicos capacitados para resolver cualquier falla en tu smartphone.</p>
+            </div>
 
-          <linearGradient id="gradCintaOro" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#b8860b" />
-            <stop offset="30%" stop-color="#ffe680" />
-            <stop offset="70%" stop-color="#ffd700" />
-            <stop offset="100%" stop-color="#996515" />
-          </linearGradient>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-900 border border-slate-800/80 rounded-2xl p-8 hover:border-cyan-500/50 transition group">
+                    <div class="w-14 h-14 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-slate-950 transition">
+                        <i class="fa-solid fa-display"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Cambio de Módulos & Pantallas</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Solucionamos roturas de glass, táctil o display con repuestos de excelente calidad y ajuste perfecto.</p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Calidad original / alternativa premium</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Colocación en el acto (según stock)</li>
+                    </ul>
+                </div>
 
-          <linearGradient id="gradTallo" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#2d5a27" />
-            <stop offset="100%" stop-color="#173613" />
-          </linearGradient>
+                <!-- Card 2 -->
+                <div class="bg-slate-900 border border-slate-800/80 rounded-2xl p-8 hover:border-cyan-500/50 transition group">
+                    <div class="w-14 h-14 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-slate-950 transition">
+                        <i class="fa-solid fa-battery-full"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Baterías & Carga</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">¿Tu celular se apaga rápido o no carga bien? Reemplazamos la batería y reparamos pines de carga.</p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Mayor autonomía garantizada</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Testeo completo de circuito de carga</li>
+                    </ul>
+                </div>
 
-          <linearGradient id="gradHojaEucalipto" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#5b8266" />
-            <stop offset="100%" stop-color="#2c4233" />
-          </linearGradient>
+                <!-- Card 3 -->
+                <div class="bg-slate-900 border border-slate-800/80 rounded-2xl p-8 hover:border-cyan-500/50 transition group">
+                    <div class="w-14 h-14 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-slate-950 transition">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Software & Reparación de Placa</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Solución a problemas de sistema operativo, bloqueos, cuentas, errores de boot y fallas electrónicas complejas.</p>
+                    <ul class="text-xs text-slate-400 space-y-2 border-t border-slate-800 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Recuperación de sistema</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Diagnóstico técnico avanzado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <g id="girasol-premium">
-            <circle cx="200" cy="200" r="90" fill="#ffaa00" opacity="0.2" filter="blur(10px)" />
-            <g fill="url(#gradPetaloGirasol)" stroke="#c75a00" stroke-width="0.8">
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(0 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(20 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(40 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(60 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(80 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(100 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(120 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(140 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(160 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(180 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(200 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(220 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(240 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(260 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(280 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(300 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(320 200 200)" />
-              <path d="M200,200 C190,120 180,70 200,40 C220,70 210,120 200,200 Z" transform="rotate(340 200 200)" />
-            </g>
+    <!-- SECCIÓN: ACCESORIOS -->
+    <section id="accesorios" class="py-24 border-t border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-cyan-400 text-sm font-bold uppercase tracking-wider mb-2">Protección y Potencia</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Accesorios para tu equipo</h3>
+                <p class="mt-4 text-slate-400 text-base">Todo lo que necesitas para proteger tu celular y potenciar su uso diario.</p>
+            </div>
 
-            <g fill="url(#gradPetaloGirasol)" stroke="#e66b00" stroke-width="1">
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(10 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(30 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(50 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(70 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(90 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(110 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(130 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(150 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(170 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(190 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(210 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(230 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(250 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(270 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(290 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(310 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(330 200 200)" />
-              <path d="M200,200 C192,130 185,80 200,50 C215,80 208,130 200,200 Z" transform="rotate(350 200 200)" />
-            </g>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl text-center hover:bg-slate-900 transition">
+                    <div class="text-4xl text-cyan-400 mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-1">Fundas & Templados</h4>
+                    <p class="text-xs text-slate-400">Protección antigolpes y cristales cerámicos 9D.</p>
+                </div>
+                <!-- Item 2 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl text-center hover:bg-slate-900 transition">
+                    <div class="text-4xl text-cyan-400 mb-4"><i class="fa-solid fa-bolt"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-1">Cargadores Rápidos</h4>
+                    <p class="text-xs text-slate-400">Cubo de carga y cables mallados homologados.</p>
+                </div>
+                <!-- Item 3 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl text-center hover:bg-slate-900 transition">
+                    <div class="text-4xl text-cyan-400 mb-4"><i class="fa-solid fa-headphones"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-1">Audio Inalámbrico</h4>
+                    <p class="text-xs text-slate-400">Auriculares TWS y parlantes bluetooth.</p>
+                </div>
+                <!-- Item 4 -->
+                <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl text-center hover:bg-slate-900 transition">
+                    <div class="text-4xl text-cyan-400 mb-4"><i class="fa-solid fa-car-side"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-1">Soportes & Auto</h4>
+                    <p class="text-xs text-slate-400">Soportes magnéticos y cargadores vehiculares.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <circle cx="200" cy="200" r="48" fill="url(#gradCentroGirasol)" stroke="#1a0a00" stroke-width="3" />
-            <circle cx="200" cy="200" r="38" fill="none" stroke="#6e3c0d" stroke-dasharray="4,3" stroke-width="3" opacity="0.8" />
-            <circle cx="200" cy="200" r="26" fill="none" stroke="#a35d18" stroke-dasharray="3,2" stroke-width="2" opacity="0.6" />
-          </g>
+    <!-- SECCIÓN: ENTRETENIMIENTO Y TV -->
+    <section id="entretenimiento" class="py-24 bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold mb-4">
+                        <i class="fa-solid fa-tv"></i> Zona de Ocio
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">Entretenimiento familiar sin límites en tu Smart TV</h3>
+                    <p class="text-slate-400 text-base leading-relaxed mb-6">
+                        Porque en **ONE PLAYERS** llevamos la diversión al siguiente nivel, te ofrecemos soluciones para modernizar tu televisor, accesorios de juego y conectividad total para disfrutar en familia.
+                    </p>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">Smart TV Boxes y Streaming Sticks:</strong> Convierte cualquier TV tradicional en un centro multimedia inteligente.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">Accesorios Gaming & Joysticks:</strong> Mandos Bluetooth compatibles para celular, PC y consolas.
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">Conectividad & Cables HDMI/Ópticos:</strong> Máxima definición de audio y video para tu hogar.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 p-8 rounded-3xl relative">
+                    <div class="absolute -top-4 -right-4 bg-cyan-500 text-slate-950 font-bold px-4 py-1.5 rounded-full text-xs shadow-lg">
+                        Todo en uno
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">¿Querés equipar tu sala de estar?</h4>
+                    <p class="text-slate-400 text-sm mb-6">Consultanos por disponibilidad de dispositivos multimedia y optimiza tu experiencia visual y de videojuegos.</p>
+                    <a href="https://wa.me/" target="_blank" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Consultar por equipos TV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <g id="rama-eucalipto">
-            <path d="M0,150 Q20,80 0,0" stroke="#3d5e45" stroke-width="3" fill="none" />
-            <ellipse cx="-12" cy="120" rx="14" ry="10" fill="url(#gradHojaEucalipto)" transform="rotate(-20 -12 120)" />
-            <ellipse cx="14" cy="100" rx="14" ry="10" fill="url(#gradHojaEucalipto)" transform="rotate(20 14 100)" />
-            <ellipse cx="-15" cy="70" rx="12" ry="8" fill="url(#gradHojaEucalipto)" transform="rotate(-25 -15 70)" />
-            <ellipse cx="15" cy="50" rx="12" ry="8" fill="url(#gradHojaEucalipto)" transform="rotate(25 15 50)" />
-            <ellipse cx="-10" cy="25" rx="9" ry="6" fill="url(#gradHojaEucalipto)" transform="rotate(-15 -10 25)" />
-            <ellipse cx="10" cy="15" rx="9" ry="6" fill="url(#gradHojaEucalipto)" transform="rotate(15 10 15)" />
-          </g>
-        </defs>
+    <!-- SECCIÓN: CONTACTO / UBICACIÓN -->
+    <section id="contacto" class="py-24 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-cyan-400 text-sm font-bold uppercase tracking-wider mb-2">Encuéntranos</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Estamos a tu disposición</h3>
+                <p class="mt-4 text-slate-400 text-base">Visítanos en nuestro local o escríbenos de forma directa por WhatsApp para una respuesta inmediata.</p>
+            </div>
 
-        <g opacity="0.95">
-          <path d="M 120 320 Q 350 150 580 320 L 460 760 Q 350 780 240 760 Z" fill="url(#gradPapelInterior)" />
-          <path d="M 60 260 C 180 180 320 220 350 350 L 230 750 C 130 600 50 420 60 260 Z" fill="url(#gradPapelOscuro)" stroke="#4e4034" stroke-width="1.5" />
-          <path d="M 640 260 C 520 180 380 220 350 350 L 470 750 C 570 600 650 420 640 260 Z" fill="url(#gradPapelOscuro)" stroke="#4e4034" stroke-width="1.5" />
-        </g>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-slate-900/50 border border-slate-800/80 p-8 rounded-2xl">
+                    <div class="text-3xl text-cyan-400 mb-4"><i class="fa-solid fa-location-dot"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-2">Ubicación</h4>
+                    <p class="text-slate-400 text-sm">Tu Dirección o Local Comercial<br>(Ciudad / Provincia)</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-800/80 p-8 rounded-2xl">
+                    <div class="text-3xl text-cyan-400 mb-4"><i class="fa-solid fa-clock"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-2">Horarios</h4>
+                    <p class="text-slate-400 text-sm">Lunes a Sábados<br>9:00 hs a 13:00 hs y 17:00 hs a 21:00 hs</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-800/80 p-8 rounded-2xl">
+                    <div class="text-3xl text-cyan-400 mb-4"><i class="fa-solid fa-phone"></i></div>
+                    <h4 class="text-lg font-bold text-white mb-2">Contacto Directo</h4>
+                    <p class="text-slate-400 text-sm">WhatsApp: +54 9 [Tu Número]<br>Email: contacto@oneplayers.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <use href="#rama-eucalipto" x="140" y="160" transform="scale(1.2) rotate(-35 140 160)" />
-        <use href="#rama-eucalipto" x="520" y="180" transform="scale(1.2) rotate(35 520 180) scale(-1, 1)" />
-        <use href="#rama-eucalipto" x="250" y="100" transform="scale(1) rotate(-10 250 100)" />
-        <use href="#rama-eucalipto" x="420" y="110" transform="scale(1) rotate(15 420 110)" />
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center gap-2">
+                <div class="bg-cyan-500 text-slate-950 p-2 rounded-xl font-extrabold text-base flex items-center justify-center">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <span class="text-lg font-black tracking-tight text-white">ONE <span class="text-cyan-400">PLAYERS</span></span>
+            </div>
+            <p class="text-xs text-slate-500">
+                &copy; 2026 ONE PLAYERS. Todos los derechos reservados.
+            </p>
+            <div class="flex items-center gap-4 text-slate-400 text-xl">
+                <a href="#" class="hover:text-cyan-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-cyan-400 transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://wa.me/" target="_blank" class="hover:text-cyan-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
 
-        <g stroke="url(#gradTallo)" stroke-linecap="round" fill="none">
-          <path d="M 350 720 Q 200 480 150 300" stroke-width="9" />
-          <path d="M 350 720 Q 500 480 550 300" stroke-width="9" />
-          <path d="M 350 720 Q 260 450 220 220" stroke-width="10" />
-          <path d="M 350 720 Q 440 450 480 220" stroke-width="10" />
-          <path d="M 350 720 Q 310 420 300 180" stroke-width="11" />
-          <path d="M 350 720 Q 390 420 400 180" stroke-width="11" />
-          <path d="M 350 720 Q 350 450 350 260" stroke-width="12" />
-        </g>
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-slate-950 w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl shadow-emerald-500/50 transition transform hover:scale-110" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-        <g class="flor-mov-1 flor-interactive" onclick="tocarFlor(event, 100, 250)">
-          <use href="#girasol-premium" x="-50" y="100" transform="scale(0.82)" />
-        </g>
-        <g class="flor-mov-2 flor-interactive" onclick="tocarFlor(event, 600, 250)">
-          <use href="#girasol-premium" x="450" y="100" transform="scale(0.82)" />
-        </g>
-        <g class="flor-mov-3 flor-interactive" onclick="tocarFlor(event, 200, 150)">
-          <use href="#girasol-premium" x="20" y="-10" transform="scale(0.92)" />
-        </g>
-        <g class="flor-mov-4 flor-interactive" onclick="tocarFlor(event, 500, 150)">
-          <use href="#girasol-premium" x="370" y="-10" transform="scale(0.92)" />
-        </g>
-        <g class="flor-mov-5 flor-interactive" onclick="tocarFlor(event, 350, 100)">
-          <use href="#girasol-premium" x="140" y="-60" transform="scale(1.05)" />
-        </g>
-        <g class="flor-mov-6 flor-interactive" onclick="tocarFlor(event, 430, 120)">
-          <use href="#girasol-premium" x="250" y="-40" transform="scale(1.02)" />
-        </g>
-        <g class="flor-mov-7 flor-interactive" onclick="tocarFlor(event, 350, 220)">
-          <use href="#girasol-premium" x="150" y="60" transform="scale(1.15)" />
-        </g>
+    <!-- SCRIPT PARA EL MENÚ MOBILE -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        <g>
-          <path d="M 120 420 C 220 460 310 520 350 740 C 220 730 140 620 100 500 Z" fill="url(#gradPapelOscuro)" stroke="#524438" stroke-width="2" />
-          <path d="M 580 420 C 480 460 390 520 350 740 C 480 730 560 620 600 500 Z" fill="url(#gradPapelOscuro)" stroke="#524438" stroke-width="2" />
-          <path d="M 120 420 C 220 460 310 520 350 740" stroke="url(#gradCintaOro)" stroke-width="3" fill="none" />
-          <path d="M 580 420 C 480 460 390 520 350 740" stroke="url(#gradCintaOro)" stroke-width="3" fill="none" />
-
-          <path d="M 330 630 C 300 680 260 760 220 810 C 240 810 280 780 340 660 Z" fill="url(#gradCintaOro)" />
-          <path d="M 370 630 C 400 680 440 760 480 810 C 460 810 420 780 360 660 Z" fill="url(#gradCintaOro)" />
-
-          <text x="260" y="740" font-family="'Caveat', cursive" font-size="22" fill="#3a2200" transform="rotate(-35 260 740)">Para Ti</text>
-
-          <path d="M 350 630 C 260 560 180 620 330 650 Z" fill="url(#gradCintaOro)" stroke="#8a5a00" stroke-width="1.5" />
-          <path d="M 350 630 C 440 560 520 620 370 650 Z" fill="url(#gradCintaOro)" stroke="#8a5a00" stroke-width="1.5" />
-          <rect x="330" y="620" width="40" height="30" rx="10" fill="url(#gradCintaOro)" stroke="#fff" stroke-width="1" />
-        </g>
-      </svg>
-    </div>
-
-    <!-- MENSAJE Y CONTROLES -->
-    <div class="mensaje-box">
-      <div id="txt1" class="linea-texto">Que la alegría de estas flores te acompañe siempre.</div>
-      <div id="txt2" class="linea-texto">✨ ¡Feliz Comienzo de la Primavera! ✨</div>
-
-      <div class="botones-grupo" id="grupoBotones">
-        <button class="btn-accion" onclick="cambiarFrase()">Cambiar Frase</button>
-        <button class="btn-accion" onclick="abrirCarta()">Carta</button>
-        <button class="btn-accion" onclick="abrirRaspadita()">Sorpresa</button>
-        <button class="btn-accion" id="btnLuces" onclick="toggleLuces()">Luces</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL CARTA VINTAGE -->
-  <div class="modal-capa" id="modalCarta">
-    <div class="contenido-modal">
-      <div class="sello-cera">🌻</div>
-      <h3>Un Detalle Especial</h3>
-      <p>
-        Hoy 21 de septiembre florecen las mejores sonrisas. Quería regalarte este ramo eterno de flores amarillas que nunca se marchitan, para recordarte lo mucho que iluminas el día a día. ¡Que la primavera te traiga infinita felicidad, paz y momentos hermosos! 🌻💛
-      </p>
-      <button class="btn-accion" onclick="cerrarCarta()">Cerrar</button>
-    </div>
-  </div>
-
-  <!-- MODAL RASPADITA MÁGICA -->
-  <div class="modal-capa" id="modalRaspadita">
-    <div class="contenido-modal">
-      <div class="sello-cera">✨</div>
-      <h3>Mensaje Oculto</h3>
-      <p>Pasa tu dedo sobre el brillo dorado para revelar la sorpresa</p>
-      
-      <div class="raspadita-container">
-        <div class="mensaje-oculto-texto">"✨🌻 ¡Tu sonrisa es la luz que ilumina todo a tu alrededor! ✨🌻"</div>
-        <canvas id="canvasRaspadita"></canvas>
-      </div>
-
-      <button class="btn-accion" onclick="cerrarRaspadita()">Cerrar</button>
-    </div>
-  </div>
-
-  <script>
-   const frases = [
-      ["Que la alegría de estas flores ilumine tu día.", "¡Que tengas una jornada radiante y llena de luz"],
-      ["Las cosas hechas con cariño siempre florecen.", "Gracias por compartir siempre tu mejor energía"],
-      ["Un detalle amarillo para recordarte lo especial que eres.", "Que hoy te sobren motivos para sonreír"],
-      ["Hay personas que tienen la hermosa virtud de iluminar todo.", "¡Gracias por ser esa luz a donde sea que vas"],
-      ["Que la paz y la buena vibra te acompañen en cada paso.", "¡Que disfrutes un día maravilloso"],
-      ["Para alguien que siempre hace el mundo un poco más bonito.", "¡Que recibas el doble de la alegría que das"],
-      ["Un pequeño gesto para sacarte una gran sonrisa.", "Nunca dejes de brillar con luz propia"],
-      ["Que hoy la vida te sorprenda con momentos hermosos.", "¡Te deseo un día lleno de paz, salud y felicidad"]
-    ];
-    let indiceFrase = 0;
-
-    const canvas = document.getElementById('luces');
-    const ctx = canvas.getContext('2d');
-    let width, height, elementos = [], petalos = [], lucesHada = [];
-    let modoNocheActivo = false;
-
-    function initCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      elementos = [];
-      petalos = [];
-      lucesHada = [];
-
-      for(let i=0; i<45; i++) {
-        elementos.push({
-          x: Math.random() * width, y: Math.random() * height,
-          r: Math.random() * 2.5 + 1, dx: (Math.random() - 0.5) * 0.4,
-          dy: (Math.random() - 0.5) * 0.4, a: Math.random()
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-      }
 
-      for(let i=0; i<25; i++) {
-        petalos.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          size: Math.random() * 8 + 5,
-          speedY: Math.random() * 1.1 + 0.4,
-          speedX: Math.random() * 0.8 - 0.4,
-          rot: Math.random() * 360,
-          rotSpeed: Math.random() * 2 - 1
+        // Ocultar menú al hacer clic en un enlace en mobile
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
-      }
-
-      const centroX = width / 2;
-      const centroY = height * 0.45;
-      for(let i=0; i<60; i++) {
-        lucesHada.push({
-          x: centroX + (Math.random() - 0.5) * (width < 500 ? 280 : 400),
-          y: centroY + (Math.random() - 0.5) * 320,
-          r: Math.random() * 4 + 2,
-          a: Math.random() * Math.PI * 2,
-          speed: Math.random() * 0.05 + 0.02
-        });
-      }
-    }
-
-    function renderAnimation() {
-      ctx.clearRect(0, 0, width, height);
-
-      elementos.forEach((p, index) => {
-        p.x += p.dx; p.y += p.dy;
-        if (p.x < 0 || p.x > width) p.dx *= -1;
-        if (p.y < 0 || p.y > height) p.dy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 230, 100, ${Math.abs(Math.sin(p.a))})`;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#ffd700';
-        ctx.fill(); p.a += 0.02;
-
-        if (p.duracion) {
-          p.duracion--;
-          if (p.duracion <= 0) elementos.splice(index, 1);
-        }
-      });
-
-      petalos.forEach((pt) => {
-        pt.y += pt.speedY;
-        pt.x += pt.speedX;
-        pt.rot += pt.rotSpeed;
-
-        if(pt.y > height + 20) {
-          pt.y = -20;
-          pt.x = Math.random() * width;
-        }
-
-        ctx.save();
-        ctx.translate(pt.x, pt.y);
-        ctx.rotate((pt.rot * Math.PI) / 180);
-        ctx.beginPath();
-        ctx.ellipse(0, 0, pt.size, pt.size / 2, 0, 0, Math.PI * 2);
-        ctx.fillStyle = pt.color || '#ffcc00';
-        ctx.shadowBlur = modoNocheActivo ? 15 : 6;
-        ctx.shadowColor = '#ffaa00';
-        ctx.fill();
-        ctx.restore();
-      });
-
-      if (modoNocheActivo) {
-        lucesHada.forEach(lh => {
-          lh.a += lh.speed;
-          const alpha = (Math.sin(lh.a) + 1) / 2 * 0.85 + 0.15;
-
-          ctx.beginPath();
-          ctx.arc(lh.x, lh.y, lh.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 245, 160, ${alpha})`;
-          ctx.shadowBlur = 25;
-          ctx.shadowColor = '#ffe600';
-          ctx.fill();
-        });
-      }
-
-      requestAnimationFrame(renderAnimation);
-    }
-
-    window.addEventListener('pointerdown', (e) => {
-      crearChispas(e.clientX, e.clientY, 8);
-    });
-
-    function crearChispas(x, y, cantidad) {
-      for(let i=0; i<cantidad; i++) {
-        elementos.push({
-          x: x, y: y,
-          r: Math.random() * 3.5 + 1.5,
-          dx: (Math.random() - 0.5) * 6,
-          dy: (Math.random() - 0.5) * 6,
-          a: 1, duracion: 80
-        });
-      }
-    }
-
-    function tocarFlor(e, px, py) {
-      e.stopPropagation();
-      crearChispas(e.clientX || px, e.clientY || py, 25);
-    }
-
-    function tocarMariposa(e, elem) {
-      e.stopPropagation();
-      crearChispas(e.clientX, e.clientY, 30);
-      elem.style.transform = 'scale(1.4) rotate(360deg)';
-      setTimeout(() => { elem.style.transform = ''; }, 600);
-    }
-
-    window.addEventListener('deviceorientation', (e) => {
-      if (!e.gamma || !e.beta) return;
-      const ramo = document.getElementById('ramo');
-      const rotX = (e.beta - 45) * 0.15;
-      const rotY = e.gamma * 0.15;
-      ramo.style.transform = `scale(1) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-    });
-
-    window.addEventListener('resize', initCanvas);
-    initCanvas(); renderAnimation();
-
-    function mostrarSorpresa() {
-      const inicio = document.getElementById('pantalla-inicio');
-      const exp = document.getElementById('experiencia');
-      const ramo = document.getElementById('ramo');
-      const txt1 = document.getElementById('txt1');
-      const txt2 = document.getElementById('txt2');
-      const grupoBotones = document.getElementById('grupoBotones');
-      const audio = document.getElementById('musicaFondo');
-
-      audio.volume = 0.65;
-      audio.play().catch(() => {});
-
-      crearChispas(window.innerWidth / 2, window.innerHeight * 0.5, 60);
-
-      inicio.style.opacity = '0';
-      setTimeout(() => {
-        inicio.style.visibility = 'hidden';
-        exp.style.visibility = 'visible';
-        exp.style.opacity = '1';
-
-        setTimeout(() => { ramo.style.transform = 'scale(1)'; }, 200);
-        setTimeout(() => { txt1.style.opacity = '1'; txt1.style.transform = 'translateY(0)'; }, 1000);
-        setTimeout(() => { txt2.style.opacity = '1'; txt2.style.transform = 'translateY(0)'; }, 1800);
-        setTimeout(() => { grupoBotones.style.opacity = '1'; }, 2600);
-      }, 800);
-    }
-
-    function cambiarFrase() {
-      indiceFrase = (indiceFrase + 1) % frases.length;
-      const txt1 = document.getElementById('txt1');
-      const txt2 = document.getElementById('txt2');
-
-      txt1.style.opacity = '0';
-      txt2.style.opacity = '0';
-
-      /* TIEMPO REDUCIDO A 150ms PARA CAMBIO RÁPIDO DE FRASE */
-      setTimeout(() => {
-        txt1.innerText = frases[indiceFrase][0];
-        txt2.innerText = frases[indiceFrase][1];
-        txt1.style.opacity = '1';
-        txt2.style.opacity = '1';
-      }, 150);
-    }
-
-    function toggleLuces() {
-      modoNocheActivo = !modoNocheActivo;
-      document.body.classList.toggle('modo-noche', modoNocheActivo);
-      
-      const btn = document.getElementById('btnLuces');
-      btn.classList.toggle('activo', modoNocheActivo);
-
-      crearChispas(window.innerWidth / 2, window.innerHeight * 0.45, 50);
-    }
-
-    function abrirCarta() { document.getElementById('modalCarta').classList.add('activo'); }
-    function cerrarCarta() { document.getElementById('modalCarta').classList.remove('activo'); }
-
-    let raspaditaInicializada = false;
-    function abrirRaspadita() {
-      document.getElementById('modalRaspadita').classList.add('activo');
-      if (!raspaditaInicializada) {
-        initRaspaditaCanvas();
-        raspaditaInicializada = true;
-      }
-    }
-    function cerrarRaspadita() { document.getElementById('modalRaspadita').classList.remove('activo'); }
-
-    function initRaspaditaCanvas() {
-      const c = document.getElementById('canvasRaspadita');
-      const ctxR = c.getContext('2d');
-      const box = c.parentElement;
-      c.width = box.clientWidth;
-      c.height = box.clientHeight;
-
-      ctxR.fillStyle = '#d4af37';
-      ctxR.fillRect(0, 0, c.width, c.height);
-
-      for(let i=0; i<300; i++) {
-        ctxR.fillStyle = 'rgba(255, 255, 255, ' + Math.random() * 0.4 + ')';
-        ctxR.fillRect(Math.random() * c.width, Math.random() * c.height, 2, 2);
-      }
-
-      let raspando = false;
-      function raspar(e) {
-        if(!raspando) return;
-        const rect = c.getBoundingClientRect();
-        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
-
-        ctxR.globalCompositeOperation = 'destination-out';
-        ctxR.beginPath();
-        /* RADIO AUMENTADO A 35 PARA MAYOR VELOCIDAD Y SENSIBILIDAD AL PASAR EL DEDO */
-        ctxR.arc(x, y, 35, 0, Math.PI * 2);
-        ctxR.fill();
-      }
-
-      c.addEventListener('mousedown', (e) => { raspando = true; raspar(e); });
-      c.addEventListener('touchstart', (e) => { raspando = true; raspar(e); });
-      window.addEventListener('mouseup', () => raspando = false);
-      window.addEventListener('touchend', () => raspando = false);
-      c.addEventListener('mousemove', raspar);
-      c.addEventListener('touchmove', raspar);
-    }
-  </script>
+    </script>
 </body>
 </html>
