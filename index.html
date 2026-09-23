@@ -3,239 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONE PLAYERS | Servicio Técnico y Soluciones Tecnológicas</title>
+    <title>ONE PLAYERS | Servicio Técnico, Accesorios y Entretenimiento</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Plus Jakarta Sans / Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
     </style>
 </head>
-<body class="bg-stone-950 text-stone-200 antialiased selection:bg-stone-200 selection:text-stone-950">
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
 
-    <!-- NAVBAR CORPORATIVO -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-stone-950/90 backdrop-blur-md border-b border-stone-800/80">
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo Serio -->
-            <a href="#" class="flex items-center gap-3">
-                <span class="text-lg font-bold tracking-widest text-stone-100 uppercase">ONE <span class="text-stone-400 font-light">PLAYERS</span></span>
+            <!-- Logo con toque dinámico -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-black shadow-lg shadow-blue-600/30 group-hover:scale-105 transition">
+                    <i class="fa-solid fa-bolt text-lg"></i>
+                </div>
+                <span class="text-lg font-extrabold tracking-wider text-white">ONE <span class="text-blue-500">PLAYERS</span></span>
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-400">
-                <a href="#servicio" class="hover:text-stone-100 transition">Servicio Técnico</a>
-                <a href="#catalogo" class="hover:text-stone-100 transition">Accesorios & Catálogo</a>
-                <a href="#entretenimiento" class="hover:text-stone-100 transition">Entretenimiento TV</a>
-                <a href="#contacto" class="hover:text-stone-100 transition">Ubicación</a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#servicio" class="hover:text-blue-400 transition">Servicio Técnico</a>
+                <a href="#accesorios" class="hover:text-blue-400 transition">Accesorios</a>
+                <a href="#entretenimiento" class="hover:text-blue-400 transition">Entretenimiento TV</a>
+                <a href="#contacto" class="hover:text-blue-400 transition">Ubicación</a>
             </nav>
 
-            <!-- CTA -->
+            <!-- CTA Desktop -->
             <div class="hidden md:block">
-                <a href="https://wa.me/" target="_blank" class="bg-stone-100 hover:bg-white text-stone-950 text-xs font-semibold px-5 py-2.5 rounded-lg transition tracking-wide uppercase flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-sm"></i> Soporte Directo
+                <a href="https://wa.me/" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 rounded-xl transition shadow-lg shadow-blue-600/25 flex items-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Contacto Directo
                 </a>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="md:hidden text-stone-300 hover:text-white focus:outline-none text-xl">
+            <!-- Mobile Button -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none text-2xl">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-stone-900 border-b border-stone-800 px-6 py-4 space-y-3">
-            <a href="#servicio" class="block text-stone-300 hover:text-white py-1">Servicio Técnico</a>
-            <a href="#catalogo" class="block text-stone-300 hover:text-white py-1">Accesorios</a>
-            <a href="#entretenimiento" class="block text-stone-300 hover:text-white py-1">Entretenimiento TV</a>
-            <a href="#contacto" class="block text-stone-300 hover:text-white py-1">Ubicación</a>
-            <a href="https://wa.me/" target="_blank" class="w-full bg-stone-100 text-stone-950 font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 mt-2 text-xs uppercase">
-                <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-5 space-y-4 shadow-2xl">
+            <a href="#servicio" class="block text-slate-300 hover:text-blue-400 font-medium">Servicio Técnico</a>
+            <a href="#accesorios" class="block text-slate-300 hover:text-blue-400 font-medium">Accesorios</a>
+            <a href="#entretenimiento" class="block text-slate-300 hover:text-blue-400 font-medium">Entretenimiento TV</a>
+            <a href="#contacto" class="block text-slate-300 hover:text-blue-400 font-medium">Ubicación</a>
+            <a href="https://wa.me/" target="_blank" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30">
+                <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
             </a>
         </div>
     </header>
 
-    <!-- HERO SECTION LIMPIA Y SOBRIA -->
-    <section class="pt-40 pb-24 md:pt-48 md:pb-32 border-b border-stone-900">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- HERO SECTION VIBRANTE Y SERIA -->
+    <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden border-b border-slate-900">
+        <!-- Efectos de luz ambiental de fondo -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-600/15 blur-[140px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-1/3 right-5 w-[300px] h-[300px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="max-w-3xl">
-                <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">Ingeniería en dispositivos y conectividad</p>
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                    Soluciones técnicas profesionales y equipamiento integral.
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-6 tracking-wide uppercase">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span> Soluciones Integrales en Tecnología
+                </div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+                    Tecnología, soporte y entretenimiento <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">sin límites.</span>
                 </h1>
-                <p class="mt-6 text-base sm:text-lg text-stone-400 font-light leading-relaxed">
-                    Especialistas en reparación avanzada de telefonía móvil, provisión de accesorios certificados y optimización de sistemas de entretenimiento para el hogar.
+                <p class="mt-6 text-lg sm:text-xl text-slate-300 font-light leading-relaxed">
+                    Laboratorio técnico especializado en telefonía móvil, venta de accesorios de máxima calidad y optimización de entretenimiento multimedia para el hogar.
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row gap-4">
-                    <a href="#servicio" class="bg-stone-100 hover:bg-white text-stone-950 font-semibold px-7 py-3.5 rounded-lg transition text-sm flex items-center justify-center gap-2">
-                        <span>Solicitar Diagnóstico</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                    <a href="#servicio" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-xl transition shadow-xl shadow-blue-600/30 flex items-center justify-center gap-2 text-base">
+                        <i class="fa-solid fa-screwdriver-wrench"></i> Reparar mi equipo
                     </a>
-                    <a href="#catalogo" class="bg-stone-900 hover:bg-stone-800 text-stone-300 border border-stone-800 font-medium px-7 py-3.5 rounded-lg transition text-sm flex items-center justify-center">
-                        Ver Accesorios y TV
+                    <a href="#accesorios" class="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold px-8 py-4 rounded-xl transition flex items-center justify-center gap-2 text-base">
+                        <i class="fa-solid fa-bag-shopping"></i> Ver Accesorios
                     </a>
+                </div>
+            </div>
+
+            <!-- Barra de métricas / confianza rápida -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-3 gap-6 pt-10 border-t border-slate-800/80">
+                <div class="glass-card border border-slate-800/80 p-6 rounded-2xl">
+                    <div class="text-blue-400 text-2xl mb-2"><i class="fa-solid fa-shield-check"></i></div>
+                    <p class="text-2xl font-bold text-white">Garantía Escrita</p>
+                    <p class="text-xs text-slate-400 mt-1">En todas nuestras intervenciones técnicas.</p>
+                </div>
+                <div class="glass-card border border-slate-800/80 p-6 rounded-2xl">
+                    <div class="text-blue-400 text-2xl mb-2"><i class="fa-solid fa-medal"></i></div>
+                    <p class="text-2xl font-bold text-white">Calidad Premium</p>
+                    <p class="text-xs text-slate-400 mt-1">Repuestos y accesorios homologados.</p>
+                </div>
+                <div class="glass-card border border-slate-800/80 p-6 rounded-2xl col-span-2 md:col-span-1">
+                    <div class="text-blue-400 text-2xl mb-2"><i class="fa-solid fa-bolt-lightning"></i></div>
+                    <p class="text-2xl font-bold text-white">Agilidad</p>
+                    <p class="text-xs text-slate-400 mt-1">Diagnósticos rápidos y transparentes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 1: SERVICIO TÉCNICO (Enfoque altamente técnico y formal) -->
-    <section id="servicio" class="py-24 border-b border-stone-900 bg-stone-900/20">
+    <!-- SECCIÓN: SERVICIO TÉCNICO -->
+    <section id="servicio" class="py-24 relative bg-slate-900/30 border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
                 <div>
-                    <h2 class="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-2">División Técnica</h2>
-                    <h3 class="text-3xl font-bold text-white">Servicio técnico especializado</h3>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-2 block">División Técnica</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Servicio Técnico Especializado</h2>
                 </div>
-                <p class="text-sm text-stone-400 max-w-md mt-4 md:mt-0 font-light">
-                    Laboratorio equipado para resolver fallas de hardware y software bajo estrictos estándares de calidad y garantía escrita.
+                <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0 font-light">
+                    Solucionamos problemas complejos de hardware y software con herramientas de precisión y técnicos calificados.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Servicio 1 -->
-                <div class="bg-stone-900/50 border border-stone-800/80 p-8 rounded-xl">
-                    <div class="text-stone-300 text-xl mb-6"><i class="fa-solid fa-mobile"></i></div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Reemplazo de Módulos</h4>
-                    <p class="text-stone-400 text-sm font-light leading-relaxed mb-6">Sustitución de pantallas y paneles táctiles con componentes de alta gama y ajuste calibrado.</p>
-                    <span class="text-xs font-medium text-stone-300 bg-stone-800/60 px-3 py-1 rounded">Garantía por escrito</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta 1 -->
+                <div class="glass-card border border-slate-800 p-8 rounded-2xl hover:border-blue-500/50 transition group">
+                    <div class="w-14 h-14 bg-blue-600/10 text-blue-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition shadow-lg">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Reemplazo de Módulos</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">Cambio de pantallas completas y táctiles con ajuste perfecto, colores calibrados y respuesta inmediata.</p>
+                    <div class="border-t border-slate-800/80 pt-4 flex items-center gap-2 text-xs text-blue-400 font-medium">
+                        <i class="fa-solid fa-circle-check"></i> Stock permanente disponible
+                    </div>
                 </div>
-                <!-- Servicio 2 -->
-                <div class="bg-stone-900/50 border border-stone-800/80 p-8 rounded-xl">
-                    <div class="text-stone-300 text-xl mb-6"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Gestión de Energía</h4>
-                    <p class="text-stone-400 text-sm font-light leading-relaxed mb-6">Reparación de circuitos de carga, puertos dañados y sustitución preventiva de baterías.</p>
-                    <span class="text-xs font-medium text-stone-300 bg-stone-800/60 px-3 py-1 rounded">Testeo de rendimiento</span>
+
+                <!-- Tarjeta 2 -->
+                <div class="glass-card border border-slate-800 p-8 rounded-2xl hover:border-blue-500/50 transition group">
+                    <div class="w-14 h-14 bg-blue-600/10 text-blue-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition shadow-lg">
+                        <i class="fa-solid fa-battery-three-quarters"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Baterías & Energía</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">Sustitución de baterías agotadas y reparación integral de circuitos y puertos de carga defectuosos.</p>
+                    <div class="border-t border-slate-800/80 pt-4 flex items-center gap-2 text-xs text-blue-400 font-medium">
+                        <i class="fa-solid fa-circle-check"></i> Rendimiento óptimo asegurado
+                    </div>
                 </div>
-                <!-- Servicio 3 -->
-                <div class="bg-stone-900/50 border border-stone-800/80 p-8 rounded-xl">
-                    <div class="text-stone-300 text-xl mb-6"><i class="fa-solid fa-microchip"></i></div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Sistemas & Electrónica</h4>
-                    <p class="text-stone-400 text-sm font-light leading-relaxed mb-6">Solución de bloqueos de sistema operativo, fallas de inicio y recuperación lógica de datos.</p>
-                    <span class="text-xs font-medium text-stone-300 bg-stone-800/60 px-3 py-1 rounded">Diagnóstico computarizado</span>
+
+                <!-- Tarjeta 3 -->
+                <div class="glass-card border border-slate-800 p-8 rounded-2xl hover:border-blue-500/50 transition group">
+                    <div class="w-14 h-14 bg-blue-600/10 text-blue-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition shadow-lg">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Software & Placa</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">Recuperación de sistemas operativos, solución de errores de inicio, bloqueos y microsoldadura avanzada.</p>
+                    <div class="border-t border-slate-800/80 pt-4 flex items-center gap-2 text-xs text-blue-400 font-medium">
+                        <i class="fa-solid fa-circle-check"></i> Diagnóstico computarizado
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 2: ACCESORIOS (Integrados limpiamente en la misma página con diseño de catálogo minimalista) -->
-    <section id="catalogo" class="py-24 border-b border-stone-900">
+    <!-- SECCIÓN: ACCESORIOS -->
+    <section id="accesorios" class="py-24 border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-2">Comercialización</h2>
-                <h3 class="text-3xl font-bold text-white">Accesorios y protección certificada</h3>
-                <p class="text-sm text-stone-400 font-light mt-3">Componentes diseñados para extender la vida útil y optimizar el rendimiento de sus dispositivos.</p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-2 block">Protección y Rendimiento</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Accesorios Seleccionados</h2>
+                <p class="mt-4 text-slate-400 text-base font-light">Complementos de alta durabilidad para proteger y potenciar tus dispositivos móviles.</p>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Cat 1 -->
-                <div class="bg-stone-900/30 border border-stone-800 p-6 rounded-xl text-center hover:border-stone-700 transition">
-                    <div class="text-2xl text-stone-300 mb-3"><i class="fa-solid fa-shield"></i></div>
-                    <h4 class="text-sm font-semibold text-white mb-1">Protección de Pantalla</h4>
-                    <p class="text-xs text-stone-400 font-light">Cristales templados y láminas de alta resistencia.</p>
+                <!-- Item -->
+                <div class="glass-card border border-slate-800 p-6 rounded-2xl text-center hover:border-blue-500/40 transition group">
+                    <div class="text-3xl text-blue-400 mb-4 group-hover:scale-110 transition transform"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="text-base font-bold text-white mb-1">Fundas & Templados</h3>
+                    <p class="text-xs text-slate-400 font-light">Cristales cerámicos 9D y protección antigolpes.</p>
                 </div>
-                <!-- Cat 2 -->
-                <div class="bg-stone-900/30 border border-stone-800 p-6 rounded-xl text-center hover:border-stone-700 transition">
-                    <div class="text-2xl text-stone-300 mb-3"><i class="fa-solid fa-plug"></i></div>
-                    <h4 class="text-sm font-semibold text-white mb-1">Carga y Alimentación</h4>
-                    <p class="text-xs text-stone-400 font-light">Cargadores rápidos homologados y cables mallados.</p>
+                <!-- Item -->
+                <div class="glass-card border border-slate-800 p-6 rounded-2xl text-center hover:border-blue-500/40 transition group">
+                    <div class="text-3xl text-blue-400 mb-4 group-hover:scale-110 transition transform"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 class="text-base font-bold text-white mb-1">Carga Rápida</h3>
+                    <p class="text-xs text-slate-400 font-light">Cargadores de pared y cables mallados certificados.</p>
                 </div>
-                <!-- Cat 3 -->
-                <div class="bg-stone-900/30 border border-stone-800 p-6 rounded-xl text-center hover:border-stone-700 transition">
-                    <div class="text-2xl text-stone-300 mb-3"><i class="fa-solid fa-headphones-simple"></i></div>
-                    <h4 class="text-sm font-semibold text-white mb-1">Audio & Conectividad</h4>
-                    <p class="text-xs text-stone-400 font-light">Auriculares inalámbricos y soluciones de sonido.</p>
+                <!-- Item -->
+                <div class="glass-card border border-slate-800 p-6 rounded-2xl text-center hover:border-blue-500/40 transition group">
+                    <div class="text-3xl text-blue-400 mb-4 group-hover:scale-110 transition transform"><i class="fa-solid fa-headphones"></i></div>
+                    <h3 class="text-base font-bold text-white mb-1">Audio Inalámbrico</h3>
+                    <p class="text-xs text-slate-400 font-light">Auriculares TWS y parlantes de alta fidelidad.</p>
                 </div>
-                <!-- Cat 4 -->
-                <div class="bg-stone-900/30 border border-stone-800 p-6 rounded-xl text-center hover:border-stone-700 transition">
-                    <div class="text-2xl text-stone-300 mb-3"><i class="fa-solid fa-car"></i></div>
-                    <h4 class="text-sm font-semibold text-white mb-1">Movilidad & Soportes</h4>
-                    <p class="text-xs text-stone-400 font-light">Soportes vehiculares y accesorios de traslado.</p>
+                <!-- Item -->
+                <div class="glass-card border border-slate-800 p-6 rounded-2xl text-center hover:border-blue-500/40 transition group">
+                    <div class="text-3xl text-blue-400 mb-4 group-hover:scale-110 transition transform"><i class="fa-solid fa-car"></i></div>
+                    <h3 class="text-base font-bold text-white mb-1">Soportes & Auto</h3>
+                    <p class="text-xs text-slate-400 font-light">Soportes magnéticos y cargadores vehiculares.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 3: ENTRETENIMIENTO Y TV -->
-    <section id="entretenimiento" class="py-24 border-b border-stone-900 bg-stone-900/20">
+    <!-- SECCIÓN: ENTRETENIMIENTO Y TV -->
+    <section id="entretenimiento" class="py-24 bg-slate-900/30 border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-2">División Hogar</h2>
-                    <h3 class="text-3xl font-bold text-white tracking-tight mb-6">Entretenimiento familiar y multimedia</h3>
-                    <p class="text-stone-400 text-sm font-light leading-relaxed mb-6">
-                        Integramos tecnología de vanguardia para la centralización del entretenimiento en el hogar. Proveemos hardware y accesorios orientados a la optimización de pantallas y sistemas de reproducción.
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-2 block">División Hogar</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">Entretenimiento Familiar & TV</h2>
+                    <p class="text-slate-300 text-base font-light leading-relaxed mb-6">
+                        En <strong class="text-white font-semibold">ONE PLAYERS</strong> llevamos el ocio y la conectividad al centro de tu hogar. Proveemos hardware y accesorios orientados a convertir cualquier pantalla en un centro multimedia inteligente.
                     </p>
-                    <ul class="space-y-3 text-sm text-stone-300 font-light">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-stone-400"></i> Provisión y configuración de dispositivos Smart TV Box.
+                    <ul class="space-y-4 text-slate-300 text-sm font-light">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i>
+                            <div><strong class="text-white font-medium">Smart TV Boxes y Streaming:</strong> Dispositivos para acceder a tus plataformas favoritas con máxima fluidez.</div>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-stone-400"></i> Mandos y controladores inalámbricos de alta compatibilidad.
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i>
+                            <div><strong class="text-white font-medium">Mandos & Joysticks Inalámbricos:</strong> Controles compatibles para disfrutar en familia de juegos y entretenimiento.</div>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-stone-400"></i> Cables de transmisión de alta velocidad (HDMI / Audio digital).
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-blue-400 mt-1"></i>
+                            <div><strong class="text-white font-medium">Conectividad de Alta Definición:</strong> Cables HDMI premium y accesorios de transmisión de audio y video.</div>
                         </li>
                     </ul>
                 </div>
 
-                <div class="bg-stone-900 border border-stone-800 p-8 rounded-xl">
-                    <h4 class="text-base font-semibold text-white mb-2">¿Buscas algún producto específico?</h4>
-                    <p class="text-stone-400 text-xs font-light mb-6">Consulte stock y disponibilidad de equipos multimedia directamente con nuestro equipo de atención.</p>
-                    <a href="https://wa.me/" target="_blank" class="w-full bg-stone-100 hover:bg-white text-stone-950 font-semibold py-3 px-4 rounded-lg transition text-xs uppercase tracking-wider flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-base"></i> Consultar Disponibilidad
+                <div class="glass-card border border-slate-800 p-8 sm:p-10 rounded-3xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-600/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <h3 class="text-2xl font-bold text-white mb-4">¿Querés actualizar tu sistema de TV?</h3>
+                    <p class="text-slate-400 text-sm font-light mb-8 leading-relaxed">Consúltanos por stock de equipos y accesorios multimedia para equipar tu hogar con la mejor asesoría.</p>
+                    <a href="https://wa.me/" target="_blank" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 text-sm">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Consultar Equipos Multimedia
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACTO Y UBICACIÓN -->
+    <!-- SECCIÓN CONTACTO Y UBICACIÓN -->
     <section id="contacto" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-2">Atención al Público</h2>
-                <h3 class="text-3xl font-bold text-white">Ubicación y Horarios</h3>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-2 block">Atención Profesional</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Ubicación y Contacto</h2>
+                <p class="mt-4 text-slate-400 text-base font-light">Visítanos en nuestro local comercial o escríbenos directamente para una respuesta inmediata.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div class="bg-stone-900/40 border border-stone-800/80 p-8 rounded-xl">
-                    <div class="text-stone-400 text-lg mb-4"><i class="fa-solid fa-location-dot"></i></div>
-                    <h4 class="text-sm font-semibold text-white mb-2">Dirección</h4>
-                    <p class="text-stone-400 text-xs font-light">Calle Principal [Número]<br>Ciudad / Provincia</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card border border-slate-800 p-8 rounded-2xl text-center">
+                    <div class="text-blue-400 text-2xl mb-4"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Ubicación</h3>
+                    <p class="text-slate-400 text-xs font-light leading-relaxed">Tu Dirección Comercial<br>Ciudad / Provincia</p>
                 </div>
-                <div class="bg-stone-900/40 border border-stone-800/80 p-8 rounded-xl">
-                    <div class="text-stone-400 text-lg mb-4"><i class="fa-solid fa-clock"></i></div>
-                    <h4 class="text-sm font-semibold text-white mb-2">Horario Comercial</h4>
-                    <p class="text-stone-400 text-xs font-light">Lunes a Sábados<br>09:00 a 13:00 hs — 17:00 a 21:00 hs</p>
+                <div class="glass-card border border-slate-800 p-8 rounded-2xl text-center">
+                    <div class="text-blue-400 text-2xl mb-4"><i class="fa-solid fa-clock"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Horarios de Atención</h3>
+                    <p class="text-slate-400 text-xs font-light leading-relaxed">Lunes a Sábados<br>09:00 a 13:00 hs — 17:00 a 21:00 hs</p>
                 </div>
-                <div class="bg-stone-900/40 border border-stone-800/80 p-8 rounded-xl">
-                    <div class="text-stone-400 text-lg mb-4"><i class="fa-solid fa-envelope"></i></div>
-                    <h4 class="text-sm font-semibold text-white mb-2">Canales de Contacto</h4>
-                    <p class="text-stone-400 text-xs font-light">WhatsApp Business: +54 9 [...]<br>soporte@oneplayers.com</p>
+                <div class="glass-card border border-slate-800 p-8 rounded-2xl text-center">
+                    <div class="text-blue-400 text-2xl mb-4"><i class="fa-solid fa-headset"></i></div>
+                    <h3 class="text-lg font-bold text-white mb-2">Canal Directo</h3>
+                    <p class="text-slate-400 text-xs font-light leading-relaxed">WhatsApp: +54 9 [...]<br>soporte@oneplayers.com</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-stone-950 border-t border-stone-900 py-10">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <span class="text-sm font-bold tracking-widest text-stone-200 uppercase">ONE <span class="text-stone-500 font-light">PLAYERS</span></span>
-            <p class="text-xs text-stone-500 font-light">
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <span class="text-lg font-extrabold tracking-wider text-white">ONE <span class="text-blue-500">PLAYERS</span></span>
+            </div>
+            <p class="text-xs text-slate-500 font-light">
                 &copy; 2026 ONE PLAYERS. Todos los derechos reservados.
             </p>
-            <div class="flex items-center gap-4 text-stone-400 text-sm">
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://wa.me/" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+            <div class="flex items-center gap-5 text-slate-400 text-lg">
+                <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://wa.me/" target="_blank" class="hover:text-blue-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
     <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/" target="_blank" class="fixed bottom-6 right-6 z-50 bg-stone-100 hover:bg-white text-stone-950 w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-xl transition transform hover:scale-105" aria-label="WhatsApp">
+    <a href="https://wa.me/" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl shadow-emerald-600/40 transition transform hover:scale-110" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
