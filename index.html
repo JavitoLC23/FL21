@@ -8,18 +8,18 @@
     
     <style>
         :root {
-            --bg-dark: #030308;
-            --card-bg: rgba(12, 12, 28, 0.75);
+            --bg-dark: #020205;
+            --card-bg: rgba(10, 10, 24, 0.85);
             --neon-cyan: #00f3ff;
-            --neon-purple: #9d00ff;
+            --neon-purple: #ab00ff;
             --neon-pink: #ff007f;
             --neon-green: #00ff66;
             --text-light: #f0f6fc;
             --text-dim: #a3b8cc;
-            --glow-cyan: 0 0 15px rgba(0, 243, 255, 0.6), 0 0 30px rgba(0, 243, 255, 0.3);
-            --glow-pink: 0 0 15px rgba(255, 0, 127, 0.6), 0 0 30px rgba(255, 0, 127, 0.3);
-            --glow-purple: 0 0 15px rgba(157, 0, 255, 0.6), 0 0 30px rgba(157, 0, 255, 0.3);
-            --glow-green: 0 0 15px rgba(0, 255, 102, 0.6), 0 0 30px rgba(0, 255, 102, 0.3);
+            --glow-cyan-extreme: 0 0 15px #00f3ff, 0 0 30px #00f3ff, 0 0 45px rgba(0, 243, 255, 0.6);
+            --glow-pink-extreme: 0 0 15px #ff007f, 0 0 30px #ff007f, 0 0 45px rgba(255, 0, 127, 0.6);
+            --glow-purple-extreme: 0 0 15px #ab00ff, 0 0 30px #ab00ff, 0 0 45px rgba(171, 0, 255, 0.6);
+            --glow-green-extreme: 0 0 15px #00ff66, 0 0 30px #00ff66, 0 0 45px rgba(0, 255, 102, 0.6);
         }
 
         * {
@@ -43,29 +43,56 @@
             line-height: 1.5;
         }
 
-        /* Canvas Particle Background */
-        #bg-canvas {
+        /* FONDO CYBER MEJORADO CON GRADIENTE MESH Y REJILLA GLOW */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(0, 243, 255, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(171, 0, 255, 0.12) 0%, transparent 60%),
+                #020205;
+        }
+
+        .cyber-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
+            background-image: 
+                linear-gradient(to right, rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
             pointer-events: none;
         }
 
-        /* Scanline Overlay for Cyber Vibe */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
         .scanlines {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
             background-size: 100% 4px;
-            z-index: -1;
+            z-index: 0;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         /* HEADER & NAV */
@@ -75,11 +102,11 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(3, 3, 8, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 1px 15px rgba(0, 243, 255, 0.2);
+            background: rgba(3, 3, 10, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
         }
 
         .header-container {
@@ -93,13 +120,13 @@
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-size: clamp(1.4rem, 4vw, 2.1rem);
             font-weight: 900;
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: var(--glow-cyan);
+            text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -107,10 +134,9 @@
 
         .logo span {
             color: var(--neon-pink);
-            text-shadow: var(--glow-pink);
+            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
         }
 
-        /* Nav Desktop */
         nav ul {
             display: flex;
             list-style: none;
@@ -128,16 +154,15 @@
             padding: 0.5rem 0.8rem;
             border-radius: 4px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
-        nav a:hover, nav a.active {
+        nav a:hover {
             color: var(--neon-cyan);
-            text-shadow: var(--glow-cyan);
-            background: rgba(0, 243, 255, 0.08);
+            text-shadow: var(--glow-cyan-extreme);
+            background: rgba(0, 243, 255, 0.12);
         }
 
-        /* Hamburger Toggle Mobile */
+        /* MOBILE MENU TOGGLE */
         .mobile-toggle {
             display: none;
             background: transparent;
@@ -150,10 +175,10 @@
         }
 
         .mobile-toggle span {
-            width: 25px;
+            width: 28px;
             height: 3px;
             background-color: var(--neon-cyan);
-            box-shadow: var(--glow-cyan);
+            box-shadow: 0 0 8px var(--neon-cyan);
             border-radius: 2px;
             transition: all 0.3s ease;
         }
@@ -165,11 +190,11 @@
             width: 80%;
             max-width: 300px;
             height: 100vh;
-            background: rgba(6, 6, 18, 0.97);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(4, 4, 14, 0.98);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-left: 2px solid var(--neon-cyan);
-            box-shadow: -10px 0 30px rgba(0, 243, 255, 0.3);
+            box-shadow: -10px 0 30px rgba(0, 243, 255, 0.4);
             display: flex;
             flex-direction: column;
             padding: 5rem 2rem 2rem 2rem;
@@ -189,15 +214,14 @@
             font-size: 1.1rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
             padding: 0.8rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
         .mobile-drawer a:hover {
             color: var(--neon-pink);
-            text-shadow: var(--glow-pink);
+            text-shadow: var(--glow-pink-extreme);
             padding-left: 1.2rem;
         }
 
@@ -210,42 +234,43 @@
             text-align: center;
             padding: 7rem 1.2rem 3rem 1.2rem;
             position: relative;
+            z-index: 1;
         }
 
         .hero-content {
             max-width: 900px;
             width: 100%;
-            background: rgba(12, 12, 28, 0.6);
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            padding: clamp(1.5rem, 5vw, 3.5rem);
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 243, 255, 0.15);
-            animation: pulseBorder 4s infinite alternate;
+            background: rgba(10, 10, 26, 0.75);
+            border: 2px solid var(--neon-cyan);
+            padding: clamp(1.8rem, 5vw, 3.5rem);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3), inset 0 0 25px rgba(0, 243, 255, 0.2);
+            animation: pulseHeroGlow 3s infinite alternate;
         }
 
-        @keyframes pulseBorder {
-            0% { border-color: rgba(0, 243, 255, 0.4); box-shadow: 0 0 30px rgba(0,0,0,0.9), inset 0 0 15px rgba(0, 243, 255, 0.15); }
-            50% { border-color: rgba(157, 0, 255, 0.5); box-shadow: 0 0 40px rgba(157, 0, 255, 0.2), inset 0 0 25px rgba(157, 0, 255, 0.2); }
-            100% { border-color: rgba(255, 0, 127, 0.4); box-shadow: 0 0 30px rgba(255, 0, 127, 0.2), inset 0 0 15px rgba(255, 0, 127, 0.15); }
+        @keyframes pulseHeroGlow {
+            0% { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 243, 255, 0.4), inset 0 0 20px rgba(0, 243, 255, 0.2); }
+            50% { border-color: var(--neon-purple); box-shadow: 0 0 35px rgba(171, 0, 255, 0.5), inset 0 0 30px rgba(171, 0, 255, 0.25); }
+            100% { border-color: var(--neon-pink); box-shadow: 0 0 30px rgba(255, 0, 127, 0.4), inset 0 0 20px rgba(255, 0, 127, 0.2); }
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 7vw, 4rem);
+            font-size: clamp(2.2rem, 7vw, 4.2rem);
             font-weight: 900;
             text-transform: uppercase;
             line-height: 1.1;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 20%, var(--neon-cyan) 60%, var(--neon-pink) 100%);
+            background: linear-gradient(135deg, #fff 10%, var(--neon-cyan) 50%, var(--neon-pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.3));
+            filter: drop-shadow(0 0 12px rgba(0, 243, 255, 0.5));
         }
 
         .hero p {
-            font-size: clamp(1.05rem, 3vw, 1.4rem);
+            font-size: clamp(1.1rem, 3vw, 1.45rem);
             color: var(--text-dim);
             margin-bottom: 2rem;
             font-weight: 600;
@@ -256,110 +281,125 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 1rem 2.2rem;
+            padding: 1.1rem 2.5rem;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 800;
+            font-size: 1.05rem;
+            font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #fff;
             background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan));
-            border: none;
+            border: 2px solid #fff;
             border-radius: 50px;
             text-decoration: none;
-            box-shadow: var(--glow-cyan), var(--glow-purple);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-purple);
+            transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-main:hover, .btn-main:active {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), 0 0 40px rgba(157, 0, 255, 0.6);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 0 30px var(--neon-cyan), 0 0 50px var(--neon-pink);
         }
 
-        /* SECTION LAYOUT */
+        /* SECCIONES Y TITULOS CON ULTRA NEON */
         .section {
             padding: 4rem 1.2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-size: clamp(1.9rem, 5vw, 3rem);
             font-weight: 900;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             position: relative;
             color: #fff;
-            text-shadow: var(--glow-cyan);
+            text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan);
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
+            width: 100px;
             height: 4px;
             background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
-            margin: 10px auto 0 auto;
+            margin: 12px auto 0 auto;
             border-radius: 2px;
-            box-shadow: var(--glow-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-pink);
         }
 
-        /* GRID AND CARDS - ANTIESCALERA EN CELL */
+        /* CARDS REFORZADAS CON ILUMINACIÓN NEON EXTREMA */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.8rem;
+            gap: 2rem;
             width: 100%;
         }
 
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            border-radius: 14px;
+            border: 2px solid rgba(0, 243, 255, 0.4);
+            border-radius: 16px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.35s ease;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             position: relative;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1);
+        }
+
+        /* Brillo Neon permanente en las cards */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            pointer-events: none;
+            box-shadow: inset 0 0 20px rgba(0, 243, 255, 0.2);
+            transition: all 0.4s ease;
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px) scale(1.02);
             border-color: var(--neon-cyan);
-            box-shadow: var(--glow-cyan), 0 12px 30px rgba(0, 0, 0, 0.8);
+            box-shadow: var(--glow-cyan-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
         }
 
         .card-img-wrapper {
             width: 100%;
-            height: 200px;
+            height: 210px;
             overflow: hidden;
             position: relative;
             background: #000;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.3);
         }
 
         .card-img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .card:hover .card-img-wrapper img {
-            transform: scale(1.08);
+            transform: scale(1.12);
         }
 
         .card-body {
-            padding: 1.3rem;
+            padding: 1.4rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -367,18 +407,20 @@
 
         .card-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 0.6rem;
             letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
         .card-desc {
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             color: var(--text-dim);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.3rem;
             flex-grow: 1;
+            font-weight: 500;
         }
 
         .card-btn {
@@ -386,95 +428,108 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1rem;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.9rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--neon-cyan);
-            background: rgba(0, 243, 255, 0.05);
-            border: 1px solid var(--neon-cyan);
-            border-radius: 8px;
+            color: #fff;
+            background: rgba(0, 243, 255, 0.15);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 10px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
         }
 
         .card-btn:hover, .card-btn:active {
             background: var(--neon-cyan);
             color: #000;
-            box-shadow: var(--glow-cyan);
+            box-shadow: var(--glow-cyan-extreme);
             font-weight: 900;
         }
 
-        /* PINK CARD VARIANT FOR STORE */
+        /* VARIACIONES NEON PINK Y PURPLE */
+        .tienda-card {
+            border-color: rgba(255, 0, 127, 0.4);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.2), inset 0 0 15px rgba(255, 0, 127, 0.1);
+        }
+
+        .tienda-card .card-img-wrapper {
+            border-bottom-color: rgba(255, 0, 127, 0.3);
+        }
+
         .tienda-card:hover {
             border-color: var(--neon-pink);
-            box-shadow: var(--glow-pink), 0 12px 30px rgba(0, 0, 0, 0.8);
+            box-shadow: var(--glow-pink-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
         }
 
         .tienda-card .card-btn {
-            color: var(--neon-pink);
+            background: rgba(255, 0, 127, 0.15);
             border-color: var(--neon-pink);
-            background: rgba(255, 0, 127, 0.05);
-            box-shadow: inset 0 0 10px rgba(255, 0, 127, 0.1);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
         }
 
         .tienda-card .card-btn:hover, .tienda-card .card-btn:active {
             background: var(--neon-pink);
             color: #fff;
-            box-shadow: var(--glow-pink);
+            box-shadow: var(--glow-pink-extreme);
         }
 
-        /* TV SECTION SPECIAL STYLING */
         .tv-card {
-            border-color: rgba(157, 0, 255, 0.3);
+            border-color: rgba(171, 0, 255, 0.4);
+            box-shadow: 0 0 15px rgba(171, 0, 255, 0.2), inset 0 0 15px rgba(171, 0, 255, 0.1);
+        }
+
+        .tv-card .card-img-wrapper {
+            border-bottom-color: rgba(171, 0, 255, 0.3);
         }
 
         .tv-card:hover {
             border-color: var(--neon-purple);
-            box-shadow: var(--glow-purple), 0 12px 30px rgba(0, 0, 0, 0.8);
+            box-shadow: var(--glow-purple-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
         }
 
         .tv-card .card-btn {
-            color: #c864ff;
+            background: rgba(171, 0, 255, 0.15);
             border-color: var(--neon-purple);
-            background: rgba(157, 0, 255, 0.05);
+            box-shadow: 0 0 10px rgba(171, 0, 255, 0.3);
         }
 
         .tv-card .card-btn:hover, .tv-card .card-btn:active {
             background: var(--neon-purple);
             color: #fff;
-            box-shadow: var(--glow-purple);
+            box-shadow: var(--glow-purple-extreme);
         }
 
-        /* FLOATING WHATSAPP BUTTON VECTOR ULTRA CYBER */
+        /* BOTON WHATSAPP FLOATING ULTRA GLOW CON NUEVO NUMERO */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            width: 62px;
-            height: 62px;
+            width: 65px;
+            height: 65px;
             background: #25d366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--glow-green), 0 6px 20px rgba(0,0,0,0.6);
+            box-shadow: var(--glow-green-extreme), 0 8px 25px rgba(0,0,0,0.8);
             z-index: 2000;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             text-decoration: none;
+            border: 2px solid #fff;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.12) rotate(8deg);
-            box-shadow: 0 0 25px rgba(0, 255, 102, 0.9), 0 0 40px rgba(0, 255, 102, 0.5);
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 0 30px #00ff66, 0 0 50px rgba(0, 255, 102, 0.8);
         }
 
         .whatsapp-float svg {
-            width: 35px;
-            height: 35px;
+            width: 36px;
+            height: 36px;
             fill: #fff;
         }
 
@@ -483,33 +538,36 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 2px solid var(--neon-green);
-            animation: pulseRing 2s infinite;
+            border: 3px solid var(--neon-green);
+            animation: pulseRing 1.8s infinite;
             pointer-events: none;
         }
 
         @keyframes pulseRing {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            100% { transform: scale(1.55); opacity: 0; }
+            0% { transform: scale(0.95); opacity: 0.9; }
+            100% { transform: scale(1.65); opacity: 0; }
         }
 
         /* FOOTER */
         footer {
-            background: rgba(2, 2, 6, 0.95);
-            border-top: 1px solid rgba(0, 243, 255, 0.2);
+            background: rgba(2, 2, 6, 0.98);
+            border-top: 2px solid var(--neon-cyan);
+            box-shadow: 0 -5px 20px rgba(0, 243, 255, 0.3);
             padding: 2.5rem 1.2rem;
             text-align: center;
             margin-top: 4rem;
+            position: relative;
+            z-index: 1;
         }
 
         footer p {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-dim);
             letter-spacing: 1px;
         }
 
-        /* RESPONSIVE MEDIA QUERIES FOR MOBILE PERFECT DISPLAY */
+        /* ADAPTACION MOVIL ANDROID */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -521,7 +579,7 @@
 
             .grid-container {
                 grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 1.2rem;
+                gap: 1.4rem;
             }
 
             .section {
@@ -536,26 +594,28 @@
             .whatsapp-float {
                 bottom: 18px;
                 right: 18px;
-                width: 55px;
-                height: 55px;
+                width: 58px;
+                height: 58px;
             }
 
             .whatsapp-float svg {
-                width: 30px;
-                height: 30px;
+                width: 32px;
+                height: 32px;
             }
         }
 
         @media (max-width: 480px) {
             .grid-container {
-                grid-template-columns: 1fr; /* Una sola columna fluida en móviles pequeños */
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Particle Background Canvas -->
+    <!-- FONDO CYBER TRIPLE CAPA -->
+    <div class="cyber-bg"></div>
+    <div class="cyber-grid"></div>
     <canvas id="bg-canvas"></canvas>
     <div class="scanlines"></div>
 
@@ -590,7 +650,7 @@
         <div class="hero-content">
             <h1>ONE PLAYER</h1>
             <p>Soluciones Tecnológicas Integrales, Servicio Técnico Especializado y Accesorios de Alta Gama</p>
-            <a href="https://wa.me/542634341994?text=Hola%20ONE%20PLAYER,%20quisiera%20hacer%20una%20consulta" class="btn-main" target="_blank">Contactar Ahora</a>
+            <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER,%20quisiera%20hacer%20una%20consulta" class="btn-main" target="_blank">Contactar Ahora</a>
         </div>
     </section>
 
@@ -606,7 +666,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Cambio de Módulo</h3>
                     <p class="card-desc">Reparación e instalación de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.</p>
-                    <a href="https://wa.me/542634341994?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20M%C3%B3dulo" class="card-btn" target="_blank">Consultar</a>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20M%C3%B3dulo" class="card-btn" target="_blank">Consultar</a>
                 </div>
             </div>
 
@@ -617,7 +677,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Cambio de Batería</h3>
                     <p class="card-desc">Reemplazo de baterías agotadas o infladas para devolverle la autonomía y el máximo rendimiento original a tu celular.</p>
-                    <a href="https://wa.me/542634341994?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20Bater%C3%ADa" class="card-btn" target="_blank">Consultar</a>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20Bater%C3%ADa" class="card-btn" target="_blank">Consultar</a>
                 </div>
             </div>
 
@@ -628,7 +688,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Pin / Placa de Carga</h3>
                     <p class="card-desc">Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tu dispositivo.</p>
-                    <a href="https://wa.me/542634341994?text=Hola,%20necesito%20presupuesto%20para%20Pin%20o%20Placa%20de%20Carga" class="card-btn" target="_blank">Consultar</a>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Pin%20o%20Placa%20de%20Carga" class="card-btn" target="_blank">Consultar</a>
                 </div>
             </div>
 
@@ -647,7 +707,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Auriculares</h3>
                     <p class="card-desc">In-ear, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.</p>
-                    <a href="https://wa.me/542634341994?text=Hola,%20quiero%20consultar%20por%20Auriculares" class="card-btn" target="_blank">Ver Disponibilidad</a>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Auriculares" class="card-btn" target="_blank">Ver Disponibilidad</a>
                 </div>
             </div>
 
@@ -658,7 +718,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Cargadores Rápidos</h3>
                     <p class="card-desc">Cargadores de pared y carga rápida de alto amperaje para cuidar la salud de la batería de tu dispositivo.</p>
-                    <a href="https://wa.me/542634341994?text=Hola,%20quiero%20consultar%20por%20Cargadores" class="card-btn" target="_blank">Ver Disponibilidad</a>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Cargadores" class="card-btn" target="_blank">Ver Disponibilidad</a>
                 </div>
             </div>
 
@@ -669,7 +729,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Cables USB</h3>
                     <p class="card-desc">Cables reforzados Tipo C, Lightning (iPhone) y Micro USB de alta resistencia y carga acelerada.</p>
-                    <a href="https://wa.me/542634341994?text=Hola,%20quiero%20consultar%20por%20Cables%20USB" class="card-btn" target="_blank">Ver Disponibilidad</a>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Cables%20USB" class="card-btn" target="_blank">Ver Disponibilidad</a>
                 </div>
             </div>
 
@@ -680,7 +740,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Convertidores Smart TV</h3>
                     <p class="card-desc">Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.</p>
-                    <a href="https://wa.me/542634341994?text=Hola,%20quiero%20consultar%20por%20Convertidores%20Smart%20TV" class="card-btn" target="_blank">Ver Disponibilidad</a>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Convertidores%20Smart%20TV" class="card-btn" target="_blank">Ver Disponibilidad</a>
                 </div>
             </div>
 
@@ -699,7 +759,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Instalación & Configuración TV</h3>
                     <p class="card-desc">Soporte técnico, configuración de aplicaciones, convertidores y asesoramiento integral para televisores y Smart TV.</p>
-                    <a href="https://wa.me/542634341994?text=Hola,%20quiero%20consultar%20por%20Servicios%20para%20TV" class="card-btn" target="_blank">Más Información</a>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Servicios%20para%20TV" class="card-btn" target="_blank">Más Información</a>
                 </div>
             </div>
 
@@ -712,16 +772,16 @@
     </footer>
 
     <!-- VECTOR NEON FLOATING WHATSAPP -->
-    <a href="https://wa.me/542634341994?text=Hola%20ONE%20PLAYER,%20tengo%20una%20consulta" class="whatsapp-float" target="_blank" aria-label="WhatsApp Directo">
+    <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER,%20tengo%20una%20consulta" class="whatsapp-float" target="_blank" aria-label="WhatsApp Directo">
         <div class="whatsapp-pulse"></div>
         <svg viewBox="0 0 32 32">
             <path d="M16 2a13 13 0 0 0-11 19.8L3 29l7.3-1.9A13 13 0 1 0 16 2zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4a10.8 10.8 0 1 1 9.2 5zm5.9-8.1c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 8.9 8.9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.1 0-.3 0-.4s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.3 1.4 3.5 2.4 3.7 5.8 5.2c.8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.6-.3z"/>
         </svg>
     </a>
 
-    <!-- SCRIPTS FOR INTERACTIVITY AND CANVAS -->
+    <!-- SCRIPTS -->
     <script>
-        // MOBILE DRAWER INTERACTION
+        // MENU MOVIL DRAWER
         const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
         const mobileDrawer = document.getElementById('mobile-drawer');
         const drawerLinks = document.querySelectorAll('.drawer-link');
@@ -736,7 +796,7 @@
             });
         });
 
-        // OPTIMIZED HIGH-PERFORMANCE CYBER PARTICLES CANVAS
+        // CANVAS DE PARTICULAS Y RED NEON
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -759,11 +819,11 @@
             reset() {
                 this.x = Math.random() * window.innerWidth;
                 this.y = Math.random() * window.innerHeight;
-                this.vx = (Math.random() - 0.5) * 0.6;
-                this.vy = (Math.random() - 0.5) * 0.6;
-                this.radius = Math.random() * 1.8 + 0.5;
-                this.color = Math.random() > 0.5 ? '#00f3ff' : '#9d00ff';
-                this.alpha = Math.random() * 0.5 + 0.2;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.radius = Math.random() * 2 + 0.8;
+                this.color = Math.random() > 0.5 ? '#00f3ff' : (Math.random() > 0.5 ? '#ff007f' : '#ab00ff');
+                this.alpha = Math.random() * 0.6 + 0.3;
             }
 
             update() {
@@ -780,7 +840,7 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = 12;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
@@ -789,8 +849,7 @@
 
         function initParticles() {
             particles = [];
-            // Ajuste de cantidad para óptimo rendimiento en Android
-            const count = Math.min(Math.floor(window.innerWidth / 15), 50);
+            const count = Math.min(Math.floor(window.innerWidth / 12), 60);
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
             }
@@ -799,18 +858,17 @@
         function animate() {
             ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-            // Connect nearby particles with glowing lines
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 110) {
+                    if (dist < 120) {
                         ctx.save();
-                        ctx.globalAlpha = (1 - dist / 110) * 0.25;
+                        ctx.globalAlpha = (1 - dist / 120) * 0.35;
                         ctx.strokeStyle = particles[i].color;
-                        ctx.lineWidth = 0.8;
+                        ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
