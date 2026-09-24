@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>ONE PLAYERS | Tecnología, Servicio Técnico y Entretenimiento</title>
-
-    <meta name="description" content="ONE PLAYERS - Servicio técnico de celulares, accesorios y entretenimiento.">
+    <meta name="description" content="ONE PLAYERS - Servicio técnico especializado de celulares, accesorios y entretenimiento multimedia.">
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos profesionales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* =========================
-           RESET
+            RESET Y VARIABLES
         ========================== */
-
         * {
             margin: 0;
             padding: 0;
@@ -23,11 +25,22 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            --azul: #00aaff;
+            --azul-claro: #00d9ff;
+            --negro: #050505;
+            --gris-card: rgba(18, 18, 22, 0.7);
+            --borde-card: rgba(255, 255, 255, 0.08);
+            --texto: #f5f5f5;
+            --gris-texto: #94a3b8;
+        }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #050505;
-            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            background: var(--negro);
+            color: var(--texto);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -40,53 +53,41 @@
         }
 
         /* =========================
-           VARIABLES
+            NAVBAR
         ========================== */
-
-        :root {
-            --azul: #00aaff;
-            --azul-claro: #00d9ff;
-            --negro: #050505;
-            --gris: #101010;
-            --gris-2: #181818;
-            --texto: #f5f5f5;
-            --gris-texto: #aaaaaa;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================== */
-
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-
             background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(15px);
-
+            -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(0, 170, 255, 0.15);
         }
 
         .navbar {
             max-width: 1200px;
             margin: auto;
-
             height: 75px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 0 25px;
         }
 
         .logo {
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 2px;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--azul);
         }
 
         .logo span {
@@ -95,13 +96,13 @@
 
         nav {
             display: flex;
-            gap: 28px;
+            gap: 32px;
         }
 
         nav a {
-            color: #ddd;
+            color: #cbd5e1;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 500;
             transition: 0.3s;
         }
 
@@ -114,414 +115,381 @@
             background: none;
             border: none;
             color: white;
-            font-size: 28px;
+            font-size: 24px;
             cursor: pointer;
         }
 
         /* =========================
-           HERO
+            HERO SECTION
         ========================== */
-
         .hero {
             min-height: 100vh;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             text-align: center;
-
-            padding: 120px 20px 80px;
-
+            padding: 140px 20px 80px;
             position: relative;
             overflow: hidden;
-
-            background:
-                radial-gradient(circle at 50% 40%,
-                rgba(0, 170, 255, 0.18),
-                transparent 35%),
-                #050505;
+            background: radial-gradient(circle at 50% 30%, rgba(0, 170, 255, 0.12), transparent 45%), #050505;
         }
 
         .hero::before {
             content: "";
-
             position: absolute;
-            width: 500px;
-            height: 500px;
-
+            width: 600px;
+            height: 600px;
             border-radius: 50%;
-
             background: var(--azul);
-
-            filter: blur(180px);
-
-            opacity: 0.12;
-
-            animation: pulse 5s infinite alternate;
+            filter: blur(200px);
+            opacity: 0.1;
+            animation: pulse 6s infinite alternate;
         }
 
         @keyframes pulse {
-            from {
-                transform: scale(0.8);
-            }
-
-            to {
-                transform: scale(1.2);
-            }
+            from { transform: scale(0.9); }
+            to { transform: scale(1.3); }
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-
-            max-width: 900px;
+            max-width: 850px;
         }
 
         .hero small {
             color: var(--azul);
-            font-weight: bold;
-            letter-spacing: 4px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 12px;
+            background: rgba(0, 170, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
-            font-size: clamp(55px, 10vw, 110px);
-            line-height: 0.95;
-            margin: 20px 0;
-
-            font-weight: 900;
-            letter-spacing: -4px;
-
-            text-shadow:
-                0 0 20px rgba(0, 170, 255, 0.3);
+            font-size: clamp(40px, 7vw, 75px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .hero h1 span {
             color: var(--azul);
+            background: linear-gradient(135deg, #00aaff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            max-width: 650px;
+            max-width: 600px;
             margin: auto;
-
             color: var(--gris-texto);
-
-            font-size: 18px;
+            font-size: 17px;
+            font-weight: 300;
         }
 
         .buttons {
             margin-top: 35px;
-
             display: flex;
             justify-content: center;
             gap: 15px;
-
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 14px 25px;
-
-            border-radius: 8px;
-
-            font-weight: bold;
-
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
             transition: 0.3s;
-
-            display: inline-block;
-
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             cursor: pointer;
         }
 
         .btn-primary {
             background: var(--azul);
-            color: #000;
+            color: #050505;
+            box-shadow: 0 4px 20px rgba(0, 170, 255, 0.3);
         }
 
         .btn-primary:hover {
             background: var(--azul-claro);
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 10px 30px rgba(0, 170, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 170, 255, 0.4);
         }
 
         .btn-secondary {
-            border: 1px solid #444;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
         }
 
         .btn-secondary:hover {
             border-color: var(--azul);
             color: var(--azul);
+            background: rgba(0, 170, 255, 0.05);
         }
 
         /* =========================
-           SECCIONES
+            SECCIONES GENERALES
         ========================== */
-
         section {
             padding: 100px 20px;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: auto;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 55px;
+            margin-bottom: 60px;
         }
 
         .section-title small {
             color: var(--azul);
-            font-weight: bold;
+            font-weight: 600;
             letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 12px;
         }
 
         .section-title h2 {
-            font-size: 42px;
-            margin-top: 10px;
+            font-size: 36px;
+            margin-top: 8px;
+            font-weight: 700;
         }
 
         .section-title p {
             color: var(--gris-texto);
             margin-top: 10px;
+            font-size: 15px;
+            font-weight: 300;
         }
 
         /* =========================
-           CARDS
+            CARDS (SERVICIO TÉCNICO)
         ========================== */
-
         .cards {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
         .card {
-            background:
-                linear-gradient(
-                    145deg,
-                    #161616,
-                    #0c0c0c
-                );
-
-            border: 1px solid #242424;
-
-            border-radius: 15px;
-
-            padding: 30px;
-
-            transition: 0.35s;
-
+            background: var(--gris-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--borde-card);
+            border-radius: 16px;
+            padding: 35px 30px;
+            transition: 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
         .card::before {
             content: "";
-
             position: absolute;
-
             top: 0;
             left: 0;
-
             width: 100%;
-            height: 2px;
-
-            background: var(--azul);
-
-            transform: scaleX(0);
-
-            transform-origin: left;
-
-            transition: 0.35s;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--azul), transparent);
+            opacity: 0;
+            transition: 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-
-            border-color: rgba(0, 170, 255, 0.5);
-
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(-6px);
+            border-color: rgba(0, 170, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
         .card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .icon {
-            font-size: 42px;
-            margin-bottom: 15px;
+            width: 55px;
+            height: 55px;
+            background: rgba(0, 170, 255, 0.1);
+            color: var(--azul);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
         }
 
         .card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
 
         .card p {
             color: var(--gris-texto);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 300;
         }
 
         .card ul {
             list-style: none;
-            color: #ccc;
+            color: #cbd5e1;
+            font-size: 14px;
         }
 
         .card li {
-            margin: 7px 0;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .card li::before {
-            content: "✓";
+        .card li i {
             color: var(--azul);
-            font-weight: bold;
-            margin-right: 8px;
+            font-size: 12px;
         }
-
-        /* =========================
-           SERVICIO TECNICO
-        ========================== */
 
         #servicio {
-            background: #080808;
+            background: rgba(10, 10, 12, 0.5);
         }
 
         /* =========================
-           ACCESORIOS
+            ACCESORIOS / TIENDA
         ========================== */
-
         .products {
             display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 15px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
         .product {
-            padding: 25px 15px;
-
-            background: #111;
-
-            border: 1px solid #222;
-
-            border-radius: 12px;
-
+            background: var(--gris-card);
+            border: 1px solid var(--borde-card);
+            border-radius: 14px;
+            padding: 30px 20px;
             text-align: center;
-
             transition: 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .product:hover {
             transform: translateY(-5px);
-
             border-color: var(--azul);
+            box-shadow: 0 10px 25px rgba(0, 170, 255, 0.15);
         }
 
         .product .product-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            background: rgba(0, 170, 255, 0.1);
+            color: var(--azul);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
         }
 
         .product h3 {
-            font-size: 17px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
 
         .product p {
             color: var(--gris-texto);
             font-size: 13px;
+            font-weight: 300;
         }
 
         /* =========================
-           TV
+            TV / ENTRETENIMIENTO
         ========================== */
-
         #tv {
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(0, 170, 255, 0.1),
-                    transparent 45%
-                ),
-                #050505;
+            background: radial-gradient(circle at center, rgba(0, 170, 255, 0.08), transparent 60%), var(--negro);
         }
 
         .tv-box {
-            border: 1px solid rgba(0, 170, 255, 0.3);
-
-            border-radius: 20px;
-
+            border: 1px solid rgba(0, 170, 255, 0.25);
+            border-radius: 24px;
             padding: 60px 30px;
-
             text-align: center;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0, 170, 255, 0.08),
-                    rgba(255, 255, 255, 0.02)
-                );
+            background: linear-gradient(145deg, rgba(18, 18, 22, 0.8), rgba(10, 10, 12, 0.9));
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
         }
 
         .tv-box .tv-icon {
-            font-size: 65px;
-            margin-bottom: 15px;
+            font-size: 50px;
+            color: var(--azul);
+            margin-bottom: 20px;
         }
 
         .tv-box h2 {
-            font-size: 42px;
+            font-size: 36px;
+            font-weight: 700;
         }
 
         .tv-box p {
-            max-width: 650px;
+            max-width: 600px;
             margin: 15px auto 30px;
-
             color: var(--gris-texto);
+            font-size: 15px;
+            font-weight: 300;
         }
 
         /* =========================
-           CONTACTO
+            CONTACTO
         ========================== */
-
         .contact {
             display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
+            grid-template-columns: 1fr 1fr;
             gap: 25px;
         }
 
         .contact-box {
-            background: #111;
-
-            padding: 30px;
-
-            border-radius: 15px;
-
-            border: 1px solid #222;
+            background: var(--gris-card);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid var(--borde-card);
+            backdrop-filter: blur(10px);
         }
 
         .contact-box h3 {
-            margin-bottom: 20px;
+            font-size: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .contact-box h3 i {
+            color: var(--azul);
         }
 
         .contact-item {
-            padding: 12px 0;
-
-            border-bottom: 1px solid #222;
-
-            color: #ccc;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: #cbd5e1;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
         }
 
         .contact-item:last-child {
@@ -530,56 +498,44 @@
 
         .contact-item span {
             color: var(--azul);
-            font-weight: bold;
+            font-weight: 500;
         }
 
         /* =========================
-           WHATSAPP FLOAT
+            WHATSAPP FLOTANTE
         ========================== */
-
         .whatsapp {
             position: fixed;
-
-            right: 20px;
-            bottom: 20px;
-
+            right: 25px;
+            bottom: 25px;
             width: 60px;
             height: 60px;
-
             border-radius: 50%;
-
             background: #25d366;
-
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-size: 30px;
-
             z-index: 999;
-
-            box-shadow:
-                0 5px 25px rgba(0, 0, 0, 0.5);
-
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             transition: 0.3s;
         }
 
         .whatsapp:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
         }
 
         /* =========================
-           FOOTER
+            FOOTER
         ========================== */
-
         footer {
-            border-top: 1px solid #1e1e1e;
-
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             text-align: center;
-
-            padding: 35px 20px;
-
-            color: #777;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 14px;
+            background: #020202;
         }
 
         footer strong {
@@ -591,17 +547,12 @@
         }
 
         /* =========================
-           ANIMACIONES
+            ANIMACIONES FADE
         ========================== */
-
         .fade {
             opacity: 0;
-
             transform: translateY(30px);
-
-            transition:
-                opacity 0.7s ease,
-                transform 0.7s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade.show {
@@ -610,28 +561,20 @@
         }
 
         /* =========================
-           RESPONSIVE
+            RESPONSIVE
         ========================== */
-
-        @media (max-width: 850px) {
-
+        @media (max-width: 900px) {
             nav {
                 position: absolute;
-
                 top: 75px;
                 left: 0;
-
                 width: 100%;
-
-                background: #080808;
-
+                background: #08080a;
                 flex-direction: column;
-
                 gap: 0;
-
                 display: none;
-
-                border-bottom: 1px solid #222;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             }
 
             nav.active {
@@ -639,9 +582,8 @@
             }
 
             nav a {
-                padding: 16px 25px;
-
-                border-bottom: 1px solid #1c1c1c;
+                padding: 18px 25px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             }
 
             .menu-btn {
@@ -653,8 +595,7 @@
             }
 
             .products {
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .contact {
@@ -663,33 +604,8 @@
         }
 
         @media (max-width: 500px) {
-
-            .navbar {
-                padding: 0 18px;
-            }
-
-            .logo {
-                font-size: 20px;
-            }
-
-            .hero h1 {
-                font-size: 55px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .section-title h2 {
-                font-size: 32px;
-            }
-
             .products {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .tv-box h2 {
-                font-size: 30px;
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -697,615 +613,260 @@
 
 <body>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
-
+    <!-- NAVBAR -->
     <header>
-
         <div class="navbar">
-
             <a href="#inicio" class="logo">
-                ONE <span>PLAYERS</span>
+                <i class="fa-solid fa-bolt"></i> ONE <span>PLAYERS</span>
             </a>
 
             <nav id="nav">
-
                 <a href="#inicio">Inicio</a>
-
-                <a href="#servicio">
-                    Servicio Técnico
-                </a>
-
-                <a href="#accesorios">
-                    Accesorios
-                </a>
-
-                <a href="#tv">
-                    TV
-                </a>
-
-                <a href="#contacto">
-                    Contacto
-                </a>
-
+                <a href="#servicio">Servicio Técnico</a>
+                <a href="#accesorios">Accesorios</a>
+                <a href="#tv">Entretenimiento TV</a>
+                <a href="#contacto">Contacto</a>
             </nav>
 
-            <button
-                class="menu-btn"
-                id="menuBtn"
-                aria-label="Abrir menú">
-                ☰
+            <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
             </button>
-
         </div>
-
     </header>
 
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
     <main>
-
-        <section
-            class="hero"
-            id="inicio">
-
+        <!-- HERO -->
+        <section class="hero" id="inicio">
             <div class="hero-content">
-
-                <small>
-                    TECNOLOGÍA • SERVICIO • ENTRETENIMIENTO
-                </small>
-
-                <h1>
-                    ONE <span>PLAYERS</span>
-                </h1>
-
+                <small>Tecnología • Servicio Técnico • Entretenimiento</small>
+                <h1>ONE <span>PLAYERS</span></h1>
                 <p>
-                    Servicio técnico de celulares, accesorios
-                    y entretenimiento. Todo lo que necesitás
-                    en un solo lugar.
+                    Soluciones profesionales en reparación de celulares, accesorios de alta gama y entretenimiento multimedia para tu hogar.
                 </p>
-
                 <div class="buttons">
-
-                    <a
-                        href="#servicio"
-                        class="btn btn-primary">
-                        SERVICIO TÉCNICO
+                    <a href="#servicio" class="btn btn-primary">
+                        <i class="fa-solid fa-screwdriver-wrench"></i> Servicio Técnico
                     </a>
-
-                    <a
-                        href="#accesorios"
-                        class="btn btn-secondary">
-                        VER ACCESORIOS
+                    <a href="#accesorios" class="btn btn-secondary">
+                        <i class="fa-solid fa-bag-shopping"></i> Ver Accesorios
                     </a>
-
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             SERVICIO TECNICO
-        ========================== -->
-
+        <!-- SERVICIO TÉCNICO -->
         <section id="servicio">
-
             <div class="container">
-
                 <div class="section-title fade">
-
-                    <small>
-                        REPARACIONES
-                    </small>
-
-                    <h2>
-                        Servicio Técnico
-                    </h2>
-
-                    <p>
-                        Cuidamos y recuperamos tus dispositivos.
-                    </p>
-
+                    <small>Reparaciones con Garantía</small>
+                    <h2>Servicio Técnico Especializado</h2>
+                    <p>Cuidamos y recuperamos tus dispositivos con componentes de primera calidad.</p>
                 </div>
-
 
                 <div class="cards">
-
                     <div class="card fade">
-
                         <div class="icon">
-                            📱
+                            <i class="fa-solid fa-mobile-screen"></i>
                         </div>
-
-                        <h3>
-                            Pantallas
-                        </h3>
-
-                        <p>
-                            Cambio y reparación de módulos
-                            y pantallas de celulares.
-                        </p>
-
+                        <h3>Pantallas & Módulos</h3>
+                        <p>Sustitución de displays y táctiles con ajuste perfecto y calibración de color.</p>
                         <ul>
-                            <li>Cambio de módulo</li>
-                            <li>Pantalla rota</li>
-                            <li>Problemas táctiles</li>
+                            <li><i class="fa-solid fa-check"></i> Cambio de módulo completo</li>
+                            <li><i class="fa-solid fa-check"></i> Reparación de cristal (Glass)</li>
+                            <li><i class="fa-solid fa-check"></i> Garantía escrita</li>
                         </ul>
-
                     </div>
 
-
                     <div class="card fade">
-
                         <div class="icon">
-                            🔋
+                            <i class="fa-solid fa-battery-full"></i>
                         </div>
-
-                        <h3>
-                            Baterías
-                        </h3>
-
-                        <p>
-                            Reemplazo de baterías y problemas
-                            relacionados con la carga.
-                        </p>
-
+                        <h3>Baterías & Energía</h3>
+                        <p>Solucionamos problemas de autonomía y fallas de carga en tu smartphone.</p>
                         <ul>
-                            <li>Cambio de batería</li>
-                            <li>Problemas de carga</li>
-                            <li>Diagnóstico</li>
+                            <li><i class="fa-solid fa-check"></i> Reemplazo de batería</li>
+                            <li><i class="fa-solid fa-check"></i> Reparación de pin de carga</li>
+                            <li><i class="fa-solid fa-check"></i> Testeo de circuito</li>
                         </ul>
-
                     </div>
 
-
                     <div class="card fade">
-
                         <div class="icon">
-                            🔧
+                            <i class="fa-solid fa-microchip"></i>
                         </div>
-
-                        <h3>
-                            Reparaciones
-                        </h3>
-
-                        <p>
-                            Soluciones para diferentes problemas
-                            de celulares.
-                        </p>
-
+                        <h3>Software & Placa</h3>
+                        <p>Diagnóstico avanzado y recuperación lógica ante fallas complejas de sistema.</p>
                         <ul>
-                            <li>Conectores</li>
-                            <li>Software</li>
-                            <li>Diagnóstico general</li>
+                            <li><i class="fa-solid fa-check"></i> Solución de bloqueos</li>
+                            <li><i class="fa-solid fa-check"></i> Recuperación de sistema</li>
+                            <li><i class="fa-solid fa-check"></i> Diagnóstico sin cargo</li>
                         </ul>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             ACCESORIOS
-        ========================== -->
-
+        <!-- ACCESORIOS -->
         <section id="accesorios">
-
             <div class="container">
-
                 <div class="section-title fade">
-
-                    <small>
-                        TIENDA
-                    </small>
-
-                    <h2>
-                        Accesorios
-                    </h2>
-
-                    <p>
-                        Complementos para tu celular y tus dispositivos.
-                    </p>
-
+                    <small>Catálogo Online</small>
+                    <h2>Accesorios & Protección</h2>
+                    <p>Complementos certificados para potenciar y proteger tus dispositivos.</p>
                 </div>
-
 
                 <div class="products">
-
                     <div class="product fade">
-
-                        <div class="product-icon">
-                            📱
-                        </div>
-
-                        <h3>
-                            Fundas
-                        </h3>
-
-                        <p>
-                            Diferentes modelos
-                        </p>
-
+                        <div class="product-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Fundas Anti-golpes</h3>
+                        <p>Modelos de alta resistencia</p>
                     </div>
 
-
                     <div class="product fade">
-
-                        <div class="product-icon">
-                            🛡️
-                        </div>
-
-                        <h3>
-                            Vidrios
-                        </h3>
-
-                        <p>
-                            Protección para pantalla
-                        </p>
-
+                        <div class="product-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <h3>Vidrios Templados</h3>
+                        <p>Cristales cerámicos 9D</p>
                     </div>
 
-
                     <div class="product fade">
-
-                        <div class="product-icon">
-                            🔌
-                        </div>
-
-                        <h3>
-                            Cargadores
-                        </h3>
-
-                        <p>
-                            Carga rápida y estándar
-                        </p>
-
+                        <div class="product-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <h3>Cargadores Rápidos</h3>
+                        <p>Cubos y fuentes homologadas</p>
                     </div>
 
-
                     <div class="product fade">
-
-                        <div class="product-icon">
-                            🎧
-                        </div>
-
-                        <h3>
-                            Auriculares
-                        </h3>
-
-                        <p>
-                            Audio para todos
-                        </p>
-
+                        <div class="product-icon"><i class="fa-solid fa-headphones"></i></div>
+                        <h3>Audio TWS</h3>
+                        <p>Auriculares inalámbricos</p>
                     </div>
 
-
                     <div class="product fade">
-
-                        <div class="product-icon">
-                            🔗
-                        </div>
-
-                        <h3>
-                            Cables
-                        </h3>
-
-                        <p>
-                            Diferentes conectores
-                        </p>
-
+                        <div class="product-icon"><i class="fa-solid fa-plug"></i></div>
+                        <h3>Cables Reforzados</h3>
+                        <p>Tipo C, Lightning y USB</p>
                     </div>
 
-
                     <div class="product fade">
-
-                        <div class="product-icon">
-                            🚗
-                        </div>
-
-                        <h3>
-                            Soportes
-                        </h3>
-
-                        <p>
-                            Para auto y escritorio
-                        </p>
-
+                        <div class="product-icon"><i class="fa-solid fa-car"></i></div>
+                        <h3>Soportes Vehiculares</h3>
+                        <p>Magnéticos y de rejilla</p>
                     </div>
 
-
                     <div class="product fade">
-
-                        <div class="product-icon">
-                            ⌚
-                        </div>
-
-                        <h3>
-                            Smartwatch
-                        </h3>
-
-                        <p>
-                            Tecnología wearable
-                        </p>
-
+                        <div class="product-icon"><i class="fa-solid fa-clock"></i></div>
+                        <h3>Smartwatch</h3>
+                        <p>Tecnología wearable</p>
                     </div>
 
-
                     <div class="product fade">
-
-                        <div class="product-icon">
-                            ⚡
-                        </div>
-
-                        <h3>
-                            Más
-                        </h3>
-
-                        <p>
-                            Consultá disponibilidad
-                        </p>
-
+                        <div class="product-icon"><i class="fa-solid fa-gamepad"></i></div>
+                        <h3>Gaming & Más</h3>
+                        <p>Joysticks y complementos</p>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             TV / ENTRETENIMIENTO
-        ========================== -->
-
+        <!-- TV / ENTRETENIMIENTO -->
         <section id="tv">
-
             <div class="container">
-
                 <div class="tv-box fade">
-
                     <div class="tv-icon">
-                        📺
+                        <i class="fa-solid fa-tv"></i>
                     </div>
-
-                    <h2>
-                        ONE PLAYERS TV
-                    </h2>
-
+                    <h2>ONE PLAYERS ENTERTAINMENT</h2>
                     <p>
-                        Entretenimiento para disfrutar donde quieras.
-                        Consultá por nuestros servicios de TV,
-                        planes y opciones disponibles.
+                        Llevamos el mejor contenido y conectividad a tu hogar. Consultá por nuestros dispositivos Smart TV Box, accesorios de transmisión y soluciones de entretenimiento familiar.
                     </p>
-
-                    <a
-                        href="https://wa.me/549XXXXXXXXXX?text=Hola%20ONE%20PLAYERS,%20quiero%20consultar%20por%20el%20servicio%20de%20TV."
-                        target="_blank"
-                        class="btn btn-primary">
-
-                        CONSULTAR POR WHATSAPP
-
+                    <a href="https://wa.me/549XXXXXXXXXX?text=Hola%20ONE%20PLAYERS,%20quiero%20consultar%20por%20el%20servicio%20de%20TV%20y%20entretenimiento." target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
                     </a>
-
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             CONTACTO
-        ========================== -->
-
+        <!-- CONTACTO -->
         <section id="contacto">
-
             <div class="container">
-
                 <div class="section-title fade">
-
-                    <small>
-                        CONTACTO
-                    </small>
-
-                    <h2>
-                        Estamos para ayudarte
-                    </h2>
-
-                    <p>
-                        Comunicate con ONE PLAYERS.
-                    </p>
-
+                    <small>Atención al Cliente</small>
+                    <h2>Estamos para ayudarte</h2>
+                    <p>Comunicate con nosotros de forma directa.</p>
                 </div>
-
 
                 <div class="contact">
-
                     <div class="contact-box fade">
-
-                        <h3>
-                            📞 Contactanos
-                        </h3>
-
+                        <h3><i class="fa-solid fa-headset"></i> Canales Directos</h3>
                         <div class="contact-item">
-                            <span>WhatsApp:</span>
-                            Tu número
+                            WhatsApp: <span>+54 9 [Tu Número]</span>
                         </div>
-
                         <div class="contact-item">
-                            <span>Instagram:</span>
-                            @oneplayers
+                            Instagram: <span>@oneplayers</span>
                         </div>
-
                         <div class="contact-item">
-                            <span>Email:</span>
-                            contacto@oneplayers.com
+                            Email: <span>contacto@oneplayers.com</span>
                         </div>
-
                     </div>
 
-
                     <div class="contact-box fade">
-
-                        <h3>
-                            📍 Nuestro local
-                        </h3>
-
+                        <h3><i class="fa-solid fa-location-dot"></i> Local Comercial</h3>
                         <div class="contact-item">
-                            <span>Dirección:</span>
-                            Tu dirección
+                            Dirección: <span>Tu Dirección, Ciudad</span>
                         </div>
-
                         <div class="contact-item">
-                            <span>Horarios:</span>
-                            Lunes a sábado
+                            Horarios: <span>Lunes a Sábados</span>
                         </div>
-
                         <div class="contact-item">
-                            <span>Atención:</span>
-                            Consultá por WhatsApp
+                            Atención: <span>Matutina y Vespertina</span>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
     </main>
 
-
-    <!-- =========================
-         WHATSAPP
-    ========================== -->
-
-    <a
-        class="whatsapp"
-        href="https://wa.me/549XXXXXXXXXX"
-        target="_blank"
-        aria-label="WhatsApp">
-
-        💬
-
+    <!-- WHATSAPP FLOTANTE -->
+    <a class="whatsapp" href="https://wa.me/549XXXXXXXXXX?text=Hola%20ONE%20PLAYERS,%20necesito%20información." target="_blank" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
+    <!-- FOOTER -->
     <footer>
-
-        <p>
-            © <span id="year"></span>
-            <strong>ONE PLAYERS</strong>.
-            Todos los derechos reservados.
-        </p>
-
-        <p>
-            Tecnología • Servicio Técnico • Entretenimiento
-        </p>
-
+        <p>© <span id="year"></span> <strong>ONE PLAYERS</strong>. Todos los derechos reservados.</p>
+        <p style="margin-top: 5px;">Tecnología • Servicio Técnico • Entretenimiento</p>
     </footer>
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
+    <!-- JAVASCRIPT -->
     <script>
-
-        /* =========================
-           MENÚ MOBILE
-        ========================== */
-
-        const menuBtn =
-            document.getElementById("menuBtn");
-
-        const nav =
-            document.getElementById("nav");
-
+        // Menú Mobile
+        const menuBtn = document.getElementById("menuBtn");
+        const nav = document.getElementById("nav");
 
         menuBtn.addEventListener("click", () => {
-
             nav.classList.toggle("active");
-
         });
 
-
-        /* Cerrar menú al tocar un enlace */
-
-        document.querySelectorAll("nav a")
-            .forEach(link => {
-
-                link.addEventListener("click", () => {
-
-                    nav.classList.remove("active");
-
-                });
-
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
             });
-
-
-        /* =========================
-           AÑO AUTOMÁTICO
-        ========================== */
-
-        document.getElementById("year")
-            .textContent = new Date().getFullYear();
-
-
-        /* =========================
-           ANIMACIONES AL SCROLLEAR
-        ========================== */
-
-        const elements =
-            document.querySelectorAll(".fade");
-
-
-        const observer =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add("show");
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.15
-                }
-            );
-
-
-        elements.forEach(element => {
-
-            observer.observe(element);
-
         });
 
+        // Año automático
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Animaciones al hacer scroll
+        const elements = document.querySelectorAll(".fade");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        elements.forEach(element => observer.observe(element));
     </script>
 
 </body>
