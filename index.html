@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Viewport adaptado para mantener la escala tipo Desktop/PC -->
+    <meta name="viewport" content="width=1200, initial-scale=0.35, maximum-scale=2.0">
     <title>ONEPLAYER - Servicio Técnico & Tienda</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
     
@@ -32,6 +33,7 @@
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -41,9 +43,10 @@
             overflow-x: hidden;
             position: relative;
             line-height: 1.5;
+            min-width: 1200px; /* Fuerza el ancho mínimo idéntico al contenedor de PC */
         }
 
-        /* FONDO MESH CYBER MEJORADO CON NEBULOSAS ANIMADAS */
+        /* FONDO MESH CYBER CON NEBULOSAS ANIMADAS */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -102,7 +105,7 @@
             opacity: 0.4;
         }
 
-        /* HEADER & NAVBAR */
+        /* HEADER & NAVBAR EN ESTADO PERMANENTE DE DESKTOP */
         header {
             position: fixed;
             top: 0;
@@ -127,7 +130,7 @@
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-size: 2.2rem;
             font-weight: 900;
             color: #fff;
             text-decoration: none;
@@ -145,7 +148,7 @@
         }
 
         nav ul {
-            display: flex;
+            display: flex !important;
             list-style: none;
             gap: 1.5rem;
         }
@@ -169,70 +172,12 @@
             background: rgba(0, 243, 255, 0.15);
         }
 
-        /* HAMBURGER TOGGLE MÓVIL */
-        .mobile-toggle {
-            display: none;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-            padding: 5px;
-            z-index: 1001;
+        /* OCULTAR ELEMENTOS MÓVILES */
+        .mobile-toggle, .mobile-drawer {
+            display: none !important;
         }
 
-        .mobile-toggle span {
-            width: 28px;
-            height: 3px;
-            background-color: var(--neon-cyan);
-            box-shadow: 0 0 10px var(--neon-cyan);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-drawer {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background: rgba(4, 4, 14, 0.98);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-left: 2px solid var(--neon-cyan);
-            box-shadow: -10px 0 35px rgba(0, 243, 255, 0.5);
-            display: flex;
-            flex-direction: column;
-            padding: 5rem 2rem 2rem 2rem;
-            gap: 1.5rem;
-            transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
-            z-index: 999;
-        }
-
-        .mobile-drawer.open {
-            right: 0;
-        }
-
-        .mobile-drawer a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 0.8rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .mobile-drawer a:hover {
-            color: var(--neon-pink);
-            text-shadow: var(--glow-pink-extreme);
-        }
-
-        /* HERO SECTION SIN CUADRO EXTERNO */
+        /* HERO SECTION */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -255,7 +200,7 @@
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.8rem, 9vw, 5.5rem);
+            font-size: 5.5rem;
             font-weight: 900;
             text-transform: uppercase;
             line-height: 1.05;
@@ -268,7 +213,7 @@
         }
 
         .hero p {
-            font-size: clamp(1.15rem, 3.2vw, 1.55rem);
+            font-size: 1.55rem;
             color: var(--text-dim);
             margin-bottom: 2.2rem;
             font-weight: 600;
@@ -276,7 +221,7 @@
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
 
-        /* BOTÓN DINÁMICO QUE CAMBIA DE COLOR (ANIMADO RGB) */
+        /* BOTÓN DINÁMICO RGB */
         .btn-main-rgb {
             display: inline-flex;
             align-items: center;
@@ -310,7 +255,7 @@
             transform: translateY(-4px) scale(1.05);
         }
 
-        /* SECCIONES Y TITULOS CENTRADOS */
+        /* SECCIONES Y TITULOS */
         .section {
             padding: 4rem 1.2rem;
             max-width: 1200px;
@@ -321,7 +266,7 @@
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-size: 2.8rem;
             font-weight: 900;
             text-align: center;
             text-transform: uppercase;
@@ -343,10 +288,10 @@
             box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-pink);
         }
 
-        /* GRID Y CARDS CENTRADAS */
+        /* GRID Y CARDS EN FORMATO MULTI-COLUMNA IDÉNTICO A PC */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr) !important;
             gap: 2rem;
             width: 100%;
         }
@@ -452,7 +397,7 @@
             font-weight: 900;
         }
 
-        /* VARIACIONES DE COLOR */
+        /* VARIACIONES DE COLOR TIENDA & TV */
         .tienda-card {
             border-color: rgba(255, 0, 127, 0.4);
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.2), inset 0 0 15px rgba(255, 0, 127, 0.1);
@@ -569,54 +514,11 @@
             letter-spacing: 1px;
             text-align: center;
         }
-
-        /* RESPONSIVE ANDROID */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            .grid-container {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 1.4rem;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .hero {
-                min-height: 70vh;
-                padding-top: 7rem;
-            }
-
-            .whatsapp-float {
-                bottom: 18px;
-                right: 18px;
-                width: 58px;
-                height: 58px;
-            }
-
-            .whatsapp-float svg {
-                width: 32px;
-                height: 32px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <!-- FONDO CYBER MESH MEJORADO MULTICAPA -->
+    <!-- FONDO CYBER MESH MULTICAPA -->
     <div class="cyber-bg"></div>
     <div class="cyber-grid"></div>
     <canvas id="bg-canvas"></canvas>
@@ -633,22 +535,10 @@
                     <li><a href="#tv">TV Entertainment</a></li>
                 </ul>
             </nav>
-            <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Abrir Menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
-    <!-- MOBILE DRAWER -->
-    <div class="mobile-drawer" id="mobile-drawer">
-        <a href="#tecnico" class="drawer-link">Laboratorio Técnico</a>
-        <a href="#tienda" class="drawer-link">Store & Gear</a>
-        <a href="#tv" class="drawer-link">TV Entertainment</a>
-    </div>
-
-    <!-- HERO SECTION LIMPIO SIN CUADRO -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
             <h1>ONEPLAYER</h1>
@@ -755,7 +645,7 @@
         <h2 class="section-title">ONEPLAYER TV Entertainment</h2>
         <div class="grid-container" style="justify-content: center;">
             
-            <div class="card tv-card" style="max-width: 520px; margin: 0 auto;">
+            <div class="card tv-card" style="max-width: 520px; grid-column: 2 / span 1;">
                 <div class="card-img-wrapper" style="height: 240px;">
                     <img src="Tv.jpg" alt="Servicios para Televisores">
                 </div>
@@ -784,21 +674,6 @@
 
     <!-- SCRIPTS -->
     <script>
-        // MENU MOVIL DRAWER
-        const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerLinks = document.querySelectorAll('.drawer-link');
-
-        mobileToggleBtn.addEventListener('click', () => {
-            mobileDrawer.classList.toggle('open');
-        });
-
-        drawerLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-            });
-        });
-
         // CANVAS PARTICULAS RED CYBER MEJORADO
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
