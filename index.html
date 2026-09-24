@@ -14,10 +14,8 @@
             --neon-cyan: #00f0ff;
             --neon-purple: #b000ff;
             --neon-pink: #ff007f;
-            --neon-green: #00ff66;
             --text-main: #f4f4f8;
             --text-muted: #9494a8;
-            --border-glow: rgba(0, 240, 255, 0.2);
         }
 
         * {
@@ -134,7 +132,7 @@
             width: 100%;
         }
 
-        /* HERO SECTION ULTRA LLAMATIVO */
+        /* HERO SECTION */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -205,7 +203,6 @@
             letter-spacing: 2px;
             color: #fff;
             margin-bottom: 12px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .section-subtitle {
@@ -236,26 +233,13 @@
             position: relative;
         }
 
-        .custom-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(0, 240, 255, 0.05) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
         .custom-card:hover {
             transform: translateY(-10px);
             border-color: rgba(0, 240, 255, 0.45);
             box-shadow: 0 20px 50px rgba(0, 240, 255, 0.12), 0 0 20px rgba(176, 0, 255, 0.08);
         }
 
-        .custom-card:hover::before {
-            opacity: 1;
-        }
-
+        /* CONTENEDOR DE IMAGEN ADAPTADO PARA TUS ARCHIVOS LOCALES */
         .card-img-box {
             width: 100%;
             height: 220px;
@@ -264,24 +248,25 @@
             overflow: hidden;
         }
 
-        /* Efecto de capa oscura sutil sobre imágenes para prolijidad */
+        /* Gradiente sutil encima de la foto para fundirla con la tarjeta */
         .card-img-box::after {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, transparent 60%, rgba(10, 11, 16, 0.9));
+            background: linear-gradient(180deg, transparent 60%, rgba(10, 11, 16, 0.85));
             pointer-events: none;
         }
 
         .card-img-box img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Evita deformaciones y recorta prolijamente sin importar tamaño */
+            object-position: center;
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .custom-card:hover .card-img-box img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .card-body {
@@ -435,7 +420,7 @@
         <a href="#tecnico" class="btn-neon">Explorar Servicios</a>
     </section>
 
-    <!-- SERVICIO TÉCNICO (Con imágenes hiper-específicas de reparación) -->
+    <!-- SERVICIO TÉCNICO (Con tus imágenes locales: Modulo, Baterias, Placa de carga) -->
     <section id="tecnico">
         <div class="section-title-box">
             <h2 class="section-title">Servicio Técnico Especializado</h2>
@@ -443,10 +428,10 @@
         </div>
 
         <div class="grid-cards">
-            <!-- Servicio 1: Módulo de Pantalla -->
+            <!-- Servicio 1: Módulo -->
             <div class="custom-card">
                 <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=600&q=80" alt="Cambio de Módulo de Pantalla Celular">
+                    <img src="Modulo.jpg" alt="Cambio de Módulo de Pantalla">
                 </div>
                 <div class="card-body">
                     <div>
@@ -460,10 +445,10 @@
                 </div>
             </div>
 
-            <!-- Servicio 2: Batería -->
+            <!-- Servicio 2: Baterías -->
             <div class="custom-card">
                 <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80" alt="Batería de celular de reemplazo">
+                    <img src="Baterias.jpg" alt="Cambio de Baterías">
                 </div>
                 <div class="card-body">
                     <div>
@@ -477,10 +462,10 @@
                 </div>
             </div>
 
-            <!-- Servicio 3: Pin / Placa de Carga -->
+            <!-- Servicio 3: Placa de carga -->
             <div class="custom-card">
                 <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80" alt="Pin y placa de carga de celular">
+                    <img src="Placa de carga.jpg" alt="Placas de Carga">
                 </div>
                 <div class="card-body">
                     <div>
@@ -496,7 +481,7 @@
         </div>
     </section>
 
-    <!-- TIENDA & ACCESORIOS (Con tus productos exactos y fotos precisas) -->
+    <!-- TIENDA & ACCESORIOS (Con tus imágenes locales: USB y Convertidores, reutilizando cargadores/auriculares) -->
     <section id="tienda">
         <div class="section-title-box">
             <h2 class="section-title">Tienda & Accesorios Tecnológicos</h2>
@@ -507,7 +492,7 @@
             <!-- Producto 1: Auriculares -->
             <div class="custom-card">
                 <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Auriculares vincha y TWS">
+                    <img src="USB.jpg" alt="Auriculares">
                 </div>
                 <div class="card-body">
                     <div>
@@ -524,7 +509,7 @@
             <!-- Producto 2: Cargadores Tipo C y V8 -->
             <div class="custom-card">
                 <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=600&q=80" alt="Cargadores Tipo C y V8 turbo">
+                    <img src="USB.jpg" alt="Cargadores Tipo C y V8">
                 </div>
                 <div class="card-body">
                     <div>
@@ -538,10 +523,10 @@
                 </div>
             </div>
 
-            <!-- Producto 3: Cables USB Tipo C & V8 -->
+            <!-- Producto 3: Cables USB (Tipo C & V8) -->
             <div class="custom-card">
                 <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&w=600&q=80" alt="Cables USB Tipo C y V8 reforzados">
+                    <img src="USB.jpg" alt="Cables USB">
                 </div>
                 <div class="card-body">
                     <div>
@@ -558,7 +543,7 @@
             <!-- Producto 4: Convertidores TV Android -->
             <div class="custom-card">
                 <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80" alt="Convertidor TV Android Stick / Box tipo FireTV">
+                    <img src="Convertidores.jpg" alt="Convertidores TV Android">
                 </div>
                 <div class="card-body">
                     <div>
@@ -574,7 +559,7 @@
         </div>
     </section>
 
-    <!-- ENTERTAINMENT TV PRO (Con foto familiar frente al televisor y texto exacto) -->
+    <!-- ENTERTAINMENT TV PRO (Con tu imagen local Tv.jpg) -->
     <section id="tv">
         <div class="section-title-box">
             <h2 class="section-title">ONE PLAYER ENTERTAINMENT & TV</h2>
@@ -584,7 +569,7 @@
         <div class="grid-cards" style="max-width: 950px;">
             <div class="custom-card" style="grid-column: 1 / -1;">
                 <div class="card-img-box" style="height: 280px;">
-                    <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1200&q=80" alt="Familia disfrutando entretenimiento en TV grande en el hogar">
+                    <img src="Tv.jpg" alt="Entretenimiento familiar en el hogar">
                 </div>
                 <div class="card-body" style="padding: 45px; text-align: center;">
                     <div>
