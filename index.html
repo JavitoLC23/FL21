@@ -1,1793 +1,867 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <title>ONEPLAYER - Servicio Técnico & Tienda</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONEPLAYER | Servicio Técnico & Store</title>
+    <!-- FUENTES GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     
-
     <style>
-
         :root {
-
-            --bg-dark: #020205;
-
-            --card-bg: rgba(10, 10, 26, 0.88);
-
+            --bg-dark: #030308;
+            --card-bg: rgba(12, 13, 24, 0.75);
             --neon-cyan: #00f3ff;
-
             --neon-purple: #ab00ff;
-
             --neon-pink: #ff007f;
-
             --neon-green: #00ff66;
-
-            --text-light: #f0f6fc;
-
-            --text-dim: #a3b8cc;
-
-            --glow-cyan-extreme: 0 0 15px #00f3ff, 0 0 35px #00f3ff, 0 0 50px rgba(0, 243, 255, 0.6);
-
-            --glow-pink-extreme: 0 0 15px #ff007f, 0 0 35px #ff007f, 0 0 50px rgba(255, 0, 127, 0.6);
-
-            --glow-purple-extreme: 0 0 15px #ab00ff, 0 0 35px #ab00ff, 0 0 50px rgba(171, 0, 255, 0.6);
-
-            --glow-green-extreme: 0 0 15px #00ff66, 0 0 35px #00ff66, 0 0 50px rgba(0, 255, 102, 0.6);
-
+            --text-main: #ffffff;
+            --text-dim: #a0a5c0;
+            --glow-cyan: 0 0 15px rgba(0, 243, 255, 0.5);
+            --glow-purple: 0 0 15px rgba(171, 0, 255, 0.5);
+            --glow-purple-extreme: 0 0 25px rgba(171, 0, 255, 0.8), 0 0 40px rgba(171, 0, 255, 0.4);
+            --glow-green-extreme: 0 0 20px rgba(0, 255, 102, 0.8);
         }
-
-
 
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
-            -webkit-tap-highlight-color: transparent;
-
-        }
-
-
-
-        html {
-
             scroll-behavior: smooth;
-
-            overflow-x: hidden;
-
         }
-
-
 
         body {
-
-            font-family: 'Rajdhani', sans-serif;
-
             background-color: var(--bg-dark);
-
-            color: var(--text-light);
-
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
-
             position: relative;
-
-            line-height: 1.5;
-
         }
 
-
-
-        /* FONDO MESH CYBER MEJORADO CON NEBULOSAS ANIMADAS */
-
+        /* FONDO CYBER MESH MULTICAPA */
         .cyber-bg {
-
             position: fixed;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
             height: 100%;
-
+            background: radial-gradient(circle at 50% 20%, rgba(171, 0, 255, 0.15), transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 243, 255, 0.1), transparent 40%);
             z-index: -3;
-
-            background: 
-
-                radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.22) 0%, transparent 40%),
-
-                radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.22) 0%, transparent 40%),
-
-                radial-gradient(circle at 50% 50%, rgba(171, 0, 255, 0.2) 0%, transparent 55%),
-
-                radial-gradient(circle at 80% 10%, rgba(0, 255, 102, 0.12) 0%, transparent 35%),
-
-                #020205;
-
-            animation: pulseBgGlow 8s ease-in-out infinite alternate;
-
         }
-
-
-
-        @keyframes pulseBgGlow {
-
-            0% { transform: scale(1); filter: hue-rotate(0deg); }
-
-            100% { transform: scale(1.05); filter: hue-rotate(20deg); }
-
-        }
-
-
 
         .cyber-grid {
-
             position: fixed;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
             height: 100%;
-
-            z-index: -2;
-
             background-image: 
-
-                linear-gradient(to right, rgba(0, 243, 255, 0.08) 1px, transparent 1px),
-
-                linear-gradient(to bottom, rgba(0, 243, 255, 0.08) 1px, transparent 1px);
-
-            background-size: 35px 35px;
-
-            pointer-events: none;
-
+                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
+            opacity: 0.3;
+            animation: gridMove 20s linear infinite;
         }
 
-
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 50px; }
+        }
 
         #bg-canvas {
-
             position: fixed;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
             height: 100%;
-
             z-index: -1;
-
             pointer-events: none;
-
         }
-
-
 
         .scanlines {
-
             position: fixed;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
             height: 100%;
-
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
-
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
             background-size: 100% 4px;
-
-            z-index: 0;
-
+            z-index: 999;
             pointer-events: none;
-
-            opacity: 0.4;
-
+            opacity: 0.6;
         }
-
-
 
         /* HEADER & NAVBAR */
-
         header {
-
             position: fixed;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
+            background: rgba(3, 3, 8, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
             z-index: 1000;
-
-            background: rgba(3, 3, 10, 0.92);
-
-            backdrop-filter: blur(18px);
-
-            -webkit-backdrop-filter: blur(18px);
-
-            border-bottom: 2px solid var(--neon-cyan);
-
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.45);
-
+            transition: all 0.3s ease;
         }
-
-
 
         .header-container {
-
             max-width: 1200px;
-
             margin: 0 auto;
-
-            padding: 0.8rem 1.2rem;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
+            padding: 1rem 2rem;
         }
-
-
 
         .logo {
-
             font-family: 'Orbitron', sans-serif;
-
-            font-size: clamp(1.4rem, 4vw, 2.2rem);
-
             font-weight: 900;
-
+            font-size: 1.8rem;
             color: #fff;
-
             text-decoration: none;
-
-            text-transform: uppercase;
-
             letter-spacing: 2px;
-
-            text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 8px;
-
+            text-shadow: var(--glow-cyan);
         }
-
-
 
         .logo span {
-
-            color: var(--neon-pink);
-
-            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
-
+            color: var(--neon-cyan);
         }
-
-
 
         nav ul {
-
             display: flex;
-
             list-style: none;
-
-            gap: 1.5rem;
-
+            gap: 2rem;
         }
-
-
 
         nav a {
-
-            color: var(--text-light);
-
+            color: var(--text-main);
             text-decoration: none;
-
             font-family: 'Orbitron', sans-serif;
-
-            font-size: 0.88rem;
-
-            font-weight: 700;
-
-            text-transform: uppercase;
-
+            font-size: 0.9rem;
             letter-spacing: 1px;
-
-            padding: 0.5rem 0.8rem;
-
-            border-radius: 6px;
-
             transition: all 0.3s ease;
-
+            position: relative;
         }
-
-
 
         nav a:hover {
-
             color: var(--neon-cyan);
-
-            text-shadow: var(--glow-cyan-extreme);
-
-            background: rgba(0, 243, 255, 0.15);
-
+            text-shadow: var(--glow-cyan);
         }
 
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            box-shadow: var(--glow-cyan);
+            transition: width 0.3s ease;
+        }
 
-
-        /* HAMBURGER TOGGLE MÓVIL */
+        nav a:hover::after {
+            width: 100%;
+        }
 
         .mobile-toggle {
-
             display: none;
-
-            background: transparent;
-
-            border: none;
-
-            cursor: pointer;
-
             flex-direction: column;
-
             gap: 5px;
-
-            padding: 5px;
-
-            z-index: 1001;
-
+            background: transparent;
+            border: none;
+            cursor: pointer;
         }
-
-
 
         .mobile-toggle span {
-
-            width: 28px;
-
+            width: 25px;
             height: 3px;
-
             background-color: var(--neon-cyan);
-
-            box-shadow: 0 0 10px var(--neon-cyan);
-
-            border-radius: 2px;
-
+            box-shadow: var(--glow-cyan);
             transition: all 0.3s ease;
-
         }
 
-
-
+        /* MOBILE DRAWER */
         .mobile-drawer {
-
             position: fixed;
-
             top: 0;
-
             right: -100%;
-
-            width: 80%;
-
-            max-width: 300px;
-
+            width: 250px;
             height: 100vh;
-
-            background: rgba(4, 4, 14, 0.98);
-
-            backdrop-filter: blur(25px);
-
-            -webkit-backdrop-filter: blur(25px);
-
-            border-left: 2px solid var(--neon-cyan);
-
-            box-shadow: -10px 0 35px rgba(0, 243, 255, 0.5);
-
+            background: rgba(8, 9, 18, 0.97);
+            backdrop-filter: blur(15px);
+            border-left: 1px solid var(--neon-cyan);
+            box-shadow: -5px 0 25px rgba(0, 243, 255, 0.2);
+            z-index: 1001;
             display: flex;
-
             flex-direction: column;
-
-            padding: 5rem 2rem 2rem 2rem;
-
-            gap: 1.5rem;
-
-            transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
-
-            z-index: 999;
-
+            padding: 6rem 2rem 2rem;
+            gap: 2rem;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
         }
-
-
 
         .mobile-drawer.open {
-
             right: 0;
-
         }
 
-
-
-        .mobile-drawer a {
-
-            color: var(--text-light);
-
+        .drawer-link {
+            color: var(--text-main);
             text-decoration: none;
-
             font-family: 'Orbitron', sans-serif;
-
-            font-size: 1rem;
-
-            font-weight: 700;
-
-            text-transform: uppercase;
-
-            padding: 0.8rem;
-
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-            transition: all 0.3s ease;
-
-            text-align: center;
-
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
         }
 
-
-
-        .mobile-drawer a:hover {
-
-            color: var(--neon-pink);
-
-            text-shadow: var(--glow-pink-extreme);
-
+        .drawer-link:hover {
+            color: var(--neon-cyan);
+            text-shadow: var(--glow-cyan);
         }
 
-
-
-        /* HERO SECTION SIN CUADRO EXTERNO */
-
+        /* HERO SECTION */
         .hero {
-
-            min-height: 80vh;
-
+            min-height: 85vh;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             text-align: center;
-
-            padding: 8rem 1.2rem 3rem 1.2rem;
-
+            padding: 8rem 2rem 4rem;
             position: relative;
-
-            z-index: 1;
-
         }
-
-
 
         .hero-content {
-
-            max-width: 900px;
-
-            width: 100%;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
+            max-width: 800px;
         }
-
-
 
         .hero h1 {
-
             font-family: 'Orbitron', sans-serif;
-
-            font-size: clamp(2.8rem, 9vw, 5.5rem);
-
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
-
-            text-transform: uppercase;
-
-            line-height: 1.05;
-
-            margin-bottom: 1.2rem;
-
-            background: linear-gradient(135deg, #fff 20%, var(--neon-cyan) 60%, var(--neon-pink) 100%);
-
-            -webkit-background-clip: text;
-
-            -webkit-text-fill-color: transparent;
-
-            filter: drop-shadow(0 0 25px rgba(0, 243, 255, 0.7));
-
-            letter-spacing: 2px;
-
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 40px rgba(171, 0, 255, 0.4);
+            margin-bottom: 1rem;
         }
-
-
 
         .hero p {
-
-            font-size: clamp(1.15rem, 3.2vw, 1.55rem);
-
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
             color: var(--text-dim);
-
-            margin-bottom: 2.2rem;
-
-            font-weight: 600;
-
-            max-width: 780px;
-
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
         }
-
-
-
-        /* BOTÓN DINÁMICO QUE CAMBIA DE COLOR (ANIMADO RGB) */
 
         .btn-main-rgb {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 1.1rem 2.8rem;
-
+            display: inline-block;
+            padding: 1rem 2.5rem;
             font-family: 'Orbitron', sans-serif;
-
-            font-size: 1.1rem;
-
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            letter-spacing: 2px;
-
+            font-weight: 700;
+            font-size: 1rem;
             color: #fff;
-
-            background: linear-gradient(270deg, #00f3ff, #ab00ff, #ff007f, #00ff66, #00f3ff);
-
-            background-size: 800% 800%;
-
-            border: 2px solid #fff;
-
-            border-radius: 50px;
-
             text-decoration: none;
-
-            cursor: pointer;
-
-            animation: animateRgbGlow 6s ease infinite;
-
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), 0 0 45px rgba(255, 0, 127, 0.6);
-
-            transition: transform 0.3s ease;
-
-        }
-
-
-
-        @keyframes animateRgbGlow {
-
-            0% { background-position: 0% 50%; box-shadow: 0 0 30px #00f3ff, 0 0 50px rgba(0, 243, 255, 0.6); }
-
-            33% { background-position: 50% 100%; box-shadow: 0 0 30px #ab00ff, 0 0 50px rgba(171, 0, 255, 0.6); }
-
-            66% { background-position: 100% 50%; box-shadow: 0 0 30px #ff007f, 0 0 50px rgba(255, 0, 127, 0.6); }
-
-            100% { background-position: 0% 50%; box-shadow: 0 0 30px #00ff66, 0 0 50px rgba(0, 255, 102, 0.6); }
-
-        }
-
-
-
-        .btn-main-rgb:hover, .btn-main-rgb:active {
-
-            transform: translateY(-4px) scale(1.05);
-
-        }
-
-
-
-        /* SECCIONES Y TITULOS CENTRADOS */
-
-        .section {
-
-            padding: 4rem 1.2rem;
-
-            max-width: 1200px;
-
-            margin: 0 auto;
-
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+            transition: all 0.3s ease;
             position: relative;
-
             z-index: 1;
-
+            overflow: hidden;
         }
 
+        .btn-main-rgb::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: var(--bg-dark);
+            border-radius: 2px;
+            z-index: -1;
+            transition: background 0.3s ease;
+        }
 
+        .btn-main-rgb:hover::before {
+            background: transparent;
+        }
+
+        .btn-main-rgb:hover {
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.8), 0 0 50px rgba(171, 0, 255, 0.6);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* SECCIONES Y TARJETAS */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
         .section-title {
-
             font-family: 'Orbitron', sans-serif;
-
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-
-            font-weight: 900;
-
+            font-size: 2rem;
             text-align: center;
-
-            text-transform: uppercase;
-
-            letter-spacing: 2px;
-
             margin-bottom: 3.5rem;
-
-            position: relative;
-
+            letter-spacing: 2px;
             color: #fff;
-
-            text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan);
-
+            position: relative;
+            text-shadow: var(--glow-cyan);
         }
-
-
 
         .section-title::after {
-
             content: '';
-
             display: block;
-
-            width: 100px;
-
-            height: 4px;
-
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
-
-            margin: 12px auto 0 auto;
-
+            width: 80px;
+            height: 3px;
+            background: var(--neon-cyan);
+            box-shadow: var(--glow-cyan);
+            margin: 0.8rem auto 0;
             border-radius: 2px;
-
-            box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-pink);
-
         }
-
-
-
-        /* GRID Y CARDS CENTRADAS */
 
         .grid-container {
-
             display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-
-            width: 100%;
-
         }
-
-
 
         .card {
-
             background: var(--card-bg);
-
-            border: 2px solid rgba(0, 243, 255, 0.4);
-
-            border-radius: 16px;
-
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            border-radius: 12px;
             overflow: hidden;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            text-align: center;
-
+            backdrop-filter: blur(10px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-            backdrop-filter: blur(12px);
-
-            -webkit-backdrop-filter: blur(12px);
-
-            position: relative;
-
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1);
-
+            display: flex;
+            flex-direction: column;
+            will-change: transform;
         }
-
-
 
         .card:hover {
-
-            transform: translateY(-10px) scale(1.02);
-
+            transform: translateY(-10px);
             border-color: var(--neon-cyan);
-
-            box-shadow: var(--glow-cyan-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
-
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.25);
         }
-
-
 
         .card-img-wrapper {
-
             width: 100%;
-
-            height: 210px;
-
+            height: 200px;
             overflow: hidden;
-
             position: relative;
-
-            background: #000;
-
-            border-bottom: 2px solid rgba(0, 243, 255, 0.3);
-
         }
-
-
 
         .card-img-wrapper img {
-
             width: 100%;
-
             height: 100%;
-
             object-fit: cover;
-
-            transition: transform 0.6s ease;
-
+            transition: transform 0.5s ease;
         }
-
-
 
         .card:hover .card-img-wrapper img {
-
-            transform: scale(1.12);
-
+            transform: scale(1.1);
         }
-
-
 
         .card-body {
-
-            padding: 1.4rem;
-
+            padding: 1.5rem;
             display: flex;
-
             flex-direction: column;
-
-            align-items: center;
-
-            text-align: center;
-
             flex-grow: 1;
-
-            width: 100%;
-
         }
-
-
 
         .card-title {
-
             font-family: 'Orbitron', sans-serif;
-
-            font-size: 1.3rem;
-
-            font-weight: 700;
-
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
             color: #fff;
-
-            margin-bottom: 0.6rem;
-
-            letter-spacing: 0.5px;
-
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-
-            text-align: center;
-
         }
-
-
 
         .card-desc {
-
-            font-size: 0.98rem;
-
+            font-size: 0.95rem;
             color: var(--text-dim);
-
-            margin-bottom: 1.3rem;
-
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
-
-            font-weight: 500;
-
-            text-align: center;
-
         }
-
-
 
         .card-btn {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            width: 100%;
-
-            padding: 0.85rem 1rem;
-
-            font-family: 'Orbitron', sans-serif;
-
-            font-size: 0.9rem;
-
-            font-weight: 800;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            color: #fff;
-
-            background: rgba(0, 243, 255, 0.15);
-
-            border: 2px solid var(--neon-cyan);
-
-            border-radius: 10px;
-
-            text-decoration: none;
-
-            transition: all 0.3s ease;
-
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
-
+            display: block;
             text-align: center;
-
+            padding: 0.8rem 1rem;
+            background: transparent;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
-
-
-        .card-btn:hover, .card-btn:active {
-
+        .card-btn:hover {
             background: var(--neon-cyan);
-
             color: #000;
-
-            box-shadow: var(--glow-cyan-extreme);
-
-            font-weight: 900;
-
+            box-shadow: var(--glow-cyan);
         }
 
-
-
-        /* VARIACIONES DE COLOR */
-
-        .tienda-card {
-
-            border-color: rgba(255, 0, 127, 0.4);
-
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.2), inset 0 0 15px rgba(255, 0, 127, 0.1);
-
-        }
-
-
-
-        .tienda-card .card-img-wrapper {
-
-            border-bottom-color: rgba(255, 0, 127, 0.3);
-
-        }
-
-
-
+        /* TIENDA CARDS OPTIMIZACIÓN */
         .tienda-card:hover {
-
             border-color: var(--neon-pink);
-
-            box-shadow: var(--glow-pink-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
-
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.25);
         }
-
-
 
         .tienda-card .card-btn {
-
-            background: rgba(255, 0, 127, 0.15);
-
             border-color: var(--neon-pink);
-
-            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
-
+            color: var(--neon-pink);
         }
 
-
-
-        .tienda-card .card-btn:hover, .tienda-card .card-btn:active {
-
+        .tienda-card .card-btn:hover {
             background: var(--neon-pink);
-
             color: #fff;
-
-            box-shadow: var(--glow-pink-extreme);
-
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
         }
 
-
-
-        .tv-card {
-
-            border-color: rgba(171, 0, 255, 0.4);
-
-            box-shadow: 0 0 15px rgba(171, 0, 255, 0.25), inset 0 0 20px rgba(171, 0, 255, 0.15);
-
-        }
-
-
-
-        .tv-card .card-img-wrapper {
-
-            border-bottom-color: rgba(171, 0, 255, 0.4);
-
-        }
-
-
-
+        /* TV CARDS OPTIMIZACIÓN */
         .tv-card:hover {
-
             border-color: var(--neon-purple);
-
-            box-shadow: var(--glow-purple-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
-
+            box-shadow: 0 10px 30px rgba(171, 0, 255, 0.3);
         }
-
-
 
         .tv-card .card-btn {
-
-            background: rgba(171, 0, 255, 0.2);
-
             border-color: var(--neon-purple);
-
-            box-shadow: 0 0 15px rgba(171, 0, 255, 0.4);
-
+            color: var(--neon-purple);
         }
-
-
 
         .tv-card .card-btn:hover, .tv-card .card-btn:active {
-
             background: var(--neon-purple);
-
             color: #fff;
-
             box-shadow: var(--glow-purple-extreme);
-
         }
-
-
 
         /* FLOATING WHATSAPP BUTTON */
-
         .whatsapp-float {
-
             position: fixed;
-
             bottom: 25px;
-
             right: 25px;
-
             width: 65px;
-
             height: 65px;
-
             background: #25d366;
-
             border-radius: 50%;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             box-shadow: var(--glow-green-extreme), 0 8px 25px rgba(0,0,0,0.8);
-
             z-index: 2000;
-
             transition: all 0.3s ease;
-
             text-decoration: none;
-
             border: 2px solid #fff;
-
         }
-
-
 
         .whatsapp-float:hover {
-
             transform: scale(1.15) rotate(8deg);
-
             box-shadow: 0 0 30px #00ff66, 0 0 50px rgba(0, 255, 102, 0.8);
-
         }
-
-
 
         .whatsapp-float svg {
-
             width: 36px;
-
             height: 36px;
-
             fill: #fff;
-
         }
-
-
 
         .whatsapp-pulse {
-
             position: absolute;
-
             width: 100%;
-
             height: 100%;
-
             border-radius: 50%;
-
             border: 3px solid var(--neon-green);
-
             animation: pulseRing 1.8s infinite;
-
             pointer-events: none;
-
         }
-
-
 
         @keyframes pulseRing {
-
             0% { transform: scale(0.95); opacity: 0.9; }
-
             100% { transform: scale(1.65); opacity: 0; }
-
         }
-
-
 
         /* FOOTER */
-
         footer {
-
             background: rgba(2, 2, 6, 0.98);
-
             border-top: 2px solid var(--neon-cyan);
-
             box-shadow: 0 -5px 20px rgba(0, 243, 255, 0.3);
-
             padding: 2.5rem 1.2rem;
-
             text-align: center;
-
             margin-top: 4rem;
-
             position: relative;
-
             z-index: 1;
-
         }
-
-
 
         footer p {
-
             font-family: 'Orbitron', sans-serif;
-
             font-size: 0.9rem;
-
             color: var(--text-dim);
-
             letter-spacing: 1px;
-
             text-align: center;
-
         }
-
-
 
         /* RESPONSIVE ANDROID */
-
         @media (max-width: 768px) {
-
             nav ul {
-
                 display: none;
-
             }
-
-
 
             .mobile-toggle {
-
                 display: flex;
-
             }
-
-
 
             .grid-container {
-
                 grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-
                 gap: 1.4rem;
-
             }
-
-
 
             .section {
-
                 padding: 3rem 1rem;
-
             }
-
-
 
             .hero {
-
                 min-height: 70vh;
-
                 padding-top: 7rem;
-
             }
-
-
 
             .whatsapp-float {
-
                 bottom: 18px;
-
                 right: 18px;
-
                 width: 58px;
-
                 height: 58px;
-
             }
-
-
 
             .whatsapp-float svg {
-
                 width: 32px;
-
                 height: 32px;
-
             }
-
         }
-
-
 
         @media (max-width: 480px) {
-
             .grid-container {
-
                 grid-template-columns: 1fr;
-
             }
-
         }
-
     </style>
-
 </head>
-
 <body>
 
-
-
     <!-- FONDO CYBER MESH MEJORADO MULTICAPA -->
-
     <div class="cyber-bg"></div>
-
     <div class="cyber-grid"></div>
-
     <canvas id="bg-canvas"></canvas>
-
     <div class="scanlines"></div>
 
-
-
     <!-- HEADER / NAVBAR -->
-
     <header>
-
         <div class="header-container">
-
             <a href="#" class="logo">ONE<span>PLAYER</span></a>
-
             <nav>
-
                 <ul>
-
                     <li><a href="#tecnico">Laboratorio Técnico</a></li>
-
                     <li><a href="#tienda">Store & Gear</a></li>
-
                     <li><a href="#tv">TV Entertainment</a></li>
-
                 </ul>
-
             </nav>
-
             <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Abrir Menú">
-
                 <span></span>
-
                 <span></span>
-
                 <span></span>
-
             </button>
-
         </div>
-
     </header>
 
-
-
     <!-- MOBILE DRAWER -->
-
     <div class="mobile-drawer" id="mobile-drawer">
-
         <a href="#tecnico" class="drawer-link">Laboratorio Técnico</a>
-
         <a href="#tienda" class="drawer-link">Store & Gear</a>
-
         <a href="#tv" class="drawer-link">TV Entertainment</a>
-
     </div>
 
-
-
     <!-- HERO SECTION LIMPIO SIN CUADRO -->
-
     <section class="hero">
-
         <div class="hero-content">
-
             <h1>ONEPLAYER</h1>
-
             <p>Soluciones Tecnológicas Integrales, Servicio Técnico Especializado y Accesorios de Alta Gama</p>
-
-            <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20quisiera%20hacer%20una%20consulta" class="btn-main-rgb" target="_blank">Contactar Ahora</a>
-
+            <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20quisiera%20hacer%20una%20consulta" class="btn-main-rgb" target="_blank" rel="noopener noreferrer">Contactar Ahora</a>
         </div>
-
     </section>
-
-
 
     <!-- LABORATORIO TECNICO SECTION -->
-
     <section id="tecnico" class="section">
-
         <h2 class="section-title">Laboratorio Técnico</h2>
-
         <div class="grid-container">
-
             
-
             <div class="card">
-
                 <div class="card-img-wrapper">
-
                     <img src="Modulo.jpg" alt="Cambio de Módulo y Pantalla">
-
                 </div>
-
                 <div class="card-body">
-
                     <h3 class="card-title">Cambio de Módulo</h3>
-
                     <p class="card-desc">Reparación e instalación de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.</p>
-
-                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20M%C3%B3dulo" class="card-btn" target="_blank">Consultar</a>
-
+                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20M%C3%B3dulo" class="card-btn" target="_blank" rel="noopener noreferrer">Consultar</a>
                 </div>
-
             </div>
 
-
-
             <div class="card">
-
                 <div class="card-img-wrapper">
-
                     <img src="Baterias.jpg" alt="Cambio de Batería">
-
                 </div>
-
                 <div class="card-body">
-
                     <h3 class="card-title">Cambio de Batería</h3>
-
                     <p class="card-desc">Reemplazo de baterías agotadas o infladas para devolverle la autonomía y el máximo rendimiento original a tu celular.</p>
-
-                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20Bater%C3%ADa" class="card-btn" target="_blank">Consultar</a>
-
+                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20Bater%C3%ADa" class="card-btn" target="_blank" rel="noopener noreferrer">Consultar</a>
                 </div>
-
             </div>
-
-
 
             <div class="card">
-
                 <div class="card-img-wrapper">
-
                     <img src="Placa de carga.jpg" alt="Pin y Placa de Carga">
-
                 </div>
-
                 <div class="card-body">
-
                     <h3 class="card-title">Pin / Placa de Carga</h3>
-
                     <p class="card-desc">Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tu dispositivo.</p>
-
-                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Pin%20o%20Placa%20de%20Carga" class="card-btn" target="_blank">Consultar</a>
-
+                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Pin%20o%20Placa%20de%20Carga" class="card-btn" target="_blank" rel="noopener noreferrer">Consultar</a>
                 </div>
-
             </div>
-
-
 
         </div>
-
     </section>
-
-
 
     <!-- STORE & GEAR SECTION -->
-
     <section id="tienda" class="section">
-
         <h2 class="section-title">ONEPLAYER Store & Gear</h2>
-
         <div class="grid-container">
-
             
-
             <div class="card tienda-card">
-
                 <div class="card-img-wrapper">
-
                     <img src="Auriculares.jpg" alt="Auriculares">
-
                 </div>
-
                 <div class="card-body">
-
                     <h3 class="card-title">Auriculares</h3>
-
                     <p class="card-desc">In-ear, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.</p>
-
-                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Auriculares" class="card-btn" target="_blank">Ver Disponibilidad</a>
-
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Auriculares" class="card-btn" target="_blank" rel="noopener noreferrer">Ver Disponibilidad</a>
                 </div>
-
             </div>
 
-
-
             <div class="card tienda-card">
-
                 <div class="card-img-wrapper">
-
                     <img src="Cargadores.png" alt="Cargadores Rápidos">
-
                 </div>
-
                 <div class="card-body">
-
                     <h3 class="card-title">Cargadores Rápidos</h3>
-
                     <p class="card-desc">Cargadores de pared y carga rápida de alto amperaje para cuidar la salud de la batería de tu dispositivo.</p>
-
-                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Cargadores" class="card-btn" target="_blank">Ver Disponibilidad</a>
-
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Cargadores" class="card-btn" target="_blank" rel="noopener noreferrer">Ver Disponibilidad</a>
                 </div>
-
             </div>
 
-
-
             <div class="card tienda-card">
-
                 <div class="card-img-wrapper">
-
                     <img src="USB.jpg" alt="Cables USB">
-
                 </div>
-
                 <div class="card-body">
-
                     <h3 class="card-title">Cables USB</h3>
-
                     <p class="card-desc">Cables reinforced Tipo C, Lightning (iPhone) y Micro USB de alta resistencia y carga acelerada.</p>
-
-                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Cables%20USB" class="card-btn" target="_blank">Ver Disponibilidad</a>
-
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Cables%20USB" class="card-btn" target="_blank" rel="noopener noreferrer">Ver Disponibilidad</a>
                 </div>
-
             </div>
-
-
 
             <div class="card tienda-card">
-
                 <div class="card-img-wrapper">
-
                     <img src="Convertidores.png" alt="Convertidores Smart TV">
-
                 </div>
-
                 <div class="card-body">
-
                     <h3 class="card-title">Convertidores Smart TV</h3>
-
                     <p class="card-desc">Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.</p>
-
-                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Convertidores%20Smart%20TV" class="card-btn" target="_blank">Ver Disponibilidad</a>
-
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Convertidores%20Smart%20TV" class="card-btn" target="_blank" rel="noopener noreferrer">Ver Disponibilidad</a>
                 </div>
-
             </div>
-
-
 
         </div>
-
     </section>
-
-
 
     <!-- TV ENTERTAINMENT SECTION -->
-
     <section id="tv" class="section">
-
         <h2 class="section-title">ONEPLAYER TV Entertainment</h2>
-
         <div class="grid-container" style="justify-content: center;">
-
             
-
             <div class="card tv-card" style="max-width: 520px; margin: 0 auto;">
-
                 <div class="card-img-wrapper" style="height: 240px;">
-
                     <img src="Tv.jpg" alt="Servicios para Televisores">
-
                 </div>
-
                 <div class="card-body">
-
                     <h3 class="card-title">Experiencia TV Familiar</h3>
-
                     <p class="card-desc">Una solución de TV única para compartir en familia todo el mejor entretenimiento, directo desde el confort de tu hogar. Soporte técnico, configuración de apps y convertidores Smart TV.</p>
-
-                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Servicios%20de%20TV%20Entertainment" class="card-btn" target="_blank">Activar Servicio</a>
-
+                    <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Servicios%20de%20TV%20Entertainment" class="card-btn" target="_blank" rel="noopener noreferrer">Activar Servicio</a>
                 </div>
-
             </div>
 
-
-
         </div>
-
     </section>
 
-
-
     <!-- FOOTER -->
-
     <footer>
-
         <p>&copy; ONEPLAYER. Todos los derechos reservados.</p>
-
     </footer>
 
-
-
     <!-- BOTON FLOATING WHATSAPP -->
-
-    <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20tengo%20una%20consulta" class="whatsapp-float" target="_blank" aria-label="WhatsApp Directo">
-
+    <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20tengo%20una%20consulta" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Directo">
         <div class="whatsapp-pulse"></div>
-
         <svg viewBox="0 0 32 32">
-
             <path d="M16 2a13 13 0 0 0-11 19.8L3 29l7.3-1.9A13 13 0 1 0 16 2zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4a10.8 10.8 0 1 1 9.2 5zm5.9-8.1c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 8.9 8.9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.1 0-.3 0-.4s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.3 1.4 3.5 2.4 3.7 5.8 5.2c.8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.6-.3z"/>
-
         </svg>
-
     </a>
 
-
-
-    <!-- SCRIPTS -->
-
+    <!-- SCRIPTS CON INTERACTIVIDAD INTERACTIVA PARALLAX Y MEJORAS DE PERFORMANCE -->
     <script>
-
-        // MENU MOVIL DRAWER
-
+        // MENU MOVIL DRAWER CONTROL
         const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
-
         const mobileDrawer = document.getElementById('mobile-drawer');
-
         const drawerLinks = document.querySelectorAll('.drawer-link');
 
-
-
-        mobileToggleBtn.addEventListener('click', () => {
-
+        mobileToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileDrawer.classList.toggle('open');
-
         });
-
-
 
         drawerLinks.forEach(link => {
-
             link.addEventListener('click', () => {
-
                 mobileDrawer.classList.remove('open');
-
             });
-
         });
 
+        document.addEventListener('click', (e) => {
+            if (!mobileDrawer.contains(e.target) && !mobileToggleBtn.contains(e.target)) {
+                mobileDrawer.classList.remove('open');
+            }
+        });
 
-
-        // CANVAS PARTICULAS RED CYBER MEJORADO
-
+        // CANVAS PARTICULAS RED CYBER MEJORADO CON INTERACCIÓN DE CURSOR
         const canvas = document.getElementById('bg-canvas');
-
         const ctx = canvas.getContext('2d');
 
-
-
-        let width, height;
-
         let particles = [];
+        let mouse = { x: null, y: null, radius: 150 };
 
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
 
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
         function resizeCanvas() {
-
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-            width = canvas.width = window.innerWidth * dpr;
-
-            height = canvas.height = window.innerHeight * dpr;
-
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
             ctx.scale(dpr, dpr);
-
             initParticles();
-
         }
-
-
 
         class Particle {
-
             constructor() {
-
                 this.reset();
-
             }
-
-
 
             reset() {
-
                 this.x = Math.random() * window.innerWidth;
-
                 this.y = Math.random() * window.innerHeight;
-
-                this.vx = (Math.random() - 0.5) * 0.9;
-
-                this.vy = (Math.random() - 0.5) * 0.9;
-
-                this.radius = Math.random() * 2.2 + 0.8;
-
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.radius = Math.random() * 2 + 0.8;
                 this.color = Math.random() > 0.5 ? '#00f3ff' : (Math.random() > 0.5 ? '#ff007f' : '#ab00ff');
-
-                this.alpha = Math.random() * 0.7 + 0.3;
-
+                this.alpha = Math.random() * 0.6 + 0.3;
             }
-
-
 
             update() {
-
                 this.x += this.vx;
-
                 this.y += this.vy;
 
-
-
                 if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
-
                 if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
 
+                // Interacción con mouse
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        const angle = Math.atan2(dy, dx);
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        this.x -= Math.cos(angle) * force * 2;
+                        this.y -= Math.sin(angle) * force * 2;
+                    }
+                }
             }
-
-
 
             draw() {
-
                 ctx.save();
-
                 ctx.globalAlpha = this.alpha;
-
                 ctx.beginPath();
-
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-
                 ctx.fillStyle = this.color;
-
-                ctx.shadowBlur = 14;
-
+                ctx.shadowBlur = 12;
                 ctx.shadowColor = this.color;
-
                 ctx.fill();
-
                 ctx.restore();
-
             }
-
         }
-
-
 
         function initParticles() {
-
             particles = [];
-
-            const count = Math.min(Math.floor(window.innerWidth / 10), 70);
-
+            const count = Math.min(Math.floor(window.innerWidth / 12), 65);
             for (let i = 0; i < count; i++) {
-
                 particles.push(new Particle());
-
             }
-
         }
-
-
 
         function animate() {
-
             ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-
-
             for (let i = 0; i < particles.length; i++) {
-
                 for (let j = i + 1; j < particles.length; j++) {
-
                     const dx = particles[i].x - particles[j].x;
-
                     const dy = particles[i].y - particles[j].y;
-
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-
-
-                    if (dist < 130) {
-
+                    if (dist < 120) {
                         ctx.save();
-
-                        ctx.globalAlpha = (1 - dist / 130) * 0.4;
-
+                        ctx.globalAlpha = (1 - dist / 120) * 0.35;
                         ctx.strokeStyle = particles[i].color;
-
                         ctx.lineWidth = 1;
-
                         ctx.beginPath();
-
                         ctx.moveTo(particles[i].x, particles[i].y);
-
                         ctx.lineTo(particles[j].x, particles[j].y);
-
                         ctx.stroke();
-
                         ctx.restore();
-
                     }
-
                 }
-
             }
 
-
-
             particles.forEach(p => {
-
                 p.update();
-
                 p.draw();
-
             });
 
-
-
             requestAnimationFrame(animate);
-
         }
 
-
-
         window.addEventListener('resize', resizeCanvas);
-
         resizeCanvas();
-
         animate();
-
     </script>
-
 </body>
-
-</html> 
+</html>
