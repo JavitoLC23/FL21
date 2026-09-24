@@ -10,7 +10,7 @@
         :root {
             --bg-base: #020205;
             --bg-card: rgba(10, 11, 20, 0.75);
-            --bg-card-hover: rgba(18, 20, 35, 0.85);
+            --bg-card-hover: rgba(18, 20, 35, 0.9);
             --neon-cyan: #00f0ff;
             --neon-purple: #9d00ff;
             --neon-pink: #ff0055;
@@ -67,12 +67,13 @@
             padding: 18px 6%;
             background: rgba(2, 2, 5, 0.85);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 240, 255, 0.15);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
             z-index: 1000;
         }
 
-        /* LOGO "ONE PLAYER" ULTRA IMPACTANTE (Efecto UFF) */
+        /* LOGO "ONE PLAYER" ULTRA IMPACTANTE */
         .brand-logo {
             text-decoration: none;
             display: inline-block;
@@ -237,18 +238,21 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
             display: flex;
             flex-direction: column;
             text-align: left;
             position: relative;
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            will-change: transform;
         }
 
         .custom-card:hover {
             transform: translateY(-10px);
             border-color: var(--neon-cyan);
             box-shadow: 0 15px 40px rgba(0, 240, 255, 0.2);
+            background: var(--bg-card-hover);
         }
 
         .card-img-container {
@@ -393,6 +397,7 @@
 
         @media (max-width: 850px) {
             nav ul { display: none; }
+            header { justify-content: center; }
         }
     </style>
 </head>
@@ -440,7 +445,7 @@
             <!-- Módulo -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Modulo.jpg" alt="Módulo de Pantalla">
+                    <img src="Modulo.jpg" alt="Módulo de Pantalla" loading="lazy">
                 </div>
                 <div class="card-content">
                     <div>
@@ -449,7 +454,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge">Garantía</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
@@ -457,7 +462,7 @@
             <!-- Batería -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Baterias.jpg" alt="Batería de Celular">
+                    <img src="Baterias.jpg" alt="Batería de Celular" loading="lazy">
                 </div>
                 <div class="card-content">
                     <div>
@@ -466,7 +471,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge">Originales</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
@@ -474,7 +479,7 @@
             <!-- Placa de carga -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Placa de carga.jpg" alt="Placa de Carga">
+                    <img src="Placa de carga.jpg" alt="Placa de Carga" loading="lazy">
                 </div>
                 <div class="card-content">
                     <div>
@@ -483,7 +488,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge">Exprés</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
@@ -501,7 +506,7 @@
             <!-- Auriculares -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Auriculares.jpg" alt="Auriculares Inalámbricos, Con Cable y Vincha">
+                    <img src="Auriculares.jpg" alt="Auriculares Inalámbricos, Con Cable y Vincha" loading="lazy">
                 </div>
                 <div class="card-content">
                     <div>
@@ -510,7 +515,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge" style="color: var(--neon-pink);">Audio Hi-Fi</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
@@ -518,7 +523,7 @@
             <!-- Cargadores -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Cargadores.jpg" alt="Cargadores de Carga Rápida y Común">
+                    <img src="Cargadores.jpg" alt="Cargadores de Carga Rápida y Común" loading="lazy">
                 </div>
                 <div class="card-content">
                     <div>
@@ -527,7 +532,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge" style="color: var(--neon-pink);">Smart Charge</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
@@ -535,7 +540,7 @@
             <!-- Cables USB -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="USB.jpg" alt="Cables USB">
+                    <img src="USB.jpg" alt="Cables USB" loading="lazy">
                 </div>
                 <div class="card-content">
                     <div>
@@ -544,7 +549,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge" style="color: var(--neon-pink);">Reforzados</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
@@ -552,7 +557,7 @@
             <!-- Convertidores TV Android -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Convertidores.jpg" alt="Convertidores de TV">
+                    <img src="Convertidores.jpg" alt="Convertidores de TV" loading="lazy">
                 </div>
                 <div class="card-content">
                     <div>
@@ -561,7 +566,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge" style="color: var(--neon-pink);">Smart 4K</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
@@ -578,7 +583,7 @@
         <div class="grid-cards" style="max-width: 950px;">
             <div class="custom-card" style="grid-column: 1 / -1;">
                 <div class="card-img-container" style="height: 280px;">
-                    <img src="Tv.jpg" alt="Entretenimiento TV">
+                    <img src="Tv.jpg" alt="Entretenimiento TV" loading="lazy">
                 </div>
                 <div class="card-content" style="padding: 40px; text-align: center;">
                     <div>
@@ -588,7 +593,7 @@
                         </div>
                     </div>
                     <div class="card-footer" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px; justify-content: center;">
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-purple" style="font-size: 0.8rem; padding: 12px 35px;">Solicitar Servicio TV</a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-purple" style="font-size: 0.8rem; padding: 12px 35px;">Solicitar Servicio TV</a>
                     </div>
                 </div>
             </div>
@@ -641,7 +646,7 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = 10;
+                ctx.shadowBlur = 8;
                 ctx.shadowColor = this.color;
                 ctx.fill();
             }
@@ -653,21 +658,23 @@
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
 
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < mouse.radius) {
-                    const angle = Math.atan2(dy, dx);
-                    const force = (mouse.radius - distance) / mouse.radius;
-                    this.x -= Math.cos(angle) * force * 3;
-                    this.y -= Math.sin(angle) * force * 3;
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        const angle = Math.atan2(dy, dx);
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        this.x -= Math.cos(angle) * force * 3;
+                        this.y -= Math.sin(angle) * force * 3;
+                    }
                 }
             }
         }
 
         function createParticles() {
             particles = [];
-            const count = Math.floor((width * height) / 18000);
+            const count = Math.min(Math.floor((width * height) / 18000), 75);
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
             }
@@ -677,7 +684,7 @@
             ctx.clearRect(0, 0, width, height);
 
             for (let a = 0; a < particles.length; a++) {
-                for (let b = a; b < particles.length; b++) {
+                for (let b = a + 1; b < particles.length; b++) {
                     let dx = particles[a].x - particles[b].x;
                     let dy = particles[a].y - particles[b].y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
