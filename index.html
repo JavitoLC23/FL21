@@ -1,411 +1,531 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONE PLAYER | Servicio Técnico, Accesorios y TV</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter & Orbitron for Tech feel -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        tech: ['Orbitron', 'sans-serif'],
-                    },
-                    colors: {
-                        darkBg: '#0a0b10',
-                        cardBg: '#12141c',
-                        neonCyan: '#00f2fe',
-                        neonPurple: '#7f00ff',
-                        neonGreen: '#00ff88',
-                    },
-                    boxShadow: {
-                        'neon-cyan': '0 0 20px rgba(0, 242, 254, 0.4)',
-                        'neon-purple': '0 0 20px rgba(127, 0, 255, 0.4)',
-                        'neon-green': '0 0 20px rgba(0, 255, 136, 0.4)',
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Google Fonts para tipografía moderna y futurista -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        .neon-text-cyan {
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5), 0 0 30px rgba(0, 242, 254, 0.3);
+        :root {
+            --bg-color: #050508;
+            --panel-bg: #12121a;
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --text-main: #ffffff;
+            --text-muted: #a0a0b0;
+            --border-color: rgba(0, 243, 255, 0.2);
         }
-        .neon-text-purple {
-            text-shadow: 0 0 10px rgba(127, 0, 255, 0.7), 0 0 20px rgba(127, 0, 255, 0.5);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .glow-border {
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* HEADER / NAVBAR */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(18, 18, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+
+        .logo-top {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+        }
+
+        .logo-main {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.6), 
+                         0 0 20px rgba(188, 19, 254, 0.4);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, #1a1a2e 0%, var(--bg-color) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #ffffff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.3));
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* SECCIONES GENERALES */
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
             position: relative;
         }
-        .glow-border::after {
+
+        .section-title::after {
             content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            margin: 10px auto 0 auto;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* GRID CARDS */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        /* BOTONES */
+        .btn {
+            background: transparent;
+            color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* TIENDA & ACCESORIOS (Con subida de imagen y precio editable) */
+        .product-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-upload-box {
+            width: 100%;
+            height: 180px;
+            background: #1a1a24;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .image-upload-box:hover {
+            border-color: var(--neon-blue);
+        }
+
+        .image-upload-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             position: absolute;
-            inset: -1px;
-            background: linear-gradient(90deg, #00f2fe, #7f00ff, #00ff88);
-            border-radius: inherit;
-            z-index: -1;
-            opacity: 0.3;
-            transition: opacity 0.3s ease;
+            top: 0;
+            left: 0;
+            display: none;
         }
-        .glow-border:hover::after {
-            opacity: 0.8;
-            filter: blur(8px);
+
+        .upload-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            pointer-events: none;
+            padding: 0 10px;
+            text-align: center;
         }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        .product-card input[type="file"] {
+            display: none;
         }
-        ::-webkit-scrollbar-track {
-            background: #0a0b10;
+
+        .product-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #fff;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #2a2e3d;
-            border-radius: 4px;
+
+        .product-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--neon-purple);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(188, 19, 254, 0.4);
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00f2fe;
+
+        /* ENTERTAINMENT TV SECTION */
+        .tv-container {
+            background: linear-gradient(135deg, #12121a 0%, #1a1025 100%);
+            border: 1px solid rgba(188, 19, 254, 0.3);
+            border-radius: 16px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(188, 19, 254, 0.1);
+        }
+
+        .tv-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--neon-purple);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+        }
+
+        .tv-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .tv-features {
+            list-style: none;
+        }
+
+        .tv-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .tv-features li::before {
+            content: '✔';
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+
+        .btn-tv {
+            background: transparent;
+            color: var(--neon-purple);
+            border: 2px solid var(--neon-purple);
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn-tv:hover {
+            background: var(--neon-purple);
+            color: #fff;
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        /* FOOTER SERIO Y LIMPIO */
+        footer {
+            background: #09090e;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 8%;
+            text-align: center;
+        }
+
+        footer .logo-main {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 500px;
+            margin: 0 auto 20px auto;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #555566;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .tv-container {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            nav ul {
+                display: none;
+            }
         }
     </style>
 </head>
-<body class="bg-darkBg text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black">
+<body>
 
-    <!-- Header / Barra de Navegación -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-darkBg/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo con luces "uff" -->
-            <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center shadow-neon-cyan transform group-hover:scale-105 transition duration-300">
-                    <i class="fa-solid fa-gamepad text-black text-xl font-black"></i>
-                </div>
-                <span class="font-tech text-xl sm:text-2xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-green-400 bg-clip-text text-transparent neon-text-cyan">
-                    ONE PLAYER
-                </span>
-            </a>
-
-            <!-- Menú de Navegación Desktop -->
-            <nav class="hidden md:flex items-center space-x-8 font-medium">
-                <a href="#servicio-tecnico" class="text-slate-300 hover:text-cyan-400 transition duration-200">Servicio Técnico</a>
-                <a href="#tienda" class="text-slate-300 hover:text-cyan-400 transition duration-200">Tienda y Accesorios</a>
-                <a href="#entretenimiento" class="text-slate-300 hover:text-cyan-400 transition duration-200">Entretenimiento TV</a>
-                <a href="#contacto" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold shadow-neon-cyan hover:opacity-90 transition duration-200">
-                    ¡Contáctanos!
-                </a>
-            </nav>
-
-            <!-- Botón Menú Móvil -->
-            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-cyan-400 focus:outline-none text-2xl">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo-container">
+            <span class="logo-top">One</span>
+            <span class="logo-main">Player</span>
         </div>
-
-        <!-- Menú Desplegable Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cardBg border-b border-slate-800 px-6 py-6 space-y-4">
-            <a href="#servicio-tecnico" class="block text-slate-300 hover:text-cyan-400 font-medium">Servicio Técnico</a>
-            <a href="#tienda" class="block text-slate-300 hover:text-cyan-400 font-medium">Tienda y Accesorios</a>
-            <a href="#entretenimiento" class="block text-slate-300 hover:text-cyan-400 font-medium">Entretenimiento TV</a>
-            <a href="#contacto" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold shadow-neon-cyan">
-                ¡Contáctanos!
-            </a>
-        </div>
+        <nav>
+            <ul>
+                <li><a href="#servicio-tecnico">Servicio Técnico</a></li>
+                <li><a href="#tienda">Tienda & Accesorios</a></li>
+                <li><a href="#tv">Entertainment TV</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Sección Principal (Hero Section) -->
-    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
-        <!-- Efectos de luces de fondo -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute top-1/3 left-1/3 w-[250px] h-[250px] sm:w-[500px] sm:h-[500px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none"></div>
-
-        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-900/80 border border-slate-700 text-xs sm:text-sm text-cyan-400 mb-6 shadow-neon-cyan">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                <span>Tecnología, Reparación y Entretenimiento Pro</span>
-            </div>
-            
-            <h1 class="font-tech text-5xl sm:text-7xl md:text-8xl font-black tracking-wider uppercase mb-6 bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent neon-text-cyan">
-                ONE PLAYER
-            </h1>
-            
-            <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                El centro tecnológico definitivo. Soluciones profesionales para tu celular, la mejor selección en accesorios tecnológicos y entretenimiento ilimitado sin pagar de más.
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#servicio-tecnico" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold text-lg shadow-neon-cyan hover:scale-105 transition duration-300 text-center">
-                    Ver Servicios & Tienda
-                </a>
-                <a href="#entretenimiento" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-cardBg border border-slate-700 hover:border-cyan-400 text-slate-200 font-bold text-lg transition duration-300 text-center">
-                    One Player TV & Play
-                </a>
-            </div>
-        </div>
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <section class="hero">
+        <h1>ONE PLAYER</h1>
+        <p>Soluciones tecnológicas integrales, servicio técnico especializado de alta precisión y entretenimiento multimedia avanzado.</p>
     </section>
 
-    <!-- Sección de Servicio Técnico de Celulares -->
-    <section id="servicio-tecnico" class="py-20 relative border-t border-slate-800/60 bg-gradient-to-b from-transparent to-cardBg/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-tech text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                    Servicio Técnico Especializado
-                </h2>
-                <p class="text-slate-400 max-w-xl mx-auto">
-                    Reparación rápida, con componentes de máxima calidad y garantía asegurada para devolverle la vida a tu dispositivo.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Tarjeta 1: Cambio de Pantallas -->
-                <div class="glow-border bg-cardBg border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-2 transition duration-300">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition duration-300"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-6 shadow-neon-cyan">
-                        <i class="fa-solid fa-mobile-screen"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold font-tech mb-3 text-slate-100">Cambio de Pantallas (Módulos)</h3>
-                    <p class="text-slate-400 mb-6 leading-relaxed">
-                        Sustitución de módulos completos con tecnología original y táctil de alta precisión. Cero fallas, acabado perfecto.
-                    </p>
-                    <a href="#contacto" class="inline-flex items-center text-cyan-400 font-semibold group-hover:translate-x-2 transition duration-200">
-                        <span>Cotizar reparación</span>
-                        <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 2: Cambio de Baterías -->
-                <div class="glow-border bg-cardBg border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-2 transition duration-300">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition duration-300"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-neon-purple">
-                        <i class="fa-solid fa-battery-full"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold font-tech mb-3 text-slate-100">Cambio de Baterías</h3>
-                    <p class="text-slate-400 mb-6 leading-relaxed">
-                        ¿Tu celular se apaga rápido? Instalamos baterías de alto rendimiento con 100% de salud inicial y máxima duración.
-                    </p>
-                    <a href="#contacto" class="inline-flex items-center text-purple-400 font-semibold group-hover:translate-x-2 transition duration-200">
-                        <span>Cotizar reparación</span>
-                        <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-
-                <!-- Tarjeta 3: Cambio de Placas de Carga -->
-                <div class="glow-border bg-cardBg border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-2 transition duration-300">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition duration-300"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/30 flex items-center justify-center text-green-400 text-2xl mb-6 shadow-neon-green">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold font-tech mb-3 text-slate-100">Placas de Carga</h3>
-                    <p class="text-slate-400 mb-6 leading-relaxed">
-                        Solución definitiva para problemas de carga lenta, falsos contactos o puertos dañados. Carga rápida recuperada al instante.
-                    </p>
-                    <a href="#contacto" class="inline-flex items-center text-green-400 font-semibold group-hover:translate-x-2 transition duration-200">
-                        <span>Cotizar reparación</span>
-                        <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Tienda y Accesorios -->
-    <section id="tienda" class="py-20 relative border-t border-slate-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-tech text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
-                    Tienda & Accesorios Tecnológicos
-                </h2>
-                <p class="text-slate-400 max-w-xl mx-auto">
-                    Equipamiento de primer nivel para potenciar tus dispositivos y tu día a día.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Producto 1 -->
-                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-cyan-400 transition duration-300">
-                    <div class="w-20 h-20 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-cyan-400 text-3xl group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-plug-circle-bolt"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-200 mb-1">Cargadores Rápidos</h4>
-                    <span class="text-xs text-cyan-400 font-semibold mb-3">PD 20W / 33W / 65W</span>
-                    <a href="#contacto" class="mt-auto w-full py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-300 hover:bg-cyan-500 hover:text-black hover:border-transparent transition duration-200">Consultar</a>
-                </div>
-
-                <!-- Producto 2 -->
-                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-purple-400 transition duration-300">
-                    <div class="w-20 h-20 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-purple-400 text-3xl group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-200 mb-1">Fundas & Vidrios</h4>
-                    <span class="text-xs text-purple-400 font-semibold mb-3">Anti-golpes & Hidrogel</span>
-                    <a href="#contacto" class="mt-auto w-full py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-300 hover:bg-purple-600 hover:text-white hover:border-transparent transition duration-200">Consultar</a>
-                </div>
-
-                <!-- Producto 3 -->
-                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-green-400 transition duration-300">
-                    <div class="w-20 h-20 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-green-400 text-3xl group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-headphones-simple"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-200 mb-1">Audio & Auriculares</h4>
-                    <span class="text-xs text-green-400 font-semibold mb-3">Inalámbricos & TWS</span>
-                    <a href="#contacto" class="mt-auto w-full py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-300 hover:bg-green-400 hover:text-black hover:border-transparent transition duration-200">Consultar</a>
-                </div>
-
-                <!-- Producto 4 -->
-                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-cyan-400 transition duration-300">
-                    <div class="w-20 h-20 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-cyan-400 text-3xl group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-microchip"></i>
-                    </div>
-                    <h4 class="font-bold text-slate-200 mb-1">Gadgets & Smartwatch</h4>
-                    <span class="text-xs text-cyan-400 font-semibold mb-3">Tecnología Wearable</span>
-                    <a href="#contacto" class="mt-auto w-full py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-300 hover:bg-cyan-500 hover:text-black hover:border-transparent transition duration-200">Consultar</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de One Players Entertainment & TV -->
-    <section id="entretenimiento" class="py-20 relative border-t border-slate-800/60 bg-gradient-to-t from-transparent to-cardBg/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-cardBg via-slate-900 to-cardBg border border-slate-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
-                <!-- Efecto lumínico de fondo -->
-                <div class="absolute -top-24 -right-24 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10">
-                    <div>
-                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase mb-4 tracking-wider">
-                            <i class="fa-solid fa-tv mr-1"></i> Entretenimiento TV Pro
-                        </div>
-                        <h2 class="font-tech text-3xl sm:text-4xl font-black mb-6 text-slate-100">
-                            ONE PLAYER <span class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">ENTERTAINMENT & TV</span>
-                        </h2>
-                        <p class="text-slate-300 text-base sm:text-lg mb-6 leading-relaxed">
-                            ¿Cansado de pagar fortunas mensuales en servicios de televisión por cable y múltiples plataformas de streaming fraccionadas? Tenemos la solución definitiva.
-                        </p>
-                        
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-start space-x-3 text-slate-300">
-                                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
-                                <span><strong>Todo en un solo lugar:</strong> Canales en vivo nacionales e internacionales, deportes, películas y series estreno.</span>
-                            </li>
-                            <li class="flex items-start space-x-3 text-slate-300">
-                                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
-                                <span><strong>Ahorro inteligente:</strong> Olvídate de pagar de más mes a mes por servicios que apenas usas.</span>
-                            </li>
-                            <li class="flex items-start space-x-3 text-slate-300">
-                                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
-                                <span><strong>Alta compatibilidad:</strong> Funciona en Smart TV, TV Box, teléfonos y computadoras de manera fluida.</span>
-                            </li>
-                        </ul>
-
-                        <a href="#contacto" class="inline-flex items-center space-x-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-cyan-500 text-black font-bold text-lg shadow-neon-purple hover:scale-105 transition duration-300">
-                            <span>¡Quiero mi acceso a TV!</span>
-                            <i class="fa-solid fa-bolt"></i>
-                        </a>
-                    </div>
-
-                    <!-- Panel visual interactivo de TV -->
-                    <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-6 relative">
-                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <span class="text-xs font-tech text-slate-400">STREAMING_SERVER_ACTIVE</span>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-cardBg p-4 rounded-xl border border-slate-800 text-center hover:border-cyan-400 transition duration-200">
-                                <i class="fa-solid fa-satellite-dish text-cyan-400 text-3xl mb-2"></i>
-                                <h4 class="font-bold text-sm text-slate-200">TV en Vivo</h4>
-                                <span class="text-xs text-slate-400">+1000 Canales HD</span>
-                            </div>
-                            <div class="bg-cardBg p-4 rounded-xl border border-slate-800 text-center hover:border-purple-400 transition duration-200">
-                                <i class="fa-solid fa-film text-purple-400 text-3xl mb-2"></i>
-                                <h4 class="font-bold text-sm text-slate-200">Películas & Series</h4>
-                                <span class="text-xs text-slate-400">Estrenos Diarios</span>
-                            </div>
-                            <div class="bg-cardBg p-4 rounded-xl border border-slate-800 text-center hover:border-green-400 transition duration-200">
-                                <i class="fa-solid fa-futbol text-green-400 text-3xl mb-2"></i>
-                                <h4 class="font-bold text-sm text-slate-200">Deportes Pro</h4>
-                                <span class="text-xs text-slate-400">Fútbol & Ligas Top</span>
-                            </div>
-                            <div class="bg-cardBg p-4 rounded-xl border border-slate-800 text-center hover:border-cyan-400 transition duration-200">
-                                <i class="fa-solid fa-bolt text-cyan-400 text-3xl mb-2"></i>
-                                <h4 class="font-bold text-sm text-slate-200">Sin Cortes</h4>
-                                <span class="text-xs text-slate-400">Servicio Estable</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Contacto y Footer -->
-    <footer id="contacto" class="bg-slate-950 border-t border-slate-800 pt-16 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+    <!-- SERVICIO TÉCNICO -->
+    <section id="servicio-tecnico">
+        <h2 class="section-title">Servicio Técnico Profesional</h2>
+        <div class="grid-3">
+            <div class="card">
                 <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-black font-black">
-                            <i class="fa-solid fa-gamepad"></i>
-                        </div>
-                        <span class="font-tech text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">ONE PLAYER</span>
-                    </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                        Tu tienda de confianza para reparación técnica de celulares, accesorios de alta gama y entretenimiento en streaming sin pagar de más.
-                    </p>
+                    <h3>Cambio de Pantallas (Módulos)</h3>
+                    <p>Sustitución de módulos completos con tecnología original y táctil de alta precisión. Cero fallas, acabado perfecto.</p>
                 </div>
-
-                <div>
-                    <h4 class="font-tech text-slate-200 font-bold mb-4">Enlaces Rápidos</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#servicio-tecnico" class="hover:text-cyan-400 transition duration-200">Servicio Técnico (Pantallas, Baterías, Placas)</a></li>
-                        <li><a href="#tienda" class="hover:text-cyan-400 transition duration-200">Tienda y Accesorios Tecnológicos</a></li>
-                        <li><a href="#entretenimiento" class="hover:text-cyan-400 transition duration-200">One Player Entertainment & TV</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-tech text-slate-200 font-bold mb-4">Contacto Directo</h4>
-                    <p class="text-slate-400 text-sm mb-4">¿Tenés dudas o querés consultar presupuestos? Escribinos ahora mismo.</p>
-                    <a href="https://wa.me/" target="_blank" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-900/40 transition duration-200">
-                        <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>Abrir WhatsApp</span>
-                    </a>
-                </div>
+                <a href="https://wa.me/" target="_blank" class="btn">Cotizar reparación</a>
             </div>
-
-            <div class="border-t border-slate-900 pt-6 text-center text-xs text-slate-500">
-                &copy; 2026 ONE PLAYER. Todos los derechos reservados. Diseñado con estilo tecnológico "uff".
+            <div class="card">
+                <div>
+                    <h3>Cambio de Baterías</h3>
+                    <p>¿Tu celular se apaga rápido? Instalamos baterías de alto rendimiento con 100% de salud inicial y máxima duración.</p>
+                </div>
+                <a href="https://wa.me/" target="_blank" class="btn">Cotizar reparación</a>
             </div>
+            <div class="card">
+                <div>
+                    <h3>Placas de Carga</h3>
+                    <p>Solución definitiva para problemas de carga lenta, falsos contactos o puertos dañados. Carga rápida recuperada al instante.</p>
+                </div>
+                <a href="https://wa.me/" target="_blank" class="btn">Cotizar reparación</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIENDA & ACCESORIOS (Sube tu foto haciendo clic en el recuadro) -->
+    <section id="tienda">
+        <h2 class="section-title">Tienda & Accesorios Tecnológicos</h2>
+        <div class="grid-3">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="image-upload-box" onclick="this.querySelector('input').click()">
+                    <span class="upload-text">Click para subir foto del producto</span>
+                    <img src="" alt="Vista previa">
+                    <input type="file" accept="image/*" onchange="previewImage(this)">
+                </div>
+                <div class="product-title">Cargadores Rápidos</div>
+                <div class="product-price">PD 20W / 33W / 65W</div>
+                <a href="https://wa.me/" target="_blank" class="btn" style="width: 100%;">Consultar</a>
+            </div>
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="image-upload-box" onclick="this.querySelector('input').click()">
+                    <span class="upload-text">Click para subir foto del producto</span>
+                    <img src="" alt="Vista previa">
+                    <input type="file" accept="image/*" onchange="previewImage(this)">
+                </div>
+                <div class="product-title">Fundas & Vidrios</div>
+                <div class="product-price">Anti-golpes & Hidrogel</div>
+                <a href="https://wa.me/" target="_blank" class="btn" style="width: 100%;">Consultar</a>
+            </div>
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="image-upload-box" onclick="this.querySelector('input').click()">
+                    <span class="upload-text">Click para subir foto del producto</span>
+                    <img src="" alt="Vista previa">
+                    <input type="file" accept="image/*" onchange="previewImage(this)">
+                </div>
+                <div class="product-title">Audio & Auriculares</div>
+                <div class="product-price">Inalámbricos & TWS</div>
+                <a href="https://wa.me/" target="_blank" class="btn" style="width: 100%;">Consultar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENTERTAINMENT TV PRO -->
+    <section id="tv">
+        <h2 class="section-title">Entertainment TV Pro</h2>
+        <div class="tv-container">
+            <div class="tv-content">
+                <h3>ONE PLAYER ENTERTAINMENT & TV</h3>
+                <p>¿Cansado de pagar fortunas mensuales en servicios de televisión por cable tradicionales y múltiples plataformas de streaming fraccionadas? Tenemos la solución tecnológica definitiva.</p>
+                <ul class="tv-features">
+                    <li>Todo en un solo lugar: Canales en vivo nacionales e internacionales, deportes, películas y series estreno.</li>
+                    <li>Ahorro inteligente: Optimiza tus gastos mensuales evitando sobrepagos innecesarios.</li>
+                    <li>Alta compatibilidad: Funciona de forma fluida en Smart TV, TV Box, teléfonos y computadoras.</li>
+                </ul>
+                <a href="https://wa.me/" target="_blank" class="btn-tv">¡Quiero mi acceso a TV!</a>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 5rem; text-shadow: 0 0 30px var(--neon-purple);">📺⚡</div>
+                <p style="color: var(--text-muted); margin-top: 15px; font-size: 0.95rem;">Tecnología multimedia optimizada y estable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA PROFESIONAL -->
+    <footer>
+        <div class="logo-container" style="align-items: center; margin-bottom: 15px;">
+            <span class="logo-top">One</span>
+            <span class="logo-main">Player</span>
+        </div>
+        <p>Tu tienda de confianza para reparación técnica de celulares, accesorios de alta gama y entretenimiento en streaming optimizado.</p>
+        <div class="copyright">
+            &copy; 2026 ONE PLAYER. Todos los derechos reservados.
         </div>
     </footer>
 
-    <!-- JavaScript Interactivo -->
+    <!-- SCRIPT PARA PREVISUALIZAR IMÁGENES LOCALMENTE -->
     <script>
-        // Toggle Menú Móvil
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        function previewImage(input) {
+            const box = input.parentElement;
+            const img = box.querySelector('img');
+            const text = box.querySelector('.upload-text');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Cerrar menú móvil al hacer clic en un enlace
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                    text.style.display = 'none';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 </body>
 </html>
