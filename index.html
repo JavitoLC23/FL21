@@ -4,32 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONEPLAYER | Servicio Técnico & Store</title>
-    <!-- FUENTES GOOGLE -->
+
+    <!-- FUENTES PRECONNECT & EXTERNAS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+        /* ==========================================
+           1. VARIABLES GLOBALES & THEME CYBERPUNK
+           ========================================== */
         :root {
             --bg-dark: #030308;
-            --card-bg: rgba(12, 13, 24, 0.75);
+            --bg-card: rgba(12, 13, 24, 0.75);
+            --bg-header: rgba(3, 3, 8, 0.85);
             --neon-cyan: #00f3ff;
             --neon-purple: #ab00ff;
             --neon-pink: #ff007f;
             --neon-green: #00ff66;
+            --neon-yellow: #ffe600;
             --text-main: #ffffff;
             --text-dim: #a0a5c0;
-            --glow-cyan: 0 0 15px rgba(0, 243, 255, 0.5);
-            --glow-purple: 0 0 15px rgba(171, 0, 255, 0.5);
-            --glow-purple-extreme: 0 0 25px rgba(171, 0, 255, 0.8), 0 0 40px rgba(171, 0, 255, 0.4);
-            --glow-green-extreme: 0 0 20px rgba(0, 255, 102, 0.8);
+            --text-dark: #05050a;
+            --glow-cyan-sm: 0 0 10px rgba(0, 243, 255, 0.4);
+            --glow-cyan-lg: 0 0 25px rgba(0, 243, 255, 0.7), 0 0 45px rgba(0, 243, 255, 0.3);
+            --glow-purple-lg: 0 0 25px rgba(171, 0, 255, 0.8), 0 0 45px rgba(171, 0, 255, 0.4);
+            --glow-pink-lg: 0 0 25px rgba(255, 0, 127, 0.8), 0 0 45px rgba(255, 0, 127, 0.4);
+            --glow-green-lg: 0 0 25px rgba(0, 255, 102, 0.8), 0 0 45px rgba(0, 255, 102, 0.4);
+            --border-cyan: 1px solid rgba(0, 243, 255, 0.2);
+            --border-purple: 1px solid rgba(171, 0, 255, 0.2);
+            --border-pink: 1px solid rgba(255, 0, 127, 0.2);
+            --radius-card: 12px;
+            --radius-btn: 4px;
+            --transition-smooth: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        * {
+        /* ==========================================
+           2. RESET & BASE STYLES
+           ========================================== */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
+        }
+
+        html {
+            font-size: 16px;
+            overflow-x: hidden;
         }
 
         body {
@@ -38,9 +60,15 @@
             font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* FONDO CYBER MESH MULTICAPA */
+        /* ==========================================
+           3. BACKGROUND & CANVAS ANIMADO
+           ========================================== */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -48,7 +76,8 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 50% 20%, rgba(171, 0, 255, 0.15), transparent 40%),
-                        radial-gradient(circle at 80% 80%, rgba(0, 243, 255, 0.1), transparent 40%);
+                        radial-gradient(circle at 80% 80%, rgba(0, 243, 255, 0.1), transparent 40%),
+                        radial-gradient(circle at 20% 70%, rgba(255, 0, 127, 0.08), transparent 35%);
             z-index: -3;
         }
 
@@ -93,16 +122,18 @@
             background-size: 100% 4px;
             z-index: 999;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
-        /* HEADER & NAVBAR */
+        /* ==========================================
+           4. HEADER & NAVEGACIÓN (LOGO ALINEADO A LA IZQUIERDA)
+           ========================================== */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(3, 3, 8, 0.85);
+            background: var(--bg-header);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 243, 255, 0.2);
@@ -111,12 +142,13 @@
         }
 
         .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
         }
 
         .logo {
@@ -126,7 +158,10 @@
             color: #fff;
             text-decoration: none;
             letter-spacing: 2px;
-            text-shadow: var(--glow-cyan);
+            text-shadow: var(--glow-cyan-sm);
+            display: flex;
+            align-items: center;
+            gap: 2px;
         }
 
         .logo span {
@@ -136,7 +171,8 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         nav a {
@@ -144,25 +180,27 @@
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.9rem;
+            font-weight: 600;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             position: relative;
+            padding: 0.3rem 0;
         }
 
         nav a:hover {
             color: var(--neon-cyan);
-            text-shadow: var(--glow-cyan);
+            text-shadow: var(--glow-cyan-sm);
         }
 
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background: var(--neon-cyan);
-            box-shadow: var(--glow-cyan);
+            box-shadow: var(--glow-cyan-sm);
             transition: width 0.3s ease;
         }
 
@@ -173,35 +211,42 @@
         .mobile-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
             background: transparent;
             border: none;
             cursor: pointer;
+            z-index: 1002;
         }
 
         .mobile-toggle span {
-            width: 25px;
+            width: 100%;
             height: 3px;
             background-color: var(--neon-cyan);
-            box-shadow: var(--glow-cyan);
+            box-shadow: var(--glow-cyan-sm);
+            border-radius: 2px;
             transition: all 0.3s ease;
         }
 
-        /* MOBILE DRAWER */
+        /* ==========================================
+           5. MOBILE DRAWER / MENÚ DESPLEGABLE
+           ========================================== */
         .mobile-drawer {
             position: fixed;
             top: 0;
             right: -100%;
-            width: 250px;
+            width: 280px;
             height: 100vh;
-            background: rgba(8, 9, 18, 0.97);
-            backdrop-filter: blur(15px);
+            background: rgba(8, 9, 18, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-left: 1px solid var(--neon-cyan);
-            box-shadow: -5px 0 25px rgba(0, 243, 255, 0.2);
+            box-shadow: -10px 0 30px rgba(0, 243, 255, 0.2);
             z-index: 1001;
             display: flex;
             flex-direction: column;
-            padding: 6rem 2rem 2rem;
+            padding: 7rem 2rem 2rem;
             gap: 2rem;
             transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
         }
@@ -215,15 +260,23 @@
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-size: 1.1rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .drawer-link:hover {
             color: var(--neon-cyan);
-            text-shadow: var(--glow-cyan);
+            text-shadow: var(--glow-cyan-sm);
+            transform: translateX(5px);
         }
 
-        /* HERO SECTION */
+        /* ==========================================
+           6. HERO SECTION
+           ========================================== */
         .hero {
             min-height: 85vh;
             display: flex;
@@ -235,29 +288,32 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
+            margin: 0 auto;
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
             font-weight: 900;
             letter-spacing: 4px;
             color: #fff;
             text-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 40px rgba(171, 0, 255, 0.4);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
         }
 
         .hero p {
             font-size: clamp(1.1rem, 2vw, 1.4rem);
             color: var(--text-dim);
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.8rem;
             line-height: 1.6;
+            font-weight: 500;
         }
 
         .btn-main-rgb {
             display: inline-block;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.8rem;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             font-size: 1rem;
@@ -265,13 +321,15 @@
             text-decoration: none;
             letter-spacing: 2px;
             text-transform: uppercase;
-            border-radius: 4px;
+            border-radius: var(--radius-btn);
             background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
             box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
             transition: all 0.3s ease;
             position: relative;
             z-index: 1;
             overflow: hidden;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-main-rgb::before {
@@ -292,11 +350,13 @@
         }
 
         .btn-main-rgb:hover {
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.8), 0 0 50px rgba(171, 0, 255, 0.6);
+            box-shadow: var(--glow-cyan-lg), var(--glow-purple-lg);
             transform: translateY(-3px) scale(1.02);
         }
 
-        /* SECCIONES Y TARJETAS */
+        /* ==========================================
+           7. SECCIONES GENERALES & TARJETAS
+           ========================================== */
         .section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -305,13 +365,13 @@
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 4vw, 2.3rem);
             text-align: center;
             margin-bottom: 3.5rem;
             letter-spacing: 2px;
             color: #fff;
             position: relative;
-            text-shadow: var(--glow-cyan);
+            text-shadow: var(--glow-cyan-sm);
         }
 
         .section-title::after {
@@ -320,7 +380,7 @@
             width: 80px;
             height: 3px;
             background: var(--neon-cyan);
-            box-shadow: var(--glow-cyan);
+            box-shadow: var(--glow-cyan-sm);
             margin: 0.8rem auto 0;
             border-radius: 2px;
         }
@@ -332,15 +392,17 @@
         }
 
         .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 243, 255, 0.15);
-            border-radius: 12px;
+            background: var(--bg-card);
+            border: var(--border-cyan);
+            border-radius: var(--radius-card);
             overflow: hidden;
             backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s var(--transition-smooth);
             display: flex;
             flex-direction: column;
             will-change: transform;
+            position: relative;
         }
 
         .card:hover {
@@ -354,6 +416,7 @@
             height: 200px;
             overflow: hidden;
             position: relative;
+            background: #000;
         }
 
         .card-img-wrapper img {
@@ -364,7 +427,7 @@
         }
 
         .card:hover .card-img-wrapper img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .card-body {
@@ -376,9 +439,11 @@
 
         .card-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            font-weight: 700;
             margin-bottom: 0.8rem;
             color: #fff;
+            letter-spacing: 0.5px;
         }
 
         .card-desc {
@@ -401,17 +466,21 @@
             font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 1px;
-            border-radius: 4px;
+            border-radius: var(--radius-btn);
             transition: all 0.3s ease;
         }
 
         .card-btn:hover {
             background: var(--neon-cyan);
             color: #000;
-            box-shadow: var(--glow-cyan);
+            box-shadow: var(--glow-cyan-sm);
         }
 
-        /* TIENDA CARDS OPTIMIZACIÓN */
+        /* ESTILOS ESPECÍFICOS: STORE & GEAR */
+        .tienda-card {
+            border: var(--border-pink);
+        }
+
         .tienda-card:hover {
             border-color: var(--neon-pink);
             box-shadow: 0 10px 30px rgba(255, 0, 127, 0.25);
@@ -428,7 +497,11 @@
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
         }
 
-        /* TV CARDS OPTIMIZACIÓN */
+        /* ESTILOS ESPECÍFICOS: TV ENTERTAINMENT */
+        .tv-card {
+            border: var(--border-purple);
+        }
+
         .tv-card:hover {
             border-color: var(--neon-purple);
             box-shadow: 0 10px 30px rgba(171, 0, 255, 0.3);
@@ -442,10 +515,12 @@
         .tv-card .card-btn:hover, .tv-card .card-btn:active {
             background: var(--neon-purple);
             color: #fff;
-            box-shadow: var(--glow-purple-extreme);
+            box-shadow: var(--glow-purple-lg);
         }
 
-        /* FLOATING WHATSAPP BUTTON */
+        /* ==========================================
+           8. BOTÓN FLOTANTE DE WHATSAPP
+           ========================================== */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -457,7 +532,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--glow-green-extreme), 0 8px 25px rgba(0,0,0,0.8);
+            box-shadow: var(--glow-green-lg), 0 8px 25px rgba(0,0,0,0.8);
             z-index: 2000;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -465,7 +540,7 @@
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.15) rotate(8deg);
+            transform: scale(1.12) rotate(8deg);
             box-shadow: 0 0 30px #00ff66, 0 0 50px rgba(0, 255, 102, 0.8);
         }
 
@@ -490,7 +565,9 @@
             100% { transform: scale(1.65); opacity: 0; }
         }
 
-        /* FOOTER */
+        /* ==========================================
+           9. FOOTER
+           ========================================== */
         footer {
             background: rgba(2, 2, 6, 0.98);
             border-top: 2px solid var(--neon-cyan);
@@ -510,8 +587,14 @@
             text-align: center;
         }
 
-        /* RESPONSIVE ANDROID */
+        /* ==========================================
+           10. MEDIA QUERIES / RESPONSIVO
+           ========================================== */
         @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+
             nav ul {
                 display: none;
             }
@@ -526,7 +609,7 @@
             }
 
             .section {
-                padding: 3rem 1rem;
+                padding: 3.5rem 1.2rem;
             }
 
             .hero {
@@ -551,18 +634,22 @@
             .grid-container {
                 grid-template-columns: 1fr;
             }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- FONDO CYBER MESH MEJORADO MULTICAPA -->
+    <!-- FONDO Y CANVAS MULTICAPA -->
     <div class="cyber-bg"></div>
     <div class="cyber-grid"></div>
     <canvas id="bg-canvas"></canvas>
     <div class="scanlines"></div>
 
-    <!-- HEADER / NAVBAR -->
+    <!-- HEADER DE NAVEGACIÓN -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">ONE<span>PLAYER</span></a>
@@ -573,7 +660,7 @@
                     <li><a href="#tv">TV Entertainment</a></li>
                 </ul>
             </nav>
-            <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Abrir Menú">
+            <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Abrir Menú de Navegación">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -581,14 +668,14 @@
         </div>
     </header>
 
-    <!-- MOBILE DRAWER -->
+    <!-- MENÚ LATERAL MÓVIL (DRAWER) -->
     <div class="mobile-drawer" id="mobile-drawer">
         <a href="#tecnico" class="drawer-link">Laboratorio Técnico</a>
         <a href="#tienda" class="drawer-link">Store & Gear</a>
         <a href="#tv" class="drawer-link">TV Entertainment</a>
     </div>
 
-    <!-- HERO SECTION LIMPIO SIN CUADRO -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
             <h1>ONEPLAYER</h1>
@@ -597,7 +684,7 @@
         </div>
     </section>
 
-    <!-- LABORATORIO TECNICO SECTION -->
+    <!-- SECCIÓN: LABORATORIO TÉCNICO -->
     <section id="tecnico" class="section">
         <h2 class="section-title">Laboratorio Técnico</h2>
         <div class="grid-container">
@@ -638,7 +725,7 @@
         </div>
     </section>
 
-    <!-- STORE & GEAR SECTION -->
+    <!-- SECCIÓN: STORE & GEAR -->
     <section id="tienda" class="section">
         <h2 class="section-title">ONEPLAYER Store & Gear</h2>
         <div class="grid-container">
@@ -690,7 +777,7 @@
         </div>
     </section>
 
-    <!-- TV ENTERTAINMENT SECTION -->
+    <!-- SECCIÓN: TV ENTERTAINMENT -->
     <section id="tv" class="section">
         <h2 class="section-title">ONEPLAYER TV Entertainment</h2>
         <div class="grid-container" style="justify-content: center;">
@@ -714,7 +801,7 @@
         <p>&copy; ONEPLAYER. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- BOTON FLOATING WHATSAPP -->
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
     <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20tengo%20una%20consulta" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Directo">
         <div class="whatsapp-pulse"></div>
         <svg viewBox="0 0 32 32">
@@ -722,146 +809,147 @@
         </svg>
     </a>
 
-    <!-- SCRIPTS CON INTERACTIVIDAD INTERACTIVA PARALLAX Y MEJORAS DE PERFORMANCE -->
+    <!-- LOGICA JAVASCRIPT ANIMACIONES Y NAVEGACIÓN -->
     <script>
-        // MENU MOVIL DRAWER CONTROL
-        const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerLinks = document.querySelectorAll('.drawer-link');
+        document.addEventListener('DOMContentLoaded', () => {
+            // CONTROL MENÚ MÓVIL
+            const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerLinks = document.querySelectorAll('.drawer-link');
 
-        mobileToggleBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileDrawer.classList.toggle('open');
-        });
-
-        drawerLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
+            mobileToggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileDrawer.classList.toggle('open');
             });
-        });
 
-        document.addEventListener('click', (e) => {
-            if (!mobileDrawer.contains(e.target) && !mobileToggleBtn.contains(e.target)) {
-                mobileDrawer.classList.remove('open');
-            }
-        });
+            drawerLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileDrawer.classList.remove('open');
+                });
+            });
 
-        // CANVAS PARTICULAS RED CYBER MEJORADO CON INTERACCIÓN DE CURSOR
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
+            document.addEventListener('click', (e) => {
+                if (!mobileDrawer.contains(e.target) && !mobileToggleBtn.contains(e.target)) {
+                    mobileDrawer.classList.remove('open');
+                }
+            });
 
-        let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
+            // CANVAS DE PARTÍCULAS MEJORADO
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
+            let particles = [];
+            let mouse = { x: null, y: null, radius: 150 };
 
-        window.addEventListener('mouseleave', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
 
-        function resizeCanvas() {
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            canvas.width = window.innerWidth * dpr;
-            canvas.height = window.innerHeight * dpr;
-            ctx.scale(dpr, dpr);
-            initParticles();
-        }
+            window.addEventListener('mouseleave', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
 
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * window.innerWidth;
-                this.y = Math.random() * window.innerHeight;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-                this.radius = Math.random() * 2 + 0.8;
-                this.color = Math.random() > 0.5 ? '#00f3ff' : (Math.random() > 0.5 ? '#ff007f' : '#ab00ff');
-                this.alpha = Math.random() * 0.6 + 0.3;
+            function resizeCanvas() {
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                ctx.scale(dpr, dpr);
+                initParticles();
             }
 
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
 
-                if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
-                if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
+                reset() {
+                    this.x = Math.random() * window.innerWidth;
+                    this.y = Math.random() * window.innerHeight;
+                    this.vx = (Math.random() - 0.5) * 0.8;
+                    this.vy = (Math.random() - 0.5) * 0.8;
+                    this.radius = Math.random() * 2 + 0.8;
+                    this.color = Math.random() > 0.5 ? '#00f3ff' : (Math.random() > 0.5 ? '#ff007f' : '#ab00ff');
+                    this.alpha = Math.random() * 0.6 + 0.3;
+                }
 
-                // Interacción con mouse
-                if (mouse.x !== null && mouse.y !== null) {
-                    const dx = mouse.x - this.x;
-                    const dy = mouse.y - this.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        const angle = Math.atan2(dy, dx);
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        this.x -= Math.cos(angle) * force * 2;
-                        this.y -= Math.sin(angle) * force * 2;
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
+                    if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
+
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const dx = mouse.x - this.x;
+                        const dy = mouse.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < mouse.radius) {
+                            const angle = Math.atan2(dy, dx);
+                            const force = (mouse.radius - distance) / mouse.radius;
+                            this.x -= Math.cos(angle) * force * 2;
+                            this.y -= Math.sin(angle) * force * 2;
+                        }
                     }
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = this.color;
+                    ctx.fill();
+                    ctx.restore();
                 }
             }
 
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = 12;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.min(Math.floor(window.innerWidth / 12), 65);
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 120) {
-                        ctx.save();
-                        ctx.globalAlpha = (1 - dist / 120) * 0.35;
-                        ctx.strokeStyle = particles[i].color;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                        ctx.restore();
-                    }
+            function initParticles() {
+                particles = [];
+                const count = Math.min(Math.floor(window.innerWidth / 12), 65);
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle());
                 }
             }
 
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            function animate() {
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-            requestAnimationFrame(animate);
-        }
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        animate();
+                        if (dist < 120) {
+                            ctx.save();
+                            ctx.globalAlpha = (1 - dist / 120) * 0.35;
+                            ctx.strokeStyle = particles[i].color;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                            ctx.restore();
+                        }
+                    }
+                }
+
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            animate();
+        });
     </script>
 </body>
 </html>
