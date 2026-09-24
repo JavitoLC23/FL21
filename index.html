@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONE PLAYER | Servicio Técnico, Accesorios & TV</title>
-    <!-- Google Fonts: Orbitron & Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>ONE PLAYER | Servicio Técnico, Accesorios & TV Pro Edition</title>
+    <!-- Google Fonts: Orbitron, Plus Jakarta Sans & Rajdhani -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #020205;
-            --bg-card: #0a0b10;
-            --bg-card-hover: #12141d;
+            --bg-base: #010103;
+            --bg-card: #080910;
+            --bg-card-hover: #0f101a;
             --neon-cyan: #00f0ff;
             --neon-purple: #b000ff;
             --neon-pink: #ff007f;
+            --neon-green: #00ff66;
             --text-main: #f4f4f8;
-            --text-muted: #9494a8;
+            --text-muted: #8b8b9e;
+            --border-glow: rgba(0, 240, 255, 0.25);
         }
 
         * {
@@ -31,45 +33,48 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             text-align: center;
+            position: relative;
         }
 
-        /* FONDO CIBERNÉTICO PROFUNDO CON MALLA DE LUZ */
+        /* FONDO CIBERNÉTICO PROFUNDO MULTICAPA */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: 
-                radial-gradient(circle at 10% 15%, rgba(176, 0, 255, 0.07) 0%, transparent 45%),
-                radial-gradient(circle at 90% 85%, rgba(0, 240, 255, 0.07) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.04) 0%, transparent 60%);
-            z-index: -2;
+                radial-gradient(circle at 10% 10%, rgba(176, 0, 255, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.05) 0%, transparent 60%);
+            z-index: -3;
             pointer-events: none;
         }
 
-        /* LÍNEAS DE GRID FUTURISTAS DE FONDO */
+        /* MALLA GEOMÉTRICA FUTURISTA */
         body::after {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
             pointer-events: none;
         }
 
-        /* NAVBAR NIVEL PRO */
+        /* NAVBAR HIGH-END */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 6%;
-            background: rgba(2, 2, 5, 0.82);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 20px 6%;
+            background: rgba(1, 1, 3, 0.85);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .brand-container {
@@ -80,7 +85,7 @@
         }
 
         .brand-top {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 800;
             letter-spacing: 6px;
             color: var(--neon-cyan);
@@ -100,7 +105,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
         }
 
         nav ul li a {
@@ -117,7 +122,7 @@
         nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: -5px; left: 0; width: 0; height: 2px;
+            bottom: -6px; left: 0; width: 0; height: 2px;
             background: var(--neon-cyan);
             transition: width 0.3s ease;
             box-shadow: 0 0 10px var(--neon-cyan);
@@ -125,106 +130,122 @@
 
         nav ul li a:hover {
             color: var(--neon-cyan);
-            text-shadow: 0 0 10px var(--neon-cyan);
+            text-shadow: 0 0 12px var(--neon-cyan);
         }
 
         nav ul li a:hover::after {
             width: 100%;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION ULTRA POTENTE */
         .hero {
-            min-height: 90vh;
+            min-height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 120px 20px 60px 20px;
+            padding: 140px 20px 80px 20px;
             position: relative;
         }
 
-        .hero-tag {
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.4);
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.35);
             color: var(--neon-cyan);
-            padding: 8px 20px;
-            border-radius: 30px;
+            padding: 8px 22px;
+            border-radius: 35px;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 25px;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
-            animation: pulseGlow 3s infinite alternate;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+            animation: heroGlow 3s infinite alternate ease-in-out;
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); border-color: rgba(0, 240, 255, 0.3); }
-            100% { box-shadow: 0 0 35px rgba(0, 240, 255, 0.6); border-color: rgba(0, 240, 255, 0.8); }
+        @keyframes heroGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.15); border-color: rgba(0, 240, 255, 0.25); }
+            100% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.5); border-color: rgba(0, 240, 255, 0.8); }
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-size: clamp(3rem, 7.5vw, 6rem);
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 4px;
             line-height: 1.05;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 20%, var(--neon-cyan) 60%, var(--neon-purple) 100%);
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ffffff 15%, var(--neon-cyan) 55%, var(--neon-purple) 95%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.35));
+            filter: drop-shadow(0 0 50px rgba(0, 240, 255, 0.3));
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 680px;
-            line-height: 1.7;
+            font-size: 1.2rem;
+            max-width: 720px;
+            line-height: 1.75;
             margin-bottom: 45px;
+            font-weight: 400;
         }
 
-        /* SECCIONES GENERALES */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* SECCIONES MAESTRAS */
         section {
-            padding: 100px 7%;
+            padding: 110px 7%;
+            position: relative;
         }
 
-        .section-title-box {
+        .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 65px;
         }
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-size: clamp(2rem, 3.8vw, 2.8rem);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
         }
 
         .section-subtitle {
             color: var(--text-muted);
             font-size: 0.95rem;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
         }
 
-        /* GRILLAS DE TARJETAS PRO */
+        /* GRILLAS PRO */
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
             max-width: 1250px;
             margin: 0 auto;
         }
 
+        /* TARJETAS NIVEL DIOS */
         .custom-card {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
+            border-radius: 22px;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
@@ -233,43 +254,57 @@
             position: relative;
         }
 
-        .custom-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 240, 255, 0.45);
-            box-shadow: 0 20px 50px rgba(0, 240, 255, 0.12), 0 0 20px rgba(176, 0, 255, 0.08);
+        .custom-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
-        /* CONTENEDOR DE IMAGEN ADAPTADO PARA TUS ARCHIVOS LOCALES */
-        .card-img-box {
+        .custom-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 240, 255, 0.12), 0 0 25px rgba(176, 0, 255, 0.1);
+        }
+
+        .custom-card:hover::before {
+            opacity: 1;
+        }
+
+        /* CONTENEDOR DE IMAGEN LOCAL PERFECTAMENTE ADAPTADO */
+        .card-img-container {
             width: 100%;
-            height: 220px;
-            background: #0d0e15;
+            height: 230px;
+            background: #050508;
             position: relative;
             overflow: hidden;
         }
 
-        .card-img-box::after {
+        .card-img-container::after {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, transparent 60%, rgba(10, 11, 16, 0.85));
+            background: linear-gradient(180deg, transparent 50%, rgba(8, 9, 16, 0.95));
             pointer-events: none;
         }
 
-        .card-img-box img {
+        .card-img-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Evita cualquier tipo de deformación o estiramiento */
             object-position: center;
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .custom-card:hover .card-img-box img {
-            transform: scale(1.08);
+        .custom-card:hover .card-img-container img {
+            transform: scale(1.1);
         }
 
-        .card-body {
-            padding: 30px;
+        .card-content {
+            padding: 32px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -278,44 +313,45 @@
 
         .card-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             letter-spacing: 0.5px;
         }
 
         .card-desc {
             color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.65;
-            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
         }
 
-        .card-footer-flex {
+        .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
-            padding-top: 18px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .card-highlight {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 800;
+        .card-tag-badge {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: var(--neon-cyan);
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
         }
 
-        /* BOTONES NEON NIVEL PRO */
-        .btn-neon {
+        /* SISTEMA DE BOTONES NEÓN AVANZADOS */
+        .btn-pro {
             background: transparent;
             color: var(--neon-cyan);
             border: 1px solid var(--neon-cyan);
-            padding: 11px 22px;
-            border-radius: 10px;
+            padding: 12px 26px;
+            border-radius: 12px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
             font-weight: 700;
@@ -325,45 +361,46 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
             text-align: center;
         }
 
-        .btn-neon:hover {
+        .btn-pro:hover {
             background: var(--neon-cyan);
             color: var(--bg-base);
-            box-shadow: 0 0 30px var(--neon-cyan);
-            transform: translateY(-2px);
+            box-shadow: 0 0 35px var(--neon-cyan);
+            transform: translateY(-3px);
         }
 
         .btn-pink {
             border-color: var(--neon-pink);
             color: var(--neon-pink);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.15);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.15);
         }
         .btn-pink:hover {
             background: var(--neon-pink);
             color: #fff;
-            box-shadow: 0 0 30px var(--neon-pink);
+            box-shadow: 0 0 35px var(--neon-pink);
         }
 
         .btn-purple {
             border-color: var(--neon-purple);
             color: var(--neon-purple);
-            box-shadow: 0 0 15px rgba(176, 0, 255, 0.15);
+            box-shadow: 0 0 20px rgba(176, 0, 255, 0.15);
         }
         .btn-purple:hover {
             background: var(--neon-purple);
             color: #fff;
-            box-shadow: 0 0 30px var(--neon-purple);
+            box-shadow: 0 0 35px var(--neon-purple);
         }
 
-        /* FOOTER PRO */
+        /* FOOTER ÉPICO */
         footer {
-            background: #010103;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 70px 7% 30px 7%;
+            background: #000002;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 80px 7% 35px 7%;
             text-align: center;
+            position: relative;
         }
 
         footer .brand-container {
@@ -373,24 +410,26 @@
 
         footer p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 500px;
-            margin: 0 auto 35px auto;
-            line-height: 1.7;
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
         }
 
         .footer-bottom {
             font-size: 0.8rem;
-            color: #55556b;
+            color: #4a4a5e;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 25px;
-            margin-top: 25px;
-            letter-spacing: 1.5px;
+            padding-top: 30px;
+            margin-top: 30px;
+            letter-spacing: 2px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
             nav ul { display: none; }
-            .hero { padding-top: 100px; }
+            .hero { padding-top: 110px; }
         }
     </style>
 </head>
@@ -413,172 +452,143 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="hero-tag">Tecnología & Entretenimiento Pro</div>
+        <div class="hero-badge">
+            <span>⚡ Tecnología de Vanguardia & Multimedia Pro</span>
+        </div>
         <h1>ONE PLAYER</h1>
-        <p>Soluciones técnicas avanzadas para celulares, accesorios de alta gama y entretenimiento multimedia inmersivo para el hogar.</p>
-        <a href="#tecnico" class="btn-neon">Explorar Servicios</a>
+        <p>Soluciones técnicas ultra especializadas para dispositivos móviles, accesorios de máxima durabilidad y plataformas de entretenimiento inmersivo para el hogar.</p>
+        <div class="hero-buttons">
+            <a href="#tecnico" class="btn-pro">Explorar Servicios</a>
+            <a href="#tv" class="btn-pro btn-purple">Entertainment TV</a>
+        </div>
     </section>
 
-    <!-- SERVICIO TÉCNICO -->
+    <!-- SERVICIO TÉCNICO ESPECIALIZADO -->
     <section id="tecnico">
-        <div class="section-title-box">
+        <div class="section-header">
             <h2 class="section-title">Servicio Técnico Especializado</h2>
-            <div class="section-subtitle">Reparaciones de celulares con máxima precisión y garantía oficial</div>
+            <div class="section-subtitle">Reparaciones avanzadas con componentes originales y máxima precisión</div>
         </div>
 
         <div class="grid-cards">
-            <!-- Servicio 1: Módulo -->
+            <!-- Módulo -->
             <div class="custom-card">
-                <div class="card-img-box">
-                    <img src="Modulo.jpg" alt="Cambio de Módulo de Pantalla">
+                <div class="card-img-container">
+                    <img src="Modulo.jpg" alt="Módulo de Pantalla de Celular">
                 </div>
-                <div class="card-body">
+                <div class="card-content">
                     <div>
-                        <div class="card-title">Cambio de Pantallas (Módulos)</div>
-                        <div class="card-desc">Sustitución de módulos completos con tecnología original y táctil de alta precisión. Cero fallas, acabado perfecto.</div>
+                        <div class="card-title">Módulo de Pantalla</div>
+                        <div class="card-desc">Sustitución de módulos completos con tecnología original, respuesta táctil ultra precisa y calibración de fábrica. Cero fallas.</div>
                     </div>
-                    <div class="card-footer-flex">
-                        <span class="card-highlight">Garantía</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar</a>
+                    <div class="card-footer">
+                        <span class="card-tag-badge">Garantía Oficial</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 2: Batería -->
+            <!-- Batería -->
             <div class="custom-card">
-                <div class="card-img-box">
-                    <img src="Baterias.jpg" alt="Cambio de Baterías">
+                <div class="card-img-container">
+                    <img src="Baterias.jpg" alt="Batería de Celular">
                 </div>
-                <div class="card-body">
+                <div class="card-content">
                     <div>
-                        <div class="card-title">Cambio de Baterías</div>
-                        <div class="card-desc">¿Tu celular se apaga rápido? Instalamos baterías de alto rendimiento con 100% de salud inicial y máxima duración.</div>
+                        <div class="card-title">Baterías de Alta Duración</div>
+                        <div class="card-desc">Reemplazo de acumuladores energéticos con 100% de salud inicial, chips de seguridad térmicos y autonomía extendida.</div>
                     </div>
-                    <div class="card-footer-flex">
-                        <span class="card-highlight">Originales</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar</a>
+                    <div class="card-footer">
+                        <span class="card-tag-badge">100% Salud</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Servicio 3: Placa de carga -->
+            <!-- Placa de carga -->
             <div class="custom-card">
-                <div class="card-img-box">
-                    <img src="Placa de carga.jpg" alt="Placas de Carga">
+                <div class="card-img-container">
+                    <img src="Placa de carga.jpg" alt="Placa de Carga y Pin">
                 </div>
-                <div class="card-body">
+                <div class="card-content">
                     <div>
-                        <div class="card-title">Placas de Carga</div>
-                        <div class="card-desc">Solución definitiva para problemas de carga lenta, falsos contactos o puertos dañados. Carga rápida recuperada al instante.</div>
+                        <div class="card-title">Placas de Carga (Pin)</div>
+                        <div class="card-desc">Solución definitiva para problemas de carga intermitente, falsos contactos o puertos USB destruidos. Recupera la carga rápida.</div>
                     </div>
-                    <div class="card-footer-flex">
-                        <span class="card-highlight">Exprés</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar</a>
+                    <div class="card-footer">
+                        <span class="card-tag-badge">Servicio Exprés</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TIENDA & ACCESORIOS -->
+    <!-- TIENDA & ACCESORIOS TECNOLÓGICOS -->
     <section id="tienda">
-        <div class="section-title-box">
-            <h2 class="section-title">Tienda & Accesorios Tecnológicos</h2>
-            <div class="section-subtitle">Todo lo que necesitas para tus dispositivos al mejor precio</div>
+        <div class="section-header">
+            <h2 class="section-title">Tienda & Accesorios</h2>
+            <div class="section-subtitle">Periféricos y componentes diseñados para un rendimiento superior</div>
         </div>
 
         <div class="grid-cards">
-            <!-- Producto 1: Auriculares -->
+            <!-- Cables USB (Tipo C & V8) -->
             <div class="custom-card">
-                <div class="card-img-box">
-                    <img src="USB.jpg" alt="Auriculares">
+                <div class="card-img-container">
+                    <img src="USB.jpg" alt="Cables USB Tipo C y V8 Reforzados">
                 </div>
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Auriculares</div>
-                        <div class="card-desc">Variedad en modelos con cable, inalámbricos y de vincha con gran calidad de sonido envolvente.</div>
-                    </div>
-                    <div class="card-footer-flex">
-                        <span class="card-highlight" style="color: var(--neon-pink);">Consultar</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-pink">Comprar</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 2: Cargadores Tipo C y V8 -->
-            <div class="custom-card">
-                <div class="card-img-box">
-                    <img src="USB.jpg" alt="Cargadores Tipo C y V8">
-                </div>
-                <div class="card-body">
-                    <div>
-                        <div class="card-title">Cargadores Tipo C & V8</div>
-                        <div class="card-desc">Disponibles en versiones de carga normal y turbo rápida con sistema de protección térmica integrado.</div>
-                    </div>
-                    <div class="card-footer-flex">
-                        <span class="card-highlight" style="color: var(--neon-pink);">Consultar</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-pink">Comprar</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Producto 3: Cables USB (Tipo C & V8) -->
-            <div class="custom-card">
-                <div class="card-img-box">
-                    <img src="USB.jpg" alt="Cables USB">
-                </div>
-                <div class="card-body">
+                <div class="card-content">
                     <div>
                         <div class="card-title">Cables USB (Tipo C & V8)</div>
-                        <div class="card-desc">Cables reforzados de alta durabilidad y transferencia veloz de energía y datos estables.</div>
+                        <div class="card-desc">Cables reforzados de alta durabilidad con blindaje mallado, diseñados para transferencia veloz de energía y datos estables.</div>
                     </div>
-                    <div class="card-footer-flex">
-                        <span class="card-highlight" style="color: var(--neon-pink);">Consultar</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-pink">Comprar</a>
+                    <div class="card-footer">
+                        <span class="card-tag-badge" style="color: var(--neon-pink);">Alta Resistencia</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Comprar</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Producto 4: Convertidores TV Android -->
+            <!-- Convertidores TV Android -->
             <div class="custom-card">
-                <div class="card-img-box">
-                    <img src="Convertidores.jpg" alt="Convertidores TV Android">
+                <div class="card-img-container">
+                    <img src="Convertidores.jpg" alt="Convertidor TV Android o Smart Stick">
                 </div>
-                <div class="card-body">
+                <div class="card-content">
                     <div>
                         <div class="card-title">Convertidores TV Android</div>
-                        <div class="card-desc">Transforma cualquier televisor convencional en un centro multimedia inteligente con Android TV.</div>
+                        <div class="card-desc">Transforma cualquier televisor convencional en un centro multimedia inteligente con sistema Android TV y streaming fluido en 4K.</div>
                     </div>
-                    <div class="card-footer-flex">
-                        <span class="card-highlight" style="color: var(--neon-pink);">Consultar</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-pink">Comprar</a>
+                    <div class="card-footer">
+                        <span class="card-tag-badge" style="color: var(--neon-pink);">Smart 4K</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Comprar</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ENTERTAINMENT TV PRO -->
+    <!-- ONE PLAYER ENTERTAINMENT & TV -->
     <section id="tv">
-        <div class="section-title-box">
+        <div class="section-header">
             <h2 class="section-title">ONE PLAYER ENTERTAINMENT & TV</h2>
-            <div class="section-subtitle">Entretenimiento para toda la familia en tu hogar</div>
+            <div class="section-subtitle">Entretenimiento multimedia total para toda la familia en tu hogar</div>
         </div>
 
         <div class="grid-cards" style="max-width: 950px;">
             <div class="custom-card" style="grid-column: 1 / -1;">
-                <div class="card-img-box" style="height: 280px;">
-                    <img src="Tv.jpg" alt="Entretenimiento familiar en el hogar">
+                <div class="card-img-container" style="height: 300px;">
+                    <img src="Tv.jpg" alt="Familia disfrutando entretenimiento en TV en casa">
                 </div>
-                <div class="card-body" style="padding: 45px; text-align: center;">
+                <div class="card-content" style="padding: 50px; text-align: center;">
                     <div>
-                        <div class="card-title" style="font-size: 1.4rem; color: var(--neon-purple); margin-bottom: 15px;">Disfruta todo desde tu hogar</div>
-                        <div class="card-desc" style="font-size: 1.05rem; margin-bottom: 30px; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.8;">
-                            Todo el entretenimiento multimedia, canales en vivo, películas y series para compartir y disfrutar en familia directamente desde la comodidad de tu hogar con la mejor calidad visual.
+                        <div class="card-title" style="font-size: 1.5rem; color: var(--neon-purple); margin-bottom: 18px;">Disfruta en Familia sin Límites</div>
+                        <div class="card-desc" style="font-size: 1.1rem; max-width: 750px; margin: 0 auto 35px auto; line-height: 1.8;">
+                            Todo el entretenimiento multimedia, canales en vivo, películas en estreno y series exclusivas para compartir y disfrutar directamente desde la comodidad de tu hogar con la máxima definición visual y estabilidad garantizada.
                         </div>
                     </div>
-                    <div class="card-footer-flex" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px; justify-content: center;">
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-purple" style="font-size: 0.9rem; padding: 13px 35px;">¡Quiero mi acceso a TV!</a>
+                    <div class="card-footer" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; justify-content: center;">
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-purple" style="font-size: 0.85rem; padding: 15px 40px;">¡Quiero mi acceso a TV!</a>
                     </div>
                 </div>
             </div>
@@ -591,9 +601,9 @@
             <span class="brand-top">One</span>
             <span class="brand-main">Player</span>
         </div>
-        <p>Tu tienda de confianza para reparación técnica de celulares, accesorios y entretenimiento multimedia para el hogar.</p>
+        <p>Tu centro de confianza para reparación técnica avanzada de dispositivos móviles, accesorios de alta gama y entretenimiento multimedia en el hogar.</p>
         <div class="footer-bottom">
-            &copy; 2026 ONE PLAYER. TODOS LOS DERECHOS RESERVADOS.
+            &copy; 2026 ONE PLAYER. TODOS LOS DERECHOS RESERVADOS. PRO EDITION.
         </div>
     </footer>
 
