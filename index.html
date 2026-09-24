@@ -43,7 +43,7 @@
             line-height: 1.5;
         }
 
-        /* FONDO MESH CYBER */
+        /* FONDO MESH CYBER MEJORADO CON NEBULOSAS ANIMADAS */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -55,6 +55,7 @@
                 radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.22) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.22) 0%, transparent 40%),
                 radial-gradient(circle at 50% 50%, rgba(171, 0, 255, 0.2) 0%, transparent 55%),
+                radial-gradient(circle at 80% 10%, rgba(0, 255, 102, 0.12) 0%, transparent 35%),
                 #020205;
             animation: pulseBgGlow 8s ease-in-out infinite alternate;
         }
@@ -88,6 +89,19 @@
             pointer-events: none;
         }
 
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
+            background-size: 100% 4px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
         /* HEADER & NAVBAR */
         header {
             position: fixed;
@@ -119,7 +133,7 @@
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px #00f3ff;
+            text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -127,7 +141,7 @@
 
         .logo span {
             color: var(--neon-pink);
-            text-shadow: 0 0 10px #ff007f;
+            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
         }
 
         nav ul {
@@ -140,7 +154,7 @@
             color: var(--text-light);
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -155,7 +169,7 @@
             background: rgba(0, 243, 255, 0.15);
         }
 
-        /* MOBILE MENU TOGGLE */
+        /* HAMBURGER TOGGLE MÓVIL */
         .mobile-toggle {
             display: none;
             background: transparent;
@@ -173,6 +187,7 @@
             background-color: var(--neon-cyan);
             box-shadow: 0 0 10px var(--neon-cyan);
             border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
         .mobile-drawer {
@@ -190,7 +205,7 @@
             display: flex;
             flex-direction: column;
             padding: 5rem 2rem 2rem 2rem;
-            gap: 1.2rem;
+            gap: 1.5rem;
             transition: right 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
             z-index: 999;
         }
@@ -203,22 +218,28 @@
             color: var(--text-light);
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 700;
             text-transform: uppercase;
             padding: 0.8rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
             text-align: center;
         }
 
-        /* HERO SECTION */
+        .mobile-drawer a:hover {
+            color: var(--neon-pink);
+            text-shadow: var(--glow-pink-extreme);
+        }
+
+        /* HERO SECTION SIN CUADRO EXTERNO */
         .hero {
-            min-height: 65vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 7.5rem 1.2rem 2rem 1.2rem;
+            padding: 8rem 1.2rem 3rem 1.2rem;
             position: relative;
             z-index: 1;
         }
@@ -229,6 +250,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         .hero h1 {
@@ -237,21 +259,24 @@
             font-weight: 900;
             text-transform: uppercase;
             line-height: 1.05;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             background: linear-gradient(135deg, #fff 20%, var(--neon-cyan) 60%, var(--neon-pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 25px rgba(0, 243, 255, 0.7));
+            letter-spacing: 2px;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 3vw, 1.45rem);
+            font-size: clamp(1.15rem, 3.2vw, 1.55rem);
             color: var(--text-dim);
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
             font-weight: 600;
             max-width: 780px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
 
+        /* BOTÓN DINÁMICO QUE CAMBIA DE COLOR (ANIMADO RGB) */
         .btn-main-rgb {
             display: inline-flex;
             align-items: center;
@@ -270,54 +295,24 @@
             text-decoration: none;
             cursor: pointer;
             animation: animateRgbGlow 6s ease infinite;
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), 0 0 45px rgba(255, 0, 127, 0.6);
             transition: transform 0.3s ease;
         }
 
         @keyframes animateRgbGlow {
-            0% { background-position: 0% 50%; box-shadow: 0 0 30px #00f3ff; }
-            33% { background-position: 50% 100%; box-shadow: 0 0 30px #ab00ff; }
-            66% { background-position: 100% 50%; box-shadow: 0 0 30px #ff007f; }
-            100% { background-position: 0% 50%; box-shadow: 0 0 30px #00ff66; }
+            0% { background-position: 0% 50%; box-shadow: 0 0 30px #00f3ff, 0 0 50px rgba(0, 243, 255, 0.6); }
+            33% { background-position: 50% 100%; box-shadow: 0 0 30px #ab00ff, 0 0 50px rgba(171, 0, 255, 0.6); }
+            66% { background-position: 100% 50%; box-shadow: 0 0 30px #ff007f, 0 0 50px rgba(255, 0, 127, 0.6); }
+            100% { background-position: 0% 50%; box-shadow: 0 0 30px #00ff66, 0 0 50px rgba(0, 255, 102, 0.6); }
         }
 
-        .btn-main-rgb:hover {
+        .btn-main-rgb:hover, .btn-main-rgb:active {
             transform: translateY(-4px) scale(1.05);
-        }
-
-        /* BUSCADOR DE SERVICIOS EN TIEMPO REAL */
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 3rem auto;
-            padding: 0 1.2rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-            background: rgba(10, 10, 26, 0.9);
-            border: 2px solid var(--neon-cyan);
-            border-radius: 30px;
-            outline: none;
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            box-shadow: var(--glow-cyan-extreme);
-            border-color: #fff;
         }
 
         /* SECCIONES Y TITULOS CENTRADOS */
         .section {
-            padding: 3.5rem 1.2rem;
+            padding: 4rem 1.2rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -331,9 +326,10 @@
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
+            position: relative;
             color: #fff;
-            text-shadow: 0 0 15px var(--neon-cyan);
+            text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan);
         }
 
         .section-title::after {
@@ -344,9 +340,10 @@
             background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
             margin: 12px auto 0 auto;
             border-radius: 2px;
+            box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-pink);
         }
 
-        /* CARDS GRID */
+        /* GRID Y CARDS CENTRADAS */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -364,21 +361,24 @@
             justify-content: space-between;
             align-items: center;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             backdrop-filter: blur(12px);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1);
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px) scale(1.02);
             border-color: var(--neon-cyan);
-            box-shadow: var(--glow-cyan-extreme);
+            box-shadow: var(--glow-cyan-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
         }
 
         .card-img-wrapper {
             width: 100%;
-            height: 200px;
+            height: 210px;
             overflow: hidden;
+            position: relative;
             background: #000;
             border-bottom: 2px solid rgba(0, 243, 255, 0.3);
         }
@@ -387,11 +387,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .card:hover .card-img-wrapper img {
-            transform: scale(1.1);
+            transform: scale(1.12);
         }
 
         .card-body {
@@ -399,6 +399,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
             flex-grow: 1;
             width: 100%;
         }
@@ -409,6 +410,9 @@
             font-weight: 700;
             color: #fff;
             margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            text-align: center;
         }
 
         .card-desc {
@@ -417,6 +421,7 @@
             margin-bottom: 1.3rem;
             flex-grow: 1;
             font-weight: 500;
+            text-align: center;
         }
 
         .card-btn {
@@ -429,33 +434,46 @@
             font-size: 0.9rem;
             font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 1px;
             color: #fff;
             background: rgba(0, 243, 255, 0.15);
             border: 2px solid var(--neon-cyan);
             border-radius: 10px;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+            text-align: center;
         }
 
-        .card-btn:hover {
+        .card-btn:hover, .card-btn:active {
             background: var(--neon-cyan);
             color: #000;
             box-shadow: var(--glow-cyan-extreme);
+            font-weight: 900;
         }
 
-        /* TIENDA & TV CARDS */
+        /* VARIACIONES DE COLOR */
         .tienda-card {
             border-color: rgba(255, 0, 127, 0.4);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.2), inset 0 0 15px rgba(255, 0, 127, 0.1);
         }
+
+        .tienda-card .card-img-wrapper {
+            border-bottom-color: rgba(255, 0, 127, 0.3);
+        }
+
         .tienda-card:hover {
             border-color: var(--neon-pink);
-            box-shadow: var(--glow-pink-extreme);
+            box-shadow: var(--glow-pink-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
         }
+
         .tienda-card .card-btn {
-            border-color: var(--neon-pink);
             background: rgba(255, 0, 127, 0.15);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
         }
-        .tienda-card .card-btn:hover {
+
+        .tienda-card .card-btn:hover, .tienda-card .card-btn:active {
             background: var(--neon-pink);
             color: #fff;
             box-shadow: var(--glow-pink-extreme);
@@ -463,85 +481,31 @@
 
         .tv-card {
             border-color: rgba(171, 0, 255, 0.4);
+            box-shadow: 0 0 15px rgba(171, 0, 255, 0.25), inset 0 0 20px rgba(171, 0, 255, 0.15);
         }
+
+        .tv-card .card-img-wrapper {
+            border-bottom-color: rgba(171, 0, 255, 0.4);
+        }
+
         .tv-card:hover {
             border-color: var(--neon-purple);
-            box-shadow: var(--glow-purple-extreme);
+            box-shadow: var(--glow-purple-extreme), 0 15px 35px rgba(0, 0, 0, 0.9);
         }
+
         .tv-card .card-btn {
-            border-color: var(--neon-purple);
             background: rgba(171, 0, 255, 0.2);
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 15px rgba(171, 0, 255, 0.4);
         }
-        .tv-card .card-btn:hover {
+
+        .tv-card .card-btn:hover, .tv-card .card-btn:active {
             background: var(--neon-purple);
             color: #fff;
             box-shadow: var(--glow-purple-extreme);
         }
 
-        /* FAQ DESPLEGABLES */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: rgba(10, 10, 26, 0.85);
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            border-radius: 12px;
-            margin-bottom: 1.2rem;
-            overflow: hidden;
-            transition: border-color 0.3s ease;
-        }
-
-        .faq-item.active {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 1.3rem;
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .faq-toggle-icon {
-            font-size: 1.4rem;
-            color: var(--neon-cyan);
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-toggle-icon {
-            transform: rotate(45deg);
-            color: var(--neon-pink);
-        }
-
-        .faq-answer {
-            padding: 0 1.3rem 1.3rem 1.3rem;
-            color: var(--text-dim);
-            display: none;
-            font-size: 1rem;
-            font-weight: 500;
-            line-height: 1.6;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 1rem;
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        /* WHATSAPP FLOAT */
+        /* FLOATING WHATSAPP BUTTON */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -553,10 +517,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--glow-green-extreme);
+            box-shadow: var(--glow-green-extreme), 0 8px 25px rgba(0,0,0,0.8);
             z-index: 2000;
+            transition: all 0.3s ease;
             text-decoration: none;
             border: 2px solid #fff;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 0 30px #00ff66, 0 0 50px rgba(0, 255, 102, 0.8);
         }
 
         .whatsapp-float svg {
@@ -565,27 +535,94 @@
             fill: #fff;
         }
 
+        .whatsapp-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--neon-green);
+            animation: pulseRing 1.8s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(0.95); opacity: 0.9; }
+            100% { transform: scale(1.65); opacity: 0; }
+        }
+
+        /* FOOTER */
         footer {
             background: rgba(2, 2, 6, 0.98);
             border-top: 2px solid var(--neon-cyan);
+            box-shadow: 0 -5px 20px rgba(0, 243, 255, 0.3);
             padding: 2.5rem 1.2rem;
             text-align: center;
             margin-top: 4rem;
+            position: relative;
+            z-index: 1;
         }
 
+        footer p {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* RESPONSIVE ANDROID */
         @media (max-width: 768px) {
-            nav ul { display: none; }
-            .mobile-toggle { display: flex; }
+            nav ul {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 1.4rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding-top: 7rem;
+            }
+
+            .whatsapp-float {
+                bottom: 18px;
+                right: 18px;
+                width: 58px;
+                height: 58px;
+            }
+
+            .whatsapp-float svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- FONDO CYBER MESH MEJORADO MULTICAPA -->
     <div class="cyber-bg"></div>
     <div class="cyber-grid"></div>
     <canvas id="bg-canvas"></canvas>
+    <div class="scanlines"></div>
 
-    <!-- HEADER -->
+    <!-- HEADER / NAVBAR -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">ONE<span>PLAYER</span></a>
@@ -594,10 +631,9 @@
                     <li><a href="#tecnico">Laboratorio Técnico</a></li>
                     <li><a href="#tienda">Store & Gear</a></li>
                     <li><a href="#tv">TV Entertainment</a></li>
-                    <li><a href="#faq">Preguntas Frecuentes</a></li>
                 </ul>
             </nav>
-            <button class="mobile-toggle" id="mobile-toggle-btn">
+            <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Abrir Menú">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -605,14 +641,14 @@
         </div>
     </header>
 
+    <!-- MOBILE DRAWER -->
     <div class="mobile-drawer" id="mobile-drawer">
         <a href="#tecnico" class="drawer-link">Laboratorio Técnico</a>
         <a href="#tienda" class="drawer-link">Store & Gear</a>
         <a href="#tv" class="drawer-link">TV Entertainment</a>
-        <a href="#faq" class="drawer-link">Preguntas Frecuentes</a>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO SECTION LIMPIO SIN CUADRO -->
     <section class="hero">
         <div class="hero-content">
             <h1>ONEPLAYER</h1>
@@ -621,83 +657,92 @@
         </div>
     </section>
 
-    <!-- BUSCADOR -->
-    <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar servicio o producto (ej: Batería, Módulo, TV)..." onkeyup="filterCards()">
-    </div>
-
-    <!-- LABORATORIO TECNICO -->
+    <!-- LABORATORIO TECNICO SECTION -->
     <section id="tecnico" class="section">
         <h2 class="section-title">Laboratorio Técnico</h2>
         <div class="grid-container">
             
-            <div class="card searchable-card">
-                <div class="card-img-wrapper"><img src="Modulo.jpg" alt="Cambio de Módulo"></div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="Modulo.jpg" alt="Cambio de Módulo y Pantalla">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Cambio de Módulo</h3>
-                    <p class="card-desc">Reparación e instalación de pantallas y displays táctiles con repuestos garantizados.</p>
+                    <p class="card-desc">Reparación e instalación de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.</p>
                     <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20M%C3%B3dulo" class="card-btn" target="_blank">Consultar</a>
                 </div>
             </div>
 
-            <div class="card searchable-card">
-                <div class="card-img-wrapper"><img src="Baterias.jpg" alt="Cambio de Batería"></div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="Baterias.jpg" alt="Cambio de Batería">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Cambio de Batería</h3>
-                    <p class="card-desc">Reemplazo de baterías agotadas para recuperar la autonomía original de tu celular.</p>
+                    <p class="card-desc">Reemplazo de baterías agotadas o infladas para devolverle la autonomía y el máximo rendimiento original a tu celular.</p>
                     <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Cambio%20de%20Bater%C3%ADa" class="card-btn" target="_blank">Consultar</a>
                 </div>
             </div>
 
-            <div class="card searchable-card">
-                <div class="card-img-wrapper"><img src="Placa de carga.jpg" alt="Pin de Carga"></div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="Placa de carga.jpg" alt="Pin y Placa de Carga">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Pin / Placa de Carga</h3>
-                    <p class="card-desc">Solución rápida a conectores dañados, falsos contactos o problemas de carga.</p>
-                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Pin%20de%20Carga" class="card-btn" target="_blank">Consultar</a>
+                    <p class="card-desc">Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tu dispositivo.</p>
+                    <a href="https://wa.me/5492634722710?text=Hola,%20necesito%20presupuesto%20para%20Pin%20o%20Placa%20de%20Carga" class="card-btn" target="_blank">Consultar</a>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- STORE & GEAR -->
+    <!-- STORE & GEAR SECTION -->
     <section id="tienda" class="section">
         <h2 class="section-title">ONEPLAYER Store & Gear</h2>
         <div class="grid-container">
             
-            <div class="card tienda-card searchable-card">
-                <div class="card-img-wrapper"><img src="Auriculares.jpg" alt="Auriculares"></div>
+            <div class="card tienda-card">
+                <div class="card-img-wrapper">
+                    <img src="Auriculares.jpg" alt="Auriculares">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Auriculares</h3>
-                    <p class="card-desc">In-ear, bluetooth y vinchas gaming con sonido HD y bajos potentes.</p>
+                    <p class="card-desc">In-ear, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.</p>
                     <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Auriculares" class="card-btn" target="_blank">Ver Disponibilidad</a>
                 </div>
             </div>
 
-            <div class="card tienda-card searchable-card">
-                <div class="card-img-wrapper"><img src="Cargadores.png" alt="Cargadores"></div>
+            <div class="card tienda-card">
+                <div class="card-img-wrapper">
+                    <img src="Cargadores.png" alt="Cargadores Rápidos">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Cargadores Rápidos</h3>
-                    <p class="card-desc">Carga rápida de alto amperaje para cuidar la salud de tu batería.</p>
+                    <p class="card-desc">Cargadores de pared y carga rápida de alto amperaje para cuidar la salud de la batería de tu dispositivo.</p>
                     <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Cargadores" class="card-btn" target="_blank">Ver Disponibilidad</a>
                 </div>
             </div>
 
-            <div class="card tienda-card searchable-card">
-                <div class="card-img-wrapper"><img src="USB.jpg" alt="Cables USB"></div>
+            <div class="card tienda-card">
+                <div class="card-img-wrapper">
+                    <img src="USB.jpg" alt="Cables USB">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Cables USB</h3>
-                    <p class="card-desc">Cables reforzados Tipo C, iPhone y Micro USB de máxima resistencia.</p>
+                    <p class="card-desc">Cables reinforced Tipo C, Lightning (iPhone) y Micro USB de alta resistencia y carga acelerada.</p>
                     <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Cables%20USB" class="card-btn" target="_blank">Ver Disponibilidad</a>
                 </div>
             </div>
 
-            <div class="card tienda-card searchable-card">
-                <div class="card-img-wrapper"><img src="Convertidores.png" alt="Convertidores"></div>
+            <div class="card tienda-card">
+                <div class="card-img-wrapper">
+                    <img src="Convertidores.png" alt="Convertidores Smart TV">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Convertidores Smart TV</h3>
-                    <p class="card-desc">Transforma cualquier tele antigua en Smart TV de última generación.</p>
+                    <p class="card-desc">Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.</p>
                     <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Convertidores%20Smart%20TV" class="card-btn" target="_blank">Ver Disponibilidad</a>
                 </div>
             </div>
@@ -705,146 +750,142 @@
         </div>
     </section>
 
-    <!-- TV ENTERTAINMENT -->
+    <!-- TV ENTERTAINMENT SECTION -->
     <section id="tv" class="section">
         <h2 class="section-title">ONEPLAYER TV Entertainment</h2>
         <div class="grid-container" style="justify-content: center;">
-            <div class="card tv-card searchable-card" style="max-width: 520px; margin: 0 auto;">
-                <div class="card-img-wrapper" style="height: 240px;"><img src="Tv.jpg" alt="TV Entertainment"></div>
+            
+            <div class="card tv-card" style="max-width: 520px; margin: 0 auto;">
+                <div class="card-img-wrapper" style="height: 240px;">
+                    <img src="Tv.jpg" alt="Servicios para Televisores">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Experiencia TV Familiar</h3>
-                    <p class="card-desc">Una solución de TV única para compartir en familia todo el entretenimiento. Soporte técnico, configuración de apps y convertidores.</p>
+                    <p class="card-desc">Una solución de TV única para compartir en familia todo el mejor entretenimiento, directo desde el confort de tu hogar. Soporte técnico, configuración de apps y convertidores Smart TV.</p>
                     <a href="https://wa.me/5492634722710?text=Hola,%20quiero%20consultar%20por%20Servicios%20de%20TV%20Entertainment" class="card-btn" target="_blank">Activar Servicio</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- PREGUNTAS FRECUENTES -->
-    <section id="faq" class="section">
-        <h2 class="section-title">Preguntas Frecuentes</h2>
-        <div class="faq-container">
-            
-            <div class="faq-item">
-                <button class="faq-question">
-                    ¿Cuánto tarda la reparación?
-                    <span class="faq-toggle-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    Agilizamos los tiempos adaptándonos a la necesidad de cada cliente, manteniendo siempre el máximo compromiso y la mejor calidad en el servicio.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    ¿Tiene garantía el trabajo?
-                    <span class="faq-toggle-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    El equipo entregado se prueba minuciosamente en el momento junto al cliente antes de retirarse, garantizando así la plena conformidad del trabajo realizado (no se otorga garantía una vez retirado el equipo del establecimiento).
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    ¿Cómo funcionan los convertidores de TV?
-                    <span class="faq-toggle-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    ¿Tu televisor no tiene Android o no podés descargar aplicaciones? Te brindamos la solución perfecta para convertirlo en un Smart TV y disfrutar de YouTube, Netflix y demás plataformas de streaming sin cambiar de tele.
-                </div>
-            </div>
 
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; ONEPLAYER. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20tengo%20una%20consulta" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <!-- BOTON FLOATING WHATSAPP -->
+    <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20tengo%20una%20consulta" class="whatsapp-float" target="_blank" aria-label="WhatsApp Directo">
+        <div class="whatsapp-pulse"></div>
         <svg viewBox="0 0 32 32">
             <path d="M16 2a13 13 0 0 0-11 19.8L3 29l7.3-1.9A13 13 0 1 0 16 2zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4a10.8 10.8 0 1 1 9.2 5zm5.9-8.1c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 8.9 8.9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.1 0-.3 0-.4s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.3 1.4 3.5 2.4 3.7 5.8 5.2c.8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.6-.3z"/>
         </svg>
     </a>
 
+    <!-- SCRIPTS -->
     <script>
-        // MENU MOVIL
+        // MENU MOVIL DRAWER
         const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
         const mobileDrawer = document.getElementById('mobile-drawer');
-        mobileToggleBtn.addEventListener('click', () => mobileDrawer.classList.toggle('open'));
-        document.querySelectorAll('.drawer-link').forEach(link => link.addEventListener('click', () => mobileDrawer.classList.remove('open')));
+        const drawerLinks = document.querySelectorAll('.drawer-link');
 
-        // BUSCADOR
-        function filterCards() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.searchable-card');
+        mobileToggleBtn.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('open');
+        });
 
-            cards.forEach(card => {
-                const title = card.querySelector('.card-title').innerText.toLowerCase();
-                const desc = card.querySelector('.card-desc').innerText.toLowerCase();
-
-                if (title.includes(query) || desc.includes(query)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // FAQ ACCORDION
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.parentElement;
-                
-                // Toggle actual
-                item.classList.toggle('active');
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
             });
         });
 
-        // PARTICULAS CANVAS
+        // CANVAS PARTICULAS RED CYBER MEJORADO
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
+
+        let width, height;
         let particles = [];
 
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = canvas.width = window.innerWidth * dpr;
+            height = canvas.height = window.innerHeight * dpr;
+            ctx.scale(dpr, dpr);
             initParticles();
         }
 
         class Particle {
             constructor() {
+                this.reset();
+            }
+
+            reset() {
                 this.x = Math.random() * window.innerWidth;
                 this.y = Math.random() * window.innerHeight;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-                this.radius = Math.random() * 2 + 0.8;
-                this.color = Math.random() > 0.5 ? '#00f3ff' : '#ff007f';
+                this.vx = (Math.random() - 0.5) * 0.9;
+                this.vy = (Math.random() - 0.5) * 0.9;
+                this.radius = Math.random() * 2.2 + 0.8;
+                this.color = Math.random() > 0.5 ? '#00f3ff' : (Math.random() > 0.5 ? '#ff007f' : '#ab00ff');
+                this.alpha = Math.random() * 0.7 + 0.3;
             }
+
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
+
                 if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
                 if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
             }
+
             draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
+                ctx.shadowBlur = 14;
+                ctx.shadowColor = this.color;
                 ctx.fill();
+                ctx.restore();
             }
         }
 
         function initParticles() {
             particles = [];
-            for (let i = 0; i < 40; i++) particles.push(new Particle());
+            const count = Math.min(Math.floor(window.innerWidth / 10), 70);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
         }
 
         function animate() {
             ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-            particles.forEach(p => { p.update(); p.draw(); });
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 130) {
+                        ctx.save();
+                        ctx.globalAlpha = (1 - dist / 130) * 0.4;
+                        ctx.strokeStyle = particles[i].color;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }
+            }
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
             requestAnimationFrame(animate);
         }
 
