@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONE PLAYER | Servicio Técnico, Accesorios & Entertainment</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts Ultratech / Cyberpunk -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700;800&family=Orbitron:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Rajdhani:wght@600;700&family=Syncopate:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-base: #020205;
             --bg-card: rgba(10, 11, 20, 0.75);
-            --bg-card-hover: rgba(18, 20, 35, 0.9);
+            --bg-card-hover: rgba(18, 20, 35, 0.95);
             --neon-cyan: #00f0ff;
             --neon-purple: #9d00ff;
             --neon-pink: #ff0055;
@@ -50,11 +50,22 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+                linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
             z-index: -1;
             pointer-events: none;
+        }
+
+        /* EFECTO SCANLINE */
+        .cyber-scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.3));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.25;
         }
 
         /* NAVBAR */
@@ -68,32 +79,33 @@
             background: rgba(2, 2, 5, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 240, 255, 0.15);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 240, 255, 0.1);
             z-index: 1000;
         }
 
+        /* LOGO "ONE PLAYER" */
         .brand-logo {
             text-decoration: none;
             display: inline-block;
         }
 
         .logo-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-            font-weight: 900;
-            letter-spacing: 4px;
+            font-family: 'Syncopate', 'Orbitron', sans-serif;
+            font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+            font-weight: 800;
+            letter-spacing: 5px;
             background: linear-gradient(90deg, #ffffff 0%, var(--neon-cyan) 30%, #ffffff 50%, var(--neon-pink) 75%, var(--neon-purple) 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shineText 4s linear infinite;
-            filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.6));
+            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.7));
             transition: all 0.3s ease;
         }
 
         .brand-logo:hover .logo-title {
-            filter: drop-shadow(0 0 22px rgba(255, 0, 85, 0.9));
+            filter: drop-shadow(0 0 25px rgba(255, 0, 85, 0.9));
             transform: scale(1.03);
         }
 
@@ -111,9 +123,10 @@
         nav ul li a {
             color: var(--text-muted);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             transition: 0.3s;
             position: relative;
@@ -130,7 +143,7 @@
 
         nav ul li a:hover {
             color: #fff;
-            text-shadow: 0 0 10px var(--neon-cyan);
+            text-shadow: 0 0 12px var(--neon-cyan);
         }
 
         nav ul li a:hover::after {
@@ -151,36 +164,43 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(0, 240, 255, 0.05);
+            background: rgba(0, 240, 255, 0.08);
             border: 1px solid var(--neon-cyan);
             color: var(--neon-cyan);
             padding: 8px 24px;
             border-radius: 35px;
-            font-size: 0.75rem;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 2.5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 25px;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+            animation: pulseGlow 2.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.6); }
         }
 
         .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
-            font-weight: 900;
+            font-family: 'Syncopate', 'Orbitron', sans-serif;
+            font-size: clamp(2.8rem, 7vw, 5.8rem);
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
             line-height: 1.1;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #ffffff 20%, var(--neon-cyan) 60%, var(--neon-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.3));
+            filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.4));
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             max-width: 680px;
             line-height: 1.7;
             margin-bottom: 40px;
@@ -204,26 +224,26 @@
         }
 
         .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-family: 'Chakra Petch', 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: #fff;
             margin-bottom: 12px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
         }
 
         .section-subtitle {
             color: var(--neon-cyan);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: 0.95rem;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             font-family: 'Rajdhani', sans-serif;
             font-weight: 700;
         }
 
-        /* GRILLAS Y TARJETAS */
+        /* GRILLAS Y TARJETAS CON EFECTO NEÓN */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -234,23 +254,35 @@
 
         .custom-card {
             background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             text-align: left;
             position: relative;
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            will-change: transform;
+        }
+
+        .custom-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+
+        .custom-card:hover::before {
+            opacity: 1;
         }
 
         .custom-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.2);
+            transform: translateY(-12px);
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.25);
             background: var(--bg-card-hover);
         }
 
@@ -260,7 +292,7 @@
             background: #05050a;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .card-img-container img {
@@ -272,7 +304,7 @@
         }
 
         .custom-card:hover .card-img-container img {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
 
         .card-content {
@@ -284,16 +316,17 @@
         }
 
         .card-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.15rem;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         .card-desc {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             line-height: 1.65;
             margin-bottom: 25px;
         }
@@ -309,63 +342,64 @@
 
         .card-tag-badge {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--neon-cyan);
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
 
-        /* BOTONES NEÓN */
+        /* BOTONES NEÓN ULTRA AUMENTADOS */
         .btn-pro {
-            background: rgba(0, 240, 255, 0.05);
+            background: rgba(0, 240, 255, 0.08);
             color: var(--neon-cyan);
             border: 1px solid var(--neon-cyan);
             padding: 10px 22px;
             border-radius: 10px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.72rem;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
         }
 
         .btn-pro:hover {
             background: var(--neon-cyan);
             color: var(--bg-base);
-            box-shadow: 0 0 25px var(--neon-cyan);
-            transform: scale(1.03);
+            box-shadow: 0 0 30px var(--neon-cyan);
+            transform: scale(1.05);
         }
 
         .btn-pink {
-            background: rgba(255, 0, 85, 0.05);
+            background: rgba(255, 0, 85, 0.08);
             border-color: var(--neon-pink);
             color: var(--neon-pink);
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.15);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.2);
         }
 
         .btn-pink:hover {
             background: var(--neon-pink);
             color: #fff;
-            box-shadow: 0 0 25px var(--neon-pink);
+            box-shadow: 0 0 30px var(--neon-pink);
         }
 
         .btn-purple {
-            background: rgba(157, 0, 255, 0.05);
+            background: rgba(157, 0, 255, 0.08);
             border-color: var(--neon-purple);
             color: var(--neon-purple);
-            box-shadow: 0 0 15px rgba(157, 0, 255, 0.15);
+            box-shadow: 0 0 15px rgba(157, 0, 255, 0.2);
         }
 
         .btn-purple:hover {
             background: var(--neon-purple);
             color: #fff;
-            box-shadow: 0 0 25px var(--neon-purple);
+            box-shadow: 0 0 30px var(--neon-purple);
         }
 
         /* FOOTER */
@@ -385,13 +419,13 @@
         }
 
         .footer-bottom {
-            font-size: 0.75rem;
-            color: #555566;
+            font-size: 0.8rem;
+            color: #666680;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             padding-top: 25px;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         @media (max-width: 850px) {
@@ -401,6 +435,8 @@
     </style>
 </head>
 <body>
+
+    <div class="cyber-scanline"></div>
 
     <!-- CANVAS INTERACTIVO DE FONDO -->
     <canvas id="bg-canvas"></canvas>
@@ -448,12 +484,12 @@
                 </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Módulo de Celular</div>
+                        <div class="card-title">CAMBIO DE MODULOS</div>
                         <div class="card-desc">Sustitución de displays táctiles completos con calibración y fidelidad de color garantizada.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge">Garantía</span>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
+                        <span class="card-tag-badge">Calidad Premium</span>
+                        <a href="https://wa.me/5492634722710?text=Hola!%20Quiero%20cotizar%20un%20Cambio%20de%20M%C3%B3dulo" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
@@ -465,12 +501,12 @@
                 </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Baterías de Alta Autonomía</div>
+                        <div class="card-title">CAMBIO DE BATERIAS</div>
                         <div class="card-desc">Reemplazo de baterías con máxima retención de carga para extender la vida útil de tu equipo.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge">Originales</span>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
+                        <span class="card-tag-badge">Grado A+</span>
+                        <a href="https://wa.me/5492634722710?text=Hola!%20Quiero%20cotizar%20un%20Cambio%20de%20Bater%C3%ADa" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
@@ -482,12 +518,12 @@
                 </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Placas y Pines de Carga</div>
+                        <div class="card-title">CAMBIO DE PLACAS</div>
                         <div class="card-desc">Reparación de micro-soldaduras, zócalos de carga dañados y fallas de conector USB.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge">Exprés</span>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
+                        <span class="card-tag-badge">Especializado</span>
+                        <a href="https://wa.me/5492634722710?text=Hola!%20Quiero%20cotizar%20una%20reparaci%C3%B3n%20de%20Placa/Pin%20de%20carga" target="_blank" rel="noopener" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
             </div>
@@ -514,7 +550,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge" style="color: var(--neon-pink);">Audio Hi-Fi</span>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
+                        <a href="https://wa.me/5492634722710?text=Hola!%20Quiero%20consultar%20por%20Auriculares" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
@@ -531,7 +567,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge" style="color: var(--neon-pink);">Smart Charge</span>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
+                        <a href="https://wa.me/5492634722710?text=Hola!%20Quiero%20consultar%20por%20Cargadores" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
@@ -548,7 +584,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge" style="color: var(--neon-pink);">Reforzados</span>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
+                        <a href="https://wa.me/5492634722710?text=Hola!%20Quiero%20consultar%20por%20Cables%20USB" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
@@ -565,7 +601,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="card-tag-badge" style="color: var(--neon-pink);">Smart 4K</span>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
+                        <a href="https://wa.me/5492634722710?text=Hola!%20Quiero%20consultar%20por%20Convertidores%20de%20TV" target="_blank" rel="noopener" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
@@ -592,7 +628,7 @@
                         </div>
                     </div>
                     <div class="card-footer" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px; justify-content: center;">
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="btn-pro btn-purple" style="font-size: 0.8rem; padding: 12px 35px;">Solicitar Servicio TV</a>
+                        <a href="https://wa.me/5492634722710?text=Hola!%20Quiero%20solicitar%20informaci%C3%B3n%20sobre%20el%20Servicio%20de%20TV" target="_blank" rel="noopener" class="btn-pro btn-purple" style="font-size: 0.85rem; padding: 14px 38px;">Solicitar Servicio TV</a>
                     </div>
                 </div>
             </div>
@@ -617,7 +653,7 @@
 
         let width, height;
         let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
+        let mouse = { x: null, y: null, radius: 160 };
 
         function initCanvas() {
             width = canvas.width = window.innerWidth;
@@ -635,9 +671,9 @@
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-                this.radius = Math.random() * 1.8 + 0.8;
+                this.vx = (Math.random() - 0.5) * 0.9;
+                this.vy = (Math.random() - 0.5) * 0.9;
+                this.radius = Math.random() * 2 + 0.8;
                 this.color = Math.random() > 0.5 ? '#00f0ff' : '#9d00ff';
             }
 
@@ -645,7 +681,7 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = 10;
                 ctx.shadowColor = this.color;
                 ctx.fill();
             }
@@ -664,8 +700,8 @@
                     if (distance < mouse.radius) {
                         const angle = Math.atan2(dy, dx);
                         const force = (mouse.radius - distance) / mouse.radius;
-                        this.x -= Math.cos(angle) * force * 3;
-                        this.y -= Math.sin(angle) * force * 3;
+                        this.x -= Math.cos(angle) * force * 3.5;
+                        this.y -= Math.sin(angle) * force * 3.5;
                     }
                 }
             }
@@ -673,7 +709,7 @@
 
         function createParticles() {
             particles = [];
-            const count = Math.min(Math.floor((width * height) / 18000), 75);
+            const count = Math.min(Math.floor((width * height) / 16000), 85);
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
             }
@@ -688,12 +724,12 @@
                     let dy = particles[a].y - particles[b].y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 120) {
+                    if (distance < 130) {
                         ctx.beginPath();
                         ctx.moveTo(particles[a].x, particles[a].y);
                         ctx.lineTo(particles[b].x, particles[b].y);
-                        ctx.strokeStyle = `rgba(0, 240, 255, ${1 - distance / 120 * 0.8})`;
-                        ctx.lineWidth = 0.5;
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${1 - distance / 130 * 0.8})`;
+                        ctx.lineWidth = 0.6;
                         ctx.stroke();
                     }
                 }
