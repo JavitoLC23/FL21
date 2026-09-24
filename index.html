@@ -43,7 +43,7 @@
             line-height: 1.5;
         }
 
-        /* FONDO MESH CYBER */
+        /* FONDO MESH CYBER MEJORADO CON NEBULOSAS ANIMADAS */
         .cyber-bg {
             position: fixed;
             top: 0;
@@ -52,10 +52,17 @@
             height: 100%;
             z-index: -3;
             background: 
-                radial-gradient(circle at 15% 20%, rgba(0, 243, 255, 0.18) 0%, transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.18) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(171, 0, 255, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.22) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.22) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(171, 0, 255, 0.2) 0%, transparent 55%),
+                radial-gradient(circle at 80% 10%, rgba(0, 255, 102, 0.12) 0%, transparent 35%),
                 #020205;
+            animation: pulseBgGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseBgGlow {
+            0% { transform: scale(1); filter: hue-rotate(0deg); }
+            100% { transform: scale(1.05); filter: hue-rotate(20deg); }
         }
 
         .cyber-grid {
@@ -66,8 +73,8 @@
             height: 100%;
             z-index: -2;
             background-image: 
-                linear-gradient(to right, rgba(0, 243, 255, 0.06) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 243, 255, 0.06) 1px, transparent 1px);
+                linear-gradient(to right, rgba(0, 243, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 243, 255, 0.08) 1px, transparent 1px);
             background-size: 35px 35px;
             pointer-events: none;
         }
@@ -88,11 +95,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
             background-size: 100% 4px;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
         /* HEADER & NAVBAR */
@@ -217,22 +224,22 @@
             padding: 0.8rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .mobile-drawer a:hover {
             color: var(--neon-pink);
             text-shadow: var(--glow-pink-extreme);
-            padding-left: 1.2rem;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION SIN CUADRO EXTERNO */
         .hero {
-            min-height: 85vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 7rem 1.2rem 3rem 1.2rem;
+            padding: 8rem 1.2rem 3rem 1.2rem;
             position: relative;
             z-index: 1;
         }
@@ -240,69 +247,70 @@
         .hero-content {
             max-width: 900px;
             width: 100%;
-            background: rgba(10, 10, 26, 0.8);
-            border: 2px solid var(--neon-cyan);
-            padding: clamp(1.8rem, 5vw, 3.5rem);
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 0 35px rgba(0, 243, 255, 0.35), inset 0 0 25px rgba(0, 243, 255, 0.2);
-            animation: pulseHeroGlow 3s infinite alternate;
-        }
-
-        @keyframes pulseHeroGlow {
-            0% { border-color: var(--neon-cyan); box-shadow: 0 0 30px rgba(0, 243, 255, 0.4), inset 0 0 20px rgba(0, 243, 255, 0.2); }
-            50% { border-color: var(--neon-purple); box-shadow: 0 0 40px rgba(171, 0, 255, 0.5), inset 0 0 30px rgba(171, 0, 255, 0.25); }
-            100% { border-color: var(--neon-pink); box-shadow: 0 0 35px rgba(255, 0, 127, 0.4), inset 0 0 20px rgba(255, 0, 127, 0.2); }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.2rem, 7vw, 4.2rem);
+            font-size: clamp(2.8rem, 9vw, 5.5rem);
             font-weight: 900;
             text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 10%, var(--neon-cyan) 50%, var(--neon-pink) 100%);
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #fff 20%, var(--neon-cyan) 60%, var(--neon-pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.6));
+            filter: drop-shadow(0 0 25px rgba(0, 243, 255, 0.7));
+            letter-spacing: 2px;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 3vw, 1.45rem);
+            font-size: clamp(1.15rem, 3.2vw, 1.55rem);
             color: var(--text-dim);
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
             font-weight: 600;
+            max-width: 780px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
 
-        .btn-main {
+        /* BOTÓN DINÁMICO QUE CAMBIA DE COLOR (ANIMADO RGB) */
+        .btn-main-rgb {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 1.1rem 2.5rem;
+            padding: 1.1rem 2.8rem;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #fff;
-            background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan));
+            background: linear-gradient(270deg, #00f3ff, #ab00ff, #ff007f, #00ff66, #00f3ff);
+            background-size: 800% 800%;
             border: 2px solid #fff;
             border-radius: 50px;
             text-decoration: none;
-            box-shadow: 0 0 25px var(--neon-cyan), 0 0 35px var(--neon-purple);
-            transition: all 0.3s ease;
             cursor: pointer;
+            animation: animateRgbGlow 6s ease infinite;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), 0 0 45px rgba(255, 0, 127, 0.6);
+            transition: transform 0.3s ease;
         }
 
-        .btn-main:hover, .btn-main:active {
-            transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 0 35px var(--neon-cyan), 0 0 55px var(--neon-pink);
+        @keyframes animateRgbGlow {
+            0% { background-position: 0% 50%; box-shadow: 0 0 30px #00f3ff, 0 0 50px rgba(0, 243, 255, 0.6); }
+            33% { background-position: 50% 100%; box-shadow: 0 0 30px #ab00ff, 0 0 50px rgba(171, 0, 255, 0.6); }
+            66% { background-position: 100% 50%; box-shadow: 0 0 30px #ff007f, 0 0 50px rgba(255, 0, 127, 0.6); }
+            100% { background-position: 0% 50%; box-shadow: 0 0 30px #00ff66, 0 0 50px rgba(0, 255, 102, 0.6); }
         }
 
-        /* SECCIONES Y TITULOS */
+        .btn-main-rgb:hover, .btn-main-rgb:active {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        /* SECCIONES Y TITULOS CENTRADOS */
         .section {
             padding: 4rem 1.2rem;
             max-width: 1200px;
@@ -335,7 +343,7 @@
             box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-pink);
         }
 
-        /* CARDS CON NEON EXTREMO Y RESPONSIVE ANTIESCALERA */
+        /* GRID Y CARDS CENTRADAS */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -351,6 +359,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: center;
+            text-align: center;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -388,7 +398,10 @@
             padding: 1.4rem;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
             flex-grow: 1;
+            width: 100%;
         }
 
         .card-title {
@@ -399,6 +412,7 @@
             margin-bottom: 0.6rem;
             letter-spacing: 0.5px;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            text-align: center;
         }
 
         .card-desc {
@@ -407,6 +421,7 @@
             margin-bottom: 1.3rem;
             flex-grow: 1;
             font-weight: 500;
+            text-align: center;
         }
 
         .card-btn {
@@ -427,6 +442,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+            text-align: center;
         }
 
         .card-btn:hover, .card-btn:active {
@@ -436,7 +452,7 @@
             font-weight: 900;
         }
 
-        /* VARIACIONES NEON PINK Y PURPLE CON FLOW */
+        /* VARIACIONES DE COLOR */
         .tienda-card {
             border-color: rgba(255, 0, 127, 0.4);
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.2), inset 0 0 15px rgba(255, 0, 127, 0.1);
@@ -551,9 +567,10 @@
             font-size: 0.9rem;
             color: var(--text-dim);
             letter-spacing: 1px;
+            text-align: center;
         }
 
-        /* ADAPTACIÓN ANDROID OPTIMIZADA */
+        /* RESPONSIVE ANDROID */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -573,8 +590,8 @@
             }
 
             .hero {
-                min-height: 75vh;
-                padding-top: 6rem;
+                min-height: 70vh;
+                padding-top: 7rem;
             }
 
             .whatsapp-float {
@@ -599,7 +616,7 @@
 </head>
 <body>
 
-    <!-- FONDO CYBER MESH MULTICAPA -->
+    <!-- FONDO CYBER MESH MEJORADO MULTICAPA -->
     <div class="cyber-bg"></div>
     <div class="cyber-grid"></div>
     <canvas id="bg-canvas"></canvas>
@@ -631,12 +648,12 @@
         <a href="#tv" class="drawer-link">TV Entertainment</a>
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION LIMPIO SIN CUADRO -->
     <section class="hero">
         <div class="hero-content">
             <h1>ONEPLAYER</h1>
             <p>Soluciones Tecnológicas Integrales, Servicio Técnico Especializado y Accesorios de Alta Gama</p>
-            <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20quisiera%20hacer%20una%20consulta" class="btn-main" target="_blank">Contactar Ahora</a>
+            <a href="https://wa.me/5492634722710?text=Hola%20ONEPLAYER,%20quisiera%20hacer%20una%20consulta" class="btn-main-rgb" target="_blank">Contactar Ahora</a>
         </div>
     </section>
 
@@ -782,7 +799,7 @@
             });
         });
 
-        // CANVAS PARTICULAS RED CYBER
+        // CANVAS PARTICULAS RED CYBER MEJORADO
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -805,11 +822,11 @@
             reset() {
                 this.x = Math.random() * window.innerWidth;
                 this.y = Math.random() * window.innerHeight;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-                this.radius = Math.random() * 2 + 0.8;
+                this.vx = (Math.random() - 0.5) * 0.9;
+                this.vy = (Math.random() - 0.5) * 0.9;
+                this.radius = Math.random() * 2.2 + 0.8;
                 this.color = Math.random() > 0.5 ? '#00f3ff' : (Math.random() > 0.5 ? '#ff007f' : '#ab00ff');
-                this.alpha = Math.random() * 0.6 + 0.3;
+                this.alpha = Math.random() * 0.7 + 0.3;
             }
 
             update() {
@@ -826,7 +843,7 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = 12;
+                ctx.shadowBlur = 14;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
@@ -835,7 +852,7 @@
 
         function initParticles() {
             particles = [];
-            const count = Math.min(Math.floor(window.innerWidth / 12), 60);
+            const count = Math.min(Math.floor(window.innerWidth / 10), 70);
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
             }
@@ -850,9 +867,9 @@
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 120) {
+                    if (dist < 130) {
                         ctx.save();
-                        ctx.globalAlpha = (1 - dist / 120) * 0.35;
+                        ctx.globalAlpha = (1 - dist / 130) * 0.4;
                         ctx.strokeStyle = particles[i].color;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
