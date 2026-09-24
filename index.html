@@ -1,569 +1,411 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONE PLAYERS | Tienda & Servicio Técnico</title>
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
+    <title>ONE PLAYER | Servicio Técnico, Accesorios y TV</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Google Fonts: Inter & Orbitron for Tech feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#0a0b10',
+                        cardBg: '#12141c',
+                        neonCyan: '#00f2fe',
+                        neonPurple: '#7f00ff',
+                        neonGreen: '#00ff88',
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 20px rgba(0, 242, 254, 0.4)',
+                        'neon-purple': '0 0 20px rgba(127, 0, 255, 0.4)',
+                        'neon-green': '0 0 20px rgba(0, 255, 136, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .neon-text-cyan {
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5), 0 0 30px rgba(0, 242, 254, 0.3);
         }
-
-        html {
-            scroll-behavior: smooth;
+        .neon-text-purple {
+            text-shadow: 0 0 10px rgba(127, 0, 255, 0.7), 0 0 20px rgba(127, 0, 255, 0.5);
         }
-
-        :root {
-            --azul: #00aaff;
-            --azul-claro: #00d9ff;
-            --negro: #07090e;
-            --panel: #0f141d;
-            --panel-hover: #151c28;
-            --borde: #1e293b;
-            --borde-activo: #00aaff;
-            --texto: #f8fafc;
-            --gris-texto: #94a3b8;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--negro);
-            color: var(--texto);
-            line-height: 1.5;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* NAVBAR */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(7, 9, 14, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--borde);
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: auto;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 25px;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo i {
-            color: var(--azul);
-        }
-
-        .logo span {
-            color: var(--azul);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            color: var(--gris-texto);
-            font-size: 13px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--azul);
-        }
-
-        /* TIENDA / PANEL HERO */
-        .store-hero {
-            padding: 130px 20px 50px;
-            text-align: center;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .store-hero h1 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .store-hero p {
-            color: var(--gris-texto);
-            font-size: 15px;
-        }
-
-        /* BENEFICIOS / ICON BOXES SUPERIORES */
-        .features-grid {
-            max-width: 1200px;
-            margin: 20px auto 50px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .feature-card {
-            background: var(--panel);
-            border: 1px solid var(--borde);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: rgba(0, 170, 255, 0.4);
-        }
-
-        .feature-card i {
-            font-size: 24px;
-            color: var(--azul);
-            margin-bottom: 10px;
-        }
-
-        .feature-card h4 {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .feature-card p {
-            font-size: 12px;
-            color: var(--gris-texto);
-        }
-
-        /* SECCIONES Y PESTAÑAS (TABS) */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .section-box {
-            background: var(--panel);
-            border: 1px solid var(--borde);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin-bottom: 40px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .section-header h2 {
-            font-size: 26px;
-            font-weight: 700;
-        }
-
-        .section-header p {
-            color: var(--gris-texto);
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        /* SELECTOR DE CATEGORÍAS / PLANES ESTILO PANEL */
-        .tabs-selector {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
-            background: #090c12;
-            padding: 6px;
-            border-radius: 14px;
-            border: 1px solid var(--borde);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--gris-texto);
-            padding: 10px 20px;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--azul);
-            color: #07090e;
-        }
-
-        /* GRILLA DE TARJETAS ESTILO PLANES/PRODUCTOS */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .price-card {
-            background: #090c12;
-            border: 1px solid var(--borde);
-            border-radius: 16px;
-            padding: 30px 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .glow-border {
             position: relative;
-            transition: 0.3s;
         }
-
-        .price-card.featured {
-            border-color: var(--azul);
-            background: linear-gradient(180deg, rgba(0, 170, 255, 0.05) 0%, #090c12 100%);
-        }
-
-        .badge-featured {
+        .glow-border::after {
+            content: '';
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--azul);
-            color: #07090e;
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 4px 12px;
-            border-radius: 20px;
+            inset: -1px;
+            background: linear-gradient(90deg, #00f2fe, #7f00ff, #00ff88);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
         }
-
-        .price-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 5px;
+        .glow-border:hover::after {
+            opacity: 0.8;
+            filter: blur(8px);
         }
-
-        .price-card .subtitle {
-            font-size: 12px;
-            color: var(--gris-texto);
-            margin-bottom: 20px;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .price-card .price {
-            font-size: 32px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
+        ::-webkit-scrollbar-track {
+            background: #0a0b10;
         }
-
-        .price-card ul {
-            list-style: none;
-            font-size: 13px;
-            color: #cbd5e1;
-            margin-bottom: 25px;
-            border-top: 1px solid var(--borde);
-            padding-top: 15px;
+        ::-webkit-scrollbar-thumb {
+            background: #2a2e3d;
+            border-radius: 4px;
         }
-
-        .price-card li {
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .price-card li i {
-            color: var(--azul);
-            font-size: 11px;
-        }
-
-        .btn-buy {
-            background: var(--azul);
-            color: #07090e;
-            text-align: center;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 13px;
-            transition: 0.3s;
-            display: block;
-        }
-
-        .btn-buy:hover {
-            background: var(--azul-claro);
-            box-shadow: 0 5px 20px rgba(0, 170, 255, 0.3);
-        }
-
-        /* BOTÓN FLOTANTE WHATSAPP */
-        .whatsapp {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: #25d366;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            z-index: 999;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            transition: 0.3s;
-        }
-
-        .whatsapp:hover {
-            transform: scale(1.1);
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid var(--borde);
-            color: var(--gris-texto);
-            font-size: 13px;
-        }
-
-        footer strong {
-            color: white;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f2fe;
         }
     </style>
 </head>
-<body>
+<body class="bg-darkBg text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black">
 
-    <!-- NAVBAR -->
-    <header>
-        <div class="navbar">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-gamepad"></i> ONE <span>PLAYERS</span>
+    <!-- Header / Barra de Navegación -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-darkBg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo con luces "uff" -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center shadow-neon-cyan transform group-hover:scale-105 transition duration-300">
+                    <i class="fa-solid fa-gamepad text-black text-xl font-black"></i>
+                </div>
+                <span class="font-tech text-xl sm:text-2xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-green-400 bg-clip-text text-transparent neon-text-cyan">
+                    ONE PLAYER
+                </span>
             </a>
-            <div class="nav-links">
-                <a href="#servicio">Servicio Técnico</a>
-                <a href="#tienda">Accesorios</a>
-                <a href="#tv">Entretenimiento TV</a>
-            </div>
+
+            <!-- Menú de Navegación Desktop -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="#servicio-tecnico" class="text-slate-300 hover:text-cyan-400 transition duration-200">Servicio Técnico</a>
+                <a href="#tienda" class="text-slate-300 hover:text-cyan-400 transition duration-200">Tienda y Accesorios</a>
+                <a href="#entretenimiento" class="text-slate-300 hover:text-cyan-400 transition duration-200">Entretenimiento TV</a>
+                <a href="#contacto" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold shadow-neon-cyan hover:opacity-90 transition duration-200">
+                    ¡Contáctanos!
+                </a>
+            </nav>
+
+            <!-- Botón Menú Móvil -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-cyan-400 focus:outline-none text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cardBg border-b border-slate-800 px-6 py-6 space-y-4">
+            <a href="#servicio-tecnico" class="block text-slate-300 hover:text-cyan-400 font-medium">Servicio Técnico</a>
+            <a href="#tienda" class="block text-slate-300 hover:text-cyan-400 font-medium">Tienda y Accesorios</a>
+            <a href="#entretenimiento" class="block text-slate-300 hover:text-cyan-400 font-medium">Entretenimiento TV</a>
+            <a href="#contacto" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold shadow-neon-cyan">
+                ¡Contáctanos!
+            </a>
         </div>
     </header>
 
-    <!-- HERO / TITULO TIENDA -->
-    <div class="store-hero">
-        <h1>Centro de Servicios y Tienda Digital</h1>
-        <p>Gestioná tus reparaciones, adquirí accesorios certificados y activá entretenimiento multimedia de forma rápida y segura.</p>
-    </div>
+    <!-- Sección Principal (Hero Section) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+        <!-- Efectos de luces de fondo -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 left-1/3 w-[250px] h-[250px] sm:w-[500px] sm:h-[500px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
-    <!-- 4 CAJAS DE CONFIANZA SUPERIORES (Estilo Panel) -->
-    <div class="features-grid">
-        <div class="feature-card">
-            <i class="fa-solid fa-bolt"></i>
-            <h4>Atención Inmediata</h4>
-            <p>Presupuestos y respuestas al instante.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fa-solid fa-shield-halved"></i>
-            <h4>Garantía Escrita</h4>
-            <p>Respaldo total en reparaciones.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fa-solid fa-medal"></i>
-            <h4>Calidad Premium</h4>
-            <p>Repuestos y accesorios homologados.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fa-solid fa-headset"></i>
-            <h4>Soporte Directo</h4>
-            <p>Atención personalizada por WhatsApp.</p>
-        </div>
-    </div>
-
-    <div class="container">
-
-        <!-- SECCIÓN 1: SERVICIO TÉCNICO (Estilo Panel de Opciones) -->
-        <div class="section-box" id="servicio">
-            <div class="section-header">
-                <h2>División Técnica Profesional</h2>
-                <p>Seleccioná el tipo de intervención que necesita tu dispositivo</p>
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-900/80 border border-slate-700 text-xs sm:text-sm text-cyan-400 mb-6 shadow-neon-cyan">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span>Tecnología, Reparación y Entretenimiento Pro</span>
             </div>
+            
+            <h1 class="font-tech text-5xl sm:text-7xl md:text-8xl font-black tracking-wider uppercase mb-6 bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent neon-text-cyan">
+                ONE PLAYER
+            </h1>
+            
+            <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                El centro tecnológico definitivo. Soluciones profesionales para tu celular, la mejor selección en accesorios tecnológicos y entretenimiento ilimitado sin pagar de más.
+            </p>
 
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <div>
-                        <h3>Pantallas & Módulos</h3>
-                        <p class="subtitle">Sustitución completa</p>
-                        <div class="price">Consultar</div>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i> Calidad original / alternativa</li>
-                            <li><i class="fa-solid fa-check"></i> Colocación en el acto</li>
-                            <li><i class="fa-solid fa-check"></i> Garantía escrita</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/?text=Hola%20ONE%20PLAYERS,%20quiero%20presupuesto%20para%20cambio%20de%20pantalla" target="_blank" class="btn-buy">Pedir Presupuesto</a>
-                </div>
-
-                <div class="price-card featured">
-                    <span class="badge-featured">Más solicitado</span>
-                    <div>
-                        <h3>Baterías & Carga</h3>
-                        <p class="subtitle">Autonomía y circuitos</p>
-                        <div class="price">Consultar</div>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i> Baterías nuevas alta duración</li>
-                            <li><i class="fa-solid fa-check"></i> Reparación de pin de carga</li>
-                            <li><i class="fa-solid fa-check"></i> Testeo de voltaje</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/?text=Hola%20ONE%20PLAYERS,%20quiero%20consultar%20por%20cambio%20de%20batería" target="_blank" class="btn-buy">Pedir Presupuesto</a>
-                </div>
-
-                <div class="price-card">
-                    <div>
-                        <h3>Software & Placa</h3>
-                        <p class="subtitle">Soluciones electrónicas</p>
-                        <div class="price">Sin Cargo</div>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i> Diagnóstico computarizado</li>
-                            <li><i class="fa-solid fa-check"></i> Solución de bloqueos</li>
-                            <li><i class="fa-solid fa-check"></i> Recuperación de sistema</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/?text=Hola%20ONE%20PLAYERS,%20necesito%20diagnóstico%20de%20software" target="_blank" class="btn-buy">Consultar Falla</a>
-                </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#servicio-tecnico" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold text-lg shadow-neon-cyan hover:scale-105 transition duration-300 text-center">
+                    Ver Servicios & Tienda
+                </a>
+                <a href="#entretenimiento" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-cardBg border border-slate-700 hover:border-cyan-400 text-slate-200 font-bold text-lg transition duration-300 text-center">
+                    One Player TV & Play
+                </a>
             </div>
         </div>
+    </section>
 
-        <!-- SECCIÓN 2: ACCESORIOS Y TIENDA (Con Filtro por Pestañas) -->
-        <div class="section-box" id="tienda">
-            <div class="section-header">
-                <h2>Catálogo de Accesorios</h2>
-                <p>Equipamiento y protección para tus dispositivos</p>
-            </div>
-
-            <div class="tabs-selector">
-                <button class="tab-btn active" onclick="filterStore('todos')">Todos</button>
-                <button class="tab-btn" onclick="filterStore('proteccion')">Protección</button>
-                <button class="tab-btn" onclick="filterStore('energia')">Carga & Energía</button>
-                <button class="tab-btn" onclick="filterStore('audio')">Audio</button>
-            </div>
-
-            <div class="pricing-grid">
-                <div class="price-card store-item" data-category="proteccion">
-                    <div>
-                        <h3>Vidrio Templado 9D</h3>
-                        <p class="subtitle">Protección de pantalla</p>
-                        <div class="price" style="font-size: 22px; margin-bottom: 10px;">Cerámico Premium</div>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i> Anti-golpes y rayones</li>
-                            <li><i class="fa-solid fa-check"></i> Cobertura total bordes</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/?text=Hola,%20quiero%20consultar%20por%20Vidrio%20Templado%209D" target="_blank" class="btn-buy">Consultar Stock</a>
-                </div>
-
-                <div class="price-card store-item" data-category="energia">
-                    <div>
-                        <h3>Cargador Rápido</h3>
-                        <p class="subtitle">Alimentación segura</p>
-                        <div class="price" style="font-size: 22px; margin-bottom: 10px;">Homologado</div>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i> Carga rápida protegida</li>
-                            <li><i class="fa-solid fa-check"></i> Incluye cable mallado</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/?text=Hola,%20quiero%20consultar%20por%20Cargador%20Rápido" target="_blank" class="btn-buy">Consultar Stock</a>
-                </div>
-
-                <div class="price-card store-item" data-category="audio">
-                    <div>
-                        <h3>Auriculares TWS</h3>
-                        <p class="subtitle">Inalámbricos</p>
-                        <div class="price" style="font-size: 22px; margin-bottom: 10px;">Alta Fidelidad</div>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i> Conectividad Bluetooth 5.3</li>
-                            <li><i class="fa-solid fa-check"></i> Estuche de carga portátil</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/?text=Hola,%20quiero%20consultar%20por%20Auriculares%20TWS" target="_blank" class="btn-buy">Consultar Stock</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECCIÓN 3: ENTRETENIMIENTO TV -->
-        <div class="section-box" id="tv">
-            <div class="section-header">
-                <h2>ONE PLAYERS ENTERTAINMENT & TV</h2>
-                <p>Soluciones multimedia para tu hogar y pantallas inteligentes</p>
-            </div>
-            <div style="text-align: center; max-width: 600px; margin: auto;">
-                <p style="color: var(--gris-texto); margin-bottom: 25px; font-size: 14px;">
-                    Modernizá tu televisor con nuestros dispositivos Smart TV Box y accesorios de transmisión para disfrutar en familia con la mejor definición.
+    <!-- Sección de Servicio Técnico de Celulares -->
+    <section id="servicio-tecnico" class="py-20 relative border-t border-slate-800/60 bg-gradient-to-b from-transparent to-cardBg/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-tech text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                    Servicio Técnico Especializado
+                </h2>
+                <p class="text-slate-400 max-w-xl mx-auto">
+                    Reparación rápida, con componentes de máxima calidad y garantía asegurada para devolverle la vida a tu dispositivo.
                 </p>
-                <a href="https://wa.me/?text=Hola%20ONE%20PLAYERS,%20quiero%20consultar%20por%20servicios%20de%20TV%20y%20Multimedia" target="_blank" class="btn-buy" style="display: inline-block; padding: 14px 35px;">Consultar Planes de TV</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta 1: Cambio de Pantallas -->
+                <div class="glow-border bg-cardBg border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-2 transition duration-300">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition duration-300"></div>
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-6 shadow-neon-cyan">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-tech mb-3 text-slate-100">Cambio de Pantallas (Módulos)</h3>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Sustitución de módulos completos con tecnología original y táctil de alta precisión. Cero fallas, acabado perfecto.
+                    </p>
+                    <a href="#contacto" class="inline-flex items-center text-cyan-400 font-semibold group-hover:translate-x-2 transition duration-200">
+                        <span>Cotizar reparación</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta 2: Cambio de Baterías -->
+                <div class="glow-border bg-cardBg border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-2 transition duration-300">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition duration-300"></div>
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-neon-purple">
+                        <i class="fa-solid fa-battery-full"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-tech mb-3 text-slate-100">Cambio de Baterías</h3>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        ¿Tu celular se apaga rápido? Instalamos baterías de alto rendimiento con 100% de salud inicial y máxima duración.
+                    </p>
+                    <a href="#contacto" class="inline-flex items-center text-purple-400 font-semibold group-hover:translate-x-2 transition duration-200">
+                        <span>Cotizar reparación</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Tarjeta 3: Cambio de Placas de Carga -->
+                <div class="glow-border bg-cardBg border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-2 transition duration-300">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition duration-300"></div>
+                    <div class="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/30 flex items-center justify-center text-green-400 text-2xl mb-6 shadow-neon-green">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-tech mb-3 text-slate-100">Placas de Carga</h3>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Solución definitiva para problemas de carga lenta, falsos contactos o puertos dañados. Carga rápida recuperada al instante.
+                    </p>
+                    <a href="#contacto" class="inline-flex items-center text-green-400 font-semibold group-hover:translate-x-2 transition duration-200">
+                        <span>Cotizar reparación</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
+    <!-- Sección de Tienda y Accesorios -->
+    <section id="tienda" class="py-20 relative border-t border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-tech text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
+                    Tienda & Accesorios Tecnológicos
+                </h2>
+                <p class="text-slate-400 max-w-xl mx-auto">
+                    Equipamiento de primer nivel para potenciar tus dispositivos y tu día a día.
+                </p>
+            </div>
 
-    <!-- WHATSAPP FLOTANTE -->
-    <a class="whatsapp" href="https://wa.me/" target="_blank" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Producto 1 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-cyan-400 transition duration-300">
+                    <div class="w-20 h-20 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-cyan-400 text-3xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-plug-circle-bolt"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-200 mb-1">Cargadores Rápidos</h4>
+                    <span class="text-xs text-cyan-400 font-semibold mb-3">PD 20W / 33W / 65W</span>
+                    <a href="#contacto" class="mt-auto w-full py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-300 hover:bg-cyan-500 hover:text-black hover:border-transparent transition duration-200">Consultar</a>
+                </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 <strong>ONE PLAYERS</strong>. Todos los derechos reservados.</p>
+                <!-- Producto 2 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-purple-400 transition duration-300">
+                    <div class="w-20 h-20 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-purple-400 text-3xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-200 mb-1">Fundas & Vidrios</h4>
+                    <span class="text-xs text-purple-400 font-semibold mb-3">Anti-golpes & Hidrogel</span>
+                    <a href="#contacto" class="mt-auto w-full py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-300 hover:bg-purple-600 hover:text-white hover:border-transparent transition duration-200">Consultar</a>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-green-400 transition duration-300">
+                    <div class="w-20 h-20 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-green-400 text-3xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-headphones-simple"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-200 mb-1">Audio & Auriculares</h4>
+                    <span class="text-xs text-green-400 font-semibold mb-3">Inalámbricos & TWS</span>
+                    <a href="#contacto" class="mt-auto w-full py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-300 hover:bg-green-400 hover:text-black hover:border-transparent transition duration-200">Consultar</a>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-cyan-400 transition duration-300">
+                    <div class="w-20 h-20 bg-slate-900 rounded-xl mb-4 flex items-center justify-center text-cyan-400 text-3xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-200 mb-1">Gadgets & Smartwatch</h4>
+                    <span class="text-xs text-cyan-400 font-semibold mb-3">Tecnología Wearable</span>
+                    <a href="#contacto" class="mt-auto w-full py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-slate-300 hover:bg-cyan-500 hover:text-black hover:border-transparent transition duration-200">Consultar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de One Players Entertainment & TV -->
+    <section id="entretenimiento" class="py-20 relative border-t border-slate-800/60 bg-gradient-to-t from-transparent to-cardBg/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-cardBg via-slate-900 to-cardBg border border-slate-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+                <!-- Efecto lumínico de fondo -->
+                <div class="absolute -top-24 -right-24 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase mb-4 tracking-wider">
+                            <i class="fa-solid fa-tv mr-1"></i> Entretenimiento TV Pro
+                        </div>
+                        <h2 class="font-tech text-3xl sm:text-4xl font-black mb-6 text-slate-100">
+                            ONE PLAYER <span class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">ENTERTAINMENT & TV</span>
+                        </h2>
+                        <p class="text-slate-300 text-base sm:text-lg mb-6 leading-relaxed">
+                            ¿Cansado de pagar fortunas mensuales en servicios de televisión por cable y múltiples plataformas de streaming fraccionadas? Tenemos la solución definitiva.
+                        </p>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start space-x-3 text-slate-300">
+                                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                                <span><strong>Todo en un solo lugar:</strong> Canales en vivo nacionales e internacionales, deportes, películas y series estreno.</span>
+                            </li>
+                            <li class="flex items-start space-x-3 text-slate-300">
+                                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                                <span><strong>Ahorro inteligente:</strong> Olvídate de pagar de más mes a mes por servicios que apenas usas.</span>
+                            </li>
+                            <li class="flex items-start space-x-3 text-slate-300">
+                                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                                <span><strong>Alta compatibilidad:</strong> Funciona en Smart TV, TV Box, teléfonos y computadoras de manera fluida.</span>
+                            </li>
+                        </ul>
+
+                        <a href="#contacto" class="inline-flex items-center space-x-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-cyan-500 text-black font-bold text-lg shadow-neon-purple hover:scale-105 transition duration-300">
+                            <span>¡Quiero mi acceso a TV!</span>
+                            <i class="fa-solid fa-bolt"></i>
+                        </a>
+                    </div>
+
+                    <!-- Panel visual interactivo de TV -->
+                    <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-6 relative">
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span class="text-xs font-tech text-slate-400">STREAMING_SERVER_ACTIVE</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-cardBg p-4 rounded-xl border border-slate-800 text-center hover:border-cyan-400 transition duration-200">
+                                <i class="fa-solid fa-satellite-dish text-cyan-400 text-3xl mb-2"></i>
+                                <h4 class="font-bold text-sm text-slate-200">TV en Vivo</h4>
+                                <span class="text-xs text-slate-400">+1000 Canales HD</span>
+                            </div>
+                            <div class="bg-cardBg p-4 rounded-xl border border-slate-800 text-center hover:border-purple-400 transition duration-200">
+                                <i class="fa-solid fa-film text-purple-400 text-3xl mb-2"></i>
+                                <h4 class="font-bold text-sm text-slate-200">Películas & Series</h4>
+                                <span class="text-xs text-slate-400">Estrenos Diarios</span>
+                            </div>
+                            <div class="bg-cardBg p-4 rounded-xl border border-slate-800 text-center hover:border-green-400 transition duration-200">
+                                <i class="fa-solid fa-futbol text-green-400 text-3xl mb-2"></i>
+                                <h4 class="font-bold text-sm text-slate-200">Deportes Pro</h4>
+                                <span class="text-xs text-slate-400">Fútbol & Ligas Top</span>
+                            </div>
+                            <div class="bg-cardBg p-4 rounded-xl border border-slate-800 text-center hover:border-cyan-400 transition duration-200">
+                                <i class="fa-solid fa-bolt text-cyan-400 text-3xl mb-2"></i>
+                                <h4 class="font-bold text-sm text-slate-200">Sin Cortes</h4>
+                                <span class="text-xs text-slate-400">Servicio Estable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto y Footer -->
+    <footer id="contacto" class="bg-slate-950 border-t border-slate-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-black font-black">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <span class="font-tech text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">ONE PLAYER</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Tu tienda de confianza para reparación técnica de celulares, accesorios de alta gama y entretenimiento en streaming sin pagar de más.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-tech text-slate-200 font-bold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#servicio-tecnico" class="hover:text-cyan-400 transition duration-200">Servicio Técnico (Pantallas, Baterías, Placas)</a></li>
+                        <li><a href="#tienda" class="hover:text-cyan-400 transition duration-200">Tienda y Accesorios Tecnológicos</a></li>
+                        <li><a href="#entretenimiento" class="hover:text-cyan-400 transition duration-200">One Player Entertainment & TV</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-tech text-slate-200 font-bold mb-4">Contacto Directo</h4>
+                    <p class="text-slate-400 text-sm mb-4">¿Tenés dudas o querés consultar presupuestos? Escribinos ahora mismo.</p>
+                    <a href="https://wa.me/" target="_blank" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-900/40 transition duration-200">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Abrir WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 pt-6 text-center text-xs text-slate-500">
+                &copy; 2026 ONE PLAYER. Todos los derechos reservados. Diseñado con estilo tecnológico "uff".
+            </div>
+        </div>
     </footer>
 
-    <!-- SCRIPT FILTRO DE TIENDA -->
+    <!-- JavaScript Interactivo -->
     <script>
-        function filterStore(category) {
-            const items = document.querySelectorAll('.store-item');
-            const buttons = document.querySelectorAll('.tab-btn');
+        // Toggle Menú Móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-            items.forEach(item => {
-                if (category === 'todos' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
+        // Cerrar menú móvil al hacer clic en un enlace
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
             });
-        }
+        });
     </script>
 </body>
 </html>
