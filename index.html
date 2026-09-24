@@ -16,7 +16,6 @@
             --neon-pink: #ff007f;
             --text-main: #f0f0f5;
             --text-muted: #8b8b9e;
-            --border-glow: rgba(0, 240, 255, 0.25);
         }
 
         * {
@@ -31,6 +30,7 @@
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
+            text-align: center;
         }
 
         /* FONDO ANIMADO CON DESTELLOS */
@@ -62,6 +62,7 @@
         .brand-container {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
             cursor: pointer;
         }
 
@@ -103,14 +104,13 @@
             text-shadow: 0 0 10px var(--neon-cyan);
         }
 
-        /* HERO SECTION UFF */
+        /* HERO SECTION */
         .hero {
             min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
             padding: 0 20px;
             position: relative;
             background: radial-gradient(circle at center, rgba(157,0,255,0.1) 0%, transparent 70%);
@@ -158,7 +158,7 @@
             margin-bottom: 40px;
         }
 
-        /* SECCIONES */
+        /* SECCIONES GENERALES */
         section {
             padding: 100px 8%;
         }
@@ -185,64 +185,87 @@
             text-transform: uppercase;
         }
 
-        /* GRID DE SERVICIOS TÉCNICOS */
-        .grid-tech {
+        /* GRILLAS DE TARJETAS */
+        .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .tech-card {
+        .custom-card {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 16px;
-            padding: 40px 30px;
-            position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: 0.4s ease;
             display: flex;
             flex-direction: column;
+            text-align: left;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 240, 255, 0.15);
+        }
+
+        .card-img-box {
+            width: 100%;
+            height: 200px;
+            background: #111118;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+
+        .custom-card:hover .card-img-box img {
+            transform: scale(1.08);
+        }
+
+        .card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
             justify-content: space-between;
         }
 
-        .tech-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
-            opacity: 0.3;
-            transition: 0.4s;
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 10px;
         }
 
-        .tech-card:hover {
-            transform: translateY(-8px);
-            background: var(--bg-card-hover);
-            border-color: rgba(0, 240, 255, 0.4);
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.15);
-        }
-
-        .tech-card:hover::before {
-            opacity: 1;
-            box-shadow: 0 0 15px var(--neon-cyan);
-        }
-
-        .tech-icon {
-            font-size: 2.5rem;
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
 
-        .tech-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.25rem;
-            color: #fff;
-            margin-bottom: 15px;
+        .card-footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .tech-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
+        .card-highlight {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--neon-cyan);
         }
 
         /* BOTONES NEON */
@@ -250,18 +273,19 @@
             background: transparent;
             color: var(--neon-cyan);
             border: 1px solid var(--neon-cyan);
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             cursor: pointer;
             text-decoration: none;
-            text-align: center;
+            display: inline-block;
             transition: 0.3s ease;
             box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+            text-align: center;
         }
 
         .btn-neon:hover {
@@ -271,181 +295,27 @@
             transform: scale(1.02);
         }
 
-        /* TIENDA & ACCESORIOS (Con imágenes profesionales integradas) */
-        .grid-store {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: 0.4s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(157, 0, 255, 0.4);
-            box-shadow: 0 10px 30px rgba(157, 0, 255, 0.15);
-        }
-
-        .product-img-box {
-            width: 100%;
-            height: 200px;
-            background: #111118;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .product-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s ease;
-        }
-
-        .product-card:hover .product-img-box img {
-            transform: scale(1.08);
-        }
-
-        .product-info {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-
-        .product-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .product-desc {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .product-price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--neon-pink);
-            text-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
-        }
-
-        .btn-small {
-            padding: 8px 16px;
-            font-size: 0.75rem;
+        .btn-pink {
             border-color: var(--neon-pink);
             color: var(--neon-pink);
         }
-
-        .btn-small:hover {
+        .btn-pink:hover {
             background: var(--neon-pink);
             color: #fff;
-            box-shadow: 0 0 20px var(--neon-pink);
-        }
-
-        /* ENTERTAINMENT TV SECTION PRO */
-        .tv-banner {
-            background: linear-gradient(135deg, #0a0a14 0%, #150826 100%);
-            border: 1px solid rgba(157, 0, 255, 0.3);
-            border-radius: 24px;
-            padding: 60px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
-            align-items: center;
-            box-shadow: 0 0 50px rgba(157, 0, 255, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tv-content h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .tv-content h3 span {
-            color: var(--neon-purple);
-            text-shadow: 0 0 15px rgba(157, 0, 255, 0.6);
-        }
-
-        .tv-content p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-
-        .tv-features-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .tv-features-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .tv-features-list li::before {
-            content: '⚡';
-            color: var(--neon-cyan);
+            box-shadow: 0 0 25px var(--neon-pink);
         }
 
         .btn-purple {
             border-color: var(--neon-purple);
             color: var(--neon-purple);
         }
-
         .btn-purple:hover {
             background: var(--neon-purple);
             color: #fff;
             box-shadow: 0 0 25px var(--neon-purple);
         }
 
-        .tv-visual {
-            text-align: center;
-            font-size: 7rem;
-            filter: drop-shadow(0 0 30px rgba(157, 0, 255, 0.5));
-            animation: floatIcon 4s ease-in-out infinite;
-        }
-
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
-        /* FOOTER SERIO & LIMPIO */
+        /* FOOTER */
         footer {
             background: #020204;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -475,20 +345,8 @@
             letter-spacing: 1px;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .tv-banner {
-                grid-template-columns: 1fr;
-                padding: 40px 25px;
-                text-align: center;
-            }
-            .tv-features-list {
-                display: inline-block;
-                text-align: left;
-            }
-            nav ul {
-                display: none;
-            }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
         }
     </style>
 </head>
@@ -521,111 +379,135 @@
     <section id="tecnico">
         <div class="section-title-box">
             <h2 class="section-title">Servicio Técnico Especializado</h2>
-            <div class="section-subtitle">Reparaciones con máxima precisión y garantía</div>
+            <div class="section-subtitle">Reparaciones con máxima precisión y garantía oficial</div>
         </div>
 
-        <div class="grid-tech">
-            <div class="tech-card">
-                <div>
-                    <div class="tech-icon">📱</div>
-                    <h3>Cambio de Pantallas (Módulos)</h3>
-                    <p>Sustitución de módulos completos con tecnología original y táctil de alta precisión. Cero fallas, acabado perfecto.</p>
+        <div class="grid-cards">
+            <!-- Servicio 1 -->
+            <div class="custom-card">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=600&q=80" alt="Cambio de Pantallas">
                 </div>
-                <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar reparación</a>
+                <div class="card-body">
+                    <div>
+                        <div class="card-title">Cambio de Pantallas (Módulos)</div>
+                        <div class="card-desc">Sustitución de módulos completos con tecnología original y táctil de alta precisión. Cero fallas, acabado perfecto.</div>
+                    </div>
+                    <div class="card-footer-flex">
+                        <span class="card-highlight">Garantía</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="tech-card">
-                <div>
-                    <div class="tech-icon">🔋</div>
-                    <h3>Cambio de Baterías</h3>
-                    <p>¿Tu celular se apaga rápido? Instalamos baterías de alto rendimiento con 100% de salud inicial y máxima duración.</p>
+            <!-- Servicio 2 -->
+            <div class="custom-card">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80" alt="Cambio de Baterías">
                 </div>
-                <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar reparación</a>
+                <div class="card-body">
+                    <div>
+                        <div class="card-title">Cambio de Baterías</div>
+                        <div class="card-desc">¿Tu celular se apaga rápido? Instalamos baterías de alto rendimiento con 100% de salud inicial y máxima duración.</div>
+                    </div>
+                    <div class="card-footer-flex">
+                        <span class="card-highlight">Originales</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="tech-card">
-                <div>
-                    <div class="tech-icon">⚡</div>
-                    <h3>Placas de Carga</h3>
-                    <p>Solución definitiva para problemas de carga lenta, falsos contactos o puertos dañados. Carga rápida recuperada al instante.</p>
+            <!-- Servicio 3 -->
+            <div class="custom-card">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=600&q=80" alt="Placas de Carga">
                 </div>
-                <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar reparación</a>
+                <div class="card-body">
+                    <div>
+                        <div class="card-title">Placas de Carga</div>
+                        <div class="card-desc">Solución definitiva para problemas de carga lenta, falsos contactos o puertos dañados. Carga rápida recuperada al instante.</div>
+                    </div>
+                    <div class="card-footer-flex">
+                        <span class="card-highlight">Exprés</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-neon">Cotizar</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- TIENDA & ACCESORIOS -->
+    <!-- TIENDA & ACCESORIOS (Con todos los productos completos) -->
     <section id="tienda">
         <div class="section-title-box">
             <h2 class="section-title">Tienda & Accesorios Tecnológicos</h2>
             <div class="section-subtitle">Equipamiento de primer nivel para potenciar tus dispositivos</div>
         </div>
 
-        <div class="grid-store">
+        <div class="grid-cards">
             <!-- Producto 1 -->
-            <div class="product-card">
-                <div class="product-img-box">
+            <div class="custom-card">
+                <div class="card-img-box">
                     <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=600&q=80" alt="Cargadores Rápidos">
                 </div>
-                <div class="product-info">
+                <div class="card-body">
                     <div>
-                        <div class="product-title">Cargadores Rápidos</div>
-                        <div class="product-desc">Tecnología de carga veloz PD 20W / 33W / 65W con protección térmica.</div>
+                        <div class="card-title">Cargadores Rápidos</div>
+                        <div class="card-desc">Tecnología de carga veloz PD 20W / 33W / 65W con protección térmica integrada.</div>
                     </div>
-                    <div class="product-footer">
-                        <div class="product-price">Consultar</div>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-small">Comprar</a>
+                    <div class="card-footer-flex">
+                        <span class="card-highlight" style="color: var(--neon-pink);">Consultar</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-pink">Comprar</a>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 2 -->
-            <div class="product-card">
-                <div class="product-img-box">
+            <div class="custom-card">
+                <div class="card-img-box">
                     <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=600&q=80" alt="Fundas & Vidrios">
                 </div>
-                <div class="product-info">
+                <div class="card-body">
                     <div>
-                        <div class="product-title">Fundas & Vidrios</div>
-                        <div class="product-desc">Protección total anti-golpes de alta resistencia y láminas de hidrogel HD.</div>
+                        <div class="card-title">Fundas & Vidrios</div>
+                        <div class="card-desc">Protección total anti-golpes de alta resistencia y láminas de hidrogel HD a medida.</div>
                     </div>
-                    <div class="product-footer">
-                        <div class="product-price">Consultar</div>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-small">Comprar</a>
+                    <div class="card-footer-flex">
+                        <span class="card-highlight" style="color: var(--neon-pink);">Consultar</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-pink">Comprar</a>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 3 -->
-            <div class="product-card">
-                <div class="product-img-box">
+            <div class="custom-card">
+                <div class="card-img-box">
                     <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80" alt="Audio & Auriculares">
                 </div>
-                <div class="product-info">
+                <div class="card-body">
                     <div>
-                        <div class="product-title">Audio & Auriculares</div>
-                        <div class="product-desc">Auriculares inalámbricos TWS con sonido envolvente y cancelación de ruido.</div>
+                        <div class="card-title">Audio & Auriculares</div>
+                        <div class="card-desc">Auriculares inalámbricos TWS con sonido envolvente y cancelación activa de ruido.</div>
                     </div>
-                    <div class="product-footer">
-                        <div class="product-price">Consultar</div>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-small">Comprar</a>
+                    <div class="card-footer-flex">
+                        <span class="card-highlight" style="color: var(--neon-pink);">Consultar</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-pink">Comprar</a>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 4 -->
-            <div class="product-card">
-                <div class="product-img-box">
+            <div class="custom-card">
+                <div class="card-img-box">
                     <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" alt="Gadgets & Smartwatch">
                 </div>
-                <div class="product-info">
+                <div class="card-body">
                     <div>
-                        <div class="product-title">Gadgets & Smartwatch</div>
-                        <div class="product-desc">Tecnología Wearable avanzada para monitoreo físico y conectividad total.</div>
+                        <div class="card-title">Gadgets & Smartwatch</div>
+                        <div class="card-desc">Tecnología Wearable avanzada para monitoreo físico, notificaciones y conectividad total.</div>
                     </div>
-                    <div class="product-footer">
-                        <div class="product-price">Consultar</div>
-                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-small">Comprar</a>
+                    <div class="card-footer-flex">
+                        <span class="card-highlight" style="color: var(--neon-pink);">Consultar</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-pink">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -634,19 +516,34 @@
 
     <!-- ENTERTAINMENT TV PRO -->
     <section id="tv">
-        <div class="tv-banner">
-            <div class="tv-content">
-                <h3>ONE PLAYER <span>ENTERTAINMENT & TV</span></h3>
-                <p>¿Cansado de pagar fortunas mensuales en múltiples plataformas de streaming fraccionadas y servicios de cable tradicionales? Tenemos la solución definitiva y optimizada.</p>
-                <ul class="tv-features-list">
-                    <li>Canales en vivo nacionales e internacionales, deportes, películas y series estreno.</li>
-                    <li>Ahorro inteligente y centralización total de contenidos.</li>
-                    <li>Alta compatibilidad fluida en Smart TV, TV Box, teléfonos y PC.</li>
-                </ul>
-                <a href="https://wa.me/" target="_blank" class="btn-neon btn-purple">¡Quiero mi acceso a TV!</a>
-            </div>
-            <div class="tv-visual">
-                📺
+        <div class="section-title-box">
+            <h2 class="section-title">ONE PLAYER ENTERTAINMENT & TV</h2>
+            <div class="section-subtitle">Solución legal, optimizada y centralizada de entretenimiento digital</div>
+        </div>
+
+        <div class="grid-cards" style="max-width: 900px;">
+            <!-- Tarjeta Única Central con imagen y estructura robusta -->
+            <div class="custom-card" style="grid-column: 1 / -1;">
+                <div class="card-img-box" style="height: 240px;">
+                    <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1200&q=80" alt="Entertainment TV Pro">
+                </div>
+                <div class="card-body" style="padding: 40px;">
+                    <div>
+                        <div class="card-title" style="font-size: 1.3rem; color: var(--neon-purple);">Centralización y Gestión Legal de Contenidos</div>
+                        <div class="card-desc" style="font-size: 1.05rem; margin-bottom: 25px;">
+                            ¿Cansado de pagar fortunas mensuales en múltiples plataformas de streaming fraccionadas y servicios de cable tradicionales? Tenemos la solución definitiva y optimizada bajo un marco de servicio legal y autorizado.
+                        </div>
+                        <ul style="list-style: none; margin-bottom: 30px; text-align: left; display: inline-block; color: var(--text-muted); font-size: 0.95rem;">
+                            <li style="margin-bottom: 10px;">✔ Canales en vivo oficiales, deportes licenciados, películas y series de estreno.</li>
+                            <li style="margin-bottom: 10px;">✔ Ahorro inteligente y centralización total de tus abonos digitales en una sola factura.</li>
+                            <li style="margin-bottom: 10px;">✔ Alta compatibilidad fluida en Smart TV, TV Box, teléfonos y PC con soporte técnico directo.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer-flex" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;">
+                        <span class="card-highlight" style="color: var(--neon-purple);">Acceso Oficial Autorizado</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-neon btn-purple">¡Quiero mi acceso a TV!</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
