@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONE PLAYER | Servicio Técnico, Accesorios & TV - Edición Completa</title>
-    <!-- Google Fonts -->
+    <title>ONE PLAYER | Servicio Técnico, Accesorios & TV Pro</title>
+    
+    <!-- Google Fonts: Orbitron, Plus Jakarta Sans & Rajdhani -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-base: #010103;
@@ -41,9 +43,9 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: 
-                radial-gradient(circle at 10% 10%, rgba(176, 0, 255, 0.07) 0%, transparent 45%),
-                radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.07) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.04) 0%, transparent 60%);
+                radial-gradient(circle at 10% 10%, rgba(176, 0, 255, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.05) 0%, transparent 60%);
             z-index: -3;
             pointer-events: none;
         }
@@ -53,14 +55,13 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 45px 45px;
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 40px 40px;
             z-index: -2;
             pointer-events: none;
         }
 
-        /* NAVBAR */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
@@ -68,7 +69,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 6%;
-            background: rgba(1, 1, 3, 0.88);
+            background: rgba(1, 1, 3, 0.85);
             backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.07);
             z-index: 1000;
@@ -79,6 +80,7 @@
             flex-direction: column;
             align-items: flex-start;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .brand-top {
@@ -91,7 +93,7 @@
 
         .brand-main {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 900;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -102,24 +104,24 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
         }
 
         nav ul li a {
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: 0.3s;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
 
         nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: -5px; left: 0; width: 0; height: 2px;
+            bottom: -6px; left: 0; width: 0; height: 2px;
             background: var(--neon-cyan);
             transition: width 0.3s ease;
             box-shadow: 0 0 10px var(--neon-cyan);
@@ -127,21 +129,21 @@
 
         nav ul li a:hover {
             color: var(--neon-cyan);
-            text-shadow: 0 0 10px var(--neon-cyan);
+            text-shadow: 0 0 12px var(--neon-cyan);
         }
 
         nav ul li a:hover::after {
             width: 100%;
         }
 
-        /* HERO */
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 140px 20px 70px 20px;
+            padding: 140px 20px 80px 20px;
+            position: relative;
         }
 
         .hero-badge {
@@ -155,120 +157,148 @@
             border-radius: 35px;
             font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 2.5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 25px;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+            animation: heroGlow 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes heroGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.15); border-color: rgba(0, 240, 255, 0.25); }
+            100% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.5); border-color: rgba(0, 240, 255, 0.8); }
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-size: clamp(3rem, 7.5vw, 6.5rem);
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 20%, var(--neon-cyan) 60%, var(--neon-purple) 100%);
+            letter-spacing: 4px;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ffffff 15%, var(--neon-cyan) 55%, var(--neon-purple) 95%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.25));
+            filter: drop-shadow(0 0 50px rgba(0, 240, 255, 0.3));
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 680px;
-            line-height: 1.7;
-            margin-bottom: 40px;
+            font-size: 1.2rem;
+            max-width: 720px;
+            line-height: 1.75;
+            margin-bottom: 45px;
+            font-weight: 400;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* SECCIONES */
         section {
-            padding: 100px 6%;
+            padding: 110px 7%;
+            position: relative;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 55px;
+            margin-bottom: 65px;
         }
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-size: clamp(2rem, 3.8vw, 2.8rem);
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
         }
 
         .section-subtitle {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            letter-spacing: 1.8px;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-family: 'Rajdhani', sans-serif;
             font-weight: 600;
         }
 
-        /* GRILLAS Y TARJETAS */
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1250px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .custom-card {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 18px;
+            border-radius: 22px;
             overflow: hidden;
-            transition: all 0.35s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
             text-align: left;
             position: relative;
         }
 
-        .custom-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 240, 255, 0.45);
-            box-shadow: 0 20px 50px rgba(0, 240, 255, 0.12);
+        .custom-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
-        /* IMAGEN LOCAL CON AJUSTE PROFESIONAL */
+        .custom-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 240, 255, 0.12), 0 0 25px rgba(176, 0, 255, 0.1);
+        }
+
+        .custom-card:hover::before {
+            opacity: 1;
+        }
+
         .card-img-container {
             width: 100%;
-            height: 220px;
+            height: 250px;
             background: #050508;
             position: relative;
             overflow: hidden;
         }
 
+        .card-img-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, transparent 50%, rgba(8, 9, 16, 0.95));
+            pointer-events: none;
+        }
+
         .card-img-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Nunca se distorsiona o estira */
+            object-fit: cover;
             object-position: center;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .custom-card:hover .card-img-container img {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
 
         .card-content {
-            padding: 26px;
+            padding: 32px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -277,17 +307,18 @@
 
         .card-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
         }
 
         .card-desc {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.65;
-            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
         }
 
         .card-footer {
@@ -295,110 +326,112 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
-            padding-top: 18px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .card-tag-badge {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: var(--neon-cyan);
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
         }
 
-        /* BOTONES NEÓN */
         .btn-pro {
             background: transparent;
             color: var(--neon-cyan);
             border: 1px solid var(--neon-cyan);
-            padding: 10px 22px;
-            border-radius: 10px;
+            padding: 12px 26px;
+            border-radius: 12px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
+            letter-spacing: 1.5px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+            text-align: center;
         }
 
         .btn-pro:hover {
             background: var(--neon-cyan);
             color: var(--bg-base);
-            box-shadow: 0 0 25px var(--neon-cyan);
+            box-shadow: 0 0 35px var(--neon-cyan);
+            transform: translateY(-3px);
         }
 
         .btn-pink {
             border-color: var(--neon-pink);
             color: var(--neon-pink);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.1);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.15);
         }
         .btn-pink:hover {
             background: var(--neon-pink);
             color: #fff;
-            box-shadow: 0 0 25px var(--neon-pink);
+            box-shadow: 0 0 35px var(--neon-pink);
         }
 
         .btn-purple {
             border-color: var(--neon-purple);
             color: var(--neon-purple);
-            box-shadow: 0 0 15px rgba(176, 0, 255, 0.1);
+            box-shadow: 0 0 20px rgba(176, 0, 255, 0.15);
         }
         .btn-purple:hover {
             background: var(--neon-purple);
             color: #fff;
-            box-shadow: 0 0 25px var(--neon-purple);
+            box-shadow: 0 0 35px var(--neon-purple);
         }
 
-        /* FOOTER */
         footer {
             background: #000002;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 70px 7% 30px 7%;
+            padding: 80px 7% 35px 7%;
             text-align: center;
         }
 
         footer .brand-container {
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         footer p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 500px;
-            margin: 0 auto 35px auto;
-            line-height: 1.7;
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
         }
 
         .footer-bottom {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #4a4a5e;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 25px;
-            letter-spacing: 1.5px;
+            padding-top: 30px;
+            letter-spacing: 2px;
             font-family: 'Rajdhani', sans-serif;
             font-weight: 600;
         }
 
         @media (max-width: 768px) {
             nav ul { display: none; }
+            .hero h1 { font-size: 2.8rem; }
+            section { padding: 80px 5%; }
+            .grid-cards { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <header>
-        <div class="brand-container">
+        <a href="#" class="brand-container">
             <span class="brand-top">One</span>
             <span class="brand-main">Player</span>
-        </div>
+        </a>
         <nav>
             <ul>
                 <li><a href="#tecnico">Servicio Técnico</a></li>
@@ -408,39 +441,37 @@
         </nav>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="hero-badge">
-            <span>⚡ Servicio Técnico, Accesorios & Multimedia</span>
+            <span>⚡ Evolución Tecnológica y Multimedia</span>
         </div>
         <h1>ONE PLAYER</h1>
-        <p>Soluciones técnicas especializadas para celulares, catálogo completo de accesorios de alta gama y entretenimiento multimedia total para tu hogar.</p>
+        <p>Servicio técnico superior, equipamiento móvil de alto rendimiento y entretenimiento multimedia definitivo en un solo lugar.</p>
         <div class="hero-buttons">
-            <a href="#tecnico" class="btn-pro">Ver Servicio Técnico</a>
-            <a href="#tienda" class="btn-pro btn-pink">Ver Accesorios</a>
+            <a href="#tecnico" class="btn-pro">Reparaciones</a>
+            <a href="#tienda" class="btn-pro btn-pink">Accesorios</a>
         </div>
     </section>
 
-    <!-- SERVICIO TÉCNICO -->
     <section id="tecnico">
         <div class="section-header">
-            <h2 class="section-title">Servicio Técnico Especializado</h2>
-            <div class="section-subtitle">Reparaciones con componentes originales y máxima precisión</div>
+            <h2 class="section-title">Servicio Técnico Pro</h2>
+            <div class="section-subtitle">Precisión milimétrica y refacciones originales garantizadas</div>
         </div>
 
         <div class="grid-cards">
             <!-- Módulo -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Modulo.jpg" alt="Módulo de Pantalla">
+                    <img src="Modulo.jpg" alt="Módulo de Pantalla Celular">
                 </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Módulo de Celular</div>
-                        <div class="card-desc">Sustitución de pantallas completas con tecnología original y táctil de alta precisión. Cero fallas.</div>
+                        <div class="card-title">Módulo de Pantalla</div>
+                        <div class="card-desc">Sustitución de displays con tecnología original. Calibración perfecta, colores nítidos y táctil de alta respuesta.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge">Garantía</span>
+                        <span class="card-tag-badge">Precisión</span>
                         <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
@@ -449,15 +480,15 @@
             <!-- Batería -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Baterias.jpg" alt="Batería de Celular">
+                    <img src="Baterias.jpg" alt="Batería de Celular Original">
                 </div>
                 <div class="card-content">
                     <div>
                         <div class="card-title">Baterías de Alta Duración</div>
-                        <div class="card-desc">Reemplazo de baterías con 100% de salud inicial para recuperar la autonomía total de tu dispositivo.</div>
+                        <div class="card-desc">Celdas de energía de máximo rendimiento. Recupera la autonomía de fábrica con 100% de capacidad real.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge">Originales</span>
+                        <span class="card-tag-badge">100% Vida útil</span>
                         <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
@@ -466,15 +497,15 @@
             <!-- Placa de carga -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Placa de carga.jpg" alt="Placa de Carga y Pin">
+                    <img src="Placa de carga.jpg" alt="Placa de Carga y Pines USB">
                 </div>
                 <div class="card-content">
                     <div>
                         <div class="card-title">Placas de Carga (Pin)</div>
-                        <div class="card-desc">Solución definitiva para problemas de carga lenta, falsos contactos o puertos USB dañados.</div>
+                        <div class="card-desc">Reparación definitiva para puertos dañados. Reactivamos la capacidad de carga rápida y sincronización segura.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge">Exprés</span>
+                        <span class="card-tag-badge">Servicio Exprés</span>
                         <a href="https://wa.me/" target="_blank" class="btn-pro">Cotizar</a>
                     </div>
                 </div>
@@ -482,154 +513,152 @@
         </div>
     </section>
 
-    <!-- TIENDA & ACCESORIOS (CON TODOS LOS PRODUCTOS RECUPERADOS Y MEJORADOS) -->
     <section id="tienda">
         <div class="section-header">
-            <h2 class="section-title">Tienda & Accesorios</h2>
-            <div class="section-subtitle">Periféricos, protección y componentes de calidad superior</div>
+            <h2 class="section-title">Tienda & Hardware</h2>
+            <div class="section-subtitle">Equipamiento táctico para potenciar tus dispositivos</div>
         </div>
 
         <div class="grid-cards">
             <!-- Cables USB -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="USB.jpg" alt="Cables USB Tipo C y V8">
+                    <img src="USB.jpg" alt="Cables USB Alta Velocidad">
                 </div>
                 <div class="card-content">
                     <div>
                         <div class="card-title">Cables USB (Tipo C & V8)</div>
-                        <div class="card-desc">Cables reforzados de alta durabilidad y transferencia veloz de energía y datos estables.</div>
+                        <div class="card-desc">Cables mallados con núcleos de cobre de alta pureza. Transmisión de datos ultra rápida y carga estable.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge" style="color: var(--neon-pink);">En stock</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Comprar</a>
+                        <span class="card-tag-badge" style="color: var(--neon-pink);">Blindados</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Convertidores TV Android -->
+            <!-- Convertidores -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Convertidores.jpg" alt="Convertidores TV Android">
+                    <img src="Convertidores.jpg" alt="Convertidor TV Stick Android">
                 </div>
                 <div class="card-content">
                     <div>
                         <div class="card-title">Convertidores TV Android</div>
-                        <div class="card-desc">Transforma cualquier televisor convencional en un centro multimedia inteligente con Android TV.</div>
+                        <div class="card-desc">Convierte tu pantalla convencional en un ecosistema Android inteligente. Streaming fluido en resolución 4K.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge" style="color: var(--neon-pink);">En stock</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Comprar</a>
+                        <span class="card-tag-badge" style="color: var(--neon-pink);">Smart 4K</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Fundas Protectoras (Accesorio Recuperado) -->
+            <!-- Fundas -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Fundas.jpg" alt="Fundas Protectoras Anti-golpes">
+                    <img src="Fundas.jpg" alt="Fundas Protectoras Anti-Golpes">
                 </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Fundas Anti-golpes</div>
-                        <div class="card-desc">Protección de alto rendimiento con diseño ergonómico, bordes reforzados y absorción de impactos.</div>
+                        <div class="card-title">Fundas Armor & Anti-golpes</div>
+                        <div class="card-desc">Ingeniería de absorción de impactos. Diseños ergonómicos que protegen tu chasis de caídas extremas.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge" style="color: var(--neon-pink);">Variedad</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Comprar</a>
+                        <span class="card-tag-badge" style="color: var(--neon-pink);">Protección 360</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Vidrios Templados (Accesorio Recuperado) -->
+            <!-- Vidrios Templados -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Templados.jpg" alt="Vidrios Templados 9H">
+                    <img src="Templados.jpg" alt="Vidrio Templado 9D Dureza">
                 </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Vidrios Templados 9H</div>
-                        <div class="card-desc">Cristal templado de alta resistencia contra rayones, caídas directas y cobertura total de pantalla.</div>
+                        <div class="card-title">Templados Cerámicos 9H</div>
+                        <div class="card-desc">Escudos de pantalla de máxima dureza. Resistentes a rayones profundos sin sacrificar la sensibilidad táctil.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge" style="color: var(--neon-pink);">Alta Calidad</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Comprar</a>
+                        <span class="card-tag-badge" style="color: var(--neon-pink);">Ultra Clear</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Cargadores de Pared (Accesorio Recuperado) -->
+            <!-- Cargadores de Pared -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Cargadores.jpg" alt="Cargadores de Pared Carga Rápida">
+                    <img src="Cargadores.jpg" alt="Fuentes Cargadores Carga Rápida">
                 </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Cargadores de Pared</div>
-                        <div class="card-desc">Adaptadores de carga rápida con protección contra sobrecalentamiento y picos de corriente.</div>
+                        <div class="card-title">Cargadores Fast Charge</div>
+                        <div class="card-desc">Fuentes de alimentación inteligentes. Distribución de voltaje adaptativa para carga acelerada y segura.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge" style="color: var(--neon-pink);">Carga Rápida</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Comprar</a>
+                        <span class="card-tag-badge" style="color: var(--neon-pink);">Turbo Power</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Auriculares (Accesorio Recuperado) -->
+            <!-- Auriculares -->
             <div class="custom-card">
                 <div class="card-img-container">
-                    <img src="Auriculares.jpg" alt="Auriculares y Manos Libres">
+                    <img src="Auriculares.jpg" alt="Auriculares In-Ear y Bluetooth">
                 </div>
                 <div class="card-content">
                     <div>
-                        <div class="card-title">Auriculares & Manos Libres</div>
-                        <div class="card-desc">Sonido de alta fidelidad, graves profundos y micrófono integrado con cancelación de ruido.</div>
+                        <div class="card-title">Audio & Auriculares TWS</div>
+                        <div class="card-desc">Acústica superior con bajos profundos y agudos cristalinos. Experiencia inmersiva con cancelación de ruido pasiva.</div>
                     </div>
                     <div class="card-footer">
-                        <span class="card-tag-badge" style="color: var(--neon-pink);">In-Ear / BT</span>
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Comprar</a>
+                        <span class="card-tag-badge" style="color: var(--neon-pink);">Hi-Res Audio</span>
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-pink">Explorar</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ONE PLAYER ENTERTAINMENT & TV -->
     <section id="tv">
         <div class="section-header">
-            <h2 class="section-title">ONE PLAYER ENTERTAINMENT & TV</h2>
-            <div class="section-subtitle">Entretenimiento multimedia total para toda la familia en tu hogar</div>
+            <h2 class="section-title" style="color: var(--neon-purple);">ONE PLAYER TV</h2>
+            <div class="section-subtitle">Plataforma multimedia unificada para tu sala de estar</div>
         </div>
 
-        <div class="grid-cards" style="max-width: 950px;">
+        <div class="grid-cards" style="max-width: 1000px;">
             <div class="custom-card" style="grid-column: 1 / -1;">
-                <div class="card-img-container" style="height: 280px;">
-                    <img src="Tv.jpg" alt="Entretenimiento en TV en casa">
+                <div class="card-img-container" style="height: 350px;">
+                    <!-- IMAGEN ENCABEZADO TV (object-fit: cover evitará que se deforme) -->
+                    <img src="Tv.jpg" alt="Centro de entretenimiento TV en casa">
                 </div>
-                <div class="card-content" style="padding: 45px; text-align: center;">
+                <div class="card-content" style="padding: 50px; text-align: center;">
                     <div>
-                        <div class="card-title" style="font-size: 1.4rem; color: var(--neon-purple); margin-bottom: 15px;">Disfruta en Familia sin Límites</div>
-                        <div class="card-desc" style="font-size: 1.05rem; max-width: 720px; margin: 0 auto 30px auto; line-height: 1.75;">
-                            Todo el contenido multimedia, canales en vivo, películas y series para compartir y disfrutar directamente desde la comodidad de tu hogar en alta definición.
+                        <div class="card-title" style="font-size: 1.6rem; color: #fff; margin-bottom: 20px;">Cine, Deportes y Series Sin Límites</div>
+                        <div class="card-desc" style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 35px auto; line-height: 1.8;">
+                            Desbloquea el acceso a miles de canales en vivo, eventos deportivos exclusivos y catálogos de películas en estreno directo en tu Smart TV. Una solución integral que reemplaza los múltiples servicios tradicionales, entregando estabilidad y máxima resolución.
                         </div>
                     </div>
-                    <div class="card-footer" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px; justify-content: center;">
-                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-purple" style="font-size: 0.8rem; padding: 12px 35px;">¡Quiero mi acceso a TV!</a>
+                    <div class="card-footer" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; justify-content: center;">
+                        <a href="https://wa.me/" target="_blank" class="btn-pro btn-purple" style="font-size: 0.9rem; padding: 15px 45px;">Solicitar Acceso PRO</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
-        <div class="brand-container">
+        <div class="brand-container" style="display: flex; justify-content: center;">
             <span class="brand-top">One</span>
             <span class="brand-main">Player</span>
         </div>
-        <p>Tu tienda de confianza para reparación técnica de celulares, accesorios completos y entretenimiento multimedia en el hogar.</p>
+        <p>Líderes en servicio técnico especializado, hardware móvil y ecosistemas de entretenimiento audiovisual de próxima generación.</p>
         <div class="footer-bottom">
-            &copy; 2026 ONE PLAYER. TODOS LOS DERECHOS RESERVADOS.
+            &copy; 2026 ONE PLAYER PROTOCOL. TODOS LOS DERECHOS RESERVADOS.
         </div>
     </footer>
 
