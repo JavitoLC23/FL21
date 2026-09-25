@@ -7,12 +7,12 @@
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&display=swap');
 
     body {
-      font-family: 'Rajdhani', sans-serif;
-      background-color: #080c14;
-      color: #e2e8f0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #0b0f17;
+      color: #cbd5e1;
       overflow-x: hidden;
     }
 
@@ -20,12 +20,7 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    /* FUENTE SERIA Y CORPORATIVA PARA EL FOOTER */
-    .font-serious {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-
-    /* EFECTO FUEGO / RAYO PARA EL TÍTULO PRINCIPAL HERO */
+    /* EFECTO FUEGO / RAYO MANTENIDO EXCLUSIVAMENTE PARA EL TÍTULO PRINCIPAL */
     .fire-lightning-title {
       position: relative;
       font-family: 'Orbitron', sans-serif;
@@ -85,223 +80,224 @@
       z-index: 0;
     }
 
+    /* TARJETAS CON DISEÑO SOBRIO Y PROFESIONAL */
     .card-custom {
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #111827;
+      border: 1px solid #1f2937;
+      transition: all 0.25s ease-in-out;
     }
 
     .card-custom:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0, 240, 255, 0.5);
-      box-shadow: 0 12px 30px -5px rgba(0, 240, 255, 0.25), 0 0 20px rgba(255, 0, 100, 0.15);
-    }
-
-    .card-fire-hover:hover {
-      border-color: rgba(255, 85, 0, 0.6);
-      box-shadow: 0 12px 30px -5px rgba(255, 85, 0, 0.3), 0 0 20px rgba(255, 0, 85, 0.2);
-    }
-
-    .glow-bg {
-      background: radial-gradient(circle, rgba(0,240,255,0.08) 0%, rgba(255,0,128,0.06) 50%, rgba(8,12,20,1) 85%);
+      transform: translateY(-4px);
+      border-color: #374151;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+<body class="min-h-screen flex flex-col justify-between selection:bg-slate-700 selection:text-white">
 
-  <!-- NAVEGACIÓN SUPERIOR -->
-  <header class="border-b border-slate-800 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md">
+  <!-- NAVEGACIÓN SUPERIOR SOBRIA -->
+  <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-      <a href="#" class="font-orbitron font-extrabold text-xl tracking-wider text-white hover:text-cyan-400 transition-colors">
+      <a href="#" class="font-bold text-lg tracking-wide text-white hover:text-slate-300 transition-colors">
         ONE PLAYER
       </a>
-      <nav class="flex flex-wrap items-center gap-8 text-base font-bold tracking-wide text-slate-200">
-        <a href="#laboratorio" class="hover:text-cyan-400 transition-colors">Laboratorio Técnico</a>
-        <a href="#store" class="hover:text-purple-400 transition-colors">Store y Gear</a>
-        <a href="#tv" class="hover:text-pink-400 transition-colors">TV Entertainment</a>
+      <nav class="flex flex-wrap items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#laboratorio" class="hover:text-white transition-colors">Laboratorio Técnico</a>
+        <a href="#store" class="hover:text-white transition-colors">Store y Gear</a>
+        <a href="#tv" class="hover:text-white transition-colors">TV Entertainment</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="py-16 md:py-24 px-4 text-center relative overflow-hidden flex flex-col items-center justify-center glow-bg">
+  <!-- HERO SECTION CON TÍTULO PRINCIPAL COLORIDO Y CONTENIDO SOBRIO -->
+  <section class="py-16 md:py-20 px-4 text-center relative overflow-hidden flex flex-col items-center justify-center">
     <canvas id="fireCanvas" width="900" height="350"></canvas>
     
     <div class="max-w-4xl mx-auto relative z-10 w-full flex flex-col items-center">
+      
+      <!-- TÍTULO PRINCIPAL (ÚNICO ELEMENTO CON COLOR Y EFECTOS) -->
       <div class="relative inline-block my-2">
         <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl fire-lightning-title py-2 px-4">
           ONE PLAYER
         </h1>
       </div>
 
-      <p class="font-orbitron text-cyan-400 text-xl sm:text-3xl font-bold tracking-widest uppercase mt-3 mb-12 drop-shadow-[0_0_12px_rgba(0,240,255,0.7)]">
+      <p class="text-slate-300 text-lg sm:text-xl font-semibold tracking-widest uppercase mt-3 mb-10">
         Soluciones Técnicas
       </p>
 
-      <div class="max-w-3xl mx-auto bg-slate-900/85 p-8 md:p-10 rounded-2xl border border-slate-700/60 backdrop-blur-md shadow-2xl relative overflow-hidden text-center">
-        <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-white mb-4 uppercase tracking-wider">
+      <!-- ¿QUIÉNES SOMOS? (DISEÑO INSTITUCIONAL SERIO) -->
+      <div class="max-w-3xl mx-auto bg-slate-900/90 p-8 md:p-10 rounded-xl border border-slate-800 shadow-xl text-center">
+        <h2 class="text-xl sm:text-2xl font-bold text-white mb-4 uppercase tracking-wider">
           ¿Quiénes Somos?
         </h2>
-        <p class="text-slate-200 text-lg sm:text-xl leading-relaxed font-medium">
-          Con una trayectoria de <span class="text-cyan-400 font-bold border-b-2 border-cyan-400/60 pb-0.5">4 años</span>, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+          Con una trayectoria de <span class="text-white font-semibold underline underline-offset-4 decoration-slate-600">4 años</span>, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.
         </p>
       </div>
     </div>
   </section>
 
   <!-- TÍTULO GENERAL DE SERVICIOS -->
-  <section class="py-6 text-center">
-    <div class="inline-block relative">
-      <h2 class="font-orbitron text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-widest uppercase border-b-2 border-cyan-500/50 pb-3 px-8 sm:px-14">
-        NUESTROS SERVICIOS
+  <section class="py-4 text-center">
+    <div class="inline-block">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wider uppercase border-b border-slate-700 pb-2 px-8">
+        Nuestros Servicios
       </h2>
     </div>
   </section>
 
-  <main class="max-w-6xl mx-auto px-4 py-8 space-y-20 w-full">
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-16 w-full">
 
     <!-- SECCIÓN 1: LABORATORIO TÉCNICO -->
-    <section id="laboratorio" class="space-y-8 text-center">
-      <div class="flex flex-col items-center justify-center gap-2">
-        <div class="inline-block border-b-2 border-cyan-500 pb-2 px-6">
-          <h3 class="font-orbitron text-3xl md:text-4xl font-bold text-white tracking-wide">
-            Laboratorio Técnico
-          </h3>
-        </div>
+    <section id="laboratorio" class="space-y-6 text-center">
+      <div class="inline-block border-b border-slate-800 pb-1 px-4">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide">
+          Laboratorio Técnico
+        </h3>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-        <div class="card-custom card-fire-hover rounded-2xl overflow-hidden flex flex-col justify-between">
+        
+        <!-- Card 1 -->
+        <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
-            <img src="Modulo.jpg" alt="Cambio de Módulo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <img src="Modulo.jpg" alt="Cambio de Módulo" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow">
             <div>
-              <h4 class="font-orbitron text-xl font-bold text-white mb-3">Cambio de Módulo</h4>
-              <p class="text-slate-300 text-base leading-relaxed">
+              <h4 class="text-lg font-bold text-white mb-2">Cambio de Módulo</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">
                 Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.
               </p>
             </div>
           </div>
         </div>
 
-        <div class="card-custom card-fire-hover rounded-2xl overflow-hidden flex flex-col justify-between">
+        <!-- Card 2 -->
+        <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
-            <img src="Baterias.jpg" alt="Cambio de Batería" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <img src="Baterias.jpg" alt="Cambio de Batería" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow">
             <div>
-              <h4 class="font-orbitron text-xl font-bold text-white mb-3">Cambio de Batería</h4>
-              <p class="text-slate-300 text-base leading-relaxed">
+              <h4 class="text-lg font-bold text-white mb-2">Cambio de Batería</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">
                 Reemplazo de baterías agotadas para devolverle la autonomía y el máximo rendimiento original a tu celular.
               </p>
             </div>
           </div>
         </div>
 
-        <div class="card-custom card-fire-hover rounded-2xl overflow-hidden flex flex-col justify-between">
+        <!-- Card 3 -->
+        <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
-            <img src="Placa de carga.jpg" alt="Pin / Placa de Carga" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <img src="Placa de carga.jpg" alt="Pin / Placa de Carga" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow">
             <div>
-              <h4 class="font-orbitron text-xl font-bold text-white mb-3">Pin / Placa de Carga</h4>
-              <p class="text-slate-300 text-base leading-relaxed">
+              <h4 class="text-lg font-bold text-white mb-2">Pin / Placa de Carga</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">
                 Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tus dispositivos.
               </p>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- SECCIÓN 2: STORE Y GEAR -->
-    <section id="store" class="space-y-8 text-center">
-      <div class="flex flex-col items-center justify-center gap-2">
-        <div class="inline-block border-b-2 border-purple-500 pb-2 px-6">
-          <h3 class="font-orbitron text-3xl md:text-4xl font-bold text-white tracking-wide">
-            Store y Gear
-          </h3>
-        </div>
+    <section id="store" class="space-y-6 text-center">
+      <div class="inline-block border-b border-slate-800 pb-1 px-4">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide">
+          Store y Gear
+        </h3>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-        <div class="card-custom rounded-2xl overflow-hidden flex flex-col justify-between">
+        
+        <!-- Auriculares -->
+        <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
-            <img src="Auriculares.jpg" alt="Auriculares" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <img src="Auriculares.jpg" alt="Auriculares" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow">
             <div>
-              <h4 class="font-orbitron text-lg font-bold text-white mb-2">Auriculares</h4>
-              <p class="text-slate-300 text-sm leading-relaxed">
+              <h4 class="text-base font-bold text-white mb-2">Auriculares</h4>
+              <p class="text-slate-400 text-xs leading-relaxed">
                 Con cable, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.
               </p>
             </div>
           </div>
         </div>
 
-        <div class="card-custom rounded-2xl overflow-hidden flex flex-col justify-between">
+        <!-- Cargadores -->
+        <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
-            <img src="Cargadores.png" alt="Cargadores" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <img src="Cargadores.png" alt="Cargadores" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow">
             <div>
-              <h4 class="font-orbitron text-lg font-bold text-white mb-2">Cargadores</h4>
-              <p class="text-slate-300 text-sm leading-relaxed">
+              <h4 class="text-base font-bold text-white mb-2">Cargadores</h4>
+              <p class="text-slate-400 text-xs leading-relaxed">
                 Cargadores de carga normal, rápidos y originales para cuidar la salud de la batería de tu dispositivo.
               </p>
             </div>
           </div>
         </div>
 
-        <div class="card-custom rounded-2xl overflow-hidden flex flex-col justify-between">
+        <!-- Cables USB -->
+        <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
-            <img src="USB.jpg" alt="Cables USB" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <img src="USB.jpg" alt="Cables USB" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow">
             <div>
-              <h4 class="font-orbitron text-lg font-bold text-white mb-2">Cables USB</h4>
-              <p class="text-slate-300 text-sm leading-relaxed">
+              <h4 class="text-base font-bold text-white mb-2">Cables USB</h4>
+              <p class="text-slate-400 text-xs leading-relaxed">
                 Cables con entrada Tipo C, Tipo V8 y Lightning (iPhone) de alta resistencia.
               </p>
             </div>
           </div>
         </div>
 
-        <div class="card-custom rounded-2xl overflow-hidden flex flex-col justify-between">
+        <!-- Convertidores TV -->
+        <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
-            <img src="Convertidores.png" alt="Convertidores TV" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <img src="Convertidores.png" alt="Convertidores TV" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow">
             <div>
-              <h4 class="font-orbitron text-lg font-bold text-white mb-2">Convertidores TV</h4>
-              <p class="text-slate-300 text-sm leading-relaxed">
+              <h4 class="text-base font-bold text-white mb-2">Convertidores TV</h4>
+              <p class="text-slate-400 text-xs leading-relaxed">
                 Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.
               </p>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- SECCIÓN 3: TV ENTERTAINMENT -->
-    <section id="tv" class="space-y-8 text-center">
-      <div class="inline-block border-b-2 border-pink-500/50 pb-2 px-6">
-        <h3 class="font-orbitron text-3xl md:text-4xl font-bold text-white tracking-wide">
+    <section id="tv" class="space-y-6 text-center">
+      <div class="inline-block border-b border-slate-800 pb-1 px-4">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide">
           TV Entertainment
         </h3>
       </div>
 
-      <div class="card-custom rounded-2xl overflow-hidden bg-gradient-to-b from-slate-900 via-purple-950/30 to-slate-900 border-pink-500/40 max-w-3xl mx-auto text-center shadow-2xl relative">
-        <div class="w-full h-64 sm:h-80 bg-slate-900 overflow-hidden">
-          <img src="Tv.jpg" alt="TV Entertainment" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+      <div class="card-custom rounded-xl overflow-hidden max-w-3xl mx-auto text-center shadow-lg">
+        <div class="w-full h-64 sm:h-72 bg-slate-900 overflow-hidden">
+          <img src="Tv.jpg" alt="TV Entertainment" class="w-full h-full object-cover opacity-95">
         </div>
-        <div class="p-8 md:p-10">
-          <h4 class="font-orbitron text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+        <div class="p-8">
+          <h4 class="text-xl sm:text-2xl font-bold text-white mb-3">
             Experiencia TV Familiar
           </h4>
-          <p class="text-slate-200 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto font-semibold">
+          <p class="text-slate-300 text-base leading-relaxed max-w-xl mx-auto font-normal">
             Una solución de TV única para compartir en familia todo el mejor entretenimiento, directo desde el confort de tu hogar.
           </p>
         </div>
@@ -310,26 +306,26 @@
 
   </main>
 
-  <!-- FOOTER CON ESTILO INSTITUCIONAL Y TIPOGRAFÍA SERIA (INTER) -->
-  <footer class="font-serious bg-slate-950 border-t border-slate-800/80 mt-20 pt-16 pb-12 text-slate-300">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
+  <!-- FOOTER SERIO E INSTITUCIONAL -->
+  <footer class="bg-slate-950 border-t border-slate-800/80 mt-20 pt-14 pb-10 text-slate-300">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 text-center md:text-left">
       
       <!-- Ubicación -->
       <div class="flex flex-col items-center md:items-start space-y-2">
-        <h5 class="text-xs font-bold uppercase tracking-widest text-cyan-400">
+        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
           Ubicación
         </h5>
-        <p class="text-lg font-semibold text-white tracking-tight">
+        <p class="text-base font-semibold text-white">
           Rivadavia, Mendoza
         </p>
       </div>
 
       <!-- Horarios -->
       <div class="flex flex-col items-center md:items-start space-y-2">
-        <h5 class="text-xs font-bold uppercase tracking-widest text-cyan-400">
+        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
           Horarios de Atención
         </h5>
-        <div class="text-base font-normal space-y-1">
+        <div class="text-sm space-y-1">
           <p class="text-slate-200"><span class="font-semibold text-white">Lunes a Sábado:</span> 9:00 a 22:00 hs</p>
           <p class="text-slate-400"><span class="font-semibold text-slate-300">Domingo:</span> Cerrado</p>
         </div>
@@ -337,11 +333,11 @@
 
       <!-- Contacto / Email -->
       <div class="flex flex-col items-center md:items-start space-y-2">
-        <h5 class="text-xs font-bold uppercase tracking-widest text-cyan-400">
+        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
           Contacto Directo
         </h5>
-        <p class="text-base font-medium">
-          <a href="mailto:contacto@oneplayer.com" class="text-slate-200 hover:text-cyan-400 transition-colors underline underline-offset-4 decoration-slate-700">
+        <p class="text-sm font-medium">
+          <a href="mailto:contacto@oneplayer.com" class="text-slate-200 hover:text-white transition-colors underline underline-offset-4 decoration-slate-700">
             contacto@oneplayer.com
           </a>
         </p>
@@ -350,17 +346,17 @@
     </div>
 
     <!-- Divisor Institucional -->
-    <div class="border-t border-slate-900 pt-8 text-center space-y-3 max-w-4xl mx-auto px-4">
-      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">
+    <div class="border-t border-slate-900 pt-8 text-center space-y-2 max-w-4xl mx-auto px-4">
+      <p class="text-xs font-medium uppercase tracking-widest text-slate-400">
         Servicio Técnico &middot; Accesorios &middot; Entretenimiento
       </p>
-      <p class="text-sm font-medium text-slate-500">
+      <p class="text-xs font-normal text-slate-500">
         &copy; 2026 ONEPLAYER. Todos los derechos reservados.
       </p>
     </div>
   </footer>
 
-  <!-- SCRIPT ANIMACIÓN DE FUEGO Y RAYOS -->
+  <!-- SCRIPT ANIMACIÓN DE FUEGO Y RAYOS PARA TÍTULO HERO -->
   <script>
     const canvas = document.getElementById('fireCanvas');
     const ctx = canvas.getContext('2d');
