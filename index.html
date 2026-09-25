@@ -304,7 +304,7 @@
       </div>
     </section>
 
-    <!-- NUEVA SECCIÓN N°1: NUESTRO PROCESO DE TRABAJO -->
+    <!-- SECCIÓN: PROCESO DE TRABAJO -->
     <section id="proceso" class="space-y-8 text-center pt-8">
       <div class="inline-block border-b border-slate-800 pb-1 px-4">
         <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase">
@@ -347,7 +347,7 @@
       </div>
     </section>
 
-    <!-- NUEVA SECCIÓN N°2: MEDIOS DE PAGO Y GARANTÍA -->
+    <!-- SECCIÓN: MEDIOS DE PAGO Y GARANTÍA (REEMPLAZADO ATENCIÓN DIRECTA POR REPARACIONES EXPRESS) -->
     <section class="bg-slate-900/80 rounded-2xl border border-slate-800 p-8 md:p-10 text-center">
       <h3 class="text-xl sm:text-2xl font-bold text-white mb-6 uppercase tracking-wider">
         Transparencia y Respaldo
@@ -366,15 +366,15 @@
           </p>
         </div>
         <div class="p-4">
-          <h4 class="text-white font-bold mb-2">Atención Directa</h4>
+          <h4 class="text-white font-bold mb-2">Reparaciones Express</h4>
           <p class="text-slate-400 text-sm">
-            Respuestas inmediatas sin intermediarios para coordinar entregas rápidas.
+            La mayoría de los trabajos de laboratorio los entregamos en el mismo día.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- NUEVA SECCIÓN N°3: CONSULTA / PRESUPUESTO EXPRESS -->
+    <!-- SECCIÓN PRESUPUESTO EXPRESS DIRECTO A TU WHATSAPP (2634722710) -->
     <section class="max-w-2xl mx-auto bg-slate-900 p-8 rounded-xl border border-slate-800 text-center">
       <h3 class="text-xl font-bold text-white mb-2 uppercase">
         ¿Querés consultar un presupuesto?
@@ -382,17 +382,18 @@
       <p class="text-slate-400 text-sm mb-6">
         Escribinos con el modelo de tu equipo y la falla para asesorarte de inmediato.
       </p>
-      <form class="space-y-4 text-left" onsubmit="event.preventDefault();">
+      
+      <form id="presupuestoForm" class="space-y-4 text-left" onsubmit="enviarAWhatsApp(event)">
         <div>
           <label class="block text-xs uppercase text-slate-400 font-semibold mb-1">Tu Nombre o Equipo</label>
-          <input type="text" placeholder="Ej: Samsung A32 / iPhone 11" class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-slate-600">
+          <input type="text" id="equipoInput" required placeholder="Ej: Samsung A32 / iPhone 11" class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-slate-600">
         </div>
         <div>
           <label class="block text-xs uppercase text-slate-400 font-semibold mb-1">Detalle del Problema</label>
-          <textarea rows="3" placeholder="Ej: Se rompió la pantalla / No me carga el pin..." class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-slate-600"></textarea>
+          <textarea id="fallaInput" rows="3" required placeholder="Ej: Se rompió la pantalla / No me carga el pin..." class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-slate-600"></textarea>
         </div>
-        <button class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-2.5 rounded transition-colors text-sm uppercase tracking-wider">
-          Enviar Consulta
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2.5 rounded transition-colors text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+          Enviar Consulta por WhatsApp
         </button>
       </form>
     </section>
@@ -430,8 +431,8 @@
           Contacto Directo
         </h5>
         <p class="text-sm font-medium">
-          <a href="mailto:contacto@oneplayer.com" class="text-slate-200 hover:text-white transition-colors underline underline-offset-4 decoration-slate-700">
-            contacto@oneplayer.com
+          <a href="https://wa.me/5492634722710" target="_blank" class="text-slate-200 hover:text-white transition-colors underline underline-offset-4 decoration-slate-700">
+            WhatsApp: 2634 72-2710
           </a>
         </p>
       </div>
@@ -517,6 +518,22 @@
       const parentWidth = canvas.parentElement.clientWidth;
       canvas.width = Math.min(parentWidth, 900);
     });
+
+    /* FUNCIÓN ENVÍO DIRECTO A WHATSAPP */
+    function enviarAWhatsApp(event) {
+      event.preventDefault();
+      
+      const numeroTelefono = "5492634722710"; 
+      
+      const equipo = document.getElementById('equipoInput').value;
+      const falla = document.getElementById('fallaInput').value;
+
+      const mensaje = `Hola ONE PLAYER, quiero consultar por un presupuesto:%0A%0A- *Equipo/Cliente:* ${encodeURIComponent(equipo)}%0A- *Problema:* ${encodeURIComponent(falla)}`;
+      
+      const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
+      
+      window.open(urlWhatsApp, '_blank');
+    }
   </script>
 </body>
 </html>
