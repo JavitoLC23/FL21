@@ -7,12 +7,11 @@
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* IMPORTACIÓN DE FUENTES: OUTFIT E INTER */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap');
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #050811;
+      background-color: #030509;
       color: #cbd5e1;
       overflow-x: hidden;
       font-size: 1rem;
@@ -21,8 +20,8 @@
       -webkit-user-select: none;
     }
 
-    /* CANVAS DE FONDO: CORTOCIRCUITO EN CUADRÍCULA */
-    #circuitCanvas {
+    /* CANVAS DE FONDO: REAL SHORT CIRCUIT */
+    #realCircuitCanvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -42,7 +41,7 @@
       user-select: none;
     }
 
-    /* NEON FIRE HEADER LOGO */
+    /* LOGO CON EFECTO DE ALTA TENSIÓN */
     .logo-neon-fire {
       font-family: 'Outfit', sans-serif;
       font-weight: 900;
@@ -51,21 +50,12 @@
       letter-spacing: 0.08em;
       text-shadow: 
         0 0 4px #ffffff,
-        0 0 10px #ff3300,
-        0 0 18px #ff0055,
-        0 0 25px #00f0ff;
+        0 0 10px #00f0ff,
+        0 0 20px #0055ff;
       transition: all 0.3s ease;
     }
 
-    .logo-neon-fire:hover {
-      text-shadow: 
-        0 0 8px #ffffff,
-        0 0 15px #ff5500,
-        0 0 25px #ff0077,
-        0 0 35px #00ffff;
-    }
-
-    /* EFECTO FUEGO / RAYO PARA EL TÍTULO PRINCIPAL */
+    /* TÍTULO PRINCIPAL */
     .fire-lightning-title {
       position: relative;
       font-family: 'Outfit', sans-serif;
@@ -75,44 +65,37 @@
       letter-spacing: 0.05em;
       text-shadow:
         0 0 5px #ffffff,
-        0 -2px 10px #ff6600,
-        0 -8px 22px #ff2200,
-        0 -14px 32px #ff0055,
+        0 -2px 10px #ff3300,
+        0 -8px 22px #ff0055,
         0 0 20px #00f0ff,
         0 0 40px #0088ff;
-      animation: fireLightningPulse 1.5s infinite alternate ease-in-out;
+      animation: highVoltageArc 2s infinite alternate ease-in-out;
     }
 
-    @keyframes fireLightningPulse {
+    @keyframes highVoltageArc {
       0% {
-        text-shadow:
-          0 0 4px #ffffff,
-          0 -2px 8px #ff6600,
-          0 -8px 20px #ff0000,
-          0 -14px 30px #d900ff,
-          0 0 15px #00f0ff,
-          0 0 30px #0055ff;
+        text-shadow: 0 0 4px #ffffff, 0 0 12px #00f0ff, 0 0 25px #0055ff;
         transform: scale(1);
       }
-      50% {
-        text-shadow:
-          0 0 10px #ffffff,
-          0 -5px 16px #ffaa00,
-          0 -14px 32px #ff3300,
-          0 -22px 48px #ff0055,
-          0 0 30px #00ffff,
-          0 0 55px #7000ff;
-        transform: scale(1.015);
+      92% {
+        text-shadow: 0 0 4px #ffffff, 0 0 12px #00f0ff, 0 0 25px #0055ff;
+        transform: scale(1);
+      }
+      93% {
+        text-shadow: 0 0 15px #ffffff, 0 0 30px #ff0055, 0 0 50px #00ffff;
+        transform: scale(1.01) skewX(1deg);
+      }
+      94% {
+        text-shadow: 0 0 2px #ffffff, 0 0 5px #ff0000;
+        transform: scale(0.99);
+      }
+      96% {
+        text-shadow: 0 0 20px #ffffff, 0 0 40px #00ffff, 0 0 60px #39ff14;
+        transform: scale(1.02) skewX(-1deg);
       }
       100% {
-        text-shadow:
-          0 0 4px #ffffff,
-          0 -2px 10px #ff4400,
-          0 -6px 18px #e60000,
-          0 -12px 26px #9900ff,
-          0 0 20px #00d9ff,
-          0 0 38px #0033ff;
-        transform: scale(0.995);
+        text-shadow: 0 0 4px #ffffff, 0 0 12px #00f0ff, 0 0 25px #0055ff;
+        transform: scale(1);
       }
     }
 
@@ -125,12 +108,12 @@
       z-index: 0;
     }
 
-    /* BORDE NEÓN GIRATORIO PARA TARJETA QUIÉNES SOMOS */
+    /* TARJETA QUIÉNES SOMOS */
     .glow-card-container {
       position: relative;
       border-radius: 1rem;
       overflow: hidden;
-      padding: 2.5px;
+      padding: 2px;
     }
 
     .glow-card-container::before {
@@ -143,21 +126,21 @@
       background: conic-gradient(
         from 0deg,
         transparent 0%,
-        #00f0ff 25%,
-        #ff0077 50%,
-        #39ff14 75%,
+        #00f0ff 30%,
+        #ffffff 50%,
+        #0088ff 70%,
         transparent 100%
       );
-      animation: rotateGlow 3.5s linear infinite;
+      animation: rotateGlow 4s linear infinite;
       z-index: 0;
     }
 
     .glow-card-content {
       position: relative;
       z-index: 1;
-      background: rgba(10, 15, 28, 0.92);
-      backdrop-filter: blur(8px);
-      border-radius: calc(1rem - 2.5px);
+      background: rgba(6, 10, 20, 0.94);
+      backdrop-filter: blur(10px);
+      border-radius: calc(1rem - 2px);
     }
 
     @keyframes rotateGlow {
@@ -165,21 +148,19 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* TARJETAS CON GLASSMORPHISM */
     .card-custom {
-      background: rgba(13, 20, 36, 0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(10, 16, 28, 0.88);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.3s ease-in-out;
     }
 
     .card-custom:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 240, 255, 0.4);
-      box-shadow: 0 10px 30px -5px rgba(0, 240, 255, 0.2);
+      transform: translateY(-4px);
+      border-color: rgba(0, 240, 255, 0.5);
+      box-shadow: 0 10px 30px -5px rgba(0, 240, 255, 0.25);
     }
 
-    /* MARQUEE ANDROID */
     .marquee-container {
       overflow: hidden;
       white-space: nowrap;
@@ -200,8 +181,8 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-slate-700 selection:text-white text-center" oncontextmenu="return false;">
 
-  <!-- CANVAS DE CORTOCIRCUITO EN LA CUADRÍCULA -->
-  <canvas id="circuitCanvas"></canvas>
+  <!-- CANVAS MOTOR DE CORTOCIRCUITO REAL -->
+  <canvas id="realCircuitCanvas"></canvas>
 
   <!-- BOTÓN FLOTANTE DE WHATSAPP -->
   <a href="https://wa.me/5492634722710" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 group">
@@ -230,7 +211,7 @@
     </div>
   </header>
 
-  <!-- HERO SECTION CON TÍTULO PRINCIPAL -->
+  <!-- HERO SECTION -->
   <section class="py-16 md:py-20 px-4 text-center relative overflow-hidden flex flex-col items-center justify-center">
     <canvas id="fireCanvas" width="900" height="350"></canvas>
     
@@ -245,8 +226,8 @@
         Soluciones Técnicas
       </p>
 
-      <!-- TARJETA QUIÉNES SOMOS CON MARCO NEÓN ROTATIVO -->
-      <div class="max-w-3xl mx-auto glow-card-container shadow-[0_0_50px_rgba(0,240,255,0.25)]">
+      <!-- TARJETA QUIÉNES SOMOS -->
+      <div class="max-w-3xl mx-auto glow-card-container shadow-[0_0_50px_rgba(0,240,255,0.2)]">
         <div class="glow-card-content p-8 md:p-10 text-center">
           <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-4 uppercase tracking-wider font-heading drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]">
             ¿Quiénes Somos?
@@ -299,7 +280,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
-            <img src="Modulo.jpg" alt="Cambio de Módulo" class="w-full h-full object-cover opacity-100 transition-all duration-300">
+            <img src="Modulo.jpg" alt="Cambio de Módulo" class="w-full h-full object-cover">
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
@@ -313,7 +294,7 @@
 
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
-            <img src="Baterias.jpg" alt="Cambio de Batería" class="w-full h-full object-cover opacity-100 transition-all duration-300">
+            <img src="Baterias.jpg" alt="Cambio de Batería" class="w-full h-full object-cover">
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
@@ -327,7 +308,7 @@
 
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
-            <img src="Placa de carga.jpg" alt="Pin / Placa de Carga" class="w-full h-full object-cover opacity-100 transition-all duration-300">
+            <img src="Placa de carga.jpg" alt="Pin / Placa de Carga" class="w-full h-full object-cover">
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
@@ -340,7 +321,7 @@
         </div>
       </div>
 
-      <!-- ESPECIALIZACIÓN Y BANNER MARCAS -->
+      <!-- BANNER MARCAS -->
       <div class="mt-8 bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-xl p-6 text-center">
         <span class="inline-block bg-cyan-500/10 text-cyan-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-cyan-500/30 mb-3">
           Especialización Exclusiva
@@ -369,7 +350,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
-            <img src="Auriculares.jpg" alt="Auriculares" class="w-full h-full object-cover opacity-100 transition-all duration-300">
+            <img src="Auriculares.jpg" alt="Auriculares" class="w-full h-full object-cover">
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
@@ -383,7 +364,7 @@
 
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
-            <img src="Cargadores.png" alt="Cargadores" class="w-full h-full object-cover opacity-100 transition-all duration-300">
+            <img src="Cargadores.png" alt="Cargadores" class="w-full h-full object-cover">
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
@@ -397,7 +378,7 @@
 
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
-            <img src="USB.jpg" alt="Cables USB" class="w-full h-full object-cover opacity-100 transition-all duration-300">
+            <img src="USB.jpg" alt="Cables USB" class="w-full h-full object-cover">
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
@@ -411,7 +392,7 @@
 
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
-            <img src="Convertidores.png" alt="Convertidores TV" class="w-full h-full object-cover opacity-100 transition-all duration-300">
+            <img src="Convertidores.png" alt="Convertidores TV" class="w-full h-full object-cover">
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
@@ -435,7 +416,7 @@
 
       <div class="card-custom rounded-xl overflow-hidden max-w-3xl mx-auto text-center shadow-lg">
         <div class="w-full h-64 sm:h-72 bg-slate-900 overflow-hidden">
-          <img src="Tv.jpg" alt="TV Entertainment" class="w-full h-full object-cover opacity-100">
+          <img src="Tv.jpg" alt="TV Entertainment" class="w-full h-full object-cover">
         </div>
         <div class="p-8 text-center">
           <h4 class="text-xl sm:text-2xl font-bold text-white mb-3 uppercase font-heading">
@@ -448,7 +429,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN PRESUPUESTO EXPRESS DIRECTO A TU WHATSAPP -->
+    <!-- FORMULARIO DE PRESUPUESTO -->
     <section class="max-w-2xl mx-auto bg-slate-900/85 backdrop-blur-md p-8 rounded-xl border border-slate-800 text-center">
       <h3 class="text-xl font-bold text-white mb-2 uppercase font-heading">
         ¿Querés consultar un presupuesto?
@@ -514,229 +495,237 @@
   <script>
     document.addEventListener('contextmenu', event => event.preventDefault());
 
-    // MOTOR PRO DE CORTOCIRCUITO Y SOBRECARGA ELÉCTRICA EN LA CUADRÍCULA
-    const cCanvas = document.getElementById('circuitCanvas');
-    const ctxC = cCanvas.getContext('2d');
+    // MOTOR PRO DE CORTOCIRCUITO TÉCNICO Y ARCOS VOLTAICOS REALES
+    const canvas = document.getElementById('realCircuitCanvas');
+    const ctx = canvas.getContext('2d');
 
-    let cols, rows;
-    const cellSize = 50; 
-    let grid = [];
-    let shockwaves = [];
+    let width, height;
+    const gridSize = 60;
+    let sparks = [];
+    let activeArcs = [];
 
-    const neonColors = [
-      '#00f0ff', // Cian Eléctrico
-      '#ff0055', // Magenta Neón
-      '#39ff14', // Verde Neón
-      '#7000ff'  // Violeta Ciber
-    ];
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
 
-    function initGrid() {
-      cCanvas.width = window.innerWidth;
-      cCanvas.height = window.innerHeight;
-      cols = Math.ceil(cCanvas.width / cellSize);
-      rows = Math.ceil(cCanvas.height / cellSize);
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-      grid = [];
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          grid.push({
-            c, r,
-            energy: 0,
-            color: neonColors[Math.floor(Math.random() * neonColors.length)],
-            flickerRate: Math.random() * 0.15 + 0.05
-          });
-        }
+    // GENERADOR DE RAYOS/ARCOS ELÉCTRICOS FRACTALES REALISTAS
+    function createBolt(x1, y1, x2, y2, displacement) {
+      if (displacement < 3) {
+        return [{ x: x1, y: y1 }, { x: x2, y: y2 }];
+      }
+      
+      const midX = (x1 + x2) / 2 + (Math.random() - 0.5) * displacement;
+      const midY = (y1 + y2) / 2 + (Math.random() - 0.5) * displacement;
+
+      const path1 = createBolt(x1, y1, midX, midY, displacement / 2);
+      const path2 = createBolt(midX, midY, x2, y2, displacement / 2);
+
+      return path1.concat(path2.slice(1));
+    }
+
+    // DISPARO DE CHISPAS DENSAS (INCANDESCENTES)
+    function triggerSparks(x, y, count = 25) {
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 8 + 2;
+        sparks.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1.0,
+          decay: Math.random() * 0.05 + 0.02,
+          size: Math.random() * 2 + 1,
+          color: Math.random() > 0.3 ? '#ffffff' : (Math.random() > 0.5 ? '#00f0ff' : '#ff3300')
+        });
       }
     }
 
-    window.addEventListener('resize', initGrid);
-    initGrid();
-
-    // INTERACCIÓN CON EL CURSOR (PROVOCA CORTOCIRCUITO AL MOVER)
+    // EVENTO AL MOVER EL CURSOR O TOCAR PANTALLA
     window.addEventListener('mousemove', (e) => {
-      const c = Math.floor(e.clientX / cellSize);
-      const r = Math.floor(e.clientY / cellSize);
-      const cell = grid.find(item => item.c === c && item.r === r);
-      if (cell) {
-        cell.energy = 1.0; // Sobrecarga instantánea
-        if (Math.random() < 0.2) {
-          triggerShockwave(e.clientX, e.clientY);
-        }
+      if (Math.random() < 0.2) {
+        const snapX = Math.floor(e.clientX / gridSize) * gridSize;
+        const snapY = Math.floor(e.clientY / gridSize) * gridSize;
+        
+        activeArcs.push({
+          x1: snapX,
+          y1: snapY,
+          x2: snapX + (Math.random() > 0.5 ? gridSize : -gridSize),
+          y2: snapY + (Math.random() > 0.5 ? gridSize : -gridSize),
+          life: 1.0,
+          color: Math.random() > 0.3 ? '#00f0ff' : '#ffffff'
+        });
+
+        triggerSparks(e.clientX, e.clientY, 8);
       }
     });
 
-    function triggerShockwave(x, y) {
-      if (shockwaves.length < 4) {
-        shockwaves.push({
-          x, y,
-          radius: 10,
-          maxRadius: Math.random() * 250 + 150,
-          speed: Math.random() * 8 + 6,
-          color: neonColors[Math.floor(Math.random() * neonColors.length)]
-        });
-      }
-    }
-
-    // DISPARO ALEATORIO DE CORTOCIRCUITOS ESPONTÁNEOS
+    // DISPARADOR DE CORTOCIRCUITO ESPONTÁNEO EN LA PLACA
     setInterval(() => {
-      if (Math.random() < 0.7) {
-        const randomCell = grid[Math.floor(Math.random() * grid.length)];
-        if (randomCell) randomCell.energy = Math.random() > 0.5 ? 1.0 : 0.8;
-      }
-      if (Math.random() < 0.3) {
-        triggerShockwave(Math.random() * cCanvas.width, Math.random() * cCanvas.height);
-      }
-    }, 300);
-
-    function drawShortCircuitGrid() {
-      ctxC.clearRect(0, 0, cCanvas.width, cCanvas.height);
-
-      // 1. DIBUJAR LA REJILLA BASE TIPO TELA TÉCNICA
-      ctxC.strokeStyle = 'rgba(255, 255, 255, 0.025)';
-      ctxC.lineWidth = 1;
-
-      for (let x = 0; x <= cCanvas.width; x += cellSize) {
-        ctxC.beginPath();
-        ctxC.moveTo(x, 0);
-        ctxC.lineTo(x, cCanvas.height);
-        ctxC.stroke();
-      }
-      for (let y = 0; y <= cCanvas.height; y += cellSize) {
-        ctxC.beginPath();
-        ctxC.moveTo(0, y);
-        ctxC.lineTo(cCanvas.width, y);
-        ctxC.stroke();
-      }
-
-      // 2. ACTUALIZAR ONDAS DE EXPANSIÓN (SHOCKWAVES)
-      for (let i = shockwaves.length - 1; i >= 0; i--) {
-        const sw = shockwaves[i];
-        sw.radius += sw.speed;
-
-        ctxC.save();
-        ctxC.beginPath();
-        ctxC.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-        ctxC.strokeStyle = sw.color;
-        ctxC.globalAlpha = Math.max(0, 1 - sw.radius / sw.maxRadius) * 0.4;
-        ctxC.lineWidth = 2;
-        ctxC.shadowBlur = 15;
-        ctxC.shadowColor = sw.color;
-        ctxC.stroke();
-        ctxC.restore();
-
-        // Enceder celdas tocadas por la onda
-        grid.forEach(cell => {
-          const cx = cell.c * cellSize + cellSize / 2;
-          const cy = cell.r * cellSize + cellSize / 2;
-          const dist = Math.hypot(cx - sw.x, cy - sw.y);
-          if (Math.abs(dist - sw.radius) < cellSize / 2) {
-            cell.energy = Math.min(1.0, cell.energy + 0.5);
-          }
-        });
-
-        if (sw.radius >= sw.maxRadius) {
-          shockwaves.splice(i, 1);
-        }
-      }
-
-      // 3. RENDERIZAR CELDAS EN CORTOCIRCUITO / SOBRECARGA
-      grid.forEach(cell => {
-        if (cell.energy > 0) {
-          ctxC.save();
-          
-          // Efecto de chispa rápida/parpadeo de cortocircuito
-          const alpha = cell.energy * (Math.random() * 0.4 + 0.6);
-          ctxC.fillStyle = cell.color;
-          ctxC.globalAlpha = alpha * 0.25;
-          ctxC.fillRect(cell.c * cellSize + 1, cell.r * cellSize + 1, cellSize - 2, cellSize - 2);
-
-          // Borde neón intenso cuando hay sobrecarga
-          ctxC.strokeStyle = cell.color;
-          ctxC.globalAlpha = alpha;
-          ctxC.lineWidth = cell.energy > 0.6 ? 2 : 1;
-          ctxC.shadowBlur = cell.energy * 12;
-          ctxC.shadowColor = cell.color;
-          ctxC.strokeRect(cell.c * cellSize + 1, cell.r * cellSize + 1, cellSize - 2, cellSize - 2);
-
-          ctxC.restore();
-
-          // Disipación rápida para efecto de choque eléctrico corto
-          cell.energy -= cell.flickerRate;
-          if (cell.energy < 0) cell.energy = 0;
-        }
-      });
-
-      requestAnimationFrame(drawShortCircuitGrid);
-    }
-
-    drawShortCircuitGrid();
-
-    // MOTOR DE CHISPAS Y RAYOS NEÓN ELÉCTRICOS (CANVAS DEL HERO)
-    const canvas = document.getElementById('fireCanvas');
-    const ctx = canvas.getContext('2d');
-
-    let particles = [];
-    const maxParticles = 85;
-
-    class SparkParticle {
-      constructor() {
-        this.reset();
-      }
-
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = canvas.height;
-        this.vx = (Math.random() - 0.5) * 3.5;
-        this.vy = -(Math.random() * 5.5 + 2.5);
-        this.size = Math.random() * 3 + 1;
-        this.life = 1;
-        this.decay = Math.random() * 0.03 + 0.015;
+      if (Math.random() < 0.6) {
+        const startX = Math.floor(Math.random() * (width / gridSize)) * gridSize;
+        const startY = Math.floor(Math.random() * (height / gridSize)) * gridSize;
         
-        const colors = ['#00f0ff', '#ff0077', '#39ff14', '#00d9ff'];
-        this.color = colors[Math.floor(Math.random() * colors.length)];
+        const steps = Math.floor(Math.random() * 3) + 1;
+        let currX = startX;
+        let currY = startY;
+
+        for (let i = 0; i < steps; i++) {
+          const nextX = currX + (Math.random() > 0.5 ? gridSize : -gridSize);
+          const nextY = currY + (Math.random() > 0.5 ? gridSize : -gridSize);
+          
+          activeArcs.push({
+            x1: currX,
+            y1: currY,
+            x2: nextX,
+            y2: nextY,
+            life: 1.0,
+            color: Math.random() > 0.4 ? '#00f0ff' : (Math.random() > 0.5 ? '#ffffff' : '#ff0055')
+          });
+
+          currX = nextX;
+          currY = nextY;
+        }
+
+        triggerSparks(currX, currY, 20);
+      }
+    }, 450);
+
+    function renderCircuit() {
+      ctx.clearRect(0, 0, width, height);
+
+      // 1. DIBUJAR LA MATRIZ TÉCNICA BASE (PISTAS DE CIRCUITO IMPRESO)
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.lineWidth = 1;
+
+      for (let x = 0; x <= width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y <= height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
       }
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.life -= this.decay;
-        if (this.life <= 0) this.reset();
+      // 2. DIBUJAR NODOS TÉCNICOS EN CRUCES
+      ctx.fillStyle = 'rgba(0, 240, 255, 0.08)';
+      for (let x = 0; x <= width; x += gridSize) {
+        for (let y = 0; y <= height; y += gridSize) {
+          if ((x + y) % (gridSize * 3) === 0) {
+            ctx.fillRect(x - 2, y - 2, 4, 4);
+          }
+        }
       }
 
-      draw() {
+      // 3. RENDERIZAR ARCOS VOLTAICOS (RAYOS DE PLASMATRON)
+      for (let i = activeArcs.length - 1; i >= 0; i--) {
+        const arc = activeArcs[i];
+        const path = createBolt(arc.x1, arc.y1, arc.x2, arc.y2, 18);
+
         ctx.save();
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.shadowBlur = 14;
-        ctx.shadowColor = this.color;
-        ctx.globalAlpha = this.life;
+        ctx.moveTo(path[0].x, path[0].y);
+        for (let j = 1; j < path.length; j++) {
+          ctx.lineTo(path[j].x, path[j].y);
+        }
+
+        // Resplandor exterior de alta tensión
+        ctx.strokeStyle = arc.color;
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = arc.color;
+        ctx.globalAlpha = arc.life;
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Núcleo blanco brillante del rayo
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.restore();
+
+        arc.life -= 0.15; // Desaparece rápido (milisegundos)
+        if (arc.life <= 0) activeArcs.splice(i, 1);
+      }
+
+      // 4. RENDERIZAR FISICA DE CHISPAS INCANDESCENTES
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const s = sparks[i];
+        
+        s.x += s.vx;
+        s.y += s.vy;
+        s.vy += 0.15; // Gravedad leve
+        s.life -= s.decay;
+
+        if (s.life <= 0) {
+          sparks.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = s.color;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = s.color;
+        ctx.globalAlpha = s.life;
         ctx.fill();
         ctx.restore();
       }
+
+      requestAnimationFrame(renderCircuit);
     }
 
-    for (let i = 0; i < maxParticles; i++) {
-      particles.push(new SparkParticle());
-    }
+    renderCircuit();
 
-    function animateSparks() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
+    // CHISPAS SECUNDARIAS EN EL HERO (CANVAS)
+    const heroCanvas = document.getElementById('fireCanvas');
+    const ctxH = heroCanvas.getContext('2d');
+    let heroParticles = [];
+
+    for (let i = 0; i < 40; i++) {
+      heroParticles.push({
+        x: Math.random() * heroCanvas.width,
+        y: Math.random() * heroCanvas.height,
+        vx: (Math.random() - 0.5) * 2,
+        vy: -Math.random() * 3 - 1,
+        size: Math.random() * 2 + 1,
+        life: Math.random()
       });
-      requestAnimationFrame(animateSparks);
     }
 
-    animateSparks();
+    function animateHeroSparks() {
+      ctxH.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+      heroParticles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.02;
+        if (p.life <= 0) {
+          p.x = Math.random() * heroCanvas.width;
+          p.y = heroCanvas.height;
+          p.life = 1.0;
+        }
 
-    window.addEventListener('resize', () => {
-      const parentWidth = canvas.parentElement.clientWidth;
-      canvas.width = Math.min(parentWidth, 900);
-    });
+        ctxH.save();
+        ctxH.fillStyle = '#00f0ff';
+        ctxH.globalAlpha = p.life;
+        ctxH.shadowBlur = 10;
+        ctxH.shadowColor = '#00f0ff';
+        ctxH.fillRect(p.x, p.y, p.size, p.size);
+        ctxH.restore();
+      });
+      requestAnimationFrame(animateHeroSparks);
+    }
 
-    // ENVÍO DIRECTO A WHATSAPP
+    animateHeroSparks();
+
+    // WHATSAPP FORM
     function enviarAWhatsApp(event) {
       event.preventDefault();
       const numeroTelefono = "5492634722710"; 
