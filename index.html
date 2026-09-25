@@ -96,31 +96,32 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-slate-700 selection:text-white text-center">
 
-  <!-- ENCABEZADO: COMPLETAMENTE EXTENDIDO A LOS BORDES (ANCHO COMPLETO) -->
+  <!-- ENCABEZADO CON V1 EN MAYÚSCULA Y CENTRADO EN EL LOGO -->
   <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md py-3">
     <div class="w-full px-6 sm:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
       
-      <!-- LOGO Y "v1" ALINEADOS TOTALMENTE A LA IZQUIERDA -->
-      <div class="flex flex-col items-start text-left">
+      <!-- LOGO CON V1 CENTRADO ABAJO -->
+      <div class="flex flex-col items-center text-center">
         <a href="#" class="font-bold text-xl sm:text-2xl tracking-widest text-white hover:text-slate-300 transition-colors leading-none">
           ONE PLAYER
         </a>
-        <span class="text-xs font-semibold text-slate-400 tracking-wider mt-1">
-          v1
+        <span class="text-xs font-bold text-slate-400 tracking-widest mt-1 uppercase">
+          V1
         </span>
       </div>
 
-      <!-- MENÚ DE NAVEGACIÓN ALINEADO A LA DERECHA -->
+      <!-- MENÚ DE NAVEGACIÓN -->
       <nav class="flex flex-wrap items-center justify-center sm:justify-end gap-6 sm:gap-8 text-sm font-medium text-slate-300">
         <a href="#laboratorio" class="hover:text-white transition-colors">Laboratorio Técnico</a>
         <a href="#store" class="hover:text-white transition-colors">Store y Gear</a>
         <a href="#tv" class="hover:text-white transition-colors">TV Entertainment</a>
+        <a href="#proceso" class="hover:text-white transition-colors">Garantía y Proceso</a>
       </nav>
 
     </div>
   </header>
 
-  <!-- HERO SECTION CON TÍTULO PRINCIPAL COLORIDO Y CONTENIDO SOBRIO CENTRADO -->
+  <!-- HERO SECTION CON TÍTULO PRINCIPAL -->
   <section class="py-16 md:py-20 px-4 text-center relative overflow-hidden flex flex-col items-center justify-center">
     <canvas id="fireCanvas" width="900" height="350"></canvas>
     
@@ -158,7 +159,7 @@
     </div>
   </section>
 
-  <main class="max-w-6xl mx-auto px-4 py-8 space-y-16 w-full">
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-20 w-full">
 
     <!-- SECCIÓN 1: LABORATORIO TÉCNICO -->
     <section id="laboratorio" class="space-y-6 text-center">
@@ -169,8 +170,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        
-        <!-- Card 1 -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
             <img src="Modulo.jpg" alt="Cambio de Módulo" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -185,7 +184,6 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
             <img src="Baterias.jpg" alt="Cambio de Batería" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -200,7 +198,6 @@
           </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
             <img src="Placa de carga.jpg" alt="Pin / Placa de Carga" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -214,7 +211,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -227,8 +223,6 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-        
-        <!-- Auriculares -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
             <img src="Auriculares.jpg" alt="Auriculares" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -243,7 +237,6 @@
           </div>
         </div>
 
-        <!-- Cargadores -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
             <img src="Cargadores.png" alt="Cargadores" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -258,7 +251,6 @@
           </div>
         </div>
 
-        <!-- Cables USB -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
             <img src="USB.jpg" alt="Cables USB" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -273,7 +265,6 @@
           </div>
         </div>
 
-        <!-- Convertidores TV -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
             <img src="Convertidores.png" alt="Convertidores TV" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -287,7 +278,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -312,6 +302,99 @@
           </p>
         </div>
       </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN N°1: NUESTRO PROCESO DE TRABAJO -->
+    <section id="proceso" class="space-y-8 text-center pt-8">
+      <div class="inline-block border-b border-slate-800 pb-1 px-4">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase">
+          ¿Cómo Trabaja Nuestro Laboratorio?
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
+          <span class="text-slate-500 font-extrabold text-3xl block mb-2">01</span>
+          <h4 class="text-white font-semibold text-lg mb-2">Recepción</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Registramos tu equipo y sus fallas iniciales para un seguimiento seguro.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
+          <span class="text-slate-500 font-extrabold text-3xl block mb-2">02</span>
+          <h4 class="text-white font-semibold text-lg mb-2">Diagnóstico</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Evaluamos la placa o componente y cotizamos el trabajo exacto antes de proceder.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
+          <span class="text-slate-500 font-extrabold text-3xl block mb-2">03</span>
+          <h4 class="text-white font-semibold text-lg mb-2">Reparación</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Trabajamos con repuestos probados y herramientas de precisión.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
+          <span class="text-slate-500 font-extrabold text-3xl block mb-2">04</span>
+          <h4 class="text-white font-semibold text-lg mb-2">Entrega & Garantía</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Probamos el funcionamiento frente a vos y te entregamos tu equipo garantizado.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN N°2: MEDIOS DE PAGO Y GARANTÍA -->
+    <section class="bg-slate-900/80 rounded-2xl border border-slate-800 p-8 md:p-10 text-center">
+      <h3 class="text-xl sm:text-2xl font-bold text-white mb-6 uppercase tracking-wider">
+        Transparencia y Respaldo
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div class="p-4">
+          <h4 class="text-white font-bold mb-2">Garantía Escrita</h4>
+          <p class="text-slate-400 text-sm">
+            Respaldamos cada módulo, batería o pin de carga instalado en tu dispositivo.
+          </p>
+        </div>
+        <div class="p-4">
+          <h4 class="text-white font-bold mb-2">Medios de Pago</h4>
+          <p class="text-slate-400 text-sm">
+            Efectivo, Transferencias (Mercado Pago / Bancos) y Tarjetas.
+          </p>
+        </div>
+        <div class="p-4">
+          <h4 class="text-white font-bold mb-2">Atención Directa</h4>
+          <p class="text-slate-400 text-sm">
+            Respuestas inmediatas sin intermediarios para coordinar entregas rápidas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN N°3: CONSULTA / PRESUPUESTO EXPRESS -->
+    <section class="max-w-2xl mx-auto bg-slate-900 p-8 rounded-xl border border-slate-800 text-center">
+      <h3 class="text-xl font-bold text-white mb-2 uppercase">
+        ¿Querés consultar un presupuesto?
+      </h3>
+      <p class="text-slate-400 text-sm mb-6">
+        Escribinos con el modelo de tu equipo y la falla para asesorarte de inmediato.
+      </p>
+      <form class="space-y-4 text-left" onsubmit="event.preventDefault();">
+        <div>
+          <label class="block text-xs uppercase text-slate-400 font-semibold mb-1">Tu Nombre o Equipo</label>
+          <input type="text" placeholder="Ej: Samsung A32 / iPhone 11" class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-slate-600">
+        </div>
+        <div>
+          <label class="block text-xs uppercase text-slate-400 font-semibold mb-1">Detalle del Problema</label>
+          <textarea rows="3" placeholder="Ej: Se rompió la pantalla / No me carga el pin..." class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-slate-600"></textarea>
+        </div>
+        <button class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-2.5 rounded transition-colors text-sm uppercase tracking-wider">
+          Enviar Consulta
+        </button>
+      </form>
     </section>
 
   </main>
