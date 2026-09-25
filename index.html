@@ -96,6 +96,16 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-slate-700 selection:text-white text-center">
 
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a href="https://wa.me/5492634722710" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 group">
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+    </svg>
+    <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-bold pl-0 group-hover:pl-2 uppercase tracking-wider">
+      Consultar
+    </span>
+  </a>
+
   <!-- ENCABEZADO CON V1 EN MAYÚSCULA Y CENTRADO EN EL LOGO -->
   <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md py-3">
     <div class="w-full px-6 sm:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -115,7 +125,7 @@
         <a href="#laboratorio" class="hover:text-white transition-colors">Laboratorio Técnico</a>
         <a href="#store" class="hover:text-white transition-colors">Store y Gear</a>
         <a href="#tv" class="hover:text-white transition-colors">TV Entertainment</a>
-        <a href="#proceso" class="hover:text-white transition-colors">Garantía y Proceso</a>
+        <a href="#proceso" class="hover:text-white transition-colors">Proceso y Preguntas</a>
       </nav>
 
     </div>
@@ -150,8 +160,26 @@
     </div>
   </section>
 
+  <!-- BARRA DE ESTADÍSTICAS / DATOS CLAVE -->
+  <section class="border-y border-slate-800/80 bg-slate-950/60 py-6">
+    <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+      <div>
+        <span class="block text-2xl font-extrabold text-white">4+ Años</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">De Experiencia</span>
+      </div>
+      <div>
+        <span class="block text-2xl font-extrabold text-white">100% Verificado</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">Prueba Frente al Cliente</span>
+      </div>
+      <div>
+        <span class="block text-2xl font-extrabold text-white">Rivadavia, Mendoza</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">Atención Local</span>
+      </div>
+    </div>
+  </section>
+
   <!-- TÍTULO GENERAL DE SERVICIOS -->
-  <section class="py-4 text-center">
+  <section class="py-8 text-center">
     <div class="inline-block">
       <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wider uppercase border-b border-slate-700 pb-2 px-8">
         Nuestros Servicios
@@ -159,7 +187,7 @@
     </div>
   </section>
 
-  <main class="max-w-6xl mx-auto px-4 py-8 space-y-20 w-full">
+  <main class="max-w-6xl mx-auto px-4 py-4 space-y-20 w-full">
 
     <!-- SECCIÓN 1: LABORATORIO TÉCNICO -->
     <section id="laboratorio" class="space-y-6 text-center">
@@ -339,24 +367,24 @@
 
         <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
           <span class="text-slate-500 font-extrabold text-3xl block mb-2">04</span>
-          <h4 class="text-white font-semibold text-lg mb-2">Entrega & Garantía</h4>
+          <h4 class="text-white font-semibold text-lg mb-2">Prueba & Entrega</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
-            Probamos el funcionamiento frente a vos y te entregamos tu equipo garantizado.
+            Probamos el funcionamiento frente a vos para que te lleves el equipo verificado y 100% conforme.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN: MEDIOS DE PAGO Y GARANTÍA (REEMPLAZADO ATENCIÓN DIRECTA POR REPARACIONES EXPRESS) -->
+    <!-- SECCIÓN: ATENCIÓN Y MEDIOS DE PAGO -->
     <section class="bg-slate-900/80 rounded-2xl border border-slate-800 p-8 md:p-10 text-center">
       <h3 class="text-xl sm:text-2xl font-bold text-white mb-6 uppercase tracking-wider">
-        Transparencia y Respaldo
+        Atención y Medios de Pago
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         <div class="p-4">
-          <h4 class="text-white font-bold mb-2">Garantía Escrita</h4>
+          <h4 class="text-white font-bold mb-2">Atención Directa</h4>
           <p class="text-slate-400 text-sm">
-            Respaldamos cada módulo, batería o pin de carga instalado en tu dispositivo.
+            Te asesoramos de forma personalizada para ofrecerte la mejor solución según tu necesidad.
           </p>
         </div>
         <div class="p-4">
@@ -366,9 +394,48 @@
           </p>
         </div>
         <div class="p-4">
-          <h4 class="text-white font-bold mb-2">Reparaciones Express</h4>
+          <h4 class="text-white font-bold mb-2">Atención Local</h4>
           <p class="text-slate-400 text-sm">
-            La mayoría de los trabajos de laboratorio los entregamos en el mismo día.
+            Estamos en Rivadavia para que consultes o dejes tu equipo con total comodidad.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="max-w-4xl mx-auto space-y-6 text-center pt-4">
+      <div class="inline-block border-b border-slate-800 pb-1 px-4">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase">
+          Preguntas Frecuentes
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+        <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-800">
+          <h4 class="text-white font-semibold text-base mb-2">¿Cuánto demora una reparación?</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            La mayoría de los cambios de módulo, batería o pin de carga se realizan en el día o dentro de las 24 hs según disponibilidad del repuesto.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-800">
+          <h4 class="text-white font-semibold text-base mb-2">¿Tienen costo de revisión?</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Evaluamos tu equipo para darte el presupuesto exacto antes de realizar cualquier intervención en el laboratorio.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-800">
+          <h4 class="text-white font-semibold text-base mb-2">¿Tienen accesorios para todas las marcas?</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Sí, contamos con variedad de cargadores, cables y accesorios para iPhone, Samsung, Motorola, Xiaomi y más.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-800">
+          <h4 class="text-white font-semibold text-base mb-2">¿Cómo confirmo la compatibilidad?</h4>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Podés escribirnos directamente por WhatsApp especificando el modelo exacto de tu equipo y la falla para asesorarte.
           </p>
         </div>
       </div>
