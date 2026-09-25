@@ -10,19 +10,9 @@
     /* IMPORTACIÓN DE FUENTES: OUTFIT E INTER */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap');
 
-    /* FONDO DINÁMICO Y MODERNO "TECH GRID" */
     body {
       font-family: 'Inter', sans-serif;
       background-color: #080c14;
-      /* Malla de cuadrícula tecnológica + Luces ambientales de fondo */
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 60%, rgba(255, 0, 119, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(0, 136, 255, 0.07) 0%, transparent 50%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-      background-attachment: fixed;
       color: #cbd5e1;
       overflow-x: hidden;
       font-size: 1rem;
@@ -30,6 +20,17 @@
       /* BLOQUEO DE SELECCIÓN GENERAL PARA PROTECCIÓN DE CONTENIDO */
       user-select: none;
       -webkit-user-select: none;
+    }
+
+    /* CANVAS DE FONDO EN CUADRÍCULA DINÁMICA */
+    #gridBackgroundCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
     }
 
     .font-heading {
@@ -156,7 +157,8 @@
     .glow-card-content {
       position: relative;
       z-index: 1;
-      background: #0d1322;
+      background: rgba(13, 19, 34, 0.9);
+      backdrop-filter: blur(8px);
       border-radius: calc(1rem - 2.5px);
     }
 
@@ -165,10 +167,10 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* TARJETAS CON EFECTO DE CRISTAL ESMERILADO (GLASSMORPHISM) Y BORDES ILUMINADOS */
+    /* TARJETAS CON EFECTO DE CRISTAL ESMERILADO (GLASSMORPHISM) */
     .card-custom {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(8px);
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.3s ease-in-out;
     }
@@ -176,7 +178,7 @@
     .card-custom:hover {
       transform: translateY(-5px);
       border-color: rgba(0, 240, 255, 0.4);
-      box-shadow: 0 10px 30px -5px rgba(0, 240, 255, 0.15);
+      box-shadow: 0 10px 30px -5px rgba(0, 240, 255, 0.2);
     }
 
     /* ANIMACIÓN MARQUEE PARA LAS MARCAS DE ANDROID */
@@ -200,6 +202,9 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-slate-700 selection:text-white text-center" oncontextmenu="return false;">
 
+  <!-- CANVAS DE CUADRÍCULA DINÁMICA DE FONDO -->
+  <canvas id="gridBackgroundCanvas"></canvas>
+
   <!-- BOTÓN FLOTANTE DE WHATSAPP -->
   <a href="https://wa.me/5492634722710" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 group">
     <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
@@ -211,7 +216,7 @@
   </a>
 
   <!-- ENCABEZADO -->
-  <header class="border-b border-slate-800/80 bg-slate-950/80 sticky top-0 z-50 backdrop-blur-md py-3">
+  <header class="border-b border-slate-800/80 bg-slate-950/85 sticky top-0 z-50 backdrop-blur-md py-3">
     <div class="w-full px-6 sm:px-10 flex items-center justify-between">
       <div class="flex flex-col items-start text-left">
         <a href="#" class="font-bold text-xl sm:text-2xl tracking-wider logo-neon-fire leading-none">
@@ -257,7 +262,7 @@
   </section>
 
   <!-- BARRA DE ESTADÍSTICAS -->
-  <section class="border-y border-slate-800/80 bg-slate-950/60 backdrop-blur-sm py-6">
+  <section class="border-y border-slate-800/80 bg-slate-950/70 backdrop-blur-md py-6">
     <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
       <div>
         <span class="block text-2xl font-extrabold text-white font-heading">4+ Años</span>
@@ -454,7 +459,7 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-        <div class="bg-slate-900/60 backdrop-blur-sm p-6 rounded-xl border border-slate-800/80">
+        <div class="bg-slate-900/70 backdrop-blur-md p-6 rounded-xl border border-slate-800/80">
           <span class="text-slate-500 font-extrabold text-3xl block mb-2 font-heading">01</span>
           <h4 class="text-white font-bold text-lg mb-2 uppercase font-heading">Recepción</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
@@ -462,7 +467,7 @@
           </p>
         </div>
 
-        <div class="bg-slate-900/60 backdrop-blur-sm p-6 rounded-xl border border-slate-800/80">
+        <div class="bg-slate-900/70 backdrop-blur-md p-6 rounded-xl border border-slate-800/80">
           <span class="text-slate-500 font-extrabold text-3xl block mb-2 font-heading">02</span>
           <h4 class="text-white font-bold text-lg mb-2 uppercase font-heading">Diagnóstico</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
@@ -470,7 +475,7 @@
           </p>
         </div>
 
-        <div class="bg-slate-900/60 backdrop-blur-sm p-6 rounded-xl border border-slate-800/80">
+        <div class="bg-slate-900/70 backdrop-blur-md p-6 rounded-xl border border-slate-800/80">
           <span class="text-slate-500 font-extrabold text-3xl block mb-2 font-heading">03</span>
           <h4 class="text-white font-bold text-lg mb-2 uppercase font-heading">Reparación</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
@@ -478,7 +483,7 @@
           </p>
         </div>
 
-        <div class="bg-slate-900/60 backdrop-blur-sm p-6 rounded-xl border border-slate-800/80">
+        <div class="bg-slate-900/70 backdrop-blur-md p-6 rounded-xl border border-slate-800/80">
           <span class="text-slate-500 font-extrabold text-3xl block mb-2 font-heading">04</span>
           <h4 class="text-white font-bold text-lg mb-2 uppercase font-heading">Prueba & Entrega</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
@@ -489,7 +494,7 @@
     </section>
 
     <!-- SECCIÓN: ATENCIÓN Y MEDIOS DE PAGO -->
-    <section class="bg-slate-900/70 backdrop-blur-md rounded-2xl border border-slate-800 p-8 md:p-10 text-center">
+    <section class="bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-800 p-8 md:p-10 text-center">
       <h3 class="text-xl sm:text-2xl font-bold text-white mb-6 uppercase tracking-wider font-heading">
         Atención y Medios de Pago
       </h3>
@@ -554,7 +559,7 @@
     </section>
 
     <!-- SECCIÓN PRESUPUESTO EXPRESS DIRECTO A TU WHATSAPP -->
-    <section class="max-w-2xl mx-auto bg-slate-900/80 backdrop-blur-md p-8 rounded-xl border border-slate-800 text-center">
+    <section class="max-w-2xl mx-auto bg-slate-900/85 backdrop-blur-md p-8 rounded-xl border border-slate-800 text-center">
       <h3 class="text-xl font-bold text-white mb-2 uppercase font-heading">
         ¿Querés consultar un presupuesto?
       </h3>
@@ -580,7 +585,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-950/90 border-t border-slate-800/80 mt-20 pt-14 pb-10 text-slate-300 text-center">
+  <footer class="bg-slate-950/95 border-t border-slate-800/80 mt-20 pt-14 pb-10 text-slate-300 text-center">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 text-center">
       <div class="flex flex-col items-center space-y-2">
         <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400 font-heading">
@@ -631,7 +636,103 @@
       img.addEventListener('dragstart', e => e.preventDefault());
     });
 
-    // MOTOR DE CHISPAS Y RAYOS NEÓN ELÉCTRICOS (CANVAS BACKGROUND)
+    // MOTOR DE CUADRÍCULA DINÁMICA DE FONDO (DYNAMIC NEON GRID)
+    const gridCanvas = document.getElementById('gridBackgroundCanvas');
+    const gCtx = gridCanvas.getContext('2d');
+
+    let gridCols, gridRows;
+    const cellSize = 45; // Tamaño de cada celda en píxeles
+    let activeCells = [];
+
+    function resizeGrid() {
+      gridCanvas.width = window.innerWidth;
+      gridCanvas.height = window.innerHeight;
+      gridCols = Math.ceil(gridCanvas.width / cellSize);
+      gridRows = Math.ceil(gridCanvas.height / cellSize);
+    }
+
+    window.addEventListener('resize', resizeGrid);
+    resizeGrid();
+
+    // Paleta de colores estilo Gamer / Cyberpunk
+    const neonColors = [
+      'rgba(0, 240, 255, ',   // Cian
+      'rgba(255, 0, 119, ',   // Rosa Neón
+      'rgba(57, 255, 20, ',   // Verde Neón
+      'rgba(0, 136, 255, '    // Azul Neón
+    ];
+
+    function addRandomActiveCell() {
+      if (activeCells.length < 35) {
+        const col = Math.floor(Math.random() * gridCols);
+        const row = Math.floor(Math.random() * gridRows);
+        const colorBase = neonColors[Math.floor(Math.random() * neonColors.length)];
+        
+        activeCells.push({
+          col,
+          row,
+          colorBase,
+          opacity: 0,
+          maxOpacity: Math.random() * 0.35 + 0.15, // Opacidad suave para no entorpecer la lectura
+          speed: Math.random() * 0.015 + 0.005,
+          fadingIn: true
+        });
+      }
+    }
+
+    function drawGrid() {
+      gCtx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
+
+      // Dibujar la rejilla base tenue
+      gCtx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      gCtx.lineWidth = 1;
+
+      for (let x = 0; x <= gridCanvas.width; x += cellSize) {
+        gCtx.beginPath();
+        gCtx.moveTo(x, 0);
+        gCtx.lineTo(x, gridCanvas.height);
+        gCtx.stroke();
+      }
+
+      for (let y = 0; y <= gridCanvas.height; y += cellSize) {
+        gCtx.beginPath();
+        gCtx.moveTo(0, y);
+        gCtx.lineTo(gridCanvas.width, y);
+        gCtx.stroke();
+      }
+
+      // Dibujar las celdas encendidas que van cambiando de intensidad y color
+      if (Math.random() < 0.25) addRandomActiveCell();
+
+      for (let i = activeCells.length - 1; i >= 0; i--) {
+        const cell = activeCells[i];
+
+        if (cell.fadingIn) {
+          cell.opacity += cell.speed;
+          if (cell.opacity >= cell.maxOpacity) cell.fadingIn = false;
+        } else {
+          cell.opacity -= cell.speed;
+        }
+
+        if (cell.opacity <= 0) {
+          activeCells.splice(i, 1);
+          continue;
+        }
+
+        // Relleno de celda y borde iluminado
+        gCtx.fillStyle = `${cell.colorBase}${cell.opacity})`;
+        gCtx.fillRect(cell.col * cellSize + 1, cell.row * cellSize + 1, cellSize - 2, cellSize - 2);
+
+        gCtx.strokeStyle = `${cell.colorBase}${cell.opacity * 1.5})`;
+        gCtx.strokeRect(cell.col * cellSize + 1, cell.row * cellSize + 1, cellSize - 2, cellSize - 2);
+      }
+
+      requestAnimationFrame(drawGrid);
+    }
+
+    drawGrid();
+
+    // MOTOR DE CHISPAS Y RAYOS NEÓN ELÉCTRICOS (CANVAS DEL HERO)
     const canvas = document.getElementById('fireCanvas');
     const ctx = canvas.getContext('2d');
 
