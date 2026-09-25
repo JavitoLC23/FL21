@@ -7,59 +7,61 @@
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@800;900&family=Rajdhani:wght@500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap');
 
     body {
-      font-family: 'Rajdhani', 'Inter', sans-serif;
-      background-color: #0b0f17;
+      font-family: 'Inter', 'Montserrat', sans-serif;
+      background-color: #080c14;
       color: #cbd5e1;
       overflow-x: hidden;
-      font-size: 1.05rem;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
-    .font-orbitron {
-      font-family: 'Orbitron', sans-serif;
+    .font-title {
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.02em;
     }
 
-    /* NEON / FIRE EFFECT FOR HEADER LOGO */
-    .logo-neon-fire {
-      font-family: 'Orbitron', sans-serif;
+    /* NEON UNIFORME PARA EL LOGO Y "ONE PLAYER V1" */
+    .logo-neon-uniform {
+      font-family: 'Inter', sans-serif;
       font-weight: 900;
       color: #ffffff;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-shadow: 
-        0 0 4px #ffffff,
-        0 0 10px #ff3300,
-        0 0 18px #ff0055,
-        0 0 25px #00f0ff;
+        0 0 5px #ffffff,
+        0 0 12px #ff3300,
+        0 0 22px #ff0055,
+        0 0 30px #00f0ff;
       transition: all 0.3s ease;
     }
 
-    .logo-neon-fire:hover {
+    .logo-neon-uniform:hover {
       text-shadow: 
         0 0 8px #ffffff,
-        0 0 15px #ff5500,
-        0 0 25px #ff0077,
-        0 0 35px #00ffff;
+        0 0 18px #ff5500,
+        0 0 30px #ff0077,
+        0 0 40px #00ffff;
     }
 
-    /* EFECTO FUEGO / RAYO MANTENIDO EXCLUSIVAMENTE PARA EL TÍTULO PRINCIPAL HERO */
+    /* EFECTO FUEGO Y LUZ PARA EL TÍTULO PRINCIPAL HERO */
     .fire-lightning-title {
       position: relative;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 900;
       color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       text-shadow:
-        0 0 5px #ffffff,
-        0 -2px 10px #ff6600,
-        0 -8px 22px #ff2200,
-        0 -14px 32px #ff0055,
-        0 0 20px #00f0ff,
-        0 0 40px #0088ff;
-      animation: fireLightningPulse 1.5s infinite alternate ease-in-out;
+        0 0 6px #ffffff,
+        0 -2px 12px #ff6600,
+        0 -8px 25px #ff2200,
+        0 -14px 35px #ff0055,
+        0 0 25px #00f0ff,
+        0 0 45px #0088ff;
+      animation: fireLightningPulse 1.8s infinite alternate ease-in-out;
     }
 
     @keyframes fireLightningPulse {
@@ -81,7 +83,7 @@
           0 -22px 48px #ff0055,
           0 0 30px #00ffff,
           0 0 55px #7000ff;
-        transform: scale(1.015);
+        transform: scale(1.01);
       }
       100% {
         text-shadow:
@@ -114,7 +116,7 @@
     .card-custom:hover {
       transform: translateY(-4px);
       border-color: #374151;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 12px 28px -5px rgba(0, 0, 0, 0.6);
     }
   </style>
 </head>
@@ -130,22 +132,19 @@
     </span>
   </a>
 
-  <!-- ENCABEZADO CON LOGO TOTALMENTE A LA IZQUIERDA Y EFECTO NEÓN/FUEGO -->
-  <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md py-3">
+  <!-- ENCABEZADO CON "ONE PLAYER V1" DEL MISMO COLOR Y ESTILO ALINEADO A LA IZQUIERDA -->
+  <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md py-4">
     <div class="w-full px-6 sm:px-10 flex items-center justify-between">
       
-      <!-- LOGO ONE PLAYER V1 A LA IZQUIERDA -->
-      <div class="flex flex-col items-start text-left">
-        <a href="#" class="font-bold text-xl sm:text-2xl tracking-widest logo-neon-fire leading-none">
-          ONE PLAYER
+      <!-- LOGO ONE PLAYER V1 (MISMO COLOR, MISMO NEÓN Y EN LA MISMA LÍNEA) -->
+      <div class="flex items-center text-left">
+        <a href="#" class="font-black text-xl sm:text-2xl logo-neon-uniform leading-none">
+          ONE PLAYER V1
         </a>
-        <span class="text-[10px] sm:text-xs font-bold text-cyan-400 tracking-widest mt-1 uppercase pl-0.5">
-          V1
-        </span>
       </div>
 
-      <!-- MENÚ DE NAVEGACIÓN A LA DERECHA -->
-      <nav class="flex items-center gap-6 sm:gap-8 text-sm font-semibold tracking-wider text-slate-300 uppercase">
+      <!-- MENÚ DE NAVEGACIÓN -->
+      <nav class="flex items-center gap-6 sm:gap-8 text-sm font-medium tracking-wider text-slate-300 uppercase">
         <a href="#laboratorio" class="hover:text-white transition-colors">Laboratorio Técnico</a>
         <a href="#store" class="hover:text-white transition-colors">Store y Gear</a>
         <a href="#tv" class="hover:text-white transition-colors">TV Entertainment</a>
@@ -167,13 +166,13 @@
         </h1>
       </div>
 
-      <p class="text-cyan-400 text-lg sm:text-xl font-bold tracking-widest uppercase mt-3 mb-10 text-center">
+      <p class="text-cyan-400 text-base sm:text-lg font-semibold tracking-widest uppercase mt-3 mb-10 text-center">
         Soluciones Técnicas
       </p>
 
       <!-- ¿QUIÉNES SOMOS? -->
       <div class="max-w-3xl mx-auto bg-slate-900/90 p-8 md:p-10 rounded-xl border border-slate-800 shadow-xl text-center">
-        <h2 class="text-xl sm:text-2xl font-bold text-white mb-4 uppercase tracking-wider font-orbitron">
+        <h2 class="text-xl sm:text-2xl font-bold text-white mb-4 uppercase tracking-wider font-title">
           ¿Quiénes Somos?
         </h2>
         <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal text-center">
@@ -187,16 +186,16 @@
   <section class="border-y border-slate-800/80 bg-slate-950/60 py-6">
     <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
       <div>
-        <span class="block text-2xl font-extrabold text-white">4+ Años</span>
-        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">De Experiencia</span>
+        <span class="block text-2xl font-black text-white font-title">4+ Años</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">De Experiencia</span>
       </div>
       <div>
-        <span class="block text-2xl font-extrabold text-white">100% Verificado</span>
-        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Prueba Frente al Cliente</span>
+        <span class="block text-2xl font-black text-white font-title">100% Verificado</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">Prueba Frente al Cliente</span>
       </div>
       <div>
-        <span class="block text-2xl font-extrabold text-white">Rivadavia, Mendoza</span>
-        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Atención Local</span>
+        <span class="block text-2xl font-black text-white font-title">Rivadavia, Mendoza</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">Atención Local</span>
       </div>
     </div>
   </section>
@@ -204,7 +203,7 @@
   <!-- TÍTULO GENERAL DE SERVICIOS -->
   <section class="py-8 text-center">
     <div class="inline-block">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wider uppercase border-b border-slate-700 pb-2 px-8 font-orbitron">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wider uppercase border-b border-slate-700 pb-2 px-8 font-title">
         Nuestros Servicios
       </h2>
     </div>
@@ -215,7 +214,7 @@
     <!-- SECCIÓN 1: LABORATORIO TÉCNICO -->
     <section id="laboratorio" class="space-y-6 text-center">
       <div class="inline-block border-b border-slate-800 pb-1 px-4">
-        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-orbitron">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-title">
           Laboratorio Técnico
         </h3>
       </div>
@@ -227,7 +226,7 @@
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
-              <h4 class="text-lg font-bold text-white mb-2 uppercase">Cambio de Módulo</h4>
+              <h4 class="text-base font-bold text-white mb-2 uppercase font-title">Cambio de Módulo</h4>
               <p class="text-slate-400 text-sm leading-relaxed">
                 Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.
               </p>
@@ -241,7 +240,7 @@
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
-              <h4 class="text-lg font-bold text-white mb-2 uppercase">Cambio de Batería</h4>
+              <h4 class="text-base font-bold text-white mb-2 uppercase font-title">Cambio de Batería</h4>
               <p class="text-slate-400 text-sm leading-relaxed">
                 Reemplazo de baterías agotadas para devolverle la autonomía y el máximo rendimiento original a tu celular.
               </p>
@@ -255,7 +254,7 @@
           </div>
           <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
-              <h4 class="text-lg font-bold text-white mb-2 uppercase">Pin / Placa de Carga</h4>
+              <h4 class="text-base font-bold text-white mb-2 uppercase font-title">Pin / Placa de Carga</h4>
               <p class="text-slate-400 text-sm leading-relaxed">
                 Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tus dispositivos.
               </p>
@@ -268,7 +267,7 @@
     <!-- SECCIÓN 2: STORE Y GEAR -->
     <section id="store" class="space-y-6 text-center">
       <div class="inline-block border-b border-slate-800 pb-1 px-4">
-        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-orbitron">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-title">
           Store y Gear
         </h3>
       </div>
@@ -280,7 +279,7 @@
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
-              <h4 class="text-base font-bold text-white mb-2 uppercase">Auriculares</h4>
+              <h4 class="text-base font-bold text-white mb-2 uppercase font-title">Auriculares</h4>
               <p class="text-slate-400 text-xs leading-relaxed">
                 Con cable, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.
               </p>
@@ -294,7 +293,7 @@
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
-              <h4 class="text-base font-bold text-white mb-2 uppercase">Cargadores</h4>
+              <h4 class="text-base font-bold text-white mb-2 uppercase font-title">Cargadores</h4>
               <p class="text-slate-400 text-xs leading-relaxed">
                 Cargadores de carga normal, rápidos y originales para cuidar la salud de la batería de tu dispositivo.
               </p>
@@ -308,7 +307,7 @@
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
-              <h4 class="text-base font-bold text-white mb-2 uppercase">Cables USB</h4>
+              <h4 class="text-base font-bold text-white mb-2 uppercase font-title">Cables USB</h4>
               <p class="text-slate-400 text-xs leading-relaxed">
                 Cables con entrada Tipo C, Tipo V8 y Lightning (iPhone) de alta resistencia.
               </p>
@@ -322,7 +321,7 @@
           </div>
           <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
-              <h4 class="text-base font-bold text-white mb-2 uppercase">Convertidores TV</h4>
+              <h4 class="text-base font-bold text-white mb-2 uppercase font-title">Convertidores TV</h4>
               <p class="text-slate-400 text-xs leading-relaxed">
                 Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.
               </p>
@@ -335,7 +334,7 @@
     <!-- SECCIÓN 3: TV ENTERTAINMENT -->
     <section id="tv" class="space-y-6 text-center">
       <div class="inline-block border-b border-slate-800 pb-1 px-4">
-        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-orbitron">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-title">
           TV Entertainment
         </h3>
       </div>
@@ -345,7 +344,7 @@
           <img src="Tv.jpg" alt="TV Entertainment" class="w-full h-full object-cover opacity-95">
         </div>
         <div class="p-8 text-center">
-          <h4 class="text-xl sm:text-2xl font-bold text-white mb-3 uppercase">
+          <h4 class="text-xl sm:text-2xl font-bold text-white mb-3 uppercase font-title">
             Experiencia TV Familiar
           </h4>
           <p class="text-slate-300 text-base leading-relaxed max-w-xl mx-auto font-normal">
@@ -358,39 +357,39 @@
     <!-- SECCIÓN: PROCESO DE TRABAJO -->
     <section id="proceso" class="space-y-8 text-center pt-8">
       <div class="inline-block border-b border-slate-800 pb-1 px-4">
-        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-orbitron">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-title">
           ¿Cómo Trabaja Nuestro Laboratorio?
         </h3>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
         <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
-          <span class="text-slate-500 font-extrabold text-3xl block mb-2 font-orbitron">01</span>
-          <h4 class="text-white font-bold text-lg mb-2 uppercase">Recepción</h4>
+          <span class="text-slate-500 font-black text-3xl block mb-2 font-title">01</span>
+          <h4 class="text-white font-bold text-base mb-2 uppercase font-title">Recepción</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
             Registramos tu equipo y sus fallas iniciales para un seguimiento seguro.
           </p>
         </div>
 
         <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
-          <span class="text-slate-500 font-extrabold text-3xl block mb-2 font-orbitron">02</span>
-          <h4 class="text-white font-bold text-lg mb-2 uppercase">Diagnóstico</h4>
+          <span class="text-slate-500 font-black text-3xl block mb-2 font-title">02</span>
+          <h4 class="text-white font-bold text-base mb-2 uppercase font-title">Diagnóstico</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
             Evaluamos la placa o componente y cotizamos el trabajo exacto antes de proceder.
           </p>
         </div>
 
         <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
-          <span class="text-slate-500 font-extrabold text-3xl block mb-2 font-orbitron">03</span>
-          <h4 class="text-white font-bold text-lg mb-2 uppercase">Reparación</h4>
+          <span class="text-slate-500 font-black text-3xl block mb-2 font-title">03</span>
+          <h4 class="text-white font-bold text-base mb-2 uppercase font-title">Reparación</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
             Trabajamos con repuestos probados y herramientas de precisión.
           </p>
         </div>
 
         <div class="bg-slate-900/60 p-6 rounded-xl border border-slate-800/80">
-          <span class="text-slate-500 font-extrabold text-3xl block mb-2 font-orbitron">04</span>
-          <h4 class="text-white font-bold text-lg mb-2 uppercase">Prueba & Entrega</h4>
+          <span class="text-slate-500 font-black text-3xl block mb-2 font-title">04</span>
+          <h4 class="text-white font-bold text-base mb-2 uppercase font-title">Prueba & Entrega</h4>
           <p class="text-slate-400 text-xs leading-relaxed">
             Probamos el funcionamiento frente a vos para que te lleves el equipo verificado y 100% conforme.
           </p>
@@ -400,24 +399,24 @@
 
     <!-- SECCIÓN: ATENCIÓN Y MEDIOS DE PAGO -->
     <section class="bg-slate-900/80 rounded-2xl border border-slate-800 p-8 md:p-10 text-center">
-      <h3 class="text-xl sm:text-2xl font-bold text-white mb-6 uppercase tracking-wider font-orbitron">
+      <h3 class="text-xl sm:text-2xl font-bold text-white mb-6 uppercase tracking-wider font-title">
         Atención y Medios de Pago
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         <div class="p-4">
-          <h4 class="text-white font-bold mb-2 uppercase">Atención Directa</h4>
+          <h4 class="text-white font-bold mb-2 uppercase font-title">Atención Directa</h4>
           <p class="text-slate-400 text-sm">
             Te asesoramos de forma personalizada para ofrecerte la mejor solución según tu necesidad.
           </p>
         </div>
         <div class="p-4">
-          <h4 class="text-white font-bold mb-2 uppercase">Medios de Pago</h4>
+          <h4 class="text-white font-bold mb-2 uppercase font-title">Medios de Pago</h4>
           <p class="text-slate-400 text-sm">
             Efectivo, Transferencias (Mercado Pago / Bancos) y Tarjetas.
           </p>
         </div>
         <div class="p-4">
-          <h4 class="text-white font-bold mb-2 uppercase">Repuestos Seleccionados</h4>
+          <h4 class="text-white font-bold mb-2 uppercase font-title">Repuestos Seleccionados</h4>
           <p class="text-slate-400 text-sm">
             Utilizamos componentes de excelente calidad para asegurar el mejor rendimiento de tu equipo.
           </p>
@@ -425,10 +424,10 @@
       </div>
     </section>
 
-    <!-- SECCIÓN: PREGUNTAS FRECUENTES (DISPUESTAS UNA AL LADO DE LA OTRA COMO LABORATORIO TÉCNICO) -->
+    <!-- SECCIÓN: PREGUNTAS FRECUENTES (DISPUESTAS UNA AL LADO DE LA OTRA EN TARJETAS SOBRIAS) -->
     <section class="space-y-6 text-center pt-4">
       <div class="inline-block border-b border-slate-800 pb-1 px-4">
-        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-orbitron">
+        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide uppercase font-title">
           Preguntas Frecuentes
         </h3>
       </div>
@@ -437,7 +436,7 @@
         <!-- Tarjeta 1 -->
         <div class="card-custom rounded-xl p-6 flex flex-col justify-between text-center">
           <div>
-            <h4 class="text-lg font-bold text-white mb-3 uppercase">¿Cuánto demora una reparación habitual?</h4>
+            <h4 class="text-base font-bold text-white mb-3 uppercase font-title">¿Cuánto demora una reparación habitual?</h4>
             <p class="text-slate-400 text-sm leading-relaxed">
               La mayoría de las reparaciones estándar (cambios de módulo, baterías y pines de carga) se entregan en el mismo día o dentro de las 24 a 48 hs dependiendo del stock de repuestos.
             </p>
@@ -447,7 +446,7 @@
         <!-- Tarjeta 2 -->
         <div class="card-custom rounded-xl p-6 flex flex-col justify-between text-center">
           <div>
-            <h4 class="text-lg font-bold text-white mb-3 uppercase">¿Las reparaciones tienen garantía?</h4>
+            <h4 class="text-base font-bold text-white mb-3 uppercase font-title">¿Las reparaciones tienen garantía?</h4>
             <p class="text-slate-400 text-sm leading-relaxed">
               Sí, todos nuestros trabajos en el laboratorio cuentan con garantía sobre el repuesto instalado y el servicio técnico realizado.
             </p>
@@ -457,7 +456,7 @@
         <!-- Tarjeta 3 -->
         <div class="card-custom rounded-xl p-6 flex flex-col justify-between text-center">
           <div>
-            <h4 class="text-lg font-bold text-white mb-3 uppercase">¿Cómo solicito un presupuesto?</h4>
+            <h4 class="text-base font-bold text-white mb-3 uppercase font-title">¿Cómo solicito un presupuesto?</h4>
             <p class="text-slate-400 text-sm leading-relaxed">
               Podés completar el formulario express al final de esta página o escribirnos directamente a nuestro WhatsApp detallando la falla y el modelo exacto.
             </p>
@@ -466,9 +465,9 @@
       </div>
     </section>
 
-    <!-- SECCIÓN PRESUPUESTO EXPRESS DIRECTO A TU WHATSAPP (2634722710) -->
+    <!-- SECCIÓN PRESUPUESTO EXPRESS -->
     <section class="max-w-2xl mx-auto bg-slate-900 p-8 rounded-xl border border-slate-800 text-center">
-      <h3 class="text-xl font-bold text-white mb-2 uppercase font-orbitron">
+      <h3 class="text-xl font-bold text-white mb-2 uppercase font-title">
         ¿Querés consultar un presupuesto?
       </h3>
       <p class="text-slate-400 text-sm mb-6">
@@ -484,7 +483,7 @@
           <label class="block text-xs uppercase text-slate-400 font-semibold mb-1">Detalle del Problema</label>
           <textarea id="fallaInput" rows="3" required placeholder="Ej: Se rompió la pantalla / No me carga el pin..." class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-slate-600 text-center"></textarea>
         </div>
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded transition-colors text-sm uppercase tracking-wider">
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded transition-colors text-sm uppercase tracking-wider font-title">
           Enviar Consulta por WhatsApp
         </button>
       </form>
@@ -492,13 +491,13 @@
 
   </main>
 
-  <!-- FOOTER SERIO CENTRADO -->
+  <!-- FOOTER -->
   <footer class="bg-slate-950 border-t border-slate-800/80 mt-20 pt-14 pb-10 text-slate-300 text-center">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 text-center">
       
       <!-- Ubicación -->
       <div class="flex flex-col items-center space-y-2">
-        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
+        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400 font-title">
           Ubicación
         </h5>
         <p class="text-base font-semibold text-white">
@@ -508,7 +507,7 @@
 
       <!-- Horarios -->
       <div class="flex flex-col items-center space-y-2">
-        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
+        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400 font-title">
           Horarios de Atención
         </h5>
         <div class="text-sm space-y-1">
@@ -517,9 +516,9 @@
         </div>
       </div>
 
-      <!-- Contacto / Email -->
+      <!-- Contacto Directo -->
       <div class="flex flex-col items-center space-y-2">
-        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
+        <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400 font-title">
           Contacto Directo
         </h5>
         <p class="text-sm font-medium">
@@ -537,12 +536,12 @@
         Servicio Técnico &middot; Accesorios &middot; Entretenimiento
       </p>
       <p class="text-xs font-normal text-slate-500">
-        &copy; 2026 ONEPLAYER. Todos los derechos reservados.
+        &copy; 2026 ONE PLAYER. Todos los derechos reservados.
       </p>
     </div>
   </footer>
 
-  <!-- SCRIPT ANIMACIÓN DE FUEGO Y RAYOS -->
+  <!-- SCRIPT DE FUEGO Y RAYOS EN CANVA -->
   <script>
     const canvas = document.getElementById('fireCanvas');
     const ctx = canvas.getContext('2d');
@@ -611,7 +610,7 @@
       canvas.width = Math.min(parentWidth, 900);
     });
 
-    /* FUNCIÓN ENVÍO DIRECTO A WHATSAPP */
+    /* ENVÍO DIRECTO A WHATSAPP */
     function enviarAWhatsApp(event) {
       event.preventDefault();
       
