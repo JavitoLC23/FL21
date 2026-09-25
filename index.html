@@ -20,7 +20,7 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    /* EFECTO FUEGO / RAYO MANTENIDO EXCLUSIVAMENTE PARA EL TÍTULO PRINCIPAL */
+    /* EFECTO FUEGO / RAYO MANTENIDO EXCLUSIVAMENTE PARA EL TÍTULO PRINCIPAL HERO */
     .fire-lightning-title {
       position: relative;
       font-family: 'Orbitron', sans-serif;
@@ -94,45 +94,50 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-slate-700 selection:text-white">
+<body class="min-h-screen flex flex-col justify-between selection:bg-slate-700 selection:text-white text-center">
 
-  <!-- NAVEGACIÓN SUPERIOR SOBRIA -->
-  <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-      <a href="#" class="font-bold text-lg tracking-wide text-white hover:text-slate-300 transition-colors">
+  <!-- ENCABEZADO: LOGO A LA IZQUIERDA Y MENÚ A LA DERECHA -->
+  <header class="border-b border-slate-800/80 bg-slate-950/90 sticky top-0 z-50 backdrop-blur-md py-4">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+      <!-- LOGO ALINEADO A LA IZQUIERDA -->
+      <a href="#" class="font-bold text-xl sm:text-2xl tracking-widest text-white hover:text-slate-300 transition-colors shrink-0">
         ONE PLAYER
       </a>
-      <nav class="flex flex-wrap items-center gap-8 text-sm font-medium text-slate-300">
+
+      <!-- MENÚ DE NAVEGACIÓN ALINEADO A LA DERECHA -->
+      <nav class="flex flex-wrap items-center justify-center sm:justify-end gap-6 sm:gap-8 text-sm font-medium text-slate-300">
         <a href="#laboratorio" class="hover:text-white transition-colors">Laboratorio Técnico</a>
         <a href="#store" class="hover:text-white transition-colors">Store y Gear</a>
         <a href="#tv" class="hover:text-white transition-colors">TV Entertainment</a>
       </nav>
+
     </div>
   </header>
 
-  <!-- HERO SECTION CON TÍTULO PRINCIPAL COLORIDO Y CONTENIDO SOBRIO -->
+  <!-- HERO SECTION CON TÍTULO PRINCIPAL COLORIDO Y CONTENIDO SOBRIO CENTRADO -->
   <section class="py-16 md:py-20 px-4 text-center relative overflow-hidden flex flex-col items-center justify-center">
     <canvas id="fireCanvas" width="900" height="350"></canvas>
     
     <div class="max-w-4xl mx-auto relative z-10 w-full flex flex-col items-center">
       
-      <!-- TÍTULO PRINCIPAL (ÚNICO ELEMENTO CON COLOR Y EFECTOS) -->
+      <!-- TÍTULO PRINCIPAL -->
       <div class="relative inline-block my-2">
         <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl fire-lightning-title py-2 px-4">
           ONE PLAYER
         </h1>
       </div>
 
-      <p class="text-slate-300 text-lg sm:text-xl font-semibold tracking-widest uppercase mt-3 mb-10">
+      <p class="text-slate-300 text-lg sm:text-xl font-semibold tracking-widest uppercase mt-3 mb-10 text-center">
         Soluciones Técnicas
       </p>
 
-      <!-- ¿QUIÉNES SOMOS? (DISEÑO INSTITUCIONAL SERIO) -->
+      <!-- ¿QUIÉNES SOMOS? -->
       <div class="max-w-3xl mx-auto bg-slate-900/90 p-8 md:p-10 rounded-xl border border-slate-800 shadow-xl text-center">
         <h2 class="text-xl sm:text-2xl font-bold text-white mb-4 uppercase tracking-wider">
           ¿Quiénes Somos?
         </h2>
-        <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal text-center">
           Con una trayectoria de <span class="text-white font-semibold underline underline-offset-4 decoration-slate-600">4 años</span>, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.
         </p>
       </div>
@@ -158,14 +163,14 @@
         </h3>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         
         <!-- Card 1 -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
             <img src="Modulo.jpg" alt="Cambio de Módulo" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow">
+          <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
               <h4 class="text-lg font-bold text-white mb-2">Cambio de Módulo</h4>
               <p class="text-slate-400 text-sm leading-relaxed">
@@ -180,7 +185,7 @@
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
             <img src="Baterias.jpg" alt="Cambio de Batería" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow">
+          <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
               <h4 class="text-lg font-bold text-white mb-2">Cambio de Batería</h4>
               <p class="text-slate-400 text-sm leading-relaxed">
@@ -195,7 +200,7 @@
           <div class="w-full h-48 bg-slate-900 overflow-hidden">
             <img src="Placa de carga.jpg" alt="Pin / Placa de Carga" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow">
+          <div class="p-6 flex flex-col justify-between flex-grow text-center">
             <div>
               <h4 class="text-lg font-bold text-white mb-2">Pin / Placa de Carga</h4>
               <p class="text-slate-400 text-sm leading-relaxed">
@@ -216,14 +221,14 @@
         </h3>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
         
         <!-- Auriculares -->
         <div class="card-custom rounded-xl overflow-hidden flex flex-col justify-between">
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
             <img src="Auriculares.jpg" alt="Auriculares" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
-          <div class="p-5 flex flex-col justify-between flex-grow">
+          <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
               <h4 class="text-base font-bold text-white mb-2">Auriculares</h4>
               <p class="text-slate-400 text-xs leading-relaxed">
@@ -238,7 +243,7 @@
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
             <img src="Cargadores.png" alt="Cargadores" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
-          <div class="p-5 flex flex-col justify-between flex-grow">
+          <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
               <h4 class="text-base font-bold text-white mb-2">Cargadores</h4>
               <p class="text-slate-400 text-xs leading-relaxed">
@@ -253,7 +258,7 @@
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
             <img src="USB.jpg" alt="Cables USB" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
-          <div class="p-5 flex flex-col justify-between flex-grow">
+          <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
               <h4 class="text-base font-bold text-white mb-2">Cables USB</h4>
               <p class="text-slate-400 text-xs leading-relaxed">
@@ -268,7 +273,7 @@
           <div class="w-full h-44 bg-slate-900 overflow-hidden">
             <img src="Convertidores.png" alt="Convertidores TV" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
           </div>
-          <div class="p-5 flex flex-col justify-between flex-grow">
+          <div class="p-5 flex flex-col justify-between flex-grow text-center">
             <div>
               <h4 class="text-base font-bold text-white mb-2">Convertidores TV</h4>
               <p class="text-slate-400 text-xs leading-relaxed">
@@ -293,7 +298,7 @@
         <div class="w-full h-64 sm:h-72 bg-slate-900 overflow-hidden">
           <img src="Tv.jpg" alt="TV Entertainment" class="w-full h-full object-cover opacity-95">
         </div>
-        <div class="p-8">
+        <div class="p-8 text-center">
           <h4 class="text-xl sm:text-2xl font-bold text-white mb-3">
             Experiencia TV Familiar
           </h4>
@@ -306,12 +311,12 @@
 
   </main>
 
-  <!-- FOOTER SERIO E INSTITUCIONAL -->
-  <footer class="bg-slate-950 border-t border-slate-800/80 mt-20 pt-14 pb-10 text-slate-300">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 text-center md:text-left">
+  <!-- FOOTER SERIO CENTRADO -->
+  <footer class="bg-slate-950 border-t border-slate-800/80 mt-20 pt-14 pb-10 text-slate-300 text-center">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 text-center">
       
       <!-- Ubicación -->
-      <div class="flex flex-col items-center md:items-start space-y-2">
+      <div class="flex flex-col items-center space-y-2">
         <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
           Ubicación
         </h5>
@@ -321,7 +326,7 @@
       </div>
 
       <!-- Horarios -->
-      <div class="flex flex-col items-center md:items-start space-y-2">
+      <div class="flex flex-col items-center space-y-2">
         <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
           Horarios de Atención
         </h5>
@@ -332,7 +337,7 @@
       </div>
 
       <!-- Contacto / Email -->
-      <div class="flex flex-col items-center md:items-start space-y-2">
+      <div class="flex flex-col items-center space-y-2">
         <h5 class="text-xs font-bold uppercase tracking-widest text-slate-400">
           Contacto Directo
         </h5>
@@ -356,7 +361,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT ANIMACIÓN DE FUEGO Y RAYOS PARA TÍTULO HERO -->
+  <!-- SCRIPT ANIMACIÓN DE FUEGO Y RAYOS -->
   <script>
     const canvas = document.getElementById('fireCanvas');
     const ctx = canvas.getContext('2d');
