@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- FontAwesome Oficial (Para íconos reales de WhatsApp) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     /* RESET & VARIABLES */
@@ -44,7 +44,7 @@
       font-size: 15px;
       overflow-x: hidden;
       position: relative;
-      text-align: center; /* Alineación centrada global */
+      text-align: center;
     }
 
     /* Fondo tecnológico con grilla sutil */
@@ -70,7 +70,7 @@
       padding: 0 20px;
     }
 
-    /* NAVEGACIÓN */
+    /* NAVEGACIÓN - LOGO A LA IZQUIERDA, MENÚ A LA DERECHA */
     .navbar {
       position: sticky;
       top: 0;
@@ -79,21 +79,22 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--card-border);
+      width: 100%;
     }
 
     .nav-content {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 16px 20px;
+      padding: 18px 24px;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* ONE PLAYER izquierda, Opciones derecha */
       align-items: center;
     }
 
     .brand-logo {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 900;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       color: #fff;
       text-decoration: none;
       text-transform: uppercase;
@@ -102,14 +103,14 @@
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 25px;
+      gap: 30px;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 0.82rem;
+      font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
       transition: color 0.2s;
@@ -135,21 +136,21 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
 
-    /* HERO - LOGO MÁS GRANDE Y SOBRESALIENTE */
+    /* HERO - ONE PLAYER CENTRADO Y SOBRESALIENTE */
     .hero {
       text-align: center;
       padding: 70px 0 40px;
     }
 
     .hero-title {
-      font-size: 5.5rem; /* Tamaño agrandado */
+      font-size: 5.5rem;
       font-weight: 900;
       letter-spacing: 4px;
       text-transform: uppercase;
       background: linear-gradient(180deg, #ffffff 10%, #d4e4ff 50%, #00d2ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.35)); /* Efecto resplandor sobresaliente */
+      filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.35));
       margin-bottom: 6px;
       line-height: 0.95;
     }
@@ -498,7 +499,7 @@
     .tags-list {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center; /* Etiquetas centradas */
+      justify-content: center;
       gap: 8px;
     }
 
@@ -521,7 +522,7 @@
       text-transform: uppercase;
     }
 
-    /* PRESUPUESTO */
+    /* PRESUPUESTO CON LOGO OFICIAL WHATSAPP */
     .budget-wrapper {
       max-width: 580px;
       margin: 0 auto 70px;
@@ -545,7 +546,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      text-align: center; /* Formulario centrado */
+      text-align: center;
     }
 
     .form-group label {
@@ -568,7 +569,7 @@
       border-radius: 8px;
       color: #fff;
       font-size: 0.88rem;
-      text-align: center; /* Texto escrito centrado */
+      text-align: center;
       transition: border-color 0.2s;
     }
 
@@ -584,7 +585,6 @@
       border-color: var(--accent-cyan);
     }
 
-    /* BOTÓN DE PRESUPUESTO CON LOGO WHATSAPP */
     .btn-budget {
       background-color: var(--accent-green);
       color: #ffffff;
@@ -605,7 +605,7 @@
     }
 
     .btn-budget i {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
     }
 
     .btn-budget:hover {
@@ -663,20 +663,20 @@
       font-size: 0.7rem;
     }
 
-    /* BOTÓN FLOTANTE DE WHATSAPP MEJORADO */
+    /* BOTÓN FLOTANTE OFICIAL WHATSAPP */
     .whatsapp-float {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 58px;
-      height: 58px;
+      width: 60px;
+      height: 60px;
       background-color: var(--accent-green);
       color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: 32px;
       box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
       text-decoration: none;
       z-index: 999;
@@ -701,7 +701,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN -->
+  <!-- BARRA DE NAVEGACIÓN (ONE PLAYER A LA IZQUIERDA, MENÚ A LA DERECHA) -->
   <nav class="navbar">
     <div class="nav-content">
       <a href="#" class="brand-logo">ONE PLAYER</a>
@@ -715,7 +715,7 @@
 
   <main class="container">
 
-    <!-- HERO SECTION CON ONE PLAYER SOBRESALIENTE -->
+    <!-- HERO SECTION -->
     <section class="hero">
       <h1 class="hero-title">ONE PLAYER</h1>
       <p class="hero-subtitle">SOLUCIONES TÉCNICAS</p>
@@ -972,7 +972,7 @@
     </div>
   </footer>
 
-  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <!-- BOTÓN FLOTANTE OFICIAL WHATSAPP -->
   <a href="https://wa.me/5492634722710" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
