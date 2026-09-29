@@ -118,7 +118,7 @@
       text-shadow: 0 0 10px var(--accent-cyan-glow);
     }
 
-    /* TARJETAS */
+    /* TARJETAS GENERALES */
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(10px);
@@ -136,50 +136,120 @@
       box-shadow: 0 12px 30px -10px rgba(0, 210, 255, 0.2);
     }
 
-    /* HERO - TITULO CENTRAL CON EFECTO DE MARCA */
+    /* ========================================================= */
+    /* HERO - TÍTULO MARCA CON EFECTO GROSO (ANIMADO / GLITCH)   */
+    /* ========================================================= */
     .hero {
       text-align: center;
-      padding: 90px 0 50px;
+      padding: 100px 0 60px;
       position: relative;
     }
 
     .hero-title {
-      font-size: 6.2rem;
+      font-size: 6.8rem;
       font-weight: 900;
-      letter-spacing: 8px;
+      letter-spacing: 10px;
       text-transform: uppercase;
-      background: linear-gradient(180deg, #ffffff 15%, #b2eeff 55%, #00d2ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 24px; /* Mayor separación con el subtítulo */
-      line-height: 0.95;
+      line-height: 0.9;
       display: inline-block;
       position: relative;
-      animation: brandGlow 3.5s infinite alternate ease-in-out;
+      margin-bottom: 28px;
+      
+      /* GRADIENTE ANIMADO DE COLOR DENTRO DEL TEXTO */
+      background: linear-gradient(
+        120deg, 
+        #ffffff 0%, 
+        #00d2ff 25%, 
+        #9d00ff 50%, 
+        #ff007f 75%, 
+        #00d2ff 100%
+      );
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      /* ANIMACIONES COMBINADAS: Flujo de color + Resplandor neón */
+      animation: 
+        textShimmer 6s linear infinite,
+        neonPulse 3s ease-in-out infinite alternate;
+      
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* Animación de luz neón sobre la marca */
-    @keyframes brandGlow {
+    /* EFECTO HOVER: GLITCH / HOLOGRAMA */
+    .hero-title:hover {
+      transform: scale(1.04);
+      animation: textShimmer 2s linear infinite, glitchGlow 0.2s infinite alternate;
+    }
+
+    /* ANIMACIÓN 1: Movimiento continuo del degradado */
+    @keyframes textShimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 300% center; }
+    }
+
+    /* ANIMACIÓN 2: Resplandor neón multicapa */
+    @keyframes neonPulse {
       0% {
-        filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.3)) drop-shadow(0 0 45px rgba(0, 210, 255, 0.15));
+        filter: 
+          drop-shadow(0 0 15px rgba(0, 210, 255, 0.4)) 
+          drop-shadow(0 0 35px rgba(0, 210, 255, 0.2));
+      }
+      50% {
+        filter: 
+          drop-shadow(0 0 25px rgba(157, 0, 255, 0.6)) 
+          drop-shadow(0 0 55px rgba(157, 0, 255, 0.3));
       }
       100% {
-        filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.6)) drop-shadow(0 0 70px rgba(0, 210, 255, 0.3));
+        filter: 
+          drop-shadow(0 0 35px rgba(255, 0, 127, 0.7)) 
+          drop-shadow(0 0 75px rgba(255, 0, 127, 0.4));
       }
     }
 
-    .hero-subtitle {
-      color: var(--accent-cyan);
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: 7px;
-      text-transform: uppercase;
-      margin-top: 10px;
-      margin-bottom: 60px; /* Separación cómoda con las tarjetas de abajo */
-      text-shadow: 0 0 12px var(--accent-cyan-glow);
-      opacity: 0.9;
+    /* ANIMACIÓN 3: Glitch cibernético al hacer Hover */
+    @keyframes glitchGlow {
+      0% {
+        filter: drop-shadow(-3px 0 15px rgba(255, 0, 80, 0.8)) drop-shadow(3px 0 20px rgba(0, 210, 255, 0.8));
+        transform: translate(-1px, 1px) scale(1.04);
+      }
+      100% {
+        filter: drop-shadow(3px 0 15px rgba(0, 210, 255, 0.8)) drop-shadow(-3px 0 20px rgba(255, 0, 80, 0.8));
+        transform: translate(1px, -1px) scale(1.04);
+      }
     }
 
+    /* SUBTÍTULO: Separado y elegante */
+    .hero-subtitle {
+      color: #a0aec0;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 12px;
+      text-transform: uppercase;
+      margin-top: 5px;
+      margin-bottom: 65px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+      position: relative;
+      display: inline-block;
+      padding: 0 10px;
+    }
+
+    /* Línea neón sutil debajo del subtítulo */
+    .hero-subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    /* SECCIÓN QUIÉNES SOMOS */
     .quienes-somos {
       max-width: 700px;
       margin: 0 auto 50px;
@@ -238,7 +308,7 @@
       text-transform: uppercase;
     }
 
-    /* HEADINGS */
+    /* ENCABEZADOS DE SECCIÓN */
     .section-title {
       text-align: center;
       margin-bottom: 40px;
@@ -264,7 +334,7 @@
       text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
     }
 
-    /* GRIDS & SERVICE CARDS */
+    /* GRIDS & SERVICIOS */
     .cards-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -666,7 +736,6 @@
       box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
     }
 
-    /* BOTÓN DE ENVÍO */
     .btn-budget {
       background-color: var(--accent-green);
       color: #ffffff;
@@ -775,10 +844,10 @@
       transform: scale(1.12);
     }
 
-    /* MEDIA QUERIES */
+    /* RESPONSIVE / CELULARES */
     @media (max-width: 850px) {
       .hero-title { font-size: 3.4rem; letter-spacing: 4px; }
-      .hero-subtitle { letter-spacing: 4px; font-size: 0.85rem; }
+      .hero-subtitle { letter-spacing: 5px; font-size: 0.85rem; }
       .cards-grid-3, .cards-grid-4, .why-grid, .stats-grid, .bottom-info-grid {
         grid-template-columns: 1fr;
       }
@@ -790,7 +859,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN -->
+  <!-- NAVEGACIÓN -->
   <nav class="navbar">
     <div class="nav-content">
       <a href="#" class="brand-logo">ONE PLAYER</a>
@@ -804,9 +873,10 @@
 
   <main class="container">
 
-    <!-- HERO SECTION - DESTACADO Y CON ESPACIADO -->
+    <!-- HERO SECTION -->
     <section class="hero">
       <h1 class="hero-title">ONE PLAYER</h1>
+      <br>
       <p class="hero-subtitle">SOLUCIONES TÉCNICAS</p>
 
       <div class="card quienes-somos">
@@ -1070,7 +1140,7 @@
 
       <div class="footer-bottom">
         <div>SERVICIO TÉCNICO • ACCESORIOS • ENTRETENIMIENTO</div>
-        <div class="footer-rights">© 2026 ONE PLAYER. Todos los derechos reservados.</div>
+        <div class="footer-rights">© ONE PLAYER. Todos los derechos reservados.</div>
       </div>
     </div>
   </footer>
@@ -1080,7 +1150,7 @@
     <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
   </a>
 
-  <!-- SCRIPT ENVIAR CONSULTA A WHATSAPP -->
+  <!-- SCRIPT ENVÍO DE PRESUPUESTO -->
   <script>
     function enviarWhatsApp(event) {
       event.preventDefault();
