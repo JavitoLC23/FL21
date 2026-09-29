@@ -46,7 +46,7 @@
       position: relative;
     }
 
-    /* Fondo tecnológico */
+    /* Fondo tecnológico con grilla sutil y partículas */
     body::before {
       content: "";
       position: fixed;
@@ -211,7 +211,7 @@
       text-transform: uppercase;
     }
 
-    /* HEADINGS */
+    /* HEADINGS DE SECCIÓN */
     .section-title {
       text-align: center;
       margin-bottom: 35px;
@@ -233,7 +233,7 @@
       text-transform: uppercase;
     }
 
-    /* GRID 3 TARJETAS */
+    /* GRID TRES TARJETAS */
     .cards-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -277,11 +277,12 @@
       line-height: 1.5;
     }
 
-    /* BANNER ANDROID */
+    /* BANNER ANDROID Y MARQUEE (LETRERO EN MOVIMIENTO) */
     .android-banner {
       text-align: center;
-      padding: 30px;
+      padding: 30px 20px;
       margin-bottom: 70px;
+      overflow: hidden;
     }
 
     .pill-tag {
@@ -303,18 +304,47 @@
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
-    .brand-list {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 18px;
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 30px;
+      animation: marquee 20s linear infinite;
+    }
+
+    .brand-item {
       color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-item i {
+      font-size: 0.4rem;
+      color: var(--accent-cyan);
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     /* STORE Y GEAR (4 COLUMNAS) */
@@ -533,6 +563,30 @@
       border-color: var(--accent-cyan);
     }
 
+    .btn-budget {
+      background-color: var(--accent-green);
+      color: #ffffff;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn-budget:hover {
+      background-color: #1ebd56;
+      transform: translateY(-2px);
+    }
+
     /* FOOTER */
     .footer {
       border-top: 1px solid var(--card-border);
@@ -564,11 +618,21 @@
     }
 
     .footer-bottom {
+      border-top: 1px solid #111827;
+      padding-top: 20px;
       text-align: center;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: #4a5568;
       letter-spacing: 1px;
       text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-rights {
+      color: var(--text-muted);
+      font-size: 0.7rem;
     }
 
     /* BOTON WHATSAPP */
@@ -677,21 +741,37 @@
         </div>
       </div>
 
-      <!-- BANNER SERVICIO TÉCNICO ESPECIALIZADO ANDROID -->
+      <!-- BANNER SERVICIO TÉCNICO ESPECIALIZADO ANDROID CON MARQUEE/LETRERO EN MOVIMIENTO -->
       <div class="card android-banner">
         <span class="pill-tag">ESPECIALIZACIÓN EXCLUSIVA</span>
         <h3>SERVICIO TÉCNICO ESPECIALIZADO - SOLO SISTEMA ANDROID</h3>
-        <div class="brand-list">
-          <span>HUAWEI •</span>
-          <span>LG •</span>
-          <span>ZTE •</span>
-          <span>ALCATEL •</span>
-          <span>TCL •</span>
-          <span>NOKIA •</span>
-          <span>SAMSUNG •</span>
-          <span>MOTOROLA •</span>
-          <span>XIAOMI •</span>
-          <span>REDMI</span>
+        
+        <div class="marquee-container">
+          <div class="marquee-track">
+            <!-- Bloque 1 -->
+            <span class="brand-item">HUAWEI <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">LG <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">ZTE <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">ALCATEL <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">TCL <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">NOKIA <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">SAMSUNG <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">MOTOROLA <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">XIAOMI <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">REDMI <i class="fa-solid fa-circle"></i></span>
+
+            <!-- Duplicado idéntico para continuidad infinita -->
+            <span class="brand-item">HUAWEI <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">LG <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">ZTE <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">ALCATEL <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">TCL <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">NOKIA <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">SAMSUNG <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">MOTOROLA <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">XIAOMI <i class="fa-solid fa-circle"></i></span>
+            <span class="brand-item">REDMI <i class="fa-solid fa-circle"></i></span>
+          </div>
         </div>
       </div>
     </section>
@@ -811,16 +891,20 @@
         <h3>¿QUERÉS CONSULTAR UN PRESUPUESTO?</h3>
         <p>Escribinos con el modelo de tu equipo y la falla para asesorarte de inmediato.</p>
 
-        <form class="budget-form" onsubmit="event.preventDefault();">
+        <form class="budget-form" id="budgetForm" onsubmit="enviarWhatsApp(event)">
           <div class="form-group">
-            <label>TU NOMBRE O EQUIPO</label>
-            <input type="text" placeholder="Ej: Samsung A32 / Motorola G30">
+            <label for="nombreEquipo">TU NOMBRE O EQUIPO</label>
+            <input type="text" id="nombreEquipo" placeholder="Ej: Juan - Samsung A32" required>
           </div>
 
           <div class="form-group">
-            <label>DETALLE DEL PROBLEMA</label>
-            <textarea rows="3" placeholder="Ej: Se rompió la pantalla / No me carga el pin..."></textarea>
+            <label for="detalleProblema">DETALLE DEL PROBLEMA</label>
+            <textarea id="detalleProblema" rows="3" placeholder="Ej: Se rompió la pantalla / No me carga el pin..." required></textarea>
           </div>
+
+          <button type="submit" class="btn-budget">
+            <i class="fa-brands fa-whatsapp"></i> ENVIAR CONSULTA POR WHATSAPP
+          </button>
         </form>
       </div>
     </section>
@@ -848,7 +932,8 @@
       </div>
 
       <div class="footer-bottom">
-        SERVICIO TÉCNICO • ACCESORIOS • ENTRETENIMIENTO
+        <div>SERVICIO TÉCNICO • ACCESORIOS • ENTRETENIMIENTO</div>
+        <div class="footer-rights">© 2026 ONE PLAYER. Todos los derechos reservados.</div>
       </div>
     </div>
   </footer>
@@ -857,6 +942,21 @@
   <a href="https://wa.me/5492634722710" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
+
+  <!-- SCRIPT PRESUPUESTO A WHATSAPP -->
+  <script>
+    function enviarWhatsApp(event) {
+      event.preventDefault();
+
+      const equipo = document.getElementById('nombreEquipo').value;
+      const detalle = document.getElementById('detalleProblema').value;
+      const telefono = "5492634722710";
+
+      const mensaje = `Hola! Quisiera consultar un presupuesto:%0A%0A*Equipo / Nombre:* ${encodeURIComponent(equipo)}%0A*Detalle del problema:* ${encodeURIComponent(detalle)}`;
+
+      window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+    }
+  </script>
 
 </body>
 </html>
