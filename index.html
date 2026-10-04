@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONE PLAYER - Soluciones Técnicas</title>
+  <title>ONE PLAYER - Soluciones Técnicas & Tech Store</title>
 
-  <!-- Tipografía Seria, Moderna y Cyberpunk / Gaming / Tech -->
+  <!-- Tipografía Cyberpunk / Gaming / Tech Ultra Clean -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     /* ========================================== */
@@ -20,8 +20,8 @@
       --font-body: 'Plus Jakarta Sans', sans-serif;
       
       --bg-dark: #03060d;
-      --card-bg: rgba(11, 17, 32, 0.85);
-      --card-border: rgba(0, 210, 255, 0.25);
+      --card-bg: rgba(11, 17, 32, 0.88);
+      --card-border: rgba(0, 210, 255, 0.3);
       
       --text-white: #ffffff;
       --text-muted: #94a3b8;
@@ -54,7 +54,7 @@
     }
 
     /* ========================================== */
-    /* FONDO CIBERNÉTICO CON ILUMINACIÓN          */
+    /* FONDO CIBERNÉTICO ANIMADO DINÁMICO        */
     /* ========================================== */
     body::before {
       content: "";
@@ -64,40 +64,40 @@
       width: 100vw;
       height: 100vh;
       background: 
-        radial-gradient(circle at 15% 15%, rgba(157, 0, 255, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 85% 55%, rgba(0, 210, 255, 0.18) 0%, transparent 50%),
-        radial-gradient(circle at 50% 90%, rgba(255, 0, 127, 0.12) 0%, transparent 50%),
-        linear-gradient(rgba(0, 210, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 210, 255, 0.04) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        radial-gradient(circle at 15% 15%, rgba(157, 0, 255, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 85% 55%, rgba(0, 210, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(255, 0, 127, 0.15) 0%, transparent 50%),
+        linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 35px 35px, 35px 35px;
       pointer-events: none;
       z-index: -1;
     }
 
     .container {
-      max-width: 1150px;
+      max-width: 1180px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
     /* ========================================== */
-    /* BARRA SUPERIOR GLASSMORPHISM               */
+    /* BARRA SUPERIOR GLASSMORPHISM PREMIUM      */
     /* ========================================== */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(3, 6, 13, 0.88);
+      background: rgba(3, 6, 13, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 210, 255, 0.3);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(0, 210, 255, 0.35);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
       width: 100%;
     }
 
     .nav-content {
       width: 100%;
-      padding: 18px 40px;
+      padding: 16px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -105,7 +105,7 @@
 
     .brand-logo {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 900;
       letter-spacing: 3px;
       color: #fff;
@@ -123,6 +123,7 @@
       display: flex;
       list-style: none;
       gap: 32px;
+      align-items: center;
     }
 
     .nav-links a {
@@ -159,8 +160,24 @@
       width: 100%;
     }
 
+    .btn-nav-action {
+      font-family: var(--font-tech);
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(157, 0, 255, 0.2));
+      border: 1px solid var(--accent-cyan);
+      color: #fff !important;
+      padding: 8px 18px !important;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+    }
+
+    .btn-nav-action:hover {
+      background: var(--accent-cyan) !important;
+      color: #000 !important;
+      box-shadow: 0 0 25px var(--accent-cyan) !important;
+    }
+
     /* ========================================== */
-    /* ESTILO DE CARDS CON ILUMINACIÓN NEÓN       */
+    /* CARDS CON ILUMINACIÓN Y GLOW FUTURISTA    */
     /* ========================================== */
     .card {
       background: var(--card-bg);
@@ -173,7 +190,7 @@
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
     }
 
     .card::before {
@@ -192,9 +209,41 @@
     }
 
     .card:hover {
-      border-color: rgba(0, 210, 255, 0.7);
+      border-color: rgba(0, 210, 255, 0.8);
       transform: translateY(-8px) scale(1.015);
       box-shadow: 0 15px 35px -10px rgba(0, 210, 255, 0.4), 0 0 25px rgba(157, 0, 255, 0.3);
+    }
+
+    /* BADGE EN VIVO EN EL HERO */
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.5);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-family: var(--font-tech);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-green);
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
     }
 
     /* ========================================== */
@@ -202,13 +251,13 @@
     /* ========================================== */
     .hero {
       text-align: center;
-      padding: 110px 0 60px;
+      padding: 90px 0 60px;
       position: relative;
     }
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: 6.2rem;
+      font-size: 6rem;
       font-weight: 900;
       letter-spacing: 10px;
       text-transform: uppercase;
@@ -239,7 +288,7 @@
     }
 
     .hero-title:hover {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
 
     @keyframes textShimmer {
@@ -267,7 +316,7 @@
       letter-spacing: 12px;
       text-transform: uppercase;
       margin-top: 5px;
-      margin-bottom: 70px;
+      margin-bottom: 60px;
       text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
       position: relative;
       display: inline-block;
@@ -280,7 +329,7 @@
       bottom: -14px;
       left: 50%;
       transform: translateX(-50%);
-      width: 120px;
+      width: 130px;
       height: 3px;
       background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
       box-shadow: 0 0 15px var(--accent-cyan);
@@ -289,12 +338,12 @@
 
     /* QUIÉNES SOMOS */
     .quienes-somos {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 55px;
       text-align: center;
-      background: linear-gradient(135deg, rgba(13, 20, 36, 0.9) 0%, rgba(20, 28, 48, 0.8) 100%);
-      border: 1px solid rgba(0, 210, 255, 0.35);
-      box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
+      background: linear-gradient(135deg, rgba(13, 20, 36, 0.95) 0%, rgba(20, 28, 48, 0.85) 100%);
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
     }
 
     .quienes-somos h2 {
@@ -310,7 +359,7 @@
 
     .quienes-somos p {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 1.02rem;
       line-height: 1.7;
     }
 
@@ -320,7 +369,7 @@
       text-shadow: 0 0 12px rgba(0, 210, 255, 0.8);
     }
 
-    /* NUMERACIÓN / STATS */
+    /* STATS / MÉTRICAS */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -362,7 +411,7 @@
 
     .section-title h2 {
       font-family: var(--font-display);
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       font-weight: 900;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -382,7 +431,7 @@
       text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
     }
 
-    /* GRIDS & SERVICIOS */
+    /* SERVICIOS TÉCNICOS */
     .cards-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -400,7 +449,7 @@
 
     .img-wrapper {
       width: 100%;
-      height: 210px;
+      height: 220px;
       overflow: hidden;
       position: relative;
       background-color: #030508;
@@ -548,6 +597,8 @@
       padding: 0;
       overflow: hidden;
       text-align: center;
+      display: flex;
+      flex-direction: column;
     }
 
     .store-img {
@@ -564,6 +615,10 @@
     .store-body {
       padding: 22px;
       text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .store-body h4 {
@@ -578,6 +633,29 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .btn-card-consult {
+      font-family: var(--font-tech);
+      background: transparent;
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-card-consult:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
     }
 
     /* TV ENTERTAINMENT */
@@ -763,9 +841,9 @@
       box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
     }
 
-    /* PRESUPUESTO */
+    /* PRESUPUESTO INTERACTIVO */
     .budget-wrapper {
-      max-width: 620px;
+      max-width: 650px;
       margin: 0 auto 90px;
       text-align: center;
     }
@@ -810,6 +888,7 @@
     }
 
     .form-group input, 
+    .form-group select, 
     .form-group textarea {
       width: 100%;
       padding: 16px;
@@ -823,6 +902,11 @@
       font-family: var(--font-body);
     }
 
+    .form-group select option {
+      background-color: #0b1120;
+      color: #fff;
+    }
+
     .form-group input::placeholder,
     .form-group textarea::placeholder {
       color: #475569;
@@ -830,6 +914,7 @@
     }
 
     .form-group input:focus, 
+    .form-group select:focus, 
     .form-group textarea:focus {
       outline: none;
       border-color: var(--accent-cyan);
@@ -970,6 +1055,7 @@
         <li><a href="#laboratorio">LABORATORIO TÉCNICO</a></li>
         <li><a href="#store">STORE Y GEAR</a></li>
         <li><a href="#tv">TV ENTERTAINMENT</a></li>
+        <li><a href="#presupuesto" class="btn-nav-action">PRESUPUESTAR</a></li>
       </ul>
     </div>
   </nav>
@@ -978,6 +1064,12 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
+      <div class="live-badge">
+        <span class="pulse-dot"></span>
+        <span>LABORATORIO ACTIVO - RIVADAVIA</span>
+      </div>
+
+      <br>
       <h1 class="hero-title">ONE PLAYER</h1>
       <br>
       <p class="hero-subtitle">SOLUCIONES TÉCNICAS</p>
@@ -987,11 +1079,11 @@
         <p>Con una trayectoria de <span class="highlight">4 años</span>, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.</p>
       </div>
 
-      <!-- TRES BLOQUES DE RESUMEN -->
+      <!-- MÉTRICAS Y RESUMEN -->
       <div class="stats-grid">
         <div class="card stat-card">
           <span class="stat-number">4+ Años</span>
-          <span class="stat-label">DE EXPERIENCIA</span>
+          <span class="stat-label">DE EXPERIENCIA TÉCNICA</span>
         </div>
         <div class="card stat-card">
           <span class="stat-number">100% Verificado</span>
@@ -999,7 +1091,7 @@
         </div>
         <div class="card stat-card">
           <span class="stat-number">Rivadavia, Mendoza</span>
-          <span class="stat-label">ATENCIÓN LOCAL</span>
+          <span class="stat-label">ATENCIÓN Y LOCAL</span>
         </div>
       </div>
     </section>
@@ -1018,7 +1110,7 @@
           </div>
           <div class="service-body">
             <h4>CAMBIO DE MÓDULO</h4>
-            <p>Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.</p>
+            <p>Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas con repuestos de calidad garantizada.</p>
           </div>
         </div>
 
@@ -1050,27 +1142,27 @@
         
         <div class="marquee-container">
           <div class="marquee-track">
+            <span class="brand-item">SAMSUNG <span class="dot"></span></span>
+            <span class="brand-item">MOTOROLA <span class="dot"></span></span>
+            <span class="brand-item">XIAOMI <span class="dot"></span></span>
+            <span class="brand-item">REDMI <span class="dot"></span></span>
             <span class="brand-item">HUAWEI <span class="dot"></span></span>
             <span class="brand-item">LG <span class="dot"></span></span>
             <span class="brand-item">ZTE <span class="dot"></span></span>
             <span class="brand-item">ALCATEL <span class="dot"></span></span>
             <span class="brand-item">TCL <span class="dot"></span></span>
             <span class="brand-item">NOKIA <span class="dot"></span></span>
-            <span class="brand-item">SAMSUNG <span class="dot"></span></span>
-            <span class="brand-item">MOTOROLA <span class="dot"></span></span>
-            <span class="brand-item">XIAOMI <span class="dot"></span></span>
-            <span class="brand-item">REDMI <span class="dot"></span></span>
 
+            <span class="brand-item">SAMSUNG <span class="dot"></span></span>
+            <span class="brand-item">MOTOROLA <span class="dot"></span></span>
+            <span class="brand-item">XIAOMI <span class="dot"></span></span>
+            <span class="brand-item">REDMI <span class="dot"></span></span>
             <span class="brand-item">HUAWEI <span class="dot"></span></span>
             <span class="brand-item">LG <span class="dot"></span></span>
             <span class="brand-item">ZTE <span class="dot"></span></span>
             <span class="brand-item">ALCATEL <span class="dot"></span></span>
             <span class="brand-item">TCL <span class="dot"></span></span>
             <span class="brand-item">NOKIA <span class="dot"></span></span>
-            <span class="brand-item">SAMSUNG <span class="dot"></span></span>
-            <span class="brand-item">MOTOROLA <span class="dot"></span></span>
-            <span class="brand-item">XIAOMI <span class="dot"></span></span>
-            <span class="brand-item">REDMI <span class="dot"></span></span>
           </div>
         </div>
       </div>
@@ -1088,8 +1180,11 @@
             <img src="Auriculares.jpg" class="store-img" alt="Auriculares">
           </div>
           <div class="store-body">
-            <h4>AURICULARES</h4>
-            <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.</p>
+            <div>
+              <h4>AURICULARES</h4>
+              <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición y bajos potentes.</p>
+            </div>
+            <a href="https://wa.me/5492634842525?text=Hola%20ONE%20PLAYER!%20Quisiera%20consultar%20disponibilidad%20de%20Auriculares" target="_blank" class="btn-card-consult">CONSULTAR</a>
           </div>
         </div>
 
@@ -1098,8 +1193,11 @@
             <img src="Cargadores.png" class="store-img" alt="Cargadores">
           </div>
           <div class="store-body">
-            <h4>CARGADORES</h4>
-            <p>Cargadores de carga normal, rápidos y originales para cuidar la salud de la batería de tu dispositivo.</p>
+            <div>
+              <h4>CARGADORES</h4>
+              <p>Cargadores de carga normal, rápidos y originales para cuidar la salud de tu batería.</p>
+            </div>
+            <a href="https://wa.me/5492634842525?text=Hola%20ONE%20PLAYER!%20Quisiera%20consultar%20disponibilidad%20de%20Cargadores" target="_blank" class="btn-card-consult">CONSULTAR</a>
           </div>
         </div>
 
@@ -1108,8 +1206,11 @@
             <img src="USB.jpg" class="store-img" alt="Cables USB">
           </div>
           <div class="store-body">
-            <h4>CABLES USB</h4>
-            <p>Cables con entrada Tipo C, Tipo V8 y Lightning (iPhone) de alta resistencia.</p>
+            <div>
+              <h4>CABLES USB</h4>
+              <p>Cables con entrada Tipo C, V8 y Lightning (iPhone) de alta resistencia y durabilidad.</p>
+            </div>
+            <a href="https://wa.me/5492634842525?text=Hola%20ONE%20PLAYER!%20Quisiera%20consultar%20disponibilidad%20de%20Cables%20USB" target="_blank" class="btn-card-consult">CONSULTAR</a>
           </div>
         </div>
 
@@ -1118,8 +1219,11 @@
             <img src="Convertidores.png" class="store-img" alt="Convertidores TV">
           </div>
           <div class="store-body">
-            <h4>CONVERTIDORES TV</h4>
-            <p>Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.</p>
+            <div>
+              <h4>CONVERTIDORES TV</h4>
+              <p>Transforma tu televisor tradicional en un Smart TV para ver tus aplicaciones favoritas.</p>
+            </div>
+            <a href="https://wa.me/5492634842525?text=Hola%20ONE%20PLAYER!%20Quisiera%20consultar%20disponibilidad%20de%20Convertidores%20TV" target="_blank" class="btn-card-consult">CONSULTAR</a>
           </div>
         </div>
       </div>
@@ -1195,24 +1299,34 @@
       </div>
     </div>
 
-    <!-- PRESUPUESTO EN LÍNEA -->
+    <!-- PRESUPUESTO EN LÍNEA TIPO FORMULARIO AVANZADO -->
     <section id="presupuesto" class="budget-wrapper">
       <div class="card budget-card-main">
-        <h3>SOLICITAR PRESUPUESTO</h3>
-        <p>Completá los datos de tu equipo y consulta sin compromiso por WhatsApp</p>
+        <h3>SOLICITAR PRESUPUESTO EN LÍNEA</h3>
+        <p>Completá los datos de tu equipo y enviá la consulta directa a nuestro WhatsApp</p>
         
         <form class="budget-form" id="whatsappForm">
           <div class="form-group">
             <label for="modelo">Marca y Modelo del Celular</label>
-            <input type="text" id="modelo" placeholder="Ej: Samsung A52, Motorola G60..." required>
+            <input type="text" id="modelo" placeholder="Ej: Samsung A52, Motorola G60, Xiaomi Redmi Note 10..." required>
           </div>
 
           <div class="form-group">
-            <label for="falla">¿Qué problema presenta?</label>
-            <textarea id="falla" rows="3" placeholder="Ej: Pantalla rota, no carga, batería agotada..." required></textarea>
+            <label for="tipoServicio">Tipo de Reparación Necesaria</label>
+            <select id="tipoServicio" required>
+              <option value="Cambio de Módulo / Pantalla">Cambio de Módulo / Pantalla</option>
+              <option value="Cambio de Batería">Cambio de Batería</option>
+              <option value="Pin de Carga / Placa de Carga">Pin de Carga / Placa de Carga</option>
+              <option value="Diagnóstico General / Otro problema">Diagnóstico General / Otro problema</option>
+            </select>
           </div>
 
-          <button type="submit" class="btn-budget">CONSULTAR POR WHATSAPP</button>
+          <div class="form-group">
+            <label for="falla">Detalle de la Falla</label>
+            <textarea id="falla" rows="3" placeholder="Ej: Se cayó y no da imagen, no agarra la carga, se apaga solo..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-budget">SOLICITAR PRESUPUESTO POR WHATSAPP</button>
         </form>
       </div>
     </section>
@@ -1253,16 +1367,17 @@
     </svg>
   </a>
 
-  <!-- SCRIPT PARA ENVIAR FORMULARIO DIRECTO A WHATSAPP -->
+  <!-- SCRIPT WHATSAPP AUTOMÁTICO -->
   <script>
     document.getElementById('whatsappForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const numeroTelefono = "5492634842525"; // Reemplazar si fuera necesario
+      const numeroTelefono = "5492634842525";
       const modelo = document.getElementById('modelo').value;
+      const servicio = document.getElementById('tipoServicio').value;
       const falla = document.getElementById('falla').value;
 
-      const mensaje = `Hola ONE PLAYER! Quisiera consultar un presupuesto para:%0A%0A📱 *Modelo:* ${encodeURIComponent(modelo)}%0A🛠️ *Falla:* ${encodeURIComponent(falla)}`;
+      const mensaje = `Hola ONE PLAYER! Quisiera pedir un presupuesto:%0A%0A📱 *Modelo:* ${encodeURIComponent(modelo)}%0A🛠️ *Servicio:* ${encodeURIComponent(servicio)}%0A📝 *Detalle:* ${encodeURIComponent(falla)}`;
 
       window.open(`https://wa.me/${numeroTelefono}?text=${mensaje}`, '_blank');
     });
