@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONE PLAYER - Soluciones Técnicas</title>
+  <title>ONE PLAYER - Soluciones Técnicas & Accesorio Tech</title>
+  <meta name="description" content="Servicio técnico especializado en Android, reparación de celulares, repuestos y accesorios en Rivadavia, Mendoza.">
 
-  <!-- Tipografía Seria, Moderna y Elegante: Plus Jakarta Sans -->
+  <!-- SEO Local (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ONE PLAYER",
+    "description": "Soluciones Técnicas y reparación de dispositivos Android.",
+    "telephone": "+5492634722710",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rivadavia",
+      "addressRegion": "Mendoza",
+      "addressCountry": "AR"
+    },
+    "openingHours": "Mo-Sa 09:00-22:00"
+  }
+  </script>
+
+  <!-- Tipografía Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -17,8 +36,8 @@
     :root {
       --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --bg-dark: #03060d;
-      --card-bg: rgba(11, 17, 32, 0.75);
-      --card-border: rgba(0, 210, 255, 0.2);
+      --card-bg: rgba(11, 17, 32, 0.7);
+      --card-border: rgba(0, 210, 255, 0.18);
       --text-white: #ffffff;
       --text-muted: #94a3b8;
       --accent-cyan: #00d2ff;
@@ -48,9 +67,7 @@
       text-align: center;
     }
 
-    /* ========================================== */
-    /* FONDO DINÁMICO CON ILUMINACIÓN Y TRAMA    */
-    /* ========================================== */
+    /* Fondo animado multicapa */
     body::before {
       content: "";
       position: fixed;
@@ -59,14 +76,14 @@
       width: 100vw;
       height: 100vh;
       background: 
-        radial-gradient(circle at 10% 15%, rgba(157, 0, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 90% 55%, rgba(0, 210, 255, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(255, 0, 127, 0.1) 0%, transparent 50%),
-        radial-gradient(rgba(0, 210, 255, 0.08) 1.2px, transparent 0);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
+        radial-gradient(circle at 15% 20%, rgba(157, 0, 255, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 60%, rgba(0, 210, 255, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(255, 0, 127, 0.12) 0%, transparent 50%),
+        radial-gradient(rgba(0, 210, 255, 0.07) 1.2px, transparent 0);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px;
       pointer-events: none;
       z-index: -1;
-      transform: translateZ(0);
+      transform: translate3d(0, 0, 0);
     }
 
     .container {
@@ -75,8 +92,21 @@
       padding: 0 20px;
     }
 
+    /* ANIMACIÓN AL HACER SCROLL (INTERSECTION OBSERVER) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ========================================== */
-    /* BARRA SUPERIOR GLASSMORPHISM              */
+    /* NAVBAR CON EFECTO DE LUZ                   */
     /* ========================================== */
     .navbar {
       position: sticky;
@@ -86,7 +116,7 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(0, 210, 255, 0.25);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
       width: 100%;
     }
 
@@ -153,17 +183,17 @@
     }
 
     /* ========================================== */
-    /* ESTILO DE CARDS CON ILUMINACIÓN NEÓN     */
+    /* CARDS HI-TECH (GLASSMORPHISM CON GLOW)      */
     /* ========================================== */
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 30px;
       text-align: center;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease, box-shadow 0.4s ease;
       position: relative;
       overflow: hidden;
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
@@ -177,7 +207,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.1), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.12), transparent);
       transition: left 0.7s ease;
     }
 
@@ -187,14 +217,40 @@
       }
 
       .card:hover {
-        border-color: rgba(0, 210, 255, 0.7);
-        transform: translateY(-8px) scale(1.015);
-        box-shadow: 0 15px 35px -10px rgba(0, 210, 255, 0.4), 0 0 25px rgba(157, 0, 255, 0.3);
+        border-color: rgba(0, 210, 255, 0.65);
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 20px 40px -10px rgba(0, 210, 255, 0.3), 0 0 30px rgba(157, 0, 255, 0.25);
       }
     }
 
+    /* BOTONES ACCIÓN RÁPIDA (CTA) */
+    .btn-card-action {
+      margin-top: 18px;
+      display: inline-block;
+      width: 100%;
+      padding: 10px 16px;
+      background: rgba(0, 210, 255, 0.08);
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      color: var(--accent-cyan);
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-card-action:hover {
+      background: var(--accent-cyan);
+      color: #03060d;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
     /* ========================================== */
-    /* HERO - TÍTULO Y SUBTÍTULO CON RESPLANDOR  */
+    /* HERO SECTION                               */
     /* ========================================== */
     .hero {
       text-align: center;
@@ -230,12 +286,12 @@
       
       cursor: pointer;
       user-select: none;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.3s ease;
       will-change: transform, filter;
     }
 
     .hero-title:hover {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
     @keyframes textShimmer {
@@ -287,9 +343,9 @@
       max-width: 720px;
       margin: 0 auto 55px;
       text-align: center;
-      background: linear-gradient(135deg, rgba(13, 20, 36, 0.9) 0%, rgba(20, 28, 48, 0.75) 100%);
+      background: linear-gradient(135deg, rgba(13, 20, 36, 0.95) 0%, rgba(20, 28, 48, 0.8) 100%);
       border: 1px solid rgba(0, 210, 255, 0.35);
-      box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
     }
 
     .quienes-somos h2 {
@@ -314,7 +370,7 @@
       text-shadow: 0 0 12px rgba(0, 210, 255, 0.8);
     }
 
-    /* NUMERACIÓN / STATS */
+    /* STATS GRID */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -443,7 +499,7 @@
       line-height: 1.6;
     }
 
-    /* BANNER ANDROID CON MARQUEE FUTURISTA */
+    /* BANNER ANDROID MARQUEE */
     .android-banner {
       text-align: center;
       padding: 40px 20px;
@@ -536,6 +592,9 @@
       padding: 0;
       overflow: hidden;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .store-img {
@@ -553,6 +612,10 @@
     .store-body {
       padding: 22px;
       text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .store-body h4 {
@@ -635,7 +698,7 @@
       color: var(--text-muted);
       font-size: 0.92rem;
       max-width: 620px;
-      margin: 0 auto;
+      margin: 0 auto 20px;
     }
 
     /* POR QUÉ ELEGIRNOS */
@@ -722,7 +785,7 @@
       font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 0.8px;
-      transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .tag-item:hover {
@@ -800,7 +863,7 @@
       color: #fff;
       font-size: 0.9rem;
       text-align: center;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .form-group input::placeholder,
@@ -828,9 +891,12 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       cursor: pointer;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       width: 100%;
-      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
       margin-top: 8px;
       box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
     }
@@ -955,7 +1021,7 @@
   <main class="container">
 
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section class="hero reveal">
       <h1 class="hero-title">ONE PLAYER</h1>
       <br>
       <p class="hero-subtitle">SOLUCIONES TÉCNICAS</p>
@@ -983,7 +1049,7 @@
     </section>
 
     <!-- LABORATORIO TÉCNICO -->
-    <section id="laboratorio">
+    <section id="laboratorio" class="reveal">
       <div class="section-title">
         <h2>NUESTROS SERVICIOS</h2>
         <h3>LABORATORIO TÉCNICO</h3>
@@ -995,8 +1061,11 @@
             <img src="Modulo.jpg" class="service-img" alt="Cambio de Módulo" width="350" height="210" loading="lazy">
           </div>
           <div class="service-body">
-            <h4>CAMBIO DE MÓDULO</h4>
-            <p>Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.</p>
+            <div>
+              <h4>CAMBIO DE MÓDULO</h4>
+              <p>Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.</p>
+            </div>
+            <button class="btn-card-action" onclick="consultarItem('Cambio de Módulo')">CONSULTAR AHORA</button>
           </div>
         </div>
 
@@ -1005,8 +1074,11 @@
             <img src="Baterias.jpg" class="service-img" alt="Cambio de Batería" width="350" height="210" loading="lazy">
           </div>
           <div class="service-body">
-            <h4>CAMBIO DE BATERÍA</h4>
-            <p>Reemplazo de baterías agotadas para devolverle la autonomía y el máximo rendimiento original a tu celular.</p>
+            <div>
+              <h4>CAMBIO DE BATERÍA</h4>
+              <p>Reemplazo de baterías agotadas para devolverle la autonomía y el máximo rendimiento original a tu celular.</p>
+            </div>
+            <button class="btn-card-action" onclick="consultarItem('Cambio de Batería')">CONSULTAR AHORA</button>
           </div>
         </div>
 
@@ -1015,8 +1087,11 @@
             <img src="Placa de carga.jpg" class="service-img" alt="Pin / Placa de Carga" width="350" height="210" loading="lazy">
           </div>
           <div class="service-body">
-            <h4>PIN / PLACA DE CARGA</h4>
-            <p>Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tus dispositivos.</p>
+            <div>
+              <h4>PIN / PLACA DE CARGA</h4>
+              <p>Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tus dispositivos.</p>
+            </div>
+            <button class="btn-card-action" onclick="consultarItem('Pin / Placa de Carga')">CONSULTAR AHORA</button>
           </div>
         </div>
       </div>
@@ -1055,7 +1130,7 @@
     </section>
 
     <!-- STORE Y GEAR -->
-    <section id="store">
+    <section id="store" class="reveal">
       <div class="section-title">
         <h2>STORE Y GEAR</h2>
       </div>
@@ -1066,8 +1141,11 @@
             <img src="Auriculares.jpg" class="store-img" alt="Auriculares" width="250" height="175" loading="lazy">
           </div>
           <div class="store-body">
-            <h4>AURICULARES</h4>
-            <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.</p>
+            <div>
+              <h4>AURICULARES</h4>
+              <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.</p>
+            </div>
+            <button class="btn-card-action" onclick="consultarItem('Auriculares')">PEDIR INFORMACIÓN</button>
           </div>
         </div>
 
@@ -1076,8 +1154,11 @@
             <img src="Cargadores.png" class="store-img" alt="Cargadores" width="250" height="175" loading="lazy">
           </div>
           <div class="store-body">
-            <h4>CARGADORES</h4>
-            <p>Cargadores de carga normal, rápidos y originales para cuidar la salud de la batería de tu dispositivo.</p>
+            <div>
+              <h4>CARGADORES</h4>
+              <p>Cargadores de carga normal, rápidos y originales para cuidar la salud de la batería de tu dispositivo.</p>
+            </div>
+            <button class="btn-card-action" onclick="consultarItem('Cargadores')">PEDIR INFORMACIÓN</button>
           </div>
         </div>
 
@@ -1086,8 +1167,11 @@
             <img src="USB.jpg" class="store-img" alt="Cables USB" width="250" height="175" loading="lazy">
           </div>
           <div class="store-body">
-            <h4>CABLES USB</h4>
-            <p>Cables con entrada Tipo C, Tipo V8 y Lightning (iPhone) de alta resistencia.</p>
+            <div>
+              <h4>CABLES USB</h4>
+              <p>Cables con entrada Tipo C, Tipo V8 y Lightning (iPhone) de alta resistencia.</p>
+            </div>
+            <button class="btn-card-action" onclick="consultarItem('Cables USB')">PEDIR INFORMACIÓN</button>
           </div>
         </div>
 
@@ -1096,15 +1180,18 @@
             <img src="Convertidores.png" class="store-img" alt="Convertidores TV" width="250" height="175" loading="lazy">
           </div>
           <div class="store-body">
-            <h4>CONVERTIDORES TV</h4>
-            <p>Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.</p>
+            <div>
+              <h4>CONVERTIDORES TV</h4>
+              <p>Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.</p>
+            </div>
+            <button class="btn-card-action" onclick="consultarItem('Convertidores TV')">PEDIR INFORMACIÓN</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- TV ENTERTAINMENT -->
-    <section id="tv" class="tv-section">
+    <section id="tv" class="tv-section reveal">
       <div class="section-title">
         <h2>TV ENTERTAINMENT</h2>
       </div>
@@ -1116,12 +1203,13 @@
         <div class="tv-info">
           <h3>EXPERIENCIA TV FAMILIAR</h3>
           <p>Una solución de TV única para compartir en familia todo el mejor entretenimiento, directo desde el confort de tu hogar.</p>
+          <button class="btn-card-action" style="max-width: 280px;" onclick="consultarItem('Experiencia TV Familiar')">CONSULTAR PLANES DE TV</button>
         </div>
       </div>
     </section>
 
     <!-- POR QUÉ ELEGIRNOS -->
-    <section class="why-us">
+    <section class="why-us reveal">
       <div class="section-title">
         <h2>¿POR QUÉ ELEGIRNOS?</h2>
       </div>
@@ -1154,7 +1242,7 @@
     </section>
 
     <!-- MEDIOS DE PAGO Y GARANTÍA -->
-    <div class="bottom-info-grid">
+    <div class="bottom-info-grid reveal">
       <div class="card bottom-card">
         <h4>MEDIOS DE PAGO</h4>
         <p>Pensando en tu comodidad, aceptamos múltiples opciones de pago en todos nuestros servicios y productos:</p>
@@ -1174,7 +1262,7 @@
     </div>
 
     <!-- PRESUPUESTO -->
-    <section class="budget-wrapper">
+    <section class="budget-wrapper reveal">
       <div class="card budget-card-main">
         <h3>¿QUERÉS CONSULTAR UN PRESUPUESTO?</h3>
         <p>Escribinos con el modelo de tu equipo y la falla para asesorarte de inmediato.</p>
@@ -1190,8 +1278,8 @@
             <textarea id="detalleProblema" rows="3" placeholder="Ej: Se rompió la pantalla / No me carga el pin..." required></textarea>
           </div>
 
-          <button type="submit" class="btn-budget" aria-label="Enviar consulta por WhatsApp">
-            ENVIÁ TU CONSULTA
+          <button type="submit" class="btn-budget" id="btnSubmit" aria-label="Enviar consulta por WhatsApp">
+            <span>ENVIÁ TU CONSULTA</span>
           </button>
         </form>
       </div>
@@ -1231,26 +1319,55 @@
     <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
   </a>
 
-  <!-- SCRIPT ENVÍO DE PRESUPUESTO MEJORADO -->
+  <!-- SCRIPTS INTERACTIVOS -->
   <script>
+    const TELEFONO = "5492634722710";
+
+    // ANIMACIÓN REVEAL CON INTERSECTION OBSERVER
+    document.addEventListener("DOMContentLoaded", function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    });
+
+    // CONSULTA RÁPIDA POR PRODUCTO/SERVICIO
+    function consultarItem(nombreItem) {
+      const mensaje = `Hola! Quisiera más información sobre: *${encodeURIComponent(nombreItem)}*`;
+      window.open(`https://wa.me/${TELEFONO}?text=${mensaje}`, '_blank');
+    }
+
+    // ENVÍO DE PRESUPUESTO
     function enviarWhatsApp(event) {
       event.preventDefault();
 
       const equipoInput = document.getElementById('nombreEquipo');
       const detalleInput = document.getElementById('detalleProblema');
+      const btnSubmit = document.getElementById('btnSubmit');
 
       const equipo = equipoInput.value.trim();
       const detalle = detalleInput.value.trim();
-      const telefono = "5492634722710";
 
       if (!equipo || !detalle) return;
 
-      const mensaje = `Hola! Quisiera consultar un presupuesto:%0A%0A*Equipo / Nombre:* ${encodeURIComponent(equipo)}%0A*Detalle del problema:* ${encodeURIComponent(detalle)}`;
+      // Animación de envío en el botón
+      btnSubmit.style.opacity = '0.7';
+      btnSubmit.innerHTML = '<span>ABRIENDO WHATSAPP...</span>';
 
-      window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
-      
-      // Limpiar formulario tras el envío
-      document.getElementById('budgetForm').reset();
+      setTimeout(() => {
+        const mensaje = `Hola! Quisiera consultar un presupuesto:%0A%0A*Equipo / Nombre:* ${encodeURIComponent(equipo)}%0A*Detalle del problema:* ${encodeURIComponent(detalle)}`;
+        window.open(`https://wa.me/${TELEFONO}?text=${mensaje}`, '_blank');
+        
+        // Reset botón y formulario
+        btnSubmit.style.opacity = '1';
+        btnSubmit.innerHTML = '<span>ENVIÁ TU CONSULTA</span>';
+        document.getElementById('budgetForm').reset();
+      }, 400);
     }
   </script>
 
