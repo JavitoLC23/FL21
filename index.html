@@ -8,10 +8,10 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter (Texto corporativo/serio) + Syne (Titulares premium) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,21 +20,19 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        cyber: {
-                            bg: '#05070f',
-                            panel: 'rgba(11, 15, 28, 0.85)',
-                            cyan: '#00f0ff',
-                            magenta: '#ff007f',
-                            purple: '#8b5cf6',
-                            yellow: '#facc15',
-                            darkBorder: 'rgba(0, 240, 255, 0.2)'
-                        }
-                    },
                     fontFamily: {
-                        orbitron: ['Orbitron', 'sans-serif'],
-                        rajdhani: ['Rajdhani', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace']
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                            dark: '#030712'
+                        }
                     }
                 }
             }
@@ -44,36 +42,38 @@
     <style>
         body {
             background-color: #030712;
-            color: #e2e8f0;
-            font-family: 'Rajdhani', sans-serif;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .font-heading { font-family: 'Syne', sans-serif; }
 
-        /* Gradiente para el Hero ONE PLAYER */
+        /* Gradiente elegante de título */
         .title-gradient {
-            background: linear-gradient(180deg, #38bdf8 0%, #0284c7 50%, #0369a1 100%);
+            background: linear-gradient(135deg, #ffffff 30%, #38bdf8 70%, #0284c7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Glow para tarjetas */
-        .card-glow {
-            background: rgba(10, 16, 31, 0.7);
-            border: 1px solid rgba(14, 165, 233, 0.15);
-            box-shadow: 0 0 25px rgba(2, 132, 199, 0.08);
+        /* Tarjetas estilo Glassmorphism pro */
+        .card-pro {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.12);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
             border-radius: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .card-glow:hover {
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 0 35px rgba(2, 132, 199, 0.25);
-            transform: translateY(-3px);
+        .card-pro:hover {
+            border-color: rgba(56, 189, 248, 0.35);
+            box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.15);
+            transform: translateY(-4px);
         }
 
-        /* Marquesina para Marcas */
+        /* Marquesina elegante con desvanecido */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -82,157 +82,163 @@
         .animate-marquee {
             display: flex;
             width: 200%;
-            animation: marquee 25s linear infinite;
+            animation: marquee 30s linear infinite;
         }
 
-        /* Botón estilo cyan */
-        .btn-blue {
-            background-color: rgba(2, 132, 199, 0.15);
-            border: 1px solid rgba(56, 189, 248, 0.4);
+        .marquee-mask {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        /* Botón Cyan Estilizado */
+        .btn-cyan {
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             color: #38bdf8;
             transition: all 0.3s ease;
         }
 
-        .btn-blue:hover {
-            background-color: #0284c7;
+        .btn-cyan:hover {
+            background: #0284c7;
+            border-color: #0284c7;
             color: #ffffff;
-            box-shadow: 0 0 15px rgba(2, 132, 199, 0.5);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.35);
         }
 
-        /* Botón verde para Enviar Consulta */
-        .btn-green {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        /* Botón Verde Formulario */
+        .btn-emerald {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
             color: #ffffff;
             transition: all 0.3s ease;
         }
 
-        .btn-green:hover {
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
-            transform: scale(1.01);
+        .btn-emerald:hover {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+            transform: translateY(-1px);
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
     <!-- HEADER / BARRA DE NAVEGACIÓN -->
-    <header class="sticky top-0 z-50 bg-[#030712]/90 backdrop-blur-md border-b border-sky-900/30 px-6 py-4">
+    <header class="sticky top-0 z-50 bg-[#030712]/80 backdrop-blur-md border-b border-slate-800/80 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="font-orbitron text-xl sm:text-2xl font-black tracking-wider text-white">
+            <a href="#" class="font-heading text-xl sm:text-2xl font-extrabold tracking-wider text-white">
                 ONE PLAYER
             </a>
 
-            <nav class="hidden md:flex gap-8 font-orbitron text-xs tracking-widest text-slate-300">
-                <a href="#laboratorio" class="hover:text-sky-400 transition-colors">LABORATORIO TÉCNICO</a>
-                <a href="#store" class="hover:text-sky-400 transition-colors">STORE Y GEAR</a>
-                <a href="#tv" class="hover:text-sky-400 transition-colors">TV ENTERTAINMENT</a>
+            <nav class="hidden md:flex gap-8 text-xs font-semibold tracking-widest text-slate-300 uppercase">
+                <a href="#laboratorio" class="hover:text-sky-400 transition-colors">Laboratorio Técnico</a>
+                <a href="#store" class="hover:text-sky-400 transition-colors">Store y Gear</a>
+                <a href="#tv" class="hover:text-sky-400 transition-colors">TV Entertainment</a>
             </nav>
         </div>
     </header>
 
     <!-- SECCIÓN HERO: ONE PLAYER SOLUCIONES TÉCNICAS -->
-    <section class="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
-        <h1 class="font-orbitron text-5xl sm:text-7xl font-black tracking-wide mb-2 title-gradient">
+    <section class="max-w-5xl mx-auto px-6 pt-20 pb-12 text-center">
+        <h1 class="font-heading text-5xl sm:text-7xl font-extrabold tracking-tight mb-3 title-gradient">
             ONE PLAYER
         </h1>
-        <p class="font-orbitron tracking-[0.3em] text-slate-300 text-sm sm:text-base font-bold mb-12 uppercase">
-            SOLUCIONES TÉCNICAS
+        <p class="font-semibold tracking-[0.25em] text-sky-400 text-xs sm:text-sm mb-12 uppercase">
+            Soluciones Técnicas
         </p>
 
         <!-- ¿Quiénes Somos? -->
-        <div class="card-glow max-w-2xl mx-auto p-8 mb-12">
-            <h2 class="font-orbitron text-sky-400 text-lg font-bold mb-4 tracking-wider">
-                ¿QUIÉNES SOMOS?
+        <div class="card-pro max-w-2xl mx-auto p-8 mb-12 text-left sm:text-center">
+            <h2 class="font-heading text-sky-400 text-sm font-bold tracking-widest mb-3 uppercase">
+                ¿Quiénes Somos?
             </h2>
-            <p class="text-slate-300 text-sm leading-relaxed">
-                Con una trayectoria de <span class="text-sky-400 font-bold">4 años</span>, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.
+            <p class="text-slate-300 text-sm leading-relaxed font-normal">
+                Con una trayectoria de <span class="text-white font-semibold">4 años</span>, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.
             </p>
         </div>
 
         <!-- Tarjetas de Estadísticas -->
         <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div class="card-glow p-6 text-center">
-                <div class="font-orbitron text-2xl font-bold text-sky-400 mb-1">4+ Años</div>
-                <div class="text-xs text-slate-400 font-bold tracking-wider uppercase">DE EXPERIENCIA</div>
+            <div class="card-pro p-6 text-center">
+                <div class="font-heading text-3xl font-bold text-sky-400 mb-1">4+ Años</div>
+                <div class="text-[11px] text-slate-400 font-semibold tracking-wider uppercase">De Experiencia</div>
             </div>
-            <div class="card-glow p-6 text-center">
-                <div class="font-orbitron text-2xl font-bold text-sky-400 mb-1">100% Verificado</div>
-                <div class="text-xs text-slate-400 font-bold tracking-wider uppercase">PRUEBA FRENTE AL CLIENTE</div>
+            <div class="card-pro p-6 text-center">
+                <div class="font-heading text-3xl font-bold text-sky-400 mb-1">100% Verificado</div>
+                <div class="text-[11px] text-slate-400 font-semibold tracking-wider uppercase">Prueba Frente Al Cliente</div>
             </div>
-            <div class="card-glow p-6 text-center">
-                <div class="font-orbitron text-2xl font-bold text-sky-400 mb-1">Rivadavia, Mendoza</div>
-                <div class="text-xs text-slate-400 font-bold tracking-wider uppercase">ATENCIÓN LOCAL</div>
+            <div class="card-pro p-6 text-center">
+                <div class="font-heading text-3xl font-bold text-sky-400 mb-1">Rivadavia, Mendoza</div>
+                <div class="text-[11px] text-slate-400 font-semibold tracking-wider uppercase">Atención Local</div>
             </div>
         </div>
     </section>
 
     <!-- SECCIÓN: NUESTROS SERVICIOS / LABORATORIO TÉCNICO -->
-    <section id="laboratorio" class="max-w-6xl mx-auto px-6 py-12">
-        <div class="text-center mb-10">
-            <h2 class="font-orbitron text-2xl sm:text-3xl font-black text-white tracking-wider mb-2">
+    <section id="laboratorio" class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white tracking-wide mb-2">
                 NUESTROS SERVICIOS
             </h2>
-            <p class="font-orbitron text-sky-400 text-sm font-bold tracking-widest">
-                LABORATORIO TÉCNICO
+            <p class="text-sky-400 text-xs font-semibold tracking-widest uppercase">
+                Laboratorio Técnico
             </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-3 gap-8">
             <!-- Cambio de Módulo -->
-            <div class="card-glow overflow-hidden flex flex-col justify-between">
+            <div class="card-pro overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="h-48 bg-slate-950 flex items-center justify-center p-4">
-                        <img src="Modulo.jpg" alt="Cambio de Módulo" class="h-full object-contain">
+                    <div class="h-48 bg-slate-950/80 flex items-center justify-center p-6 border-b border-slate-800/50">
+                        <img src="Modulo.jpg" alt="Cambio de Módulo" class="h-full object-contain filter drop-shadow-lg">
                     </div>
                     <div class="p-6 text-center">
-                        <h3 class="font-orbitron text-md font-bold text-white mb-3">CAMBIO DE MÓDULO</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                        <h3 class="font-heading text-base font-bold text-white mb-3 tracking-wide">CAMBIO DE MÓDULO</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6 font-normal">
                             Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas y modelos con repuestos de calidad garantizada.
                         </p>
                     </div>
                 </div>
                 <div class="p-6 pt-0 text-center">
-                    <a href="https://wa.me/542634722710?text=Hola!%20Quiero%20consultar%20por%20Cambio%20de%20M%C3%B3dulo" target="_blank" rel="noopener noreferrer" class="btn-blue block w-full py-2.5 rounded-lg font-orbitron text-xs font-bold tracking-wider">
-                        CONSULTAR AHORA
+                    <a href="https://wa.me/542634722710?text=Hola!%20Quiero%20consultar%20por%20Cambio%20de%20M%C3%B3dulo" target="_blank" rel="noopener noreferrer" class="btn-cyan block w-full py-3 rounded-lg text-xs font-semibold tracking-wider uppercase">
+                        Consultar Ahora
                     </a>
                 </div>
             </div>
 
             <!-- Cambio de Batería -->
-            <div class="card-glow overflow-hidden flex flex-col justify-between">
+            <div class="card-pro overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="h-48 bg-slate-950 flex items-center justify-center p-4">
-                        <img src="Baterias.jpg" alt="Cambio de Batería" class="h-full object-contain">
+                    <div class="h-48 bg-slate-950/80 flex items-center justify-center p-6 border-b border-slate-800/50">
+                        <img src="Baterias.jpg" alt="Cambio de Batería" class="h-full object-contain filter drop-shadow-lg">
                     </div>
                     <div class="p-6 text-center">
-                        <h3 class="font-orbitron text-md font-bold text-white mb-3">CAMBIO DE BATERÍA</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                        <h3 class="font-heading text-base font-bold text-white mb-3 tracking-wide">CAMBIO DE BATERÍA</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6 font-normal">
                             Reemplazo de baterías agotadas para devolverle la autonomía y el máximo rendimiento original a tu celular.
                         </p>
                     </div>
                 </div>
                 <div class="p-6 pt-0 text-center">
-                    <a href="https://wa.me/542634722710?text=Hola!%20Quiero%20consultar%20por%20Cambio%20de%20Bater%C3%ADa" target="_blank" rel="noopener noreferrer" class="btn-blue block w-full py-2.5 rounded-lg font-orbitron text-xs font-bold tracking-wider">
-                        CONSULTAR AHORA
+                    <a href="https://wa.me/542634722710?text=Hola!%20Quiero%20consultar%20por%20Cambio%20de%20Bater%C3%ADa" target="_blank" rel="noopener noreferrer" class="btn-cyan block w-full py-3 rounded-lg text-xs font-semibold tracking-wider uppercase">
+                        Consultar Ahora
                     </a>
                 </div>
             </div>
 
             <!-- Pin / Placa de Carga -->
-            <div class="card-glow overflow-hidden flex flex-col justify-between">
+            <div class="card-pro overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="h-48 bg-slate-950 flex items-center justify-center p-4">
-                        <img src="Placa%20de%20carga.jpg" alt="Pin / Placa de carga" class="h-full object-contain">
+                    <div class="h-48 bg-slate-950/80 flex items-center justify-center p-6 border-b border-slate-800/50">
+                        <img src="Placa%20de%20carga.jpg" alt="Pin / Placa de carga" class="h-full object-contain filter drop-shadow-lg">
                     </div>
                     <div class="p-6 text-center">
-                        <h3 class="font-orbitron text-md font-bold text-white mb-3">PIN / PLACA DE CARGA</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                        <h3 class="font-heading text-base font-bold text-white mb-3 tracking-wide">PIN / PLACA DE CARGA</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6 font-normal">
                             Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tus dispositivos.
                         </p>
                     </div>
                 </div>
                 <div class="p-6 pt-0 text-center">
-                    <a href="https://wa.me/542634722710?text=Hola!%20Quiero%20consultar%20por%20Pin/Placa%20de%20Carga" target="_blank" rel="noopener noreferrer" class="btn-blue block w-full py-2.5 rounded-lg font-orbitron text-xs font-bold tracking-wider">
-                        CONSULTAR AHORA
+                    <a href="https://wa.me/542634722710?text=Hola!%20Quiero%20consultar%20por%20Pin/Placa%20de%20Carga" target="_blank" rel="noopener noreferrer" class="btn-cyan block w-full py-3 rounded-lg text-xs font-semibold tracking-wider uppercase">
+                        Consultar Ahora
                     </a>
                 </div>
             </div>
@@ -240,18 +246,18 @@
     </section>
 
     <!-- BANNER: ESPECIALIZACIÓN EXCLUSIVA ANDROID -->
-    <section class="max-w-5xl mx-auto px-6 py-8">
-        <div class="card-glow p-6 text-center">
-            <div class="inline-block px-4 py-1 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 font-orbitron text-xs font-bold mb-4 tracking-widest">
-                ESPECIALIZACIÓN EXCLUSIVA
+    <section class="max-w-5xl mx-auto px-6 py-6">
+        <div class="card-pro p-8 text-center">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-400 text-[11px] font-semibold mb-4 tracking-widest uppercase">
+                Especialización Exclusiva
             </div>
-            <h3 class="font-orbitron text-lg sm:text-xl font-bold text-white mb-6 tracking-wide">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-white mb-6 tracking-wide">
                 SERVICIO TÉCNICO ESPECIALIZADO - SOLO SISTEMA ANDROID
             </h3>
             
             <!-- Carrusel Infinito de Marcas -->
-            <div class="overflow-hidden whitespace-nowrap py-2 border-t border-b border-sky-900/30">
-                <div class="animate-marquee font-orbitron text-sm font-bold text-slate-400 gap-8 flex justify-around">
+            <div class="marquee-mask overflow-hidden whitespace-nowrap py-3 border-t border-b border-slate-800">
+                <div class="animate-marquee text-xs font-semibold text-slate-400 gap-8 flex justify-around uppercase tracking-widest">
                     <span>ALCATEL</span> • <span class="text-sky-400">TCL</span> • <span>NOKIA</span> • <span class="text-sky-400">SAMSUNG</span> • <span>MOTOROLA</span> • <span class="text-sky-400">XIAOMI</span> • <span>REDMI</span> • <span class="text-sky-400">HUAWEI</span> • <span>LG</span> •
                     <span>ALCATEL</span> • <span class="text-sky-400">TCL</span> • <span>NOKIA</span> • <span class="text-sky-400">SAMSUNG</span> • <span>MOTOROLA</span> • <span class="text-sky-400">XIAOMI</span> • <span>REDMI</span> • <span class="text-sky-400">HUAWEI</span> • <span>LG</span> •
                 </div>
@@ -260,90 +266,90 @@
     </section>
 
     <!-- SECCIÓN: STORE Y GEAR -->
-    <section id="store" class="max-w-6xl mx-auto px-6 py-12">
-        <div class="text-center mb-10">
-            <h2 class="font-orbitron text-2xl sm:text-3xl font-black text-white tracking-wider">
+    <section id="store" class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white tracking-wide">
                 STORE Y GEAR
             </h2>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Auriculares -->
-            <div class="card-glow overflow-hidden flex flex-col justify-between">
+            <div class="card-pro overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="h-44 bg-slate-950 flex items-center justify-center p-3">
-                        <img src="Auriculares.jpg" alt="Auriculares" class="h-full object-contain">
+                    <div class="h-44 bg-slate-950/80 flex items-center justify-center p-4 border-b border-slate-800/50">
+                        <img src="Auriculares.jpg" alt="Auriculares" class="h-full object-contain filter drop-shadow-md">
                     </div>
                     <div class="p-5 text-center">
-                        <h3 class="font-orbitron text-sm font-bold text-white mb-2">AURICULARES</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        <h3 class="font-heading text-sm font-bold text-white mb-2 tracking-wide">AURICULARES</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4 font-normal">
                             Con cable, bluetooth, gaming y vinchas con sonido de alta definición, bajos potentes y la máxima comodidad.
                         </p>
                     </div>
                 </div>
                 <div class="p-5 pt-0 text-center">
-                    <a href="https://wa.me/542634722710?text=Consulta%20por%20Auriculares" target="_blank" rel="noopener noreferrer" class="btn-blue block w-full py-2 rounded-lg font-orbitron text-xs font-bold tracking-wider">
-                        PEDIR INFORMACIÓN
+                    <a href="https://wa.me/542634722710?text=Consulta%20por%20Auriculares" target="_blank" rel="noopener noreferrer" class="btn-cyan block w-full py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase">
+                        Pedir Información
                     </a>
                 </div>
             </div>
 
             <!-- Cargadores -->
-            <div class="card-glow overflow-hidden flex flex-col justify-between">
+            <div class="card-pro overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="h-44 bg-slate-950 flex items-center justify-center p-3">
-                        <img src="Cargadores.png" alt="Cargadores" class="h-full object-contain">
+                    <div class="h-44 bg-slate-950/80 flex items-center justify-center p-4 border-b border-slate-800/50">
+                        <img src="Cargadores.png" alt="Cargadores" class="h-full object-contain filter drop-shadow-md">
                     </div>
                     <div class="p-5 text-center">
-                        <h3 class="font-orbitron text-sm font-bold text-white mb-2">CARGADORES</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        <h3 class="font-heading text-sm font-bold text-white mb-2 tracking-wide">CARGADORES</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4 font-normal">
                             Cargadores de carga normal, rápidos y originales para cuidar la salud de la batería de tu dispositivo.
                         </p>
                     </div>
                 </div>
                 <div class="p-5 pt-0 text-center">
-                    <a href="https://wa.me/542634722710?text=Consulta%20por%20Cargadores" target="_blank" rel="noopener noreferrer" class="btn-blue block w-full py-2 rounded-lg font-orbitron text-xs font-bold tracking-wider">
-                        PEDIR INFORMACIÓN
+                    <a href="https://wa.me/542634722710?text=Consulta%20por%20Cargadores" target="_blank" rel="noopener noreferrer" class="btn-cyan block w-full py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase">
+                        Pedir Información
                     </a>
                 </div>
             </div>
 
             <!-- Cables USB -->
-            <div class="card-glow overflow-hidden flex flex-col justify-between">
+            <div class="card-pro overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="h-44 bg-slate-950 flex items-center justify-center p-3">
-                        <img src="USB.jpg" alt="Cables USB" class="h-full object-contain">
+                    <div class="h-44 bg-slate-950/80 flex items-center justify-center p-4 border-b border-slate-800/50">
+                        <img src="USB.jpg" alt="Cables USB" class="h-full object-contain filter drop-shadow-md">
                     </div>
                     <div class="p-5 text-center">
-                        <h3 class="font-orbitron text-sm font-bold text-white mb-2">CABLES USB</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        <h3 class="font-heading text-sm font-bold text-white mb-2 tracking-wide">CABLES USB</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4 font-normal">
                             Cables con entrada Tipo C, Tipo V8 y Lightning (iPhone) de alta resistencia.
                         </p>
                     </div>
                 </div>
                 <div class="p-5 pt-0 text-center">
-                    <a href="https://wa.me/542634722710?text=Consulta%20por%20Cables%20USB" target="_blank" rel="noopener noreferrer" class="btn-blue block w-full py-2 rounded-lg font-orbitron text-xs font-bold tracking-wider">
-                        PEDIR INFORMACIÓN
+                    <a href="https://wa.me/542634722710?text=Consulta%20por%20Cables%20USB" target="_blank" rel="noopener noreferrer" class="btn-cyan block w-full py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase">
+                        Pedir Información
                     </a>
                 </div>
             </div>
 
             <!-- Convertidores TV -->
-            <div class="card-glow overflow-hidden flex flex-col justify-between">
+            <div class="card-pro overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="h-44 bg-slate-950 flex items-center justify-center p-3">
-                        <img src="Convertidores.png" alt="Convertidores TV" class="h-full object-contain">
+                    <div class="h-44 bg-slate-950/80 flex items-center justify-center p-4 border-b border-slate-800/50">
+                        <img src="Convertidores.png" alt="Convertidores TV" class="h-full object-contain filter drop-shadow-md">
                     </div>
                     <div class="p-5 text-center">
-                        <h3 class="font-orbitron text-sm font-bold text-white mb-2">CONVERTIDORES TV</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        <h3 class="font-heading text-sm font-bold text-white mb-2 tracking-wide">CONVERTIDORES TV</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4 font-normal">
                             Transforma tu televisor tradicional en un Smart TV de última generación para ver tus aplicaciones favoritas.
                         </p>
                     </div>
                 </div>
                 <div class="p-5 pt-0 text-center">
-                    <a href="https://wa.me/542634722710?text=Consulta%20por%20Convertidores%20TV" target="_blank" rel="noopener noreferrer" class="btn-blue block w-full py-2 rounded-lg font-orbitron text-xs font-bold tracking-wider">
-                        PEDIR INFORMACIÓN
+                    <a href="https://wa.me/542634722710?text=Consulta%20por%20Convertidores%20TV" target="_blank" rel="noopener noreferrer" class="btn-cyan block w-full py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase">
+                        Pedir Información
                     </a>
                 </div>
             </div>
@@ -352,153 +358,153 @@
 
     <!-- SECCIÓN: TV ENTERTAINMENT -->
     <section id="tv" class="max-w-5xl mx-auto px-6 py-12">
-        <div class="text-center mb-10">
-            <h2 class="font-orbitron text-2xl sm:text-3xl font-black text-white tracking-wider">
+        <div class="text-center mb-12">
+            <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white tracking-wide">
                 TV ENTERTAINMENT
             </h2>
         </div>
 
-        <div class="card-glow p-6 sm:p-8 overflow-hidden text-center">
-            <div class="mb-6 rounded-xl overflow-hidden max-h-80 flex items-center justify-center bg-slate-950">
+        <div class="card-pro p-8 sm:p-10 text-center">
+            <div class="mb-6 rounded-xl overflow-hidden max-h-80 flex items-center justify-center bg-slate-950/80 border border-slate-800">
                 <img src="Tv.jpg" alt="Experiencia TV Familiar" class="w-full object-cover">
             </div>
 
-            <h3 class="font-orbitron text-lg sm:text-xl font-bold text-white mb-3">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-white mb-3">
                 EXPERIENCIA TV FAMILIAR
             </h3>
-            <p class="text-slate-300 text-sm max-w-xl mx-auto mb-6 leading-relaxed">
+            <p class="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto mb-8 leading-relaxed font-normal">
                 Una solución de TV única para compartir en familia todo el mejor entretenimiento, directo desde el confort de tu hogar.
             </p>
 
-            <a href="https://wa.me/542634722710?text=Hola!%20Quiero%20consultar%20por%20planes%20de%20TV%20Entertainment" target="_blank" rel="noopener noreferrer" class="btn-blue inline-block px-8 py-3 rounded-lg font-orbitron text-xs font-bold tracking-wider">
-                CONSULTAR PLANES DE TV
+            <a href="https://wa.me/542634722710?text=Hola!%20Quiero%20consultar%20por%20planes%20de%20TV%20Entertainment" target="_blank" rel="noopener noreferrer" class="btn-cyan inline-block px-8 py-3.5 rounded-lg text-xs font-semibold tracking-wider uppercase">
+                Consultar Planes de TV
             </a>
         </div>
     </section>
 
     <!-- SECCIÓN: ¿POR QUÉ ELEGIRNOS? -->
     <section class="max-w-5xl mx-auto px-6 py-12">
-        <h2 class="font-orbitron text-2xl font-black text-center text-white mb-10 tracking-wider">
+        <h2 class="font-heading text-2xl font-bold text-center text-white mb-12 tracking-wide">
             ¿POR QUÉ ELEGIRNOS?
         </h2>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="card-glow p-6 text-center">
-                <div class="w-10 h-10 rounded-full bg-sky-500/20 text-sky-400 font-orbitron font-bold flex items-center justify-center mx-auto mb-4 text-sm">
+            <div class="card-pro p-6 text-center">
+                <div class="w-10 h-10 rounded-full bg-sky-500/10 text-sky-400 font-heading font-bold flex items-center justify-center mx-auto mb-4 text-sm border border-sky-500/20">
                     01
                 </div>
-                <h4 class="font-orbitron text-xs font-bold text-white mb-2">DIAGNÓSTICO RÁPIDO</h4>
-                <p class="text-slate-400 text-xs">Revisión inmediata de la falla para darte la solución precisa sin demoras innecesarias.</p>
+                <h4 class="font-heading text-xs font-bold text-white mb-2 tracking-wider">DIAGNÓSTICO RÁPIDO</h4>
+                <p class="text-slate-400 text-xs leading-relaxed font-normal">Revisión inmediata de la falla para darte la solución precisa sin demoras innecesarias.</p>
             </div>
 
-            <div class="card-glow p-6 text-center">
-                <div class="w-10 h-10 rounded-full bg-sky-500/20 text-sky-400 font-orbitron font-bold flex items-center justify-center mx-auto mb-4 text-sm">
+            <div class="card-pro p-6 text-center">
+                <div class="w-10 h-10 rounded-full bg-sky-500/10 text-sky-400 font-heading font-bold flex items-center justify-center mx-auto mb-4 text-sm border border-sky-500/20">
                     02
                 </div>
-                <h4 class="font-orbitron text-xs font-bold text-white mb-2">REPUESTOS CALIDAD</h4>
-                <p class="text-slate-400 text-xs">Utilizamos repuestos testeados para garantizar la máxima durabilidad de tu dispositivo.</p>
+                <h4 class="font-heading text-xs font-bold text-white mb-2 tracking-wider">REPUESTOS CALIDAD</h4>
+                <p class="text-slate-400 text-xs leading-relaxed font-normal">Utilizamos repuestos testeados para garantizar la máxima durabilidad de tu dispositivo.</p>
             </div>
 
-            <div class="card-glow p-6 text-center">
-                <div class="w-10 h-10 rounded-full bg-sky-500/20 text-sky-400 font-orbitron font-bold flex items-center justify-center mx-auto mb-4 text-sm">
+            <div class="card-pro p-6 text-center">
+                <div class="w-10 h-10 rounded-full bg-sky-500/10 text-sky-400 font-heading font-bold flex items-center justify-center mx-auto mb-4 text-sm border border-sky-500/20">
                     03
                 </div>
-                <h4 class="font-orbitron text-xs font-bold text-white mb-2">PRUEBA EN VIVO</h4>
-                <p class="text-slate-400 text-xs">Verificás el correcto funcionamiento del equipo al momento de retirarlo del local.</p>
+                <h4 class="font-heading text-xs font-bold text-white mb-2 tracking-wider">PRUEBA EN VIVO</h4>
+                <p class="text-slate-400 text-xs leading-relaxed font-normal">Verificás el correcto funcionamiento del equipo al momento de retirarlo del local.</p>
             </div>
 
-            <div class="card-glow p-6 text-center">
-                <div class="w-10 h-10 rounded-full bg-sky-500/20 text-sky-400 font-orbitron font-bold flex items-center justify-center mx-auto mb-4 text-sm">
+            <div class="card-pro p-6 text-center">
+                <div class="w-10 h-10 rounded-full bg-sky-500/10 text-sky-400 font-heading font-bold flex items-center justify-center mx-auto mb-4 text-sm border border-sky-500/20">
                     04
                 </div>
-                <h4 class="font-orbitron text-xs font-bold text-white mb-2">ATENCIÓN DIRECTA</h4>
-                <p class="text-slate-400 text-xs">Trato personalizado y directo vía WhatsApp o presencial para sacarte todas las dudas.</p>
+                <h4 class="font-heading text-xs font-bold text-white mb-2 tracking-wider">ATENCIÓN DIRECTA</h4>
+                <p class="text-slate-400 text-xs leading-relaxed font-normal">Trato personalizado y directo vía WhatsApp o presencial para sacarte todas las dudas.</p>
             </div>
         </div>
     </section>
 
     <!-- SECCIÓN: MEDIOS DE PAGO Y GARANTÍA -->
     <section class="max-w-5xl mx-auto px-6 py-6 grid md:grid-cols-2 gap-6">
-        <div class="card-glow p-6 text-center">
-            <h3 class="font-orbitron text-sm font-bold text-white mb-4">MEDIOS DE PAGO</h3>
-            <p class="text-slate-400 text-xs mb-6">
+        <div class="card-pro p-8 text-center">
+            <h3 class="font-heading text-sm font-bold text-white mb-3 tracking-wider">MEDIOS DE PAGO</h3>
+            <p class="text-slate-400 text-xs mb-6 font-normal">
                 Pensando en tu comodidad, aceptamos múltiples opciones de pago en todos nuestros servicios y productos:
             </p>
-            <div class="grid grid-cols-2 gap-3 font-orbitron text-xs font-bold">
-                <div class="p-2.5 bg-slate-950/80 rounded border border-sky-900/40 text-slate-300">EFECTIVO</div>
-                <div class="p-2.5 bg-slate-950/80 rounded border border-sky-900/40 text-slate-300">TRANSFERENCIA</div>
-                <div class="p-2.5 bg-slate-950/80 rounded border border-sky-900/40 text-slate-300">MERCADO PAGO</div>
-                <div class="p-2.5 bg-slate-950/80 rounded border border-sky-900/40 text-slate-300">TARJETAS</div>
+            <div class="grid grid-cols-2 gap-3 text-xs font-semibold">
+                <div class="p-3 bg-slate-950/80 rounded-lg border border-slate-800 text-slate-300">EFECTIVO</div>
+                <div class="p-3 bg-slate-950/80 rounded-lg border border-slate-800 text-slate-300">TRANSFERENCIA</div>
+                <div class="p-3 bg-slate-950/80 rounded-lg border border-slate-800 text-slate-300">MERCADO PAGO</div>
+                <div class="p-3 bg-slate-950/80 rounded-lg border border-slate-800 text-slate-300">TARJETAS</div>
             </div>
         </div>
 
-        <div class="card-glow p-6 text-center flex flex-col justify-between">
+        <div class="card-pro p-8 text-center flex flex-col justify-between">
             <div>
-                <h3 class="font-orbitron text-sm font-bold text-white mb-4">GARANTÍA Y CONFIANZA</h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                <h3 class="font-heading text-sm font-bold text-white mb-3 tracking-wider">GARANTÍA Y CONFIANZA</h3>
+                <p class="text-slate-400 text-xs leading-relaxed mb-6 font-normal">
                     Cada reparación se entrega probada 100% frente al cliente. Transparencia total desde el diagnóstico hasta la entrega de tu equipo.
                 </p>
             </div>
-            <div class="p-3 bg-emerald-950/40 border border-emerald-500/30 rounded-lg text-emerald-400 font-orbitron text-xs font-bold">
-                TRABAJO EFICIENTE Y RÁPIDO
+            <div class="p-3.5 bg-emerald-950/30 border border-emerald-500/30 rounded-lg text-emerald-400 text-xs font-semibold tracking-wider uppercase">
+                Trabajo Eficiente y Rápido
             </div>
         </div>
     </section>
 
     <!-- SECCIÓN: FORMULARIO DE CONSULTA PRESUPUESTO -->
-    <section class="max-w-3xl mx-auto px-6 py-12">
-        <div class="card-glow p-8 text-center">
-            <h2 class="font-orbitron text-xl sm:text-2xl font-black text-white mb-2">
+    <section class="max-w-3xl mx-auto px-6 py-16">
+        <div class="card-pro p-8 sm:p-10 text-center">
+            <h2 class="font-heading text-xl sm:text-2xl font-bold text-white mb-2">
                 ¿QUERÉS CONSULTAR UN PRESUPUESTO?
             </h2>
-            <p class="text-slate-400 text-xs mb-8">
+            <p class="text-slate-400 text-xs mb-8 font-normal">
                 Escribinos con el modelo de tu equipo y la falla para asesorarte de inmediato.
             </p>
 
             <form id="consultForm" class="space-y-4 max-w-md mx-auto" onsubmit="event.preventDefault(); enviarConsultaWhatsApp();">
                 <div>
-                    <label for="nombreEquipo" class="block text-left font-orbitron text-[10px] text-slate-400 mb-1">TU NOMBRE O EQUIPO</label>
-                    <input type="text" id="nombreEquipo" placeholder="Ej: Juan - Samsung A32" class="w-full bg-slate-950/90 border border-sky-900/50 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-sky-400">
+                    <label for="nombreEquipo" class="block text-left text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Tu Nombre o Equipo</label>
+                    <input type="text" id="nombreEquipo" placeholder="Ej: Juan - Samsung A32" class="w-full bg-slate-950/80 border border-slate-800 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-sky-400 transition-colors">
                 </div>
 
                 <div>
-                    <label for="detalleProblema" class="block text-left font-orbitron text-[10px] text-slate-400 mb-1">DETALLE DEL PROBLEMA</label>
-                    <textarea id="detalleProblema" rows="3" placeholder="Ej: Se rompió la pantalla / No me carga el pin..." class="w-full bg-slate-950/90 border border-sky-900/50 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-sky-400"></textarea>
+                    <label for="detalleProblema" class="block text-left text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Detalle del Problema</label>
+                    <textarea id="detalleProblema" rows="3" placeholder="Ej: Se rompió la pantalla / No me carga el pin..." class="w-full bg-slate-950/80 border border-slate-800 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-sky-400 transition-colors"></textarea>
                 </div>
 
-                <button type="submit" class="btn-green w-full py-3 rounded-lg font-orbitron text-xs font-bold tracking-wider mt-2">
-                    ENVIÁ TU CONSULTA
+                <button type="submit" class="btn-emerald w-full py-3.5 rounded-lg text-xs font-bold tracking-wider uppercase mt-2">
+                    Enviá Tu Consulta
                 </button>
             </form>
         </div>
     </section>
 
     <!-- FOOTER / PIE DE PÁGINA -->
-    <footer class="mt-auto border-t border-sky-950 bg-slate-950/80 py-8 px-6">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 text-center text-xs text-slate-400">
+    <footer class="mt-auto border-t border-slate-800/80 bg-slate-950/90 py-10 px-6">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center text-xs text-slate-400">
             <div>
-                <h5 class="font-orbitron text-white font-bold mb-2">UBICACIÓN</h5>
-                <p>Rivadavia, Mendoza</p>
+                <h5 class="font-heading text-white font-bold mb-2 tracking-wider">UBICACIÓN</h5>
+                <p class="font-normal">Rivadavia, Mendoza</p>
             </div>
             <div>
-                <h5 class="font-orbitron text-white font-bold mb-2">HORARIOS DE ATENCIÓN</h5>
-                <p>Lunes a Sábado: 9:00 a 22:00 hs</p>
-                <p class="text-slate-500">Domingo: Cerrado</p>
+                <h5 class="font-heading text-white font-bold mb-2 tracking-wider">HORARIOS DE ATENCIÓN</h5>
+                <p class="font-normal">Lunes a Sábado: 9:00 a 22:00 hs</p>
+                <p class="text-slate-500 font-normal">Domingo: Cerrado</p>
             </div>
             <div>
-                <h5 class="font-orbitron text-white font-bold mb-2">CONTACTO DIRECTO</h5>
-                <p class="text-sky-400 font-bold">WhatsApp: 2634 72-2710</p>
+                <h5 class="font-heading text-white font-bold mb-2 tracking-wider">CONTACTO DIRECTO</h5>
+                <p class="text-sky-400 font-semibold">WhatsApp: 2634 72-2710</p>
             </div>
         </div>
 
-        <div class="mt-8 text-center text-[10px] text-slate-600 font-orbitron tracking-wider">
-            SERVICIO TÉCNICO • ACCESORIOS • ENTRETENIMIENTO<br>
-            © ONE PLAYER. TODOS LOS DERECHOS RESERVADOS.
+        <div class="mt-10 text-center text-[11px] text-slate-500 font-medium tracking-widest uppercase">
+            Servicio Técnico • Accesorios • Entretenimiento<br>
+            <span class="text-slate-600">© ONE PLAYER. Todos los derechos reservados.</span>
         </div>
     </footer>
 
     <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/542634722710?text=Hola%20One%20Player!%20Tengo%20una%20consulta" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white p-4 rounded-full shadow-lg hover:bg-emerald-400 hover:scale-110 transition-all flex items-center justify-center" aria-label="Contacto por WhatsApp">
+    <a href="https://wa.me/542634722710?text=Hola%20One%20Player!%20Tengo%20una%20consulta" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white p-4 rounded-full shadow-xl hover:bg-emerald-400 hover:scale-110 transition-all flex items-center justify-center" aria-label="Contacto por WhatsApp">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
     </a>
 
