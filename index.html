@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONE PLAYER - Soluciones Técnicas & Accesorio Tech</title>
+  <title>ONE PLAYER - Soluciones Técnicas & Tech Store Pro</title>
   <meta name="description" content="Servicio técnico especializado en Android, reparación de celulares, repuestos y accesorios en Rivadavia, Mendoza.">
 
   <!-- SEO Local (Schema.org) -->
@@ -30,20 +30,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* ========================================== */
-    /* VARIABLES Y ESTILOS GLOBALES               */
-    /* ========================================== */
+    /* ==========================================================================
+       1. VARIABLES GLOBALES Y RESET DE ESTILOS
+       ========================================================================== */
     :root {
       --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --bg-dark: #03060d;
-      --card-bg: rgba(11, 17, 32, 0.7);
-      --card-border: rgba(0, 210, 255, 0.18);
+      --bg-dark: #020408;
+      --card-bg: rgba(10, 16, 30, 0.75);
+      --card-border: rgba(0, 210, 255, 0.2);
       --text-white: #ffffff;
       --text-muted: #94a3b8;
       --accent-cyan: #00d2ff;
       --accent-purple: #9d00ff;
       --accent-pink: #ff007f;
       --accent-green: #25d366;
+      --cyber-glow: 0 0 25px rgba(0, 210, 255, 0.4);
     }
 
     * {
@@ -67,9 +68,19 @@
       text-align: center;
     }
 
-    /* Fondo animado multicapa */
-    body::before {
-      content: "";
+    /* Canvas para Partículas de Fondo */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    /* Capa de Iluminación Holográfica */
+    .bg-glow {
       position: fixed;
       top: 0;
       left: 0;
@@ -79,20 +90,23 @@
         radial-gradient(circle at 15% 20%, rgba(157, 0, 255, 0.18) 0%, transparent 45%),
         radial-gradient(circle at 85% 60%, rgba(0, 210, 255, 0.18) 0%, transparent 45%),
         radial-gradient(circle at 50% 90%, rgba(255, 0, 127, 0.12) 0%, transparent 50%),
-        radial-gradient(rgba(0, 210, 255, 0.07) 1.2px, transparent 0);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px;
+        radial-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 0);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
       pointer-events: none;
       z-index: -1;
-      transform: translate3d(0, 0, 0);
+      transition: transform 0.1s cubic-bezier(0.1, 1, 0.1, 1);
+      will-change: transform;
     }
 
     .container {
-      max-width: 1150px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* ANIMACIÓN AL HACER SCROLL (INTERSECTION OBSERVER) */
+    /* ==========================================================================
+       2. ANIMACIONES GLOBALES (REVEAL, SHIMMER, LASER BORDER)
+       ========================================================================== */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -105,18 +119,41 @@
       transform: translateY(0);
     }
 
-    /* ========================================== */
-    /* NAVBAR CON EFECTO DE LUZ                   */
-    /* ========================================== */
+    @keyframes textShimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 300% center; }
+    }
+
+    @keyframes neonPulse {
+      0% {
+        filter: drop-shadow(0 0 18px rgba(0, 210, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 210, 255, 0.3));
+      }
+      50% {
+        filter: drop-shadow(0 0 30px rgba(157, 0, 255, 0.8)) drop-shadow(0 0 65px rgba(157, 0, 255, 0.4));
+      }
+      100% {
+        filter: drop-shadow(0 0 40px rgba(255, 0, 127, 0.8)) drop-shadow(0 0 85px rgba(255, 0, 127, 0.5));
+      }
+    }
+
+    @keyframes laserBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ==========================================================================
+       3. NAV BAR HIGH-TECH
+       ========================================================================== */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(3, 6, 13, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 210, 255, 0.25);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+      background: rgba(2, 4, 8, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--card-border);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.85);
       width: 100%;
     }
 
@@ -129,18 +166,18 @@
     }
 
     .brand-logo {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 900;
       letter-spacing: 3px;
       color: #fff;
       text-decoration: none;
       text-transform: uppercase;
-      text-shadow: 0 0 12px rgba(0, 210, 255, 0.8);
+      text-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
       transition: text-shadow 0.3s ease;
     }
 
     .brand-logo:hover {
-      text-shadow: 0 0 25px rgba(0, 210, 255, 1), 0 0 40px rgba(157, 0, 255, 0.8);
+      text-shadow: 0 0 25px rgba(0, 210, 255, 1), 0 0 40px rgba(157, 0, 255, 0.9);
     }
 
     .nav-links {
@@ -182,76 +219,9 @@
       width: 100%;
     }
 
-    /* ========================================== */
-    /* CARDS HI-TECH (GLASSMORPHISM CON GLOW)      */
-    /* ========================================== */
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease, box-shadow 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-      will-change: transform;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.12), transparent);
-      transition: left 0.7s ease;
-    }
-
-    @media (hover: hover) {
-      .card:hover::before {
-        left: 100%;
-      }
-
-      .card:hover {
-        border-color: rgba(0, 210, 255, 0.65);
-        transform: translateY(-8px) scale(1.012);
-        box-shadow: 0 20px 40px -10px rgba(0, 210, 255, 0.3), 0 0 30px rgba(157, 0, 255, 0.25);
-      }
-    }
-
-    /* BOTONES ACCIÓN RÁPIDA (CTA) */
-    .btn-card-action {
-      margin-top: 18px;
-      display: inline-block;
-      width: 100%;
-      padding: 10px 16px;
-      background: rgba(0, 210, 255, 0.08);
-      border: 1px solid rgba(0, 210, 255, 0.4);
-      color: var(--accent-cyan);
-      border-radius: 10px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .btn-card-action:hover {
-      background: var(--accent-cyan);
-      color: #03060d;
-      box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
-      transform: translateY(-2px);
-    }
-
-    /* ========================================== */
-    /* HERO SECTION                               */
-    /* ========================================== */
+    /* ==========================================================================
+       4. HERO SECTION
+       ========================================================================== */
     .hero {
       text-align: center;
       padding: 110px 0 60px;
@@ -259,7 +229,7 @@
     }
 
     .hero-title {
-      font-size: clamp(3rem, 10vw, 7rem);
+      font-size: clamp(3.2rem, 10vw, 7.2rem);
       font-weight: 900;
       letter-spacing: clamp(4px, 1.5vw, 12px);
       text-transform: uppercase;
@@ -294,23 +264,6 @@
       transform: scale(1.04);
     }
 
-    @keyframes textShimmer {
-      0% { background-position: 0% center; }
-      100% { background-position: 300% center; }
-    }
-
-    @keyframes neonPulse {
-      0% {
-        filter: drop-shadow(0 0 18px rgba(0, 210, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 210, 255, 0.3));
-      }
-      50% {
-        filter: drop-shadow(0 0 30px rgba(157, 0, 255, 0.8)) drop-shadow(0 0 65px rgba(157, 0, 255, 0.4));
-      }
-      100% {
-        filter: drop-shadow(0 0 40px rgba(255, 0, 127, 0.8)) drop-shadow(0 0 85px rgba(255, 0, 127, 0.5));
-      }
-    }
-
     .hero-subtitle {
       color: #cbd5e1;
       font-size: 1.1rem;
@@ -331,25 +284,25 @@
       bottom: -14px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
+      width: 120px;
       height: 3px;
       background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
       box-shadow: 0 0 15px var(--accent-cyan);
       border-radius: 3px;
     }
 
-    /* QUIÉNES SOMOS */
+    /* QUIÉNES SOMOS CARD */
     .quienes-somos {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto 55px;
       text-align: center;
-      background: linear-gradient(135deg, rgba(13, 20, 36, 0.95) 0%, rgba(20, 28, 48, 0.8) 100%);
+      background: linear-gradient(135deg, rgba(13, 20, 36, 0.95) 0%, rgba(20, 28, 48, 0.85) 100%);
       border: 1px solid rgba(0, 210, 255, 0.35);
-      box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+      box-shadow: 0 0 35px rgba(0, 210, 255, 0.15);
     }
 
     .quienes-somos h2 {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 900;
       margin-bottom: 14px;
       letter-spacing: 2px;
@@ -384,7 +337,7 @@
     }
 
     .stat-number {
-      font-size: 1.85rem;
+      font-size: 1.9rem;
       font-weight: 900;
       display: block;
       margin-bottom: 6px;
@@ -402,14 +355,117 @@
       text-transform: uppercase;
     }
 
-    /* ENCABEZADOS DE SECCIÓN */
+    /* ==========================================================================
+       5. SISTEMA DE CARDS CON GLASSMORPHISM Y LASER GLOW
+       ========================================================================== */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      will-change: transform;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.15), transparent);
+      transition: left 0.7s ease;
+    }
+
+    @media (hover: hover) {
+      .card:hover::before {
+        left: 100%;
+      }
+
+      .card:hover {
+        border-color: rgba(0, 210, 255, 0.7);
+        transform: translateY(-8px) scale(1.012);
+        box-shadow: 0 20px 40px -10px rgba(0, 210, 255, 0.35), 0 0 30px rgba(157, 0, 255, 0.25);
+      }
+    }
+
+    .btn-card-action {
+      margin-top: 18px;
+      display: inline-block;
+      width: 100%;
+      padding: 12px 18px;
+      background: rgba(0, 210, 255, 0.08);
+      border: 1px solid rgba(0, 210, 255, 0.45);
+      color: var(--accent-cyan);
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-card-action:hover {
+      background: var(--accent-cyan);
+      color: #03060d;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.7);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       6. BARRA DE FILTRADO INTERACTIVO
+       ========================================================================== */
+    .filter-section {
+      margin-bottom: 45px;
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      box-shadow: 0 0 22px rgba(0, 210, 255, 0.6);
+      border-color: var(--accent-cyan);
+    }
+
+    /* ==========================================================================
+       7. ENCABEZADOS DE SECCIÓN
+       ========================================================================== */
     .section-title {
       text-align: center;
       margin-bottom: 45px;
     }
 
     .section-title h2 {
-      font-size: 1.6rem;
+      font-size: 1.65rem;
       font-weight: 900;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -419,7 +475,7 @@
     }
 
     .section-title h3 {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--accent-cyan);
       letter-spacing: 2px;
@@ -428,12 +484,14 @@
       text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
     }
 
-    /* GRIDS & SERVICIOS */
+    /* ==========================================================================
+       8. GRIDS DE PRODUCTOS Y SERVICIOS
+       ========================================================================== */
     .cards-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .service-card {
@@ -459,7 +517,7 @@
       left: 0;
       width: 100%;
       height: 40%;
-      background: linear-gradient(to top, rgba(11, 17, 32, 1), transparent);
+      background: linear-gradient(to top, rgba(10, 16, 30, 1), transparent);
     }
 
     .service-img {
@@ -485,7 +543,7 @@
     }
 
     .service-body h4 {
-      font-size: 1rem;
+      font-size: 1.02rem;
       font-weight: 800;
       margin-bottom: 12px;
       text-transform: uppercase;
@@ -545,7 +603,7 @@
     .marquee-track {
       display: inline-flex;
       gap: 38px;
-      animation: marquee 20s linear infinite;
+      animation: marquee 22s linear infinite;
       will-change: transform;
     }
 
@@ -662,7 +720,7 @@
       left: 0;
       width: 100%;
       height: 35%;
-      background: linear-gradient(to top, rgba(11, 17, 32, 1), transparent);
+      background: linear-gradient(to top, rgba(10, 16, 30, 1), transparent);
     }
 
     .tv-img {
@@ -701,117 +759,41 @@
       margin: 0 auto 20px;
     }
 
-    /* POR QUÉ ELEGIRNOS */
-    .why-us {
-      margin-bottom: 60px;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .why-card {
-      text-align: center;
-      padding: 28px 20px;
-    }
-
-    .why-num {
-      display: inline-block;
-      background: rgba(0, 210, 255, 0.15);
-      color: var(--accent-cyan);
-      font-weight: 900;
-      font-size: 0.88rem;
-      padding: 5px 16px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(0, 210, 255, 0.4);
-      box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
-    }
-
-    .why-card h4 {
-      font-size: 0.88rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-
-    .why-card p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* MEDIOS DE PAGO Y GARANTÍA */
-    .bottom-info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 80px;
-    }
-
-    .bottom-card {
-      text-align: center;
-    }
-
-    .bottom-card h4 {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-
-    .bottom-card p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 22px;
-      line-height: 1.6;
-    }
-
-    .tags-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .tag-item {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      padding: 9px 18px;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      transition: all 0.3s ease;
-    }
-
-    .tag-item:hover {
-      border-color: var(--accent-cyan);
-      color: #fff;
-      box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .guarantee-badge {
-      display: inline-block;
-      color: var(--accent-green);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 8px 20px;
-      background: rgba(37, 211, 102, 0.12);
+    /* ==========================================================================
+       9. COTIZADOR Y FORMULARIO EN VIVO
+       ========================================================================== */
+    .calculator-box {
+      background: linear-gradient(135deg, rgba(10, 16, 30, 0.95) 0%, rgba(20, 10, 35, 0.95) 100%);
+      border: 1px solid var(--accent-purple);
+      box-shadow: 0 0 35px rgba(157, 0, 255, 0.2);
+      padding: 40px;
       border-radius: 20px;
-      border: 1px solid rgba(37, 211, 102, 0.5);
-      box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+      margin-bottom: 80px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* PRESUPUESTO */
+    .select-css {
+      width: 100%;
+      padding: 16px;
+      background: rgba(3, 6, 13, 0.9);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .select-css:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+    }
+
     .budget-wrapper {
-      max-width: 620px;
+      max-width: 680px;
       margin: 0 auto 90px;
       text-align: center;
     }
@@ -823,7 +805,7 @@
     }
 
     .budget-wrapper h3 {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 900;
       text-transform: uppercase;
       margin-bottom: 8px;
@@ -907,7 +889,118 @@
       box-shadow: 0 12px 35px rgba(37, 211, 102, 0.65);
     }
 
-    /* FOOTER */
+    /* ==========================================================================
+       10. POR QUÉ ELEGIRNOS & MEDIOS DE PAGO
+       ========================================================================== */
+    .why-us {
+      margin-bottom: 60px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 28px 20px;
+    }
+
+    .why-num {
+      display: inline-block;
+      background: rgba(0, 210, 255, 0.15);
+      color: var(--accent-cyan);
+      font-weight: 900;
+      font-size: 0.88rem;
+      padding: 5px 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
+    }
+
+    .why-card h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .why-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .bottom-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .bottom-card {
+      text-align: center;
+    }
+
+    .bottom-card h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .bottom-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    .tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .tag-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      transition: all 0.3s ease;
+    }
+
+    .tag-item:hover {
+      border-color: var(--accent-cyan);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .guarantee-badge {
+      display: inline-block;
+      color: var(--accent-green);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      background: rgba(37, 211, 102, 0.12);
+      border-radius: 20px;
+      border: 1px solid rgba(37, 211, 102, 0.5);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+    }
+
+    /* ==========================================================================
+       11. FOOTER Y BOTÓN FLOTANTE
+       ========================================================================== */
     .footer {
       border-top: 1px solid rgba(0, 210, 255, 0.2);
       padding: 50px 0 35px;
@@ -956,7 +1049,6 @@
       font-size: 0.72rem;
     }
 
-    /* BOTÓN FLOTANTE WHATSAPP */
     .whatsapp-float {
       position: fixed;
       bottom: 28px;
@@ -992,7 +1084,7 @@
       transform: scale(1.12);
     }
 
-    /* RESPONSIVE */
+    /* MEDIA QUERIES */
     @media (max-width: 850px) {
       .hero-subtitle { letter-spacing: 6px; font-size: 0.85rem; }
       .cards-grid-3, .cards-grid-4, .why-grid, .stats-grid, .bottom-info-grid {
@@ -1006,14 +1098,21 @@
 </head>
 <body>
 
-  <!-- NAVEGACIÓN -->
+  <!-- CANVAS DE PARTÍCULAS INTERACTIVAS -->
+  <canvas id="particles-canvas"></canvas>
+  
+  <!-- GLOW HOLOGRÁFICO DE FONDO -->
+  <div class="bg-glow" id="bgGlow"></div>
+
+  <!-- NAV BAR -->
   <nav class="navbar">
     <div class="nav-content">
-      <a href="#" class="brand-logo" aria-label="ONE PLAYER Inicio">ONE PLAYER</a>
+      <a href="#" class="brand-logo">ONE PLAYER</a>
       <ul class="nav-links">
-        <li><a href="#laboratorio">LABORATORIO TÉCNICO</a></li>
-        <li><a href="#store">STORE Y GEAR</a></li>
-        <li><a href="#tv">TV ENTERTAINMENT</a></li>
+        <li><a href="#catalogo">CATÁLOGO</a></li>
+        <li><a href="#cotizador">COTIZADOR VIVO</a></li>
+        <li><a href="#laboratorio">LABORATORIO</a></li>
+        <li><a href="#contacto">CONTACTO</a></li>
       </ul>
     </div>
   </nav>
@@ -1031,7 +1130,6 @@
         <p>Con una trayectoria de <span class="highlight">4 años</span>, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.</p>
       </div>
 
-      <!-- TRES BLOQUES DE RESUMEN -->
       <div class="stats-grid">
         <div class="card stat-card">
           <span class="stat-number">4+ Años</span>
@@ -1048,6 +1146,16 @@
       </div>
     </section>
 
+    <!-- BARRA DE FILTRADO DE CONTENIDO DINÁMICO -->
+    <section id="catalogo" class="filter-section reveal">
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filtrarCategoria('todos', this)">VER TODO</button>
+        <button class="filter-btn" onclick="filtrarCategoria('servicio', this)">LABORATORIO TÉCNICO</button>
+        <button class="filter-btn" onclick="filtrarCategoria('store', this)">STORE & GEAR</button>
+        <button class="filter-btn" onclick="filtrarCategoria('tv', this)">TV ENTERTAINMENT</button>
+      </div>
+    </section>
+
     <!-- LABORATORIO TÉCNICO -->
     <section id="laboratorio" class="reveal">
       <div class="section-title">
@@ -1056,7 +1164,7 @@
       </div>
 
       <div class="cards-grid-3">
-        <div class="card service-card">
+        <div class="card service-card item-card" data-cat="servicio">
           <div class="img-wrapper">
             <img src="Modulo.jpg" class="service-img" alt="Cambio de Módulo" width="350" height="210" loading="lazy">
           </div>
@@ -1069,7 +1177,7 @@
           </div>
         </div>
 
-        <div class="card service-card">
+        <div class="card service-card item-card" data-cat="servicio">
           <div class="img-wrapper">
             <img src="Baterias.jpg" class="service-img" alt="Cambio de Batería" width="350" height="210" loading="lazy">
           </div>
@@ -1082,7 +1190,7 @@
           </div>
         </div>
 
-        <div class="card service-card">
+        <div class="card service-card item-card" data-cat="servicio">
           <div class="img-wrapper">
             <img src="Placa de carga.jpg" class="service-img" alt="Pin / Placa de Carga" width="350" height="210" loading="lazy">
           </div>
@@ -1096,7 +1204,7 @@
         </div>
       </div>
 
-      <!-- BANNER ANDROID -->
+      <!-- BANNER ANDROID MARQUEE -->
       <div class="card android-banner">
         <span class="pill-tag">ESPECIALIZACIÓN EXCLUSIVA</span>
         <h3>SERVICIO TÉCNICO ESPECIALIZADO - SOLO SISTEMA ANDROID</h3>
@@ -1136,7 +1244,7 @@
       </div>
 
       <div class="cards-grid-4">
-        <div class="card store-card">
+        <div class="card store-card item-card" data-cat="store">
           <div class="img-wrapper" style="height: 175px;">
             <img src="Auriculares.jpg" class="store-img" alt="Auriculares" width="250" height="175" loading="lazy">
           </div>
@@ -1149,7 +1257,7 @@
           </div>
         </div>
 
-        <div class="card store-card">
+        <div class="card store-card item-card" data-cat="store">
           <div class="img-wrapper" style="height: 175px;">
             <img src="Cargadores.png" class="store-img" alt="Cargadores" width="250" height="175" loading="lazy">
           </div>
@@ -1162,7 +1270,7 @@
           </div>
         </div>
 
-        <div class="card store-card">
+        <div class="card store-card item-card" data-cat="store">
           <div class="img-wrapper" style="height: 175px;">
             <img src="USB.jpg" class="store-img" alt="Cables USB" width="250" height="175" loading="lazy">
           </div>
@@ -1175,7 +1283,7 @@
           </div>
         </div>
 
-        <div class="card store-card">
+        <div class="card store-card item-card" data-cat="store">
           <div class="img-wrapper" style="height: 175px;">
             <img src="Convertidores.png" class="store-img" alt="Convertidores TV" width="250" height="175" loading="lazy">
           </div>
@@ -1191,7 +1299,7 @@
     </section>
 
     <!-- TV ENTERTAINMENT -->
-    <section id="tv" class="tv-section reveal">
+    <section id="tv" class="tv-section reveal item-card" data-cat="tv">
       <div class="section-title">
         <h2>TV ENTERTAINMENT</h2>
       </div>
@@ -1203,8 +1311,30 @@
         <div class="tv-info">
           <h3>EXPERIENCIA TV FAMILIAR</h3>
           <p>Una solución de TV única para compartir en familia todo el mejor entretenimiento, directo desde el confort de tu hogar.</p>
-          <button class="btn-card-action" style="max-width: 280px;" onclick="consultarItem('Experiencia TV Familiar')">CONSULTAR PLANES DE TV</button>
+          <button class="btn-card-action" style="max-width: 320px; margin: 0 auto;" onclick="consultarItem('Experiencia TV Familiar')">CONSULTAR PLANES DE TV</button>
         </div>
+      </div>
+    </section>
+
+    <!-- COTIZADOR RÁPIDO VIVO -->
+    <section id="cotizador" class="reveal">
+      <div class="calculator-box">
+        <h3 style="color: var(--accent-cyan); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">COTIZADOR RÁPIDO VÍA WHATSAPP</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;">Seleccioná la opción que buscás y te asesoramos al instante.</p>
+        
+        <select id="tipoCotizacion" class="select-css">
+          <option value="Cambio de Pantalla / Módulo">Cambio de Pantalla / Módulo</option>
+          <option value="Cambio de Batería">Cambio de Batería</option>
+          <option value="Pin de Carga / Falso Contacto">Pin de Carga / Falso Contacto</option>
+          <option value="Consulta por Accesorios (Store)">Consulta por Accesorios (Store)</option>
+          <option value="Planes de TV Entertainment">Planes de TV Entertainment</option>
+        </select>
+
+        <input type="text" id="detalleCotizacion" placeholder="Marca y modelo exacto de tu equipo..." class="select-css" style="margin-top: 15px;">
+
+        <button class="btn-budget" style="margin-top: 25px;" onclick="enviarCotizadorVivo()">
+          <span>SOLICITAR PRESUPUESTO EN VIVO</span>
+        </button>
       </div>
     </section>
 
@@ -1261,13 +1391,13 @@
       </div>
     </div>
 
-    <!-- PRESUPUESTO -->
-    <section class="budget-wrapper reveal">
+    <!-- PRESUPUESTO PERSONALIZADO -->
+    <section id="contacto" class="budget-wrapper reveal">
       <div class="card budget-card-main">
         <h3>¿QUERÉS CONSULTAR UN PRESUPUESTO?</h3>
         <p>Escribinos con el modelo de tu equipo y la falla para asesorarte de inmediato.</p>
 
-        <form class="budget-form" id="budgetForm" onsubmit="enviarWhatsApp(event)">
+        <form class="budget-form" id="budgetForm" onsubmit="enviarWhatsAppForm(event)">
           <div class="form-group">
             <label for="nombreEquipo">TU NOMBRE O EQUIPO</label>
             <input type="text" id="nombreEquipo" placeholder="Ej: Juan - Samsung A32" required>
@@ -1319,11 +1449,69 @@
     <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
   </a>
 
-  <!-- SCRIPTS INTERACTIVOS -->
+  <!-- LÓGICA DE INTERACCIÓN Y CANVAS -->
   <script>
     const TELEFONO = "5492634722710";
 
-    // ANIMACIÓN REVEAL CON INTERSECTION OBSERVER
+    // 1. MOTOR DE PARTÍCULAS EN CANVAS (HIGH PERFORMANCE)
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+      draw() {
+        ctx.fillStyle = `rgba(0, 210, 255, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // 2. PARALLAX DE FONDO CON EL MOVIEMIENTO DEL MOUSE
+    document.addEventListener("mousemove", (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 25;
+      const y = (e.clientY / window.innerHeight - 0.5) * 25;
+      document.getElementById("bgGlow").style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // 3. SCROLL REVEAL (INTERSECTION OBSERVER)
     document.addEventListener("DOMContentLoaded", function() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1336,16 +1524,37 @@
       document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     });
 
-    // CONSULTA RÁPIDA POR PRODUCTO/SERVICIO
+    // 4. FILTRADO DINÁMICO DE SECCIONES EN TIEMPO REAL
+    function filtrarCategoria(categoria, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('.item-card');
+      items.forEach(item => {
+        const itemCat = item.getAttribute('data-cat');
+        if (categoria === 'todos' || itemCat === categoria) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // 5. REDIRECCIONES A WHATSAPP
     function consultarItem(nombreItem) {
-      const mensaje = `Hola! Quisiera más información sobre: *${encodeURIComponent(nombreItem)}*`;
+      const mensaje = `Hola! Quisiera información sobre: *${encodeURIComponent(nombreItem)}*`;
       window.open(`https://wa.me/${TELEFONO}?text=${mensaje}`, '_blank');
     }
 
-    // ENVÍO DE PRESUPUESTO
-    function enviarWhatsApp(event) {
-      event.preventDefault();
+    function enviarCotizadorVivo() {
+      const tipo = document.getElementById("tipoCotizacion").value;
+      const detalle = document.getElementById("detalleCotizacion").value.trim();
+      const mensaje = `Hola ONE PLAYER! Quisiera cotizar:%0A- *Servicio:* ${encodeURIComponent(tipo)}%0A- *Modelo / Detalle:* ${encodeURIComponent(detalle || 'Sin especificar')}`;
+      window.open(`https://wa.me/${TELEFONO}?text=${mensaje}`, '_blank');
+    }
 
+    function enviarWhatsAppForm(event) {
+      event.preventDefault();
       const equipoInput = document.getElementById('nombreEquipo');
       const detalleInput = document.getElementById('detalleProblema');
       const btnSubmit = document.getElementById('btnSubmit');
@@ -1355,7 +1564,6 @@
 
       if (!equipo || !detalle) return;
 
-      // Animación de envío en el botón
       btnSubmit.style.opacity = '0.7';
       btnSubmit.innerHTML = '<span>ABRIENDO WHATSAPP...</span>';
 
@@ -1363,13 +1571,11 @@
         const mensaje = `Hola! Quisiera consultar un presupuesto:%0A%0A*Equipo / Nombre:* ${encodeURIComponent(equipo)}%0A*Detalle del problema:* ${encodeURIComponent(detalle)}`;
         window.open(`https://wa.me/${TELEFONO}?text=${mensaje}`, '_blank');
         
-        // Reset botón y formulario
         btnSubmit.style.opacity = '1';
         btnSubmit.innerHTML = '<span>ENVIÁ TU CONSULTA</span>';
         document.getElementById('budgetForm').reset();
       }, 400);
     }
   </script>
-
 </body>
 </html>
