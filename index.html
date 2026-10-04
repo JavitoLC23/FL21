@@ -139,15 +139,15 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- HEADER / BARRA DE NAVEGACIÓN: LOGO A LA IZQUIERDA Y MENÚ A LA DERECHA -->
-    <header class="sticky top-0 z-50 bg-[#030712]/80 backdrop-blur-md border-b border-slate-800/80 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Izquierda total -->
+    <!-- HEADER / BARRA DE NAVEGACIÓN: MÁXIMO ANCHO (100% IZQUIERDA Y DERECHA) -->
+    <header class="sticky top-0 z-50 bg-[#030712]/80 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-8 py-4">
+        <div class="w-full flex justify-between items-center">
+            <!-- Pega total a la izquierda -->
             <a href="#" class="font-heading text-xl sm:text-2xl font-black tracking-wider text-white hover:text-sky-400 transition-colors">
                 ONE PLAYER
             </a>
 
-            <!-- Derecha total -->
+            <!-- Pega total a la derecha -->
             <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest text-slate-300 uppercase">
                 <a href="#laboratorio" class="hover:text-sky-400 transition-colors">Laboratorio Técnico</a>
                 <a href="#store" class="hover:text-sky-400 transition-colors">Store y Gear</a>
@@ -156,7 +156,7 @@
         </div>
     </header>
 
-    <!-- SECCIÓN HERO: ONE PLAYER CENTRAL CON MÁXIMO PROTAGONISMO "UFF" -->
+    <!-- SECCIÓN HERO: ONE PLAYER CENTRAL CON MÁXIMO PROTAGONISMO -->
     <section class="relative max-w-5xl mx-auto px-6 pt-20 pb-16 text-center overflow-hidden">
         <!-- Luz Neón de Fondo -->
         <div class="hero-glow-bg sm:w-[500px] sm:h-[500px]"></div>
@@ -533,7 +533,7 @@
         </div>
     </footer>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP CON TOOLTIP E INDICADOR ACTIVO -->
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
     <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
         <span class="hidden sm:inline-block bg-slate-900/90 text-white text-[11px] font-semibold px-3 py-1.5 rounded-lg border border-slate-700/80 shadow-2xl backdrop-blur-md">
             ¿Tenés dudas? ¡Escribinos!
@@ -545,7 +545,7 @@
         </a>
     </div>
 
-    <!-- SCRIPT CON VALIDACIÓN DE FORMULARIO -->
+    <!-- SCRIPT FORMULARIO -->
     <script>
         function enviarConsultaWhatsApp() {
             const nombre = document.getElementById('nombreEquipo').value.trim();
