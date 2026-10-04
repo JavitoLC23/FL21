@@ -5,22 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ONE PLAYER - Soluciones Técnicas</title>
 
-  <!-- Tipografía Seria, Moderna y Elegante: Plus Jakarta Sans -->
+  <!-- Tipografía Seria, Moderna y Cyberpunk / Gaming / Tech -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     /* ========================================== */
     /* VARIABLES Y ESTILOS GLOBALES               */
     /* ========================================== */
     :root {
-      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Orbitron', sans-serif;
+      --font-tech: 'Chakra Petch', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      
       --bg-dark: #03060d;
-      --card-bg: rgba(11, 17, 32, 0.75);
-      --card-border: rgba(0, 210, 255, 0.2);
+      --card-bg: rgba(11, 17, 32, 0.85);
+      --card-border: rgba(0, 210, 255, 0.25);
+      
       --text-white: #ffffff;
       --text-muted: #94a3b8;
+      
       --accent-cyan: #00d2ff;
       --accent-purple: #9d00ff;
       --accent-pink: #ff007f;
@@ -31,7 +36,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: var(--font-main) !important;
     }
 
     html {
@@ -41,6 +45,7 @@
     body {
       background-color: var(--bg-dark);
       color: var(--text-white);
+      font-family: var(--font-body);
       line-height: 1.6;
       font-size: 15px;
       overflow-x: hidden;
@@ -49,7 +54,7 @@
     }
 
     /* ========================================== */
-    /* FONDO DINÁMICO CON ILUMINACIÓN Y TRAMA    */
+    /* FONDO CIBERNÉTICO CON ILUMINACIÓN          */
     /* ========================================== */
     body::before {
       content: "";
@@ -59,11 +64,12 @@
       width: 100vw;
       height: 100vh;
       background: 
-        radial-gradient(circle at 10% 15%, rgba(157, 0, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 90% 55%, rgba(0, 210, 255, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(255, 0, 127, 0.1) 0%, transparent 50%),
-        radial-gradient(rgba(0, 210, 255, 0.08) 1.2px, transparent 0);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
+        radial-gradient(circle at 15% 15%, rgba(157, 0, 255, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 55%, rgba(0, 210, 255, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(255, 0, 127, 0.12) 0%, transparent 50%),
+        linear-gradient(rgba(0, 210, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
       pointer-events: none;
       z-index: -1;
     }
@@ -75,17 +81,17 @@
     }
 
     /* ========================================== */
-    /* BARRA SUPERIOR GLASSMORPHISM              */
+    /* BARRA SUPERIOR GLASSMORPHISM               */
     /* ========================================== */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(3, 6, 13, 0.85);
+      background: rgba(3, 6, 13, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 210, 255, 0.25);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+      border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
       width: 100%;
     }
 
@@ -98,6 +104,7 @@
     }
 
     .brand-logo {
+      font-family: var(--font-display);
       font-size: 1.4rem;
       font-weight: 900;
       letter-spacing: 3px;
@@ -119,10 +126,11 @@
     }
 
     .nav-links a {
+      font-family: var(--font-tech);
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 800;
+      font-size: 0.9rem;
+      font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       transition: all 0.3s ease;
@@ -152,7 +160,7 @@
     }
 
     /* ========================================== */
-    /* ESTILO DE CARDS CON ILUMINACIÓN NEÓN     */
+    /* ESTILO DE CARDS CON ILUMINACIÓN NEÓN       */
     /* ========================================== */
     .card {
       background: var(--card-bg);
@@ -175,7 +183,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.1), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.15), transparent);
       transition: left 0.7s ease;
     }
 
@@ -190,7 +198,7 @@
     }
 
     /* ========================================== */
-    /* HERO - TÍTULO Y SUBTÍTULO CON RESPLANDOR  */
+    /* HERO SECTION                              */
     /* ========================================== */
     .hero {
       text-align: center;
@@ -199,14 +207,15 @@
     }
 
     .hero-title {
-      font-size: 7rem;
+      font-family: var(--font-display);
+      font-size: 6.2rem;
       font-weight: 900;
-      letter-spacing: 12px;
+      letter-spacing: 10px;
       text-transform: uppercase;
-      line-height: 0.9;
+      line-height: 0.95;
       display: inline-block;
       position: relative;
-      margin-bottom: 28px;
+      margin-bottom: 25px;
       
       background: linear-gradient(
         120deg, 
@@ -230,7 +239,7 @@
     }
 
     .hero-title:hover {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
     @keyframes textShimmer {
@@ -251,10 +260,11 @@
     }
 
     .hero-subtitle {
+      font-family: var(--font-tech);
       color: #cbd5e1;
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 14px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 12px;
       text-transform: uppercase;
       margin-top: 5px;
       margin-bottom: 70px;
@@ -270,7 +280,7 @@
       bottom: -14px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
+      width: 120px;
       height: 3px;
       background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
       box-shadow: 0 0 15px var(--accent-cyan);
@@ -279,17 +289,18 @@
 
     /* QUIÉNES SOMOS */
     .quienes-somos {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto 55px;
       text-align: center;
-      background: linear-gradient(135deg, rgba(13, 20, 36, 0.9) 0%, rgba(20, 28, 48, 0.75) 100%);
+      background: linear-gradient(135deg, rgba(13, 20, 36, 0.9) 0%, rgba(20, 28, 48, 0.8) 100%);
       border: 1px solid rgba(0, 210, 255, 0.35);
       box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
     }
 
     .quienes-somos h2 {
-      font-size: 1.35rem;
-      font-weight: 900;
+      font-family: var(--font-tech);
+      font-size: 1.5rem;
+      font-weight: 700;
       margin-bottom: 14px;
       letter-spacing: 2px;
       background: linear-gradient(90deg, #fff, var(--accent-cyan));
@@ -299,7 +310,7 @@
 
     .quienes-somos p {
       color: var(--text-muted);
-      font-size: 0.98rem;
+      font-size: 1rem;
       line-height: 1.7;
     }
 
@@ -323,8 +334,9 @@
     }
 
     .stat-number {
-      font-size: 1.85rem;
-      font-weight: 900;
+      font-family: var(--font-tech);
+      font-size: 1.9rem;
+      font-weight: 700;
       display: block;
       margin-bottom: 6px;
       background: linear-gradient(180deg, #ffffff 0%, var(--accent-cyan) 100%);
@@ -334,10 +346,11 @@
     }
 
     .stat-label {
-      font-size: 0.78rem;
+      font-family: var(--font-tech);
+      font-size: 0.82rem;
       color: var(--text-muted);
-      font-weight: 800;
-      letter-spacing: 1.2px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
@@ -348,7 +361,8 @@
     }
 
     .section-title h2 {
-      font-size: 1.6rem;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
       font-weight: 900;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -358,8 +372,9 @@
     }
 
     .section-title h3 {
-      font-size: 1.1rem;
-      font-weight: 800;
+      font-family: var(--font-tech);
+      font-size: 1.15rem;
+      font-weight: 700;
       color: var(--accent-cyan);
       letter-spacing: 2px;
       margin-top: 6px;
@@ -423,16 +438,17 @@
     }
 
     .service-body h4 {
-      font-size: 1rem;
-      font-weight: 800;
+      font-family: var(--font-tech);
+      font-size: 1.1rem;
+      font-weight: 700;
       margin-bottom: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
       color: #fff;
     }
 
     .service-body p {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.6;
     }
@@ -455,8 +471,9 @@
       border: 1px solid rgba(0, 210, 255, 0.5);
       padding: 6px 20px;
       border-radius: 20px;
-      font-size: 0.72rem;
-      font-weight: 800;
+      font-family: var(--font-tech);
+      font-size: 0.8rem;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 18px;
@@ -464,8 +481,9 @@
     }
 
     .android-banner h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
+      font-family: var(--font-tech);
+      font-size: 1.35rem;
+      font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 28px;
@@ -487,10 +505,11 @@
     }
 
     .brand-item {
+      font-family: var(--font-tech);
       color: var(--text-muted);
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: 1.8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
       display: inline-flex;
       align-items: center;
@@ -548,14 +567,15 @@
     }
 
     .store-body h4 {
-      font-size: 0.95rem;
-      font-weight: 800;
+      font-family: var(--font-tech);
+      font-size: 1rem;
+      font-weight: 700;
       margin-bottom: 8px;
       text-transform: uppercase;
     }
 
     .store-body p {
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
@@ -612,8 +632,9 @@
     }
 
     .tv-info h3 {
-      font-size: 1.35rem;
-      font-weight: 900;
+      font-family: var(--font-tech);
+      font-size: 1.4rem;
+      font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 10px;
@@ -624,7 +645,7 @@
 
     .tv-info p {
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       max-width: 620px;
       margin: 0 auto;
     }
@@ -646,11 +667,12 @@
     }
 
     .why-num {
+      font-family: var(--font-tech);
       display: inline-block;
       background: rgba(0, 210, 255, 0.15);
       color: var(--accent-cyan);
-      font-weight: 900;
-      font-size: 0.88rem;
+      font-weight: 700;
+      font-size: 0.9rem;
       padding: 5px 16px;
       border-radius: 8px;
       margin-bottom: 16px;
@@ -659,14 +681,15 @@
     }
 
     .why-card h4 {
-      font-size: 0.88rem;
-      font-weight: 800;
+      font-family: var(--font-tech);
+      font-size: 0.95rem;
+      font-weight: 700;
       margin-bottom: 10px;
       text-transform: uppercase;
     }
 
     .why-card p {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
@@ -684,15 +707,16 @@
     }
 
     .bottom-card h4 {
-      font-size: 1rem;
-      font-weight: 800;
+      font-family: var(--font-tech);
+      font-size: 1.1rem;
+      font-weight: 700;
       margin-bottom: 12px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
     }
 
     .bottom-card p {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       margin-bottom: 22px;
       line-height: 1.6;
@@ -706,13 +730,14 @@
     }
 
     .tag-item {
+      font-family: var(--font-tech);
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
       padding: 9px 18px;
       border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
       transition: all 0.3s ease;
     }
 
@@ -724,10 +749,11 @@
     }
 
     .guarantee-badge {
+      font-family: var(--font-tech);
       display: inline-block;
       color: var(--accent-green);
-      font-size: 0.78rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 700;
       letter-spacing: 1.2px;
       text-transform: uppercase;
       padding: 8px 20px;
@@ -751,14 +777,15 @@
     }
 
     .budget-wrapper h3 {
-      font-size: 1.3rem;
-      font-weight: 900;
+      font-family: var(--font-tech);
+      font-size: 1.4rem;
+      font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 8px;
     }
 
     .budget-wrapper p {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       margin-bottom: 28px;
     }
@@ -772,8 +799,9 @@
 
     .form-group label {
       display: block;
-      font-size: 0.75rem;
-      font-weight: 800;
+      font-family: var(--font-tech);
+      font-size: 0.8rem;
+      font-weight: 700;
       color: var(--text-muted);
       margin-bottom: 9px;
       letter-spacing: 1px;
@@ -789,9 +817,10 @@
       border: 1px solid rgba(0, 210, 255, 0.25);
       border-radius: 12px;
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       text-align: center;
       transition: all 0.3s ease;
+      font-family: var(--font-body);
     }
 
     .form-group input::placeholder,
@@ -809,13 +838,14 @@
     }
 
     .btn-budget {
+      font-family: var(--font-tech);
       background-color: var(--accent-green);
       color: #ffffff;
       border: none;
       padding: 18px 26px;
       border-radius: 12px;
-      font-weight: 900;
-      font-size: 0.95rem;
+      font-weight: 700;
+      font-size: 1rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       cursor: pointer;
@@ -849,9 +879,10 @@
     }
 
     .footer-title {
+      font-family: var(--font-tech);
       display: block;
-      font-size: 0.72rem;
-      font-weight: 800;
+      font-size: 0.8rem;
+      font-weight: 700;
       color: var(--text-muted);
       margin-bottom: 10px;
       letter-spacing: 1.2px;
@@ -859,7 +890,7 @@
     }
 
     .footer-text {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
     }
 
@@ -867,7 +898,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       padding-top: 28px;
       text-align: center;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: #475569;
       letter-spacing: 1.2px;
       text-transform: uppercase;
@@ -878,7 +909,7 @@
 
     .footer-rights {
       color: var(--text-muted);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
     }
 
     /* BOTÓN FLOTANTE WHATSAPP */
@@ -918,8 +949,8 @@
 
     /* RESPONSIVE */
     @media (max-width: 850px) {
-      .hero-title { font-size: 3.5rem; letter-spacing: 4px; }
-      .hero-subtitle { letter-spacing: 6px; font-size: 0.85rem; }
+      .hero-title { font-size: 3.2rem; letter-spacing: 4px; }
+      .hero-subtitle { letter-spacing: 6px; font-size: 0.9rem; }
       .cards-grid-3, .cards-grid-4, .why-grid, .stats-grid, .bottom-info-grid {
         grid-template-columns: 1fr;
       }
@@ -1164,26 +1195,24 @@
       </div>
     </div>
 
-    <!-- PRESUPUESTO -->
-    <section class="budget-wrapper">
+    <!-- PRESUPUESTO EN LÍNEA -->
+    <section id="presupuesto" class="budget-wrapper">
       <div class="card budget-card-main">
-        <h3>¿QUERÉS CONSULTAR UN PRESUPUESTO?</h3>
-        <p>Escribinos con el modelo de tu equipo y la falla para asesorarte de inmediato.</p>
-
-        <form class="budget-form" id="budgetForm" onsubmit="enviarWhatsApp(event)">
+        <h3>SOLICITAR PRESUPUESTO</h3>
+        <p>Completá los datos de tu equipo y consulta sin compromiso por WhatsApp</p>
+        
+        <form class="budget-form" id="whatsappForm">
           <div class="form-group">
-            <label for="nombreEquipo">TU NOMBRE O EQUIPO</label>
-            <input type="text" id="nombreEquipo" placeholder="Ej: Juan - Samsung A32" required>
+            <label for="modelo">Marca y Modelo del Celular</label>
+            <input type="text" id="modelo" placeholder="Ej: Samsung A52, Motorola G60..." required>
           </div>
 
           <div class="form-group">
-            <label for="detalleProblema">DETALLE DEL PROBLEMA</label>
-            <textarea id="detalleProblema" rows="3" placeholder="Ej: Se rompió la pantalla / No me carga el pin..." required></textarea>
+            <label for="falla">¿Qué problema presenta?</label>
+            <textarea id="falla" rows="3" placeholder="Ej: Pantalla rota, no carga, batería agotada..." required></textarea>
           </div>
 
-          <button type="submit" class="btn-budget">
-            ENVIÁ TU CONSULTA
-          </button>
+          <button type="submit" class="btn-budget">CONSULTAR POR WHATSAPP</button>
         </form>
       </div>
     </section>
@@ -1200,41 +1229,43 @@
         </div>
 
         <div>
-          <span class="footer-title">HORARIOS DE ATENCIÓN</span>
-          <p class="footer-text">Lunes a Sábado: 9:00 a 22:00 hs<br><span style="color: var(--text-muted); font-size: 0.75rem;">Domingo: Cerrado</span></p>
+          <span class="footer-title">ESPECIALIDAD</span>
+          <p class="footer-text">Exclusivo Reparaciones Android</p>
         </div>
 
         <div>
-          <span class="footer-title">CONTACTO DIRECTO</span>
-          <p class="footer-text">WhatsApp: 2634 72-2710</p>
+          <span class="footer-title">ATENCIÓN</span>
+          <p class="footer-text">Consultas y Presupuestos Rápidos</p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>SERVICIO TÉCNICO • ACCESORIOS • ENTRETENIMIENTO</div>
-        <div class="footer-rights">© ONE PLAYER. Todos los derechos reservados.</div>
+        <span>ONE PLAYER - SOLUCIONES TÉCNICAS</span>
+        <span class="footer-rights">© Todos los derechos reservados</span>
       </div>
     </div>
   </footer>
 
   <!-- BOTÓN FLOTANTE WHATSAPP -->
-  <a href="https://wa.me/5492634722710" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <a href="https://wa.me/5492634842525" class="whatsapp-float" target="_blank" aria-label="Contacto WhatsApp">
+    <svg viewBox="0 0 32 32">
+      <path d="M16 2a13.9 13.9 0 0 0-12 21l-1.8 6.5 6.7-1.8A13.9 13.9 0 1 0 16 2zm0 25.5a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.2 1.2-4.3-.3-.4a11.5 11.5 0 1 1 9.8 5.3zm6.3-8.6c-.3-.2-2-.9-2.3-1s-.6-.2-.8.2-.9 1.1-1.1 1.3-.4.2-.7 0a9.2 9.2 0 0 1-2.7-1.7 10.2 10.2 0 0 1-1.9-2.4c-.2-.3 0-.5.1-.7s.3-.4.5-.6l.3-.4c.2-.2.2-.4.1-.6s-.8-2-.1.1-2.7-.8-2.8-.8-.6 0-.8.1-.3a3.8 3.8 0 0 0-1.4 1.4 7.2 7.2 0 0 0 1.5 8 16.5 16.5 0 0 0 6.3 4.2c.8.3 1.5.5 2 .7a4.9 4.9 0 0 0 2.2.1 3.6 3.6 0 0 0 2.4-1.7 3 3 0 0 0 .2-1.7c-.1-.2-.4-.3-.7-.5z"/>
+    </svg>
   </a>
 
-  <!-- SCRIPT ENVÍO DE PRESUPUESTO -->
+  <!-- SCRIPT PARA ENVIAR FORMULARIO DIRECTO A WHATSAPP -->
   <script>
-    function enviarWhatsApp(event) {
-      event.preventDefault();
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const numeroTelefono = "5492634842525"; // Reemplazar si fuera necesario
+      const modelo = document.getElementById('modelo').value;
+      const falla = document.getElementById('falla').value;
 
-      const equipo = document.getElementById('nombreEquipo').value;
-      const detalle = document.getElementById('detalleProblema').value;
-      const telefono = "5492634722710";
+      const mensaje = `Hola ONE PLAYER! Quisiera consultar un presupuesto para:%0A%0A📱 *Modelo:* ${encodeURIComponent(modelo)}%0A🛠️ *Falla:* ${encodeURIComponent(falla)}`;
 
-      const mensaje = `Hola! Quisiera consultar un presupuesto:%0A%0A*Equipo / Nombre:* ${encodeURIComponent(equipo)}%0A*Detalle del problema:* ${encodeURIComponent(detalle)}`;
-
-      window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
-    }
+      window.open(`https://wa.me/${numeroTelefono}?text=${mensaje}`, '_blank');
+    });
   </script>
 
 </body>
