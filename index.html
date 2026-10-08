@@ -742,6 +742,27 @@
 
       .form-container {
         padding: 30px 20px;
+        /* Ajuste de contenedores de imagen para tarjetas de Store & Gear */
+#store .card-img-box, 
+#store .img-box {
+  width: 100%;
+  height: 180px;            /* Limita la altura como en Laboratorio */
+  border-radius: 12px;       /* Bordes redondeados */
+  overflow: hidden;          /* Recorta lo que sobresale */
+  background: #080a0f;       /* Fondo oscuro interno */
+  border: 1px solid rgba(0, 240, 255, 0.2); /* Borde con neón */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+#store .card-img-box img, 
+#store .img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* O usa 'cover' según prefieras que se encuadre */
+}
       }
     }
   </style>
