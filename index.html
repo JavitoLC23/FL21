@@ -19,9 +19,9 @@
       --bg-dark: #0a0c10;
       --bg-card: #121620;
       --cyan-neon: #00f0ff;
-      --cyan-glow: rgba(0, 240, 255, 0.4);
+      --cyan-glow: rgba(0, 240, 255, 0.5);
       --violet-neon: #9d00ff;
-      --violet-glow: rgba(157, 0, 255, 0.4);
+      --violet-glow: rgba(157, 0, 255, 0.5);
       --text-main: #f0f4f8;
       --text-muted: #a0aec0;
       --green-online: #00ff66;
@@ -52,8 +52,8 @@
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       background: 
-        radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, rgba(157, 0, 255, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(157, 0, 255, 0.12) 0%, transparent 50%);
       pointer-events: none;
       z-index: -1;
     }
@@ -64,13 +64,13 @@
     header {
       position: sticky;
       top: 0;
-      background: rgba(10, 12, 16, 0.9);
+      background: rgba(10, 12, 16, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0, 240, 255, 0.2);
       z-index: 1000;
       padding: 15px 5%;
       display: flex;
-      justify-content: space-between; /* Distribuye espacio entre logo y nav */
+      justify-content: space-between;
       align-items: center;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
@@ -93,7 +93,7 @@
     nav {
       display: flex;
       gap: 20px;
-      justify-content: flex-end; /* Alinea los enlaces a la derecha */
+      justify-content: flex-end;
       flex-wrap: wrap;
     }
 
@@ -134,32 +134,25 @@
        ========================================== */
     .hero {
       text-align: center;
-      padding: 70px 20px 40px;
-      max-width: 900px;
+      padding: 60px 20px 40px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
-    .hero-soluciones {
-      color: var(--violet-neon);
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px var(--violet-glow);
-    }
-
+    /* TÍTULO PRINCIPAL "ONE PLAYER" MÁS GRANDE Y CON MÁS IMPACTO */
     .hero-title-main {
       font-family: var(--font-heading);
-      font-size: 4.5rem;
+      font-size: 5.5rem; /* Aumentado de tamaño */
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      line-height: 1;
-      margin-bottom: 15px;
+      letter-spacing: 5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
       color: #ffffff;
-      text-shadow: 0 0 20px var(--cyan-glow), 0 0 40px var(--cyan-glow);
+      text-shadow: 
+        0 0 15px var(--cyan-neon),
+        0 0 30px var(--cyan-glow),
+        0 0 60px rgba(0, 240, 255, 0.3);
     }
 
     .hero-title-main span {
@@ -173,7 +166,7 @@
       background: rgba(0, 255, 102, 0.1);
       border: 1px solid var(--green-online);
       color: var(--green-online);
-      padding: 8px 20px;
+      padding: 8px 22px;
       border-radius: 20px;
       font-family: var(--font-heading);
       font-size: 0.9rem;
@@ -243,11 +236,11 @@
     }
 
     /* ==========================================
-       SECCIONES Y TARJETAS CON FOTOS
+       SECCIONES Y TARJETAS
        ========================================== */
     section {
-      padding: 60px 5%;
-      max-width: 1200px;
+      padding: 60px 4%;
+      max-width: 1350px;
       margin: 0 auto;
       text-align: center;
     }
@@ -283,6 +276,11 @@
       justify-content: center;
     }
 
+    /* REGLA ESPECÍFICA PARA QUE STORE Y GEAR TENGA 4 EN FILA EN PANTALLAS DESKTOP */
+    .store-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
     .card {
       background: var(--bg-card);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -304,7 +302,7 @@
 
     .card-img-wrapper {
       width: 100%;
-      height: 200px;
+      height: 180px;
       border-radius: 8px;
       overflow: hidden;
       margin-bottom: 15px;
@@ -324,14 +322,14 @@
 
     .card h3 {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       margin-bottom: 10px;
       color: #fff;
     }
 
     .card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     .btn-action {
@@ -520,6 +518,13 @@
       font-family: var(--font-heading);
     }
 
+    /* ADAPTACIÓN PARA TABLETS Y MÓVILES */
+    @media (max-width: 1024px) {
+      .store-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -531,7 +536,11 @@
       }
 
       .hero-title-main {
-        font-size: 2.8rem;
+        font-size: 3.2rem;
+      }
+
+      .store-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -552,7 +561,8 @@
 
   <!-- HERO SECTION PRINCIPAL -->
   <section id="inicio" class="hero">
-    <div class="hero-soluciones">SOLUCIONES TÉCNICAS</div>
+    <!-- "SOLUCIONES TÉCNICAS" ELIMINADO SEGÚN TU PEDIDO -->
+    
     <h1 class="hero-title-main">ONE <span>PLAYER</span></h1>
     
     <div class="badge-status">
@@ -647,19 +657,19 @@
     </div>
   </div>
 
-  <!-- STORE & GEAR -->
+  <!-- STORE & GEAR (LOS 4 ELEMENTOS EN UNA MISMA FILA) -->
   <section id="store">
     <div class="section-title">
       <h2>STORE Y GEAR</h2>
     </div>
 
-    <div class="cards-grid">
+    <div class="cards-grid store-grid">
       <div class="card">
         <div class="card-img-wrapper">
           <img src="Auriculares.jpg" alt="Auriculares">
         </div>
         <h3>AURICULARES</h3>
-        <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición y bajos potentes.</p>
+        <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición.</p>
         <a href="#presupuesto" class="btn-action">CONSULTAR</a>
       </div>
 
@@ -668,7 +678,7 @@
           <img src="Cargadores.png" alt="Cargadores">
         </div>
         <h3>CARGADORES</h3>
-        <p>Cargadores de carga normal, rápidos y originales para cuidar la salud de tu batería.</p>
+        <p>Cargadores de carga normal, rápidos y originales para cuidar tu batería.</p>
         <a href="#presupuesto" class="btn-action">CONSULTAR</a>
       </div>
 
@@ -677,7 +687,7 @@
           <img src="USB.jpg" alt="Cables USB">
         </div>
         <h3>CABLES USB</h3>
-        <p>Cables con entrada Tipo C, V8 y Lightning (iPhone) de alta resistencia y durabilidad.</p>
+        <p>Cables con entrada Tipo C, V8 y Lightning (iPhone) de alta resistencia.</p>
         <a href="#presupuesto" class="btn-action">CONSULTAR</a>
       </div>
 
@@ -686,7 +696,7 @@
           <img src="Convertidores.png" alt="Convertidores TV">
         </div>
         <h3>CONVERTIDORES TV</h3>
-        <p>Transforma tu televisor tradicional en un Smart TV para ver tus aplicaciones favoritas.</p>
+        <p>Transforma tu televisor tradicional en un Smart TV con todas tus apps.</p>
         <a href="#presupuesto" class="btn-action">CONSULTAR</a>
       </div>
     </div>
