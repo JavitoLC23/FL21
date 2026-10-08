@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ONE PLAYER - Soluciones Técnicas | Rivadavia, Mendoza</title>
   
-  <!-- Fuertes de Google y FontAwesome -->
+  <!-- Fuentes de Google y FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
       font-family: var(--font-body);
       font-size: 18px;
       line-height: 1.6;
-      text-align: center; /* Textos centrados */
+      text-align: center;
       overflow-x: hidden;
     }
 
@@ -59,7 +59,7 @@
     }
 
     /* ==========================================
-       NAVBAR
+       NAVBAR (LOGO IZQUIERDA - MENÚ DERECHA)
        ========================================== */
     header {
       position: sticky;
@@ -70,15 +70,30 @@
       z-index: 1000;
       padding: 15px 5%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between; /* Distribuye espacio entre logo y nav */
       align-items: center;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 0 10px var(--cyan-glow);
+      text-align: left;
+    }
+
+    .nav-logo span {
+      color: var(--cyan-neon);
     }
 
     nav {
       display: flex;
       gap: 20px;
-      justify-content: center;
+      justify-content: flex-end; /* Alinea los enlaces a la derecha */
       flex-wrap: wrap;
     }
 
@@ -97,6 +112,21 @@
     nav a:hover {
       color: var(--cyan-neon);
       text-shadow: 0 0 8px var(--cyan-glow);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--cyan-neon);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     /* ==========================================
@@ -175,7 +205,7 @@
       max-width: 750px;
     }
 
-    /* Módulos de Metricas */
+    /* Módulos de Métricas */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -272,7 +302,6 @@
       box-shadow: 0 10px 30px rgba(157, 0, 255, 0.25);
     }
 
-    /* Contenedor e imágenes integradas */
     .card-img-wrapper {
       width: 100%;
       height: 200px;
@@ -492,6 +521,15 @@
     }
 
     @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
       .hero-title-main {
         font-size: 2.8rem;
       }
@@ -500,8 +538,9 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR (IZQUIERDA LOGO / DERECHA NAVEGACIÓN) -->
   <header>
+    <a href="#inicio" class="nav-logo">ONE <span>PLAYER</span></a>
     <nav>
       <a href="#inicio">INICIO</a>
       <a href="#servicios">LABORATORIO</a>
@@ -805,7 +844,6 @@
     document.getElementById('presupuestoForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Coloca aquí tu número de teléfono real de WhatsApp con el código de país (ejemplo: 5492634XXXXXX)
       const numeroTelefono = "5492634000000"; 
 
       const modelo = document.getElementById('modelo').value;
