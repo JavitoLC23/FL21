@@ -3,30 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONE PLAYER - Soluciones Técnicas | Rivadavia, Mendoza</title>
+  <title>ONE PLAYER - Servicio Técnico & Store Tech | Rivadavia, Mendoza</title>
   
-  <!-- Fuentes de Google y FontAwesome -->
+  <!-- Fuentes de Google: Space Grotesk (Titulares Tech) y Plus Jakarta Sans (Texto Profesional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Iconos FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ==========================================
-       VARIABLES DE COLOR Y ESTILO
-       ========================================== */
     :root {
-      --bg-dark: #0a0c10;
-      --bg-card: #121620;
+      --bg-dark: #080a0f;
+      --bg-card: rgba(18, 22, 32, 0.75);
+      --bg-card-hover: rgba(26, 32, 46, 0.9);
       --cyan-neon: #00f0ff;
-      --cyan-glow: rgba(0, 240, 255, 0.5);
+      --cyan-glow: rgba(0, 240, 255, 0.4);
       --violet-neon: #9d00ff;
-      --violet-glow: rgba(157, 0, 255, 0.5);
+      --violet-glow: rgba(157, 0, 255, 0.4);
+      --whatsapp-green: #25d366;
+      --whatsapp-glow: rgba(37, 211, 102, 0.4);
       --text-main: #f0f4f8;
-      --text-muted: #a0aec0;
+      --text-muted: #94a3b8;
+      --text-heading: #ffffff;
       --green-online: #00ff66;
-      --font-heading: 'Orbitron', sans-serif;
-      --font-body: 'Rajdhani', sans-serif;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
     }
 
     * {
@@ -40,49 +44,41 @@
       background-color: var(--bg-dark);
       color: var(--text-main);
       font-family: var(--font-body);
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.6;
       text-align: center;
       overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(157, 0, 255, 0.08) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
     }
 
-    /* Fondo animado Cyberpunk */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: 
-        radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, rgba(157, 0, 255, 0.12) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* ==========================================
-       NAVBAR (LOGO IZQUIERDA - MENÚ DERECHA)
-       ========================================== */
     header {
       position: sticky;
       top: 0;
-      background: rgba(10, 12, 16, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      background: rgba(8, 10, 15, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
       z-index: 1000;
-      padding: 15px 5%;
+      padding: 16px 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
     }
 
     .nav-logo {
       font-family: var(--font-heading);
-      font-weight: 900;
-      font-size: 1.5rem;
+      font-weight: 700;
+      font-size: 1.6rem;
       letter-spacing: 2px;
       color: #fff;
       text-decoration: none;
-      text-shadow: 0 0 10px var(--cyan-glow);
+      text-shadow: 0 0 12px var(--cyan-glow);
       text-align: left;
     }
 
@@ -92,8 +88,9 @@
 
     nav {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       justify-content: flex-end;
+      align-items: center;
       flex-wrap: wrap;
     }
 
@@ -102,100 +99,101 @@
       text-decoration: none;
       font-family: var(--font-heading);
       font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      transition: all 0.3s;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      transition: all 0.3s ease;
       position: relative;
-      padding: 5px 0;
+      padding: 4px 0;
     }
 
     nav a:hover {
       color: var(--cyan-neon);
-      text-shadow: 0 0 8px var(--cyan-glow);
+      text-shadow: 0 0 10px var(--cyan-glow);
     }
 
     nav a::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -2px;
       left: 0;
       width: 0%;
       height: 2px;
-      background: var(--cyan-neon);
-      transition: width 0.3s;
+      background: linear-gradient(90deg, var(--cyan-neon), var(--violet-neon));
+      transition: width 0.3s ease;
+      border-radius: 2px;
     }
 
     nav a:hover::after {
       width: 100%;
     }
 
-    /* ==========================================
-       HERO / ENCABEZADO PRINCIPAL (CENTRAL)
-       ========================================== */
     .hero {
       text-align: center;
-      padding: 60px 20px 40px;
-      max-width: 1000px;
+      padding: 75px 20px 45px;
+      max-width: 1050px;
       margin: 0 auto;
     }
 
-    /* TÍTULO PRINCIPAL "ONE PLAYER" MÁS GRANDE Y CON MÁS IMPACTO */
     .hero-title-main {
       font-family: var(--font-heading);
-      font-size: 5.5rem; /* Aumentado de tamaño */
-      font-weight: 900;
+      font-size: 5.2rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 5px;
-      line-height: 1.1;
-      margin-bottom: 20px;
+      letter-spacing: 4px;
+      line-height: 1.05;
+      margin-bottom: 22px;
       color: #ffffff;
       text-shadow: 
-        0 0 15px var(--cyan-neon),
-        0 0 30px var(--cyan-glow),
-        0 0 60px rgba(0, 240, 255, 0.3);
+        0 0 20px var(--cyan-glow),
+        0 0 45px rgba(0, 240, 255, 0.25);
     }
 
     .hero-title-main span {
       color: var(--cyan-neon);
+      background: linear-gradient(135deg, #ffffff 10%, var(--cyan-neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .badge-status {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(0, 255, 102, 0.1);
-      border: 1px solid var(--green-online);
+      background: rgba(0, 255, 102, 0.08);
+      border: 1px solid rgba(0, 255, 102, 0.4);
       color: var(--green-online);
-      padding: 8px 22px;
-      border-radius: 20px;
+      padding: 8px 24px;
+      border-radius: 30px;
       font-family: var(--font-heading);
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 30px;
-      box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 35px;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.15);
     }
 
     .dot {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       background-color: var(--green-online);
       border-radius: 50%;
       box-shadow: 0 0 10px var(--green-online);
-      animation: pulse 1.5s infinite;
+      animation: pulse 1.6s infinite ease-in-out;
     }
 
     @keyframes pulse {
       0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
+      50% { opacity: 0.3; transform: scale(1.3); }
       100% { opacity: 1; transform: scale(1); }
     }
 
-    .hero p {
+    .hero p.description {
       color: var(--text-muted);
       font-size: 1.15rem;
-      margin: 20px auto;
-      max-width: 750px;
+      font-weight: 400;
+      margin: 20px auto 35px;
+      max-width: 760px;
+      line-height: 1.7;
     }
 
     /* Módulos de Métricas */
@@ -208,53 +206,55 @@
 
     .stat-card {
       background: var(--bg-card);
-      border: 1px solid rgba(0, 240, 255, 0.15);
-      border-radius: 10px;
-      padding: 20px;
-      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 24px 20px;
+      transition: all 0.35s ease;
     }
 
     .stat-card:hover {
-      border-color: var(--cyan-neon);
+      border-color: rgba(0, 240, 255, 0.5);
       transform: translateY(-5px);
-      box-shadow: 0 5px 20px rgba(0, 240, 255, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.15);
+      background: var(--bg-card-hover);
     }
 
     .stat-number {
       font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 900;
+      font-size: 2.1rem;
+      font-weight: 700;
       color: var(--cyan-neon);
       display: block;
+      margin-bottom: 4px;
     }
 
     .stat-label {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-weight: 500;
     }
 
-    /* ==========================================
-       SECCIONES Y TARJETAS
-       ========================================== */
     section {
-      padding: 60px 4%;
+      padding: 65px 4%;
       max-width: 1350px;
       margin: 0 auto;
       text-align: center;
     }
 
     .section-title {
-      margin-bottom: 40px;
+      margin-bottom: 45px;
     }
 
     .section-title h2 {
       font-family: var(--font-heading);
-      font-size: 2rem;
+      font-size: 2.1rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: #fff;
+      color: var(--text-heading);
       display: inline-block;
       position: relative;
     }
@@ -262,58 +262,64 @@
     .section-title h2::after {
       content: '';
       display: block;
-      width: 60%;
+      width: 65%;
       height: 3px;
       background: linear-gradient(90deg, var(--cyan-neon), var(--violet-neon));
-      margin: 10px auto 0;
-      border-radius: 2px;
+      margin: 12px auto 0;
+      border-radius: 3px;
+      box-shadow: 0 0 10px var(--cyan-glow);
     }
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
       justify-content: center;
     }
 
-    /* REGLA ESPECÍFICA PARA QUE STORE Y GEAR TENGA 4 EN FILA EN PANTALLAS DESKTOP */
+    /* Cuadrícula de 4 en fila para Store & Gear en Pantallas Grandes */
     .store-grid {
       grid-template-columns: repeat(4, 1fr);
     }
 
     .card {
       background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 20px;
-      transition: all 0.3s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.35s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
       overflow: hidden;
+      position: relative;
     }
 
     .card:hover {
-      border-color: var(--violet-neon);
+      border-color: rgba(157, 0, 255, 0.4);
       transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(157, 0, 255, 0.25);
+      box-shadow: 0 12px 35px rgba(157, 0, 255, 0.2);
+      background: var(--bg-card-hover);
     }
 
     .card-img-wrapper {
       width: 100%;
-      height: 180px;
-      border-radius: 8px;
+      height: 190px;
+      border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 15px;
-      border: 1px solid rgba(0, 240, 255, 0.2);
+      margin-bottom: 18px;
+      border: 1px solid rgba(0, 240, 255, 0.15);
+      background: #0d1117;
     }
 
     .card-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.45s ease;
     }
 
     .card:hover .card-img-wrapper img {
@@ -322,63 +328,66 @@
 
     .card h3 {
       font-family: var(--font-heading);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
+      font-weight: 700;
       margin-bottom: 10px;
       color: #fff;
+      letter-spacing: 0.5px;
     }
 
     .card p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.5;
     }
 
     .btn-action {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: transparent;
+      margin-top: 18px;
+      padding: 11px 22px;
+      background: rgba(0, 240, 255, 0.05);
       border: 1px solid var(--cyan-neon);
       color: var(--cyan-neon);
       font-family: var(--font-heading);
       font-size: 0.85rem;
       font-weight: 700;
       text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.3s;
+      border-radius: 8px;
+      transition: all 0.3s ease;
       width: 100%;
+      letter-spacing: 1px;
     }
 
     .btn-action:hover {
       background: var(--cyan-neon);
       color: var(--bg-dark);
-      box-shadow: 0 0 15px var(--cyan-glow);
+      box-shadow: 0 0 20px var(--cyan-glow);
     }
 
-    /* ==========================================
-       MARQUESINA DE MARCAS
-       ========================================== */
     .brand-marquee-container {
-      background: #06080b;
-      border-top: 1px solid rgba(0, 240, 255, 0.2);
-      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
-      padding: 20px 0;
-      margin: 40px 0;
+      background: rgba(5, 7, 12, 0.9);
+      border-top: 1px solid rgba(0, 240, 255, 0.15);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+      padding: 22px 0;
+      margin: 45px 0;
       overflow: hidden;
     }
 
     .brand-title {
       font-family: var(--font-heading);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--violet-neon);
-      letter-spacing: 2px;
-      margin-bottom: 15px;
+      letter-spacing: 2.5px;
+      margin-bottom: 16px;
+      font-weight: 700;
     }
 
     .marquee {
       display: flex;
       overflow: hidden;
       user-select: none;
-      gap: 30px;
+      gap: 35px;
     }
 
     .marquee-content {
@@ -386,8 +395,8 @@
       display: flex;
       justify-content: space-around;
       min-width: 100%;
-      gap: 30px;
-      animation: scroll 20s linear infinite;
+      gap: 35px;
+      animation: scroll 22s linear infinite;
     }
 
     .marquee-content span {
@@ -396,6 +405,11 @@
       font-weight: 700;
       color: var(--text-muted);
       letter-spacing: 2px;
+      transition: color 0.3s;
+    }
+
+    .marquee-content span:hover {
+      color: var(--cyan-neon);
     }
 
     @keyframes scroll {
@@ -403,88 +417,125 @@
       to { transform: translateX(-100%); }
     }
 
-    /* ==========================================
-       FORMULARIO WHATSAPP
-       ========================================== */
     .form-container {
       background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(0, 240, 255, 0.2);
-      border-radius: 14px;
-      padding: 40px;
-      max-width: 650px;
+      border-radius: 18px;
+      padding: 42px 35px;
+      max-width: 660px;
       margin: 0 auto;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
       text-align: left;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .form-group label {
       display: block;
       font-family: var(--font-heading);
       font-size: 0.85rem;
-      letter-spacing: 1px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
       margin-bottom: 8px;
       color: var(--cyan-neon);
     }
 
     .form-control {
       width: 100%;
-      padding: 12px 15px;
-      background: #0b0e14;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
+      padding: 13px 16px;
+      background: rgba(8, 10, 15, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
       color: #fff;
       font-family: var(--font-body);
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       outline: none;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
     }
 
     .form-control:focus {
       border-color: var(--cyan-neon);
-      box-shadow: 0 0 10px var(--cyan-glow);
+      box-shadow: 0 0 12px var(--cyan-glow);
     }
 
     select.form-control option {
-      background: #0b0e14;
+      background: #0c0f17;
       color: #fff;
     }
 
     .btn-submit {
       width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, var(--cyan-neon), #0099ff);
+      padding: 16px;
+      background: linear-gradient(135deg, var(--whatsapp-green), #1eb857);
       border: none;
-      border-radius: 8px;
-      color: var(--bg-dark);
+      border-radius: 10px;
+      color: #000;
       font-family: var(--font-heading);
-      font-size: 1rem;
-      font-weight: 900;
+      font-size: 0.98rem;
+      font-weight: 700;
       letter-spacing: 1px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
+      box-shadow: 0 4px 20px var(--whatsapp-glow);
     }
 
     .btn-submit:hover {
-      box-shadow: 0 0 25px var(--cyan-glow);
       transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+      background: linear-gradient(135deg, #2bf075, #1eb857);
     }
 
-    /* ==========================================
-       FOOTER
-       ========================================== */
+    .whatsapp-float-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 62px;
+      height: 62px;
+      background-color: var(--whatsapp-green);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      box-shadow: 0 8px 25px var(--whatsapp-glow);
+      z-index: 9999;
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: floatPulse 2.5s infinite ease-in-out;
+    }
+
+    .whatsapp-float-btn:hover {
+      transform: scale(1.12) rotate(6deg);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
+      color: #ffffff;
+    }
+
+    @keyframes floatPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
     footer {
-      background: #050608;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 40px 5% 20px;
-      margin-top: 60px;
+      background: #040508;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 45px 5% 25px;
+      margin-top: 70px;
     }
 
     .footer-grid {
@@ -493,32 +544,33 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 30px;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
     .footer-col h4 {
       font-family: var(--font-heading);
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--cyan-neon);
-      margin-bottom: 15px;
+      margin-bottom: 16px;
       letter-spacing: 1px;
+      font-weight: 700;
     }
 
     .footer-col p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     .copyright {
       text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 20px;
+      padding-top: 22px;
       color: var(--text-muted);
       font-size: 0.85rem;
       font-family: var(--font-heading);
     }
 
-    /* ADAPTACIÓN PARA TABLETS Y MÓVILES */
+    /* RESPONSIVE BREAKPOINTS */
     @media (max-width: 1024px) {
       .store-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -529,23 +581,38 @@
       header {
         flex-direction: column;
         gap: 15px;
+        padding: 16px 4%;
       }
 
       nav {
         justify-content: center;
+        gap: 15px;
       }
 
       .hero-title-main {
-        font-size: 3.2rem;
+        font-size: 3.5rem;
       }
 
       .store-grid {
         grid-template-columns: 1fr;
       }
+
+      .whatsapp-float-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- BOTÓN FLOTANTE OFICIAL DE WHATSAPP -->
+  <a href="https://wa.me/5492634722710" class="whatsapp-float-btn" target="_blank" aria-label="Contacto por WhatsApp" title="Contactar a ONE PLAYER por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
   <!-- NAVBAR (IZQUIERDA LOGO / DERECHA NAVEGACIÓN) -->
   <header>
@@ -561,34 +628,32 @@
 
   <!-- HERO SECTION PRINCIPAL -->
   <section id="inicio" class="hero">
-    <!-- "SOLUCIONES TÉCNICAS" ELIMINADO SEGÚN TU PEDIDO -->
-    
     <h1 class="hero-title-main">ONE <span>PLAYER</span></h1>
     
     <div class="badge-status">
       <span class="dot"></span>
-      LABORATORIO ACTIVO - RIVADAVIA
+      LABORATORIO ACTIVO - RIVADAVIA, MENDOZA
     </div>
 
     <div class="section-title" style="margin-bottom: 15px;">
       <h2>¿QUIÉNES SOMOS?</h2>
     </div>
     
-    <p>Con una trayectoria de 4 años, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.</p>
+    <p class="description">Con una trayectoria de más de 4 años, nos enfocamos en la necesidad de cada cliente. Brindamos respuestas rápidas, efectivas y con la máxima responsabilidad, garantizando que tu dispositivo vuelva a tus manos en óptimas condiciones.</p>
 
     <!-- ESTADÍSTICAS -->
     <div class="stats-grid">
       <div class="stat-card">
         <span class="stat-number">4+ Años</span>
-        <span class="stat-label">De Experiencia Técnica</span>
+        <span class="stat-label">Experiencia Técnica</span>
       </div>
       <div class="stat-card">
         <span class="stat-number">100%</span>
-        <span class="stat-label">Prueba frente al cliente</span>
+        <span class="stat-label">Prueba Frente al Cliente</span>
       </div>
       <div class="stat-card">
-        <span class="stat-number">Rivadavia, Mendoza</span>
-        <span class="stat-label">Atención y Local</span>
+        <span class="stat-number">Rivadavia</span>
+        <span class="stat-label">Atención Local Directa</span>
       </div>
     </div>
   </section>
@@ -602,7 +667,7 @@
     <div class="cards-grid">
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Modulo.jpg" alt="Cambio de Módulo">
+          <img src="Modulo.jpg" alt="Cambio de Módulo" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Cambio+de+Modulo'">
         </div>
         <h3>CAMBIO DE MÓDULO</h3>
         <p>Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas con repuestos de calidad garantizada.</p>
@@ -610,7 +675,7 @@
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Baterias.jpg" alt="Cambio de Batería">
+          <img src="Baterias.jpg" alt="Cambio de Batería" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Cambio+de+Bateria'">
         </div>
         <h3>CAMBIO DE BATERÍA</h3>
         <p>Reemplazo de baterías agotadas para devolverle la autonomía y el máximo rendimiento original a tu celular.</p>
@@ -618,7 +683,7 @@
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Placa de carga.jpg" alt="Pin / Placa de Carga">
+          <img src="Placa de carga.jpg" alt="Pin / Placa de Carga" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Pin+de+Carga'">
         </div>
         <h3>PIN / PLACA DE CARGA</h3>
         <p>Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tus dispositivos.</p>
@@ -628,7 +693,7 @@
 
   <!-- MARQUESINA INFINITA DE MARCAS ANDROID -->
   <div class="brand-marquee-container">
-    <div class="brand-title">ESPECIALIZACIÓN EXCLUSIVA - SOLO SISTEMA ANDROID</div>
+    <div class="brand-title">ESPECIALIZACIÓN EXCLUSIVA - SISTEMA ANDROID</div>
     <div class="marquee">
       <div class="marquee-content">
         <span>SAMSUNG</span>
@@ -657,7 +722,7 @@
     </div>
   </div>
 
-  <!-- STORE & GEAR (LOS 4 ELEMENTOS EN UNA MISMA FILA) -->
+  <!-- STORE & GEAR (4 PRODUCTOS EN UNA MISMA FILA) -->
   <section id="store">
     <div class="section-title">
       <h2>STORE Y GEAR</h2>
@@ -666,16 +731,16 @@
     <div class="cards-grid store-grid">
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Auriculares.jpg" alt="Auriculares">
+          <img src="Auriculares.jpg" alt="Auriculares" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Auriculares'">
         </div>
         <h3>AURICULARES</h3>
-        <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición.</p>
+        <p>Con cable, Bluetooth, gaming y vinchas con sonido de alta definición.</p>
         <a href="#presupuesto" class="btn-action">CONSULTAR</a>
       </div>
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Cargadores.png" alt="Cargadores">
+          <img src="Cargadores.png" alt="Cargadores" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Cargadores'">
         </div>
         <h3>CARGADORES</h3>
         <p>Cargadores de carga normal, rápidos y originales para cuidar tu batería.</p>
@@ -684,19 +749,19 @@
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="USB.jpg" alt="Cables USB">
+          <img src="USB.jpg" alt="Cables USB" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Cables+USB'">
         </div>
         <h3>CABLES USB</h3>
-        <p>Cables con entrada Tipo C, V8 y Lightning (iPhone) de alta resistencia.</p>
+        <p>Cables con entrada Tipo C, V8 y Lightning de alta durabilidad.</p>
         <a href="#presupuesto" class="btn-action">CONSULTAR</a>
       </div>
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Convertidores.png" alt="Convertidores TV">
+          <img src="Convertidores.png" alt="Convertidores TV" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Convertidores+TV'">
         </div>
         <h3>CONVERTIDORES TV</h3>
-        <p>Transforma tu televisor tradicional en un Smart TV con todas tus apps.</p>
+        <p>Transforma tu televisor tradicional en un Smart TV con todas tus aplicaciones.</p>
         <a href="#presupuesto" class="btn-action">CONSULTAR</a>
       </div>
     </div>
@@ -708,12 +773,12 @@
       <h2>TV ENTERTAINMENT</h2>
     </div>
 
-    <div class="card" style="max-width: 600px; margin: 0 auto;">
-      <div class="card-img-wrapper" style="height: 250px;">
-        <img src="Tv.jpg" alt="TV Entertainment">
+    <div class="card" style="max-width: 620px; margin: 0 auto;">
+      <div class="card-img-wrapper" style="height: 260px;">
+        <img src="Tv.jpg" alt="TV Entertainment" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=TV+Entertainment'">
       </div>
-      <h3 style="font-size: 1.5rem; color: var(--cyan-neon);">EXPERIENCIA TV FAMILIAR</h3>
-      <p>Una solución de TV única para compartir en familia todo el mejor entretenimiento, directo desde el confort de tu hogar.</p>
+      <h3 style="font-size: 1.4rem; color: var(--cyan-neon);">EXPERIENCIA TV FAMILIAR</h3>
+      <p style="margin-top: 8px;">Una solución de TV integrada para compartir en familia el mejor entretenimiento, directo desde el confort de tu hogar.</p>
     </div>
   </section>
 
@@ -727,12 +792,12 @@
       <div class="card">
         <span class="stat-number" style="font-size: 1.5rem;">01</span>
         <h3>DIAGNÓSTICO RÁPIDO</h3>
-        <p>Revisión inmediata de la falla para darte la solución precisa sin demoras innecesarias.</p>
+        <p>Revisión técnica inmediata para darte la solución precisa sin demoras innecesarias.</p>
       </div>
 
       <div class="card">
         <span class="stat-number" style="font-size: 1.5rem;">02</span>
-        <h3>REPUESTOS CALIDAD</h3>
+        <h3>REPUESTOS DE CALIDAD</h3>
         <p>Utilizamos repuestos testeados para garantizar la máxima durabilidad de tu dispositivo.</p>
       </div>
 
@@ -745,7 +810,7 @@
       <div class="card">
         <span class="stat-number" style="font-size: 1.5rem;">04</span>
         <h3>ATENCIÓN DIRECTA</h3>
-        <p>Trato personalizado y directo vía WhatsApp o presencial para sacarte todas las dudas.</p>
+        <p>Trato personalizado vía WhatsApp o presencial para responder todas tus inquietudes.</p>
       </div>
     </div>
   </section>
@@ -755,23 +820,23 @@
     <div class="section-title">
       <h2>MEDIOS DE PAGO</h2>
     </div>
-    <p style="color: var(--text-muted); margin-bottom: 30px;">Pensando en tu comodidad, aceptamos múltiples opciones de pago en todos nuestros servicios y productos:</p>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">Aceptamos múltiples opciones de pago para tu mayor comodidad:</p>
     
-    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
       <div class="card">
-        <i class="fa-solid fa-money-bill-wave" style="font-size: 2rem; color: var(--cyan-neon); margin-bottom: 10px;"></i>
+        <i class="fa-solid fa-money-bill-wave" style="font-size: 2.2rem; color: var(--cyan-neon); margin-bottom: 12px;"></i>
         <h3>EFECTIVO</h3>
       </div>
       <div class="card">
-        <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--cyan-neon); margin-bottom: 10px;"></i>
+        <i class="fa-solid fa-building-columns" style="font-size: 2.2rem; color: var(--cyan-neon); margin-bottom: 12px;"></i>
         <h3>TRANSFERENCIA</h3>
       </div>
       <div class="card">
-        <i class="fa-solid fa-wallet" style="font-size: 2rem; color: var(--cyan-neon); margin-bottom: 10px;"></i>
+        <i class="fa-solid fa-wallet" style="font-size: 2.2rem; color: var(--cyan-neon); margin-bottom: 12px;"></i>
         <h3>MERCADO PAGO</h3>
       </div>
       <div class="card">
-        <i class="fa-solid fa-credit-card" style="font-size: 2rem; color: var(--cyan-neon); margin-bottom: 10px;"></i>
+        <i class="fa-solid fa-credit-card" style="font-size: 2.2rem; color: var(--cyan-neon); margin-bottom: 12px;"></i>
         <h3>TARJETAS</h3>
       </div>
     </div>
@@ -779,22 +844,22 @@
 
   <!-- GARANTÍA Y CONFIANZA -->
   <section>
-    <div class="card" style="border-color: var(--cyan-neon); padding: 40px; background: linear-gradient(180deg, var(--bg-card) 0%, rgba(0, 240, 255, 0.05) 100%);">
-      <i class="fa-solid fa-shield-halved" style="font-size: 3rem; color: var(--cyan-neon); margin-bottom: 15px;"></i>
-      <h3 style="font-size: 1.8rem; margin-bottom: 15px;">GARANTÍA Y CONFIANZA</h3>
-      <p style="max-width: 700px; margin: 0 auto 10px; color: #fff; font-size: 1.1rem;">Cada reparación se entrega probada 100% frente al cliente. Transparencia total desde el diagnóstico hasta la entrega de tu equipo.</p>
-      <span style="color: var(--cyan-neon); font-family: var(--font-heading); font-weight: 700; letter-spacing: 2px;">TRABAJO EFICIENTE Y RÁPIDO</span>
+    <div class="card" style="border-color: rgba(0, 240, 255, 0.4); padding: 45px 30px; background: linear-gradient(180deg, var(--bg-card) 0%, rgba(0, 240, 255, 0.06) 100%);">
+      <i class="fa-solid fa-shield-halved" style="font-size: 3.2rem; color: var(--cyan-neon); margin-bottom: 16px;"></i>
+      <h3 style="font-size: 1.8rem; margin-bottom: 12px;">GARANTÍA Y CONFIANZA</h3>
+      <p style="max-width: 720px; margin: 0 auto 12px; color: var(--text-main); font-size: 1.05rem;">Cada reparación se entrega probada al 100% frente al cliente. Transparencia total desde el diagnóstico hasta la entrega de tu equipo.</p>
+      <span style="color: var(--cyan-neon); font-family: var(--font-heading); font-weight: 700; letter-spacing: 2px; font-size: 0.9rem;">TRABAJO EFICIENTE Y RÁPIDO</span>
     </div>
   </section>
 
-  <!-- PRESUPUESTO -->
+  <!-- PRESUPUESTO EN LÍNEA -->
   <section id="presupuesto">
     <div class="section-title">
       <h2>SOLICITAR PRESUPUESTO EN LÍNEA</h2>
     </div>
 
     <div class="form-container">
-      <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Completá los datos de tu equipo y enviá la consulta directa a nuestro WhatsApp</p>
+      <p style="text-align: center; color: var(--text-muted); margin-bottom: 28px;">Completá los datos de tu celular o consulta y recibí atención personalizada por WhatsApp.</p>
       
       <form id="presupuestoForm">
         <div class="form-group">
@@ -803,23 +868,24 @@
         </div>
 
         <div class="form-group">
-          <label for="tipoReparacion">TIPO DE REPARACIÓN NECESARIA</label>
+          <label for="tipoReparacion">TIPO DE REPARACIÓN O CONSULTA</label>
           <select id="tipoReparacion" class="form-control" required>
             <option value="Cambio de Módulo / Pantalla">Cambio de Módulo / Pantalla</option>
             <option value="Cambio de Batería">Cambio de Batería</option>
             <option value="Pin de Carga / Placa de Carga">Pin de Carga / Placa de Carga</option>
+            <option value="Consulta Store / Accesorios">Consulta Store / Accesorios</option>
             <option value="Diagnóstico General / Otro problema">Diagnóstico General / Otro problema</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="falla">DETALLE DE LA FALLA</label>
-          <textarea id="falla" class="form-control" rows="4" placeholder="Describí brevemente qué le sucede al equipo..." required></textarea>
+          <label for="falla">DETALLE DE LA CONSULTA / FALLA</label>
+          <textarea id="falla" class="form-control" rows="4" placeholder="Describí brevemente qué le sucede al equipo o qué producto necesitas..." required></textarea>
         </div>
 
         <button type="submit" class="btn-submit">
           <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
-          SOLICITAR PRESUPUESTO POR WHATSAPP
+          ENVIAR PRESUPUESTO POR WHATSAPP
         </button>
       </form>
     </div>
@@ -830,39 +896,40 @@
     <div class="footer-grid">
       <div class="footer-col">
         <h4>UBICACIÓN</h4>
-        <p><i class="fa-solid fa-location-dot" style="color: var(--cyan-neon);"></i> Rivadavia, Mendoza</p>
+        <p><i class="fa-solid fa-location-dot" style="color: var(--cyan-neon);"></i> Rivadavia, Mendoza, Argentina</p>
       </div>
 
       <div class="footer-col">
-        <h4>ESPECIALIDAD</h4>
+        <h4>TELÉFONO DE CONTACTO</h4>
+        <p><i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green);"></i> 2634722710</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>ESPECIALIZACIÓN</h4>
         <p><i class="fa-solid fa-mobile-button" style="color: var(--cyan-neon);"></i> Exclusivo Reparaciones Android</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>ATENCIÓN</h4>
-        <p><i class="fa-solid fa-clock" style="color: var(--cyan-neon);"></i> Consultas y Presupuestos Rápidos</p>
       </div>
     </div>
 
     <div class="copyright">
-      ONE PLAYER - SOLUCIONES TÉCNICAS &copy; 2026 Todos los derechos reservados
+      ONE PLAYER - SERVICIO TÉCNICO & STORE TECH &copy; 2026 | Rivadavia, Mendoza
     </div>
   </footer>
 
-  <!-- SCRIPT WHATSAPP AUTOMÁTICO -->
+  <!-- SCRIPT INTERACTIVO Y ENVÍO WHATSAPP CON TELÉFONO 2634722710 -->
   <script>
     document.getElementById('presupuestoForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const numeroTelefono = "5492634000000"; 
+      // Número de WhatsApp configurado: 2634722710 con código de país Argentina (+54 9)
+      const numeroTelefono = "5492634722710"; 
 
       const modelo = document.getElementById('modelo').value;
       const tipo = document.getElementById('tipoReparacion').value;
       const falla = document.getElementById('falla').value;
 
       const mensaje = `Hola *ONE PLAYER* 👋! Quisiera solicitar un presupuesto:%0A%0A` +
-                      `📱 *Marca y Modelo:* ${encodeURIComponent(modelo)}%0A` +
-                      `🛠️ *Tipo de Servicio:* ${encodeURIComponent(tipo)}%0A` +
+                      `📱 *Marca / Modelo:* ${encodeURIComponent(modelo)}%0A` +
+                      `🛠️ *Servicio / Consulta:* ${encodeURIComponent(tipo)}%0A` +
                       `📝 *Detalle:* ${encodeURIComponent(falla)}`;
 
       window.open(`https://wa.me/${numeroTelefono}?text=${mensaje}`, '_blank');
