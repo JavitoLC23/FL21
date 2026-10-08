@@ -283,13 +283,26 @@
     }
 
     .nav-shell {
-      width: min(1400px, calc(100% - 34px));
+      width: min(1600px, calc(100% - 34px));
       min-height: var(--header-height);
       margin-inline: auto;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
       gap: 28px;
+    }
+
+    /* V3: marca más a la izquierda y navegación centrada. */
+    .nav-shell .brand {
+      justify-self: start;
+    }
+
+    .nav-shell .desktop-nav {
+      justify-self: center;
+    }
+
+    .nav-shell .menu-toggle {
+      justify-self: end;
     }
 
     .brand {
@@ -2320,28 +2333,16 @@
     <div class="nav-shell">
 
       <a href="#inicio" class="brand" aria-label="ONE PLAYER - Inicio">
-        <span class="brand-mark">OP</span>
         <span class="brand-text">ONE <span>PLAYER</span></span>
       </a>
 
       <nav class="desktop-nav" aria-label="Navegación principal">
         <a href="#inicio" class="nav-link active">Inicio</a>
         <a href="#servicios" class="nav-link">Laboratorio</a>
-        <a href="#proceso" class="nav-link">Proceso</a>
         <a href="#store" class="nav-link">Store & Gear</a>
         <a href="#tv" class="nav-link">TV</a>
-        <a href="#presupuesto" class="nav-link">Presupuesto</a>
       </nav>
 
-      <a
-        class="header-cta"
-        href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20hacer%20una%20consulta."
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <i class="fa-brands fa-whatsapp"></i>
-        WhatsApp
-      </a>
 
       <button
         class="menu-toggle"
@@ -2361,10 +2362,8 @@
       <nav class="mobile-nav-inner" aria-label="Navegación móvil">
         <a href="#inicio" class="mobile-link active">Inicio</a>
         <a href="#servicios" class="mobile-link">Laboratorio</a>
-        <a href="#proceso" class="mobile-link">Proceso</a>
         <a href="#store" class="mobile-link">Store & Gear</a>
         <a href="#tv" class="mobile-link">TV Entertainment</a>
-        <a href="#presupuesto" class="mobile-link">Solicitar presupuesto</a>
       </nav>
     </div>
   </header>
