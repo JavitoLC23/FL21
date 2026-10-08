@@ -1,1 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STORE & GEAR - ONE PLAYER | Rivadavia, Mendoza</title>
+  
+  <!-- Fuentes de Google: Orbitron & Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <style>
+    :root {
+      --bg-dark: #05070a;
+      --bg-card: rgba(15, 19, 28, 0.85);
+      --cyan-neon: #00f0ff;
+      --cyan-glow: rgba(0, 240, 255, 0.45);
+      --violet-neon: #a100ff;
+      --violet-glow: rgba(161, 0, 255, 0.45);
+      --green-neon: #25d366;
+      --green-glow: rgba(37, 211, 102, 0.45);
+      --text-main: #f0f4f8;
+      --text-muted: #8a99ad;
+      --font-heading: 'Orbitron', sans-serif;
+      --font-body: 'Syne', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Luces Neón de Fondo */
+    .bg-glow-1 {
+      position: fixed;
+      top: -10%;
+      left: 20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.35;
+      animation: floatGlow 10s ease-in-out infinite alternate;
+    }
+
+    .bg-glow-2 {
+      position: fixed;
+      bottom: -10%;
+      right: 10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--violet-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.35;
+      animation: floatGlow 12s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(30px) scale(1.1); }
+    }
+
+    /* BOTÓN FLOTANTE WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--green-neon);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 0 20px var(--green-glow);
+      z-index: 2000;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: pulseWhatsapp 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px var(--green-neon);
+    }
+
+    @keyframes pulseWhatsapp {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(5, 7, 10, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      z-index: 1000;
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 0 12px var(--cyan-neon), 0 0 25px var(--cyan-glow);
+      letter-spacing: 2px;
+    }
+
+    .nav-logo span {
+      color: var(--cyan-neon);
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--cyan-neon);
+      text-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--cyan-neon);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px var(--cyan-neon);
+    }
+
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
+
+    /* HERO STORE */
+    .hero-store {
+      padding: 60px 20px 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 3.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #fff;
+      text-shadow: 0 0 20px var(--cyan-neon), 0 0 40px var(--cyan-glow);
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      color: var(--cyan-neon);
+    }
+
+    .hero-store p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    /* CATEGORÍAS / FILTROS */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn-filter {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      color: var(--text-main);
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-filter:hover, .btn-filter.active {
+      background: var(--cyan-neon);
+      color: var(--bg-dark);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+
+    /* GRID DE PRODUCTOS */
+    .products-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 4% 60px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 18px;
+      padding: 22px;
+      backdrop-filter: blur(14px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .product-card:hover {
+      border-color: var(--cyan-neon);
+      transform: translateY(-8px);
+      box-shadow: 0 10px 35px rgba(0, 240, 255, 0.25);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--cyan-neon);
+      color: var(--cyan-neon);
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-shadow: 0 0 8px var(--cyan-glow);
+      z-index: 2;
+    }
+
+    .badge-stock {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: var(--green-neon);
+      color: var(--green-neon);
+    }
+
+    .badge-soon {
+      background: rgba(161, 0, 255, 0.15);
+      border-color: var(--violet-neon);
+      color: var(--violet-neon);
+      text-shadow: 0 0 8px var(--violet-glow);
+    }
+
+    .img-box {
+      width: 100%;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #080a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .img-box img {
+      transform: scale(1.08);
+    }
+
+    .product-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .product-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .product-price {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--cyan-neon);
+      text-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .btn-buy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--green-neon), #1ebd56);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px var(--green-glow);
+    }
+
+    .btn-buy:hover {
+      box-shadow: 0 0 30px var(--green-neon);
+      transform: translateY(-2px);
+    }
+
+    .btn-disabled {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .btn-disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #030406;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 5% 25px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--cyan-neon);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .footer-col p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: var(--font-heading);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      nav {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20hacer%20una%20consulta%20de%20la%20tienda." class="whatsapp-float" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- NAVBAR -->
+  <header>
+    <a href="index.html" class="nav-logo">ONE <span>PLAYER</span></a>
+    <nav>
+      <a href="index.html#inicio">INICIO</a>
+      <a href="index.html#servicios">LABORATORIO</a>
+      <a href="store.html" class="active">STORE & GEAR</a>
+      <a href="index.html#tv">TV ENTERTAINMENT</a>
+    </nav>
+  </header>
+
+  <!-- HERO STORE -->
+  <section class="hero-store">
+    <h1 class="hero-title">STORE <span>& GEAR</span></h1>
+    <p>Accesorios, tecnología y equipamiento seleccionado con la mejor calidad para tus dispositivos en Rivadavia, Mendoza.</p>
+
+    <!-- FILTROS -->
+    <div class="filter-bar">
+      <button class="btn-filter active">TODOS</button>
+      <button class="btn-filter">CONVERTIDORES TV</button>
+      <button class="btn-filter">AURICULARES</button>
+      <button class="btn-filter">CARGADORES</button>
+      <button class="btn-filter">CABLES USB</button>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE PRODUCTOS -->
+  <section class="products-container">
+    <div class="products-grid">
+
+      <!-- PRODUCTO DISPONIBLE: CONVERTIDOR TV i96 -->
+      <div class="product-card">
+        <span class="product-badge badge-stock"><i class="fa-solid fa-check"></i> STOCK: 3 UNID.</span>
+        <div class="img-box">
+          <img src="Convertidores.png" alt="Convertidor TV i96">
+        </div>
+        <h3 class="product-title">CONVERTIDOR TV i96</h3>
+        <p class="product-desc">Transforma tu televisor tradicional en un Smart TV de alta velocidad. Compatible con Netflix, YouTube, Disney+ y todas las apps.</p>
+        
+        <div class="product-meta">
+          <span class="product-price">$65.000</span>
+        </div>
+
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quiero%20comprar%20el%20CONVERTIDOR%20TV%20i96%20a%20$65.000." target="_blank" class="btn-buy">
+          <i class="fa-brands fa-whatsapp"></i> COMPRAR POR WHATSAPP
+        </a>
+      </div>
+
+      <!-- PRODUCTO PRÓXIMAMENTE: AURICULARES -->
+      <div class="product-card">
+        <span class="product-badge badge-soon"><i class="fa-solid fa-clock"></i> PRÓXIMAMENTE</span>
+        <div class="img-box">
+          <img src="Auriculares.jpg" alt="Auriculares Bluetooth & Gaming">
+        </div>
+        <h3 class="product-title">AURICULARES BLUETOOTH & GAMING</h3>
+        <p class="product-desc">Vincha, in-ear e inalámbricos con cancelación de ruido y sonido HD. Nuevos modelos ingresando pronto.</p>
+        
+        <div class="product-meta">
+          <span class="product-price" style="color: var(--text-muted); font-size: 1.1rem;">PRÓXIMAMENTE</span>
+        </div>
+
+        <button class="btn-buy btn-disabled" disabled>
+          <i class="fa-solid fa-lock"></i> SIN STOCK DE MOMENTO
+        </button>
+      </div>
+
+      <!-- PRODUCTO PRÓXIMAMENTE: CARGADORES -->
+      <div class="product-card">
+        <span class="product-badge badge-soon"><i class="fa-solid fa-clock"></i> PRÓXIMAMENTE</span>
+        <div class="img-box">
+          <img src="Cargadores.png" alt="Cargadores Rápidos">
+        </div>
+        <h3 class="product-title">CARGADORES DE CARGA RÁPIDA</h3>
+        <p class="product-desc">Cargadores de pared inteligentes y universales para cuidar la batería de tu celular.</p>
+        
+        <div class="product-meta">
+          <span class="product-price" style="color: var(--text-muted); font-size: 1.1rem;">PRÓXIMAMENTE</span>
+        </div>
+
+        <button class="btn-buy btn-disabled" disabled>
+          <i class="fa-solid fa-lock"></i> SIN STOCK DE MOMENTO
+        </button>
+      </div>
+
+      <!-- PRODUCTO PRÓXIMAMENTE: CABLES USB -->
+      <div class="product-card">
+        <span class="product-badge badge-soon"><i class="fa-solid fa-clock"></i> PRÓXIMAMENTE</span>
+        <div class="img-box">
+          <img src="USB.jpg" alt="Cables USB Reforzados">
+        </div>
+        <h3 class="product-title">CABLES USB TIPO C / V8 / LIGHTNING</h3>
+        <p class="product-desc">Cables reforzados de alta durabilidad para transferencia de datos y carga rápida.</p>
+        
+        <div class="product-meta">
+          <span class="product-price" style="color: var(--text-muted); font-size: 1.1rem;">PRÓXIMAMENTE</span>
+        </div>
+
+        <button class="btn-buy btn-disabled" disabled>
+          <i class="fa-solid fa-lock"></i> SIN STOCK DE MOMENTO
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>UBICACIÓN</h4>
+        <p><i class="fa-solid fa-location-dot" style="color: var(--cyan-neon);"></i> Rivadavia, Mendoza</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>ESPECIALIDAD</h4>
+        <p><i class="fa-solid fa-mobile-button" style="color: var(--cyan-neon);"></i> Servicio Técnico & Store Tech</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>ATENCIÓN DIRECTA</h4>
+        <p><i class="fa-solid fa-phone" style="color: var(--cyan-neon);"></i> 2634722710</p>
+      </div>
+    </div>
+
+    <div class="copyright">
+      ONE PLAYER - SERVICIO TÉCNICO & STORE TECH &copy; 2026 | Rivadavia, Mendoza. Todos los derechos reservados.
+    </div>
+  </footer>
+
+</body>
+</html>
