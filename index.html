@@ -5,30 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ONE PLAYER - Servicio Técnico & Store Tech | Rivadavia, Mendoza</title>
   
-  <!-- Fuentes de Google: Space Grotesk (Titulares Tech) y Plus Jakarta Sans (Texto Profesional) -->
+  <!-- Fuentes de Google: Space Grotesk & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Iconos FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* ==========================================
+       VARIABLES DE COLOR Y ESTILO PREMIUM
+       ========================================== */
     :root {
-      --bg-dark: #080a0f;
+      --bg-dark: #07090e;
       --bg-card: rgba(18, 22, 32, 0.75);
-      --bg-card-hover: rgba(26, 32, 46, 0.9);
       --cyan-neon: #00f0ff;
       --cyan-glow: rgba(0, 240, 255, 0.4);
       --violet-neon: #9d00ff;
       --violet-glow: rgba(157, 0, 255, 0.4);
-      --whatsapp-green: #25d366;
-      --whatsapp-glow: rgba(37, 211, 102, 0.4);
+      --green-neon: #25d366;
       --text-main: #f0f4f8;
       --text-muted: #94a3b8;
-      --text-heading: #ffffff;
-      --green-online: #00ff66;
-      --border-subtle: rgba(255, 255, 255, 0.08);
       --font-heading: 'Space Grotesk', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
     }
@@ -48,23 +44,53 @@
       line-height: 1.6;
       text-align: center;
       overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.07) 0%, transparent 45%),
-        radial-gradient(circle at 85% 75%, rgba(157, 0, 255, 0.08) 0%, transparent 45%),
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      position: relative;
     }
 
+    /* Fondo dinámico con orbes neón */
+    .bg-glow-1 {
+      position: fixed;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.5;
+      animation: floatGlow 10s ease-in-out infinite alternate;
+    }
+
+    .bg-glow-2 {
+      position: fixed;
+      bottom: -10%;
+      right: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--violet-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.4;
+      animation: floatGlow 12s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(30px) scale(1.1); }
+    }
+
+    /* ==========================================
+       NAVBAR (LOGO IZQUIERDA - MENÚ DERECHA)
+       ========================================== */
     header {
       position: sticky;
       top: 0;
-      background: rgba(8, 10, 15, 0.85);
+      background: rgba(7, 9, 14, 0.85);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(0, 240, 255, 0.15);
       z-index: 1000;
-      padding: 16px 6%;
+      padding: 16px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -75,11 +101,10 @@
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: 1.6rem;
-      letter-spacing: 2px;
+      letter-spacing: -0.5px;
       color: #fff;
       text-decoration: none;
       text-shadow: 0 0 12px var(--cyan-glow);
-      text-align: left;
     }
 
     .nav-logo span {
@@ -91,16 +116,15 @@
       gap: 24px;
       justify-content: flex-end;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     nav a {
       color: var(--text-main);
       text-decoration: none;
       font-family: var(--font-heading);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 0.5px;
       transition: all 0.3s ease;
       position: relative;
       padding: 4px 0;
@@ -114,88 +138,89 @@
     nav a::after {
       content: '';
       position: absolute;
-      bottom: -2px;
+      bottom: 0;
       left: 0;
       width: 0%;
       height: 2px;
-      background: linear-gradient(90deg, var(--cyan-neon), var(--violet-neon));
+      background: var(--cyan-neon);
       transition: width 0.3s ease;
-      border-radius: 2px;
+      box-shadow: 0 0 8px var(--cyan-neon);
     }
 
     nav a:hover::after {
       width: 100%;
     }
 
+    /* ==========================================
+       HERO PRINCIPAL
+       ========================================== */
     .hero {
       text-align: center;
-      padding: 75px 20px 45px;
-      max-width: 1050px;
+      padding: 70px 20px 40px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .hero-title-main {
       font-family: var(--font-heading);
-      font-size: 5.2rem;
+      font-size: 5.5rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 4px;
-      line-height: 1.05;
-      margin-bottom: 22px;
+      line-height: 1;
+      margin-bottom: 24px;
       color: #ffffff;
       text-shadow: 
-        0 0 20px var(--cyan-glow),
-        0 0 45px rgba(0, 240, 255, 0.25);
+        0 0 20px var(--cyan-neon),
+        0 0 40px var(--cyan-glow);
     }
 
     .hero-title-main span {
       color: var(--cyan-neon);
-      background: linear-gradient(135deg, #ffffff 10%, var(--cyan-neon) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .badge-status {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(0, 255, 102, 0.08);
-      border: 1px solid rgba(0, 255, 102, 0.4);
-      color: var(--green-online);
+      background: rgba(37, 211, 102, 0.08);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      color: #00ff66;
       padding: 8px 24px;
       border-radius: 30px;
       font-family: var(--font-heading);
       font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       margin-bottom: 35px;
+      backdrop-filter: blur(8px);
       box-shadow: 0 0 20px rgba(0, 255, 102, 0.15);
     }
 
     .dot {
-      width: 9px;
-      height: 9px;
-      background-color: var(--green-online);
+      width: 8px;
+      height: 8px;
+      background-color: #00ff66;
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--green-online);
-      animation: pulse 1.6s infinite ease-in-out;
+      box-shadow: 0 0 10px #00ff66;
+      animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
       0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(1.3); }
+      50% { opacity: 0.4; transform: scale(1.3); }
       100% { opacity: 1; transform: scale(1); }
     }
 
-    .hero p.description {
+    .hero p {
       color: var(--text-muted);
       font-size: 1.15rem;
-      font-weight: 400;
       margin: 20px auto 35px;
-      max-width: 760px;
-      line-height: 1.7;
+      max-width: 780px;
+      font-weight: 400;
     }
 
+    /* Módulos de Métricas */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -205,23 +230,22 @@
 
     .stat-card {
       background: var(--bg-card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(0, 240, 255, 0.15);
       border-radius: 14px;
-      padding: 24px 20px;
-      transition: all 0.35s ease;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
     }
 
     .stat-card:hover {
-      border-color: rgba(0, 240, 255, 0.5);
+      border-color: var(--cyan-neon);
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.15);
-      background: var(--bg-card-hover);
+      box-shadow: 0 8px 25px rgba(0, 240, 255, 0.2);
     }
 
     .stat-number {
       font-family: var(--font-heading);
-      font-size: 2.1rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--cyan-neon);
       display: block;
@@ -229,31 +253,34 @@
     }
 
     .stat-label {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 1px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
+    /* ==========================================
+       SECCIONES Y TARJETAS
+       ========================================== */
     section {
-      padding: 65px 4%;
-      max-width: 1350px;
+      padding: 60px 4%;
+      max-width: 1300px;
       margin: 0 auto;
       text-align: center;
     }
 
     .section-title {
-      margin-bottom: 45px;
+      margin-bottom: 40px;
     }
 
     .section-title h2 {
       font-family: var(--font-heading);
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: var(--text-heading);
+      color: #fff;
       display: inline-block;
       position: relative;
     }
@@ -261,18 +288,18 @@
     .section-title h2::after {
       content: '';
       display: block;
-      width: 65%;
+      width: 60%;
       height: 3px;
       background: linear-gradient(90deg, var(--cyan-neon), var(--violet-neon));
       margin: 12px auto 0;
-      border-radius: 3px;
+      border-radius: 2px;
       box-shadow: 0 0 10px var(--cyan-glow);
     }
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
       justify-content: center;
     }
 
@@ -282,42 +309,39 @@
 
     .card {
       background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       padding: 24px;
-      transition: all 0.35s ease;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
-      border-color: rgba(157, 0, 255, 0.4);
+      border-color: rgba(157, 0, 255, 0.5);
       transform: translateY(-8px);
-      box-shadow: 0 12px 35px rgba(157, 0, 255, 0.2);
-      background: var(--bg-card-hover);
+      box-shadow: 0 12px 30px rgba(157, 0, 255, 0.2);
     }
 
     .card-img-wrapper {
       width: 100%;
-      height: 190px;
-      border-radius: 12px;
+      height: 180px;
+      border-radius: 10px;
       overflow: hidden;
       margin-bottom: 18px;
       border: 1px solid rgba(0, 240, 255, 0.15);
-      background: #0d1117;
     }
 
     .card-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.45s ease;
+      transition: transform 0.5s ease;
     }
 
     .card:hover .card-img-wrapper img {
@@ -328,33 +352,34 @@
       font-family: var(--font-heading);
       font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #fff;
-      letter-spacing: 0.5px;
     }
 
     .card p {
       color: var(--text-muted);
       font-size: 0.92rem;
       font-weight: 400;
-      line-height: 1.5;
     }
 
     .btn-action {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       margin-top: 18px;
-      padding: 11px 22px;
+      padding: 12px 20px;
       background: rgba(0, 240, 255, 0.05);
       border: 1px solid var(--cyan-neon);
       color: var(--cyan-neon);
       font-family: var(--font-heading);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
       text-decoration: none;
       border-radius: 8px;
       transition: all 0.3s ease;
       width: 100%;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
     .btn-action:hover {
@@ -363,26 +388,26 @@
       box-shadow: 0 0 20px var(--cyan-glow);
     }
 
+    /* ==========================================
+       CARRUSEL MARCAS ANDROID
+       ========================================== */
     .brand-marquee-container {
-      background: rgba(5, 7, 12, 0.92);
-      border-top: 1px solid rgba(0, 240, 255, 0.2);
-      border-bottom: 1px solid rgba(157, 0, 255, 0.2);
+      background: rgba(6, 8, 11, 0.9);
+      border-top: 1px solid rgba(0, 240, 255, 0.15);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
       padding: 30px 0;
-      margin: 50px 0;
+      margin: 40px 0;
       overflow: hidden;
-      position: relative;
-      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
     }
 
     .brand-title {
       font-family: var(--font-heading);
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      font-weight: 700;
       color: var(--cyan-neon);
       letter-spacing: 3px;
-      margin-bottom: 22px;
-      font-weight: 700;
+      margin-bottom: 20px;
       text-transform: uppercase;
-      text-shadow: 0 0 12px var(--cyan-glow);
     }
 
     .marquee {
@@ -398,38 +423,26 @@
       justify-content: space-around;
       min-width: 100%;
       gap: 20px;
-      animation: scroll 25s linear infinite;
+      animation: scroll 22s linear infinite;
     }
 
     .brand-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(18, 22, 32, 0.85);
-      border: 1px solid rgba(0, 240, 255, 0.25);
-      padding: 10px 22px;
-      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 24px;
+      border-radius: 20px;
       font-family: var(--font-heading);
       font-size: 1rem;
       font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 2px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    .brand-pill i {
-      color: var(--cyan-neon);
-      font-size: 1.1rem;
+      color: var(--text-main);
+      letter-spacing: 1.5px;
+      transition: all 0.3s;
     }
 
     .brand-pill:hover {
       border-color: var(--cyan-neon);
-      background: rgba(0, 240, 255, 0.12);
-      transform: translateY(-2px);
-      box-shadow: 0 0 20px var(--cyan-glow);
-      color: #ffffff;
+      color: var(--cyan-neon);
+      box-shadow: 0 0 15px var(--cyan-glow);
     }
 
     @keyframes scroll {
@@ -437,168 +450,131 @@
       to { transform: translateX(-100%); }
     }
 
-    .trust-container {
-      background: linear-gradient(135deg, rgba(12, 16, 26, 0.95) 0%, rgba(20, 27, 42, 0.9) 100%);
+    /* ==========================================
+       NUEVA GARANTÍA Y CONFIANZA
+       ========================================== */
+    .garantia-box {
+      background: linear-gradient(135deg, rgba(18, 22, 32, 0.9) 0%, rgba(10, 15, 25, 0.95) 100%);
       border: 1px solid rgba(0, 240, 255, 0.3);
-      border-radius: 24px;
-      padding: 50px 35px;
+      border-radius: 20px;
+      padding: 45px 30px;
       position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 240, 255, 0.05);
-      max-width: 1100px;
-      margin: 0 auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
 
-    .trust-container::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .trust-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 35px;
-    }
-
-    .trust-badge-icon {
-      width: 75px;
-      height: 75px;
-      background: rgba(0, 240, 255, 0.1);
-      border: 2px solid var(--cyan-neon);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      color: var(--cyan-neon);
-      box-shadow: 0 0 30px var(--cyan-glow);
-      margin-bottom: 18px;
-    }
-
-    .trust-title {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #ffffff;
-      text-transform: uppercase;
-    }
-
-    .trust-subtitle {
-      color: var(--text-muted);
-      max-width: 700px;
-      font-size: 1.05rem;
-      margin-top: 10px;
-    }
-
-    .trust-grid {
+    .garantia-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-      margin-top: 35px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
     }
 
-    .trust-item {
-      background: rgba(8, 10, 15, 0.7);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 24px;
-      text-align: left;
-      transition: all 0.3s ease;
+    .garantia-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s;
     }
 
-    .trust-item:hover {
+    .garantia-item:hover {
       border-color: var(--cyan-neon);
       transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.15);
     }
 
-    .trust-item i {
-      font-size: 1.6rem;
+    .garantia-item i {
+      font-size: 2rem;
       color: var(--cyan-neon);
       margin-bottom: 12px;
-      display: block;
+      text-shadow: 0 0 10px var(--cyan-glow);
     }
 
-    .trust-item h4 {
+    .garantia-item h4 {
       font-family: var(--font-heading);
       font-size: 1.1rem;
-      color: #ffffff;
       margin-bottom: 8px;
+      color: #fff;
     }
 
-    .trust-item p {
-      color: var(--text-muted);
+    .garantia-item p {
       font-size: 0.88rem;
-      line-height: 1.5;
+      color: var(--text-muted);
     }
 
+    /* ==========================================
+       FORMULARIO WHATSAPP
+       ========================================== */
     .form-container {
       background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      border-radius: 18px;
-      padding: 42px 35px;
-      max-width: 660px;
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 620px;
       margin: 0 auto;
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
-      text-align: left;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(16px);
+      text-align: center;
+    }
+
+    .form-container-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-size: 1rem;
     }
 
     .form-group {
       margin-bottom: 22px;
+      text-align: center;
     }
 
     .form-group label {
       display: block;
       font-family: var(--font-heading);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      margin-bottom: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
       color: var(--cyan-neon);
+      text-transform: uppercase;
+      text-align: center;
     }
 
     .form-control {
       width: 100%;
-      padding: 13px 16px;
-      background: rgba(8, 10, 15, 0.8);
+      padding: 14px 18px;
+      background: rgba(11, 14, 20, 0.9);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 10px;
       color: #fff;
       font-family: var(--font-body);
-      font-size: 0.98rem;
+      font-size: 1rem;
       outline: none;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
+      text-align: center;
     }
 
     .form-control:focus {
       border-color: var(--cyan-neon);
-      box-shadow: 0 0 12px var(--cyan-glow);
+      box-shadow: 0 0 15px var(--cyan-glow);
     }
 
     select.form-control option {
-      background: #0c0f17;
+      background: #0b0e14;
       color: #fff;
+      text-align: center;
     }
 
     .btn-submit {
       width: 100%;
       padding: 16px;
-      background: linear-gradient(135deg, var(--cyan-neon), #00a8ff);
+      background: linear-gradient(135deg, var(--green-neon), #1ebd56);
       border: none;
       border-radius: 10px;
-      color: #080a0f;
+      color: #fff;
       font-family: var(--font-heading);
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 1px;
       cursor: pointer;
@@ -606,58 +582,57 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 20px var(--cyan-glow);
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
     }
 
     .btn-submit:hover {
+      box-shadow: 0 0 30px rgba(37, 211, 102, 0.5);
       transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(0, 240, 255, 0.6);
-      background: linear-gradient(135deg, #33f3ff, #00d2ff);
     }
 
-    .whatsapp-float-btn {
+    /* ==========================================
+       BOTÓN FLOTANTE WHATSAPP
+       ========================================== */
+    .whatsapp-float {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 62px;
-      height: 62px;
-      background-color: var(--whatsapp-green);
-      color: #ffffff;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--green-neon);
+      color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
-      box-shadow: 0 8px 25px var(--whatsapp-glow);
-      z-index: 9999;
+      font-size: 32px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+      z-index: 2000;
       text-decoration: none;
-      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      animation: floatPulse 2.5s infinite ease-in-out;
+      transition: all 0.3s ease;
+      animation: pulseWhatsapp 2s infinite;
     }
 
-    .whatsapp-float-btn:hover {
-      transform: scale(1.12) rotate(6deg);
-      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
-      color: #ffffff;
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
     }
 
-    @keyframes floatPulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-      }
+    @keyframes pulseWhatsapp {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
+    /* ==========================================
+       FOOTER
+       ========================================== */
     footer {
       background: #040508;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 45px 5% 25px;
-      margin-top: 70px;
+      padding: 40px 5% 25px;
+      margin-top: 60px;
     }
 
     .footer-grid {
@@ -666,34 +641,32 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 30px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     .footer-col h4 {
       font-family: var(--font-heading);
-      font-size: 0.98rem;
+      font-size: 1rem;
       color: var(--cyan-neon);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       letter-spacing: 1px;
-      font-weight: 700;
     }
 
     .footer-col p {
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
 
     .copyright {
       text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 22px;
+      padding-top: 20px;
       color: var(--text-muted);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-family: var(--font-heading);
-      letter-spacing: 0.5px;
     }
 
-    /* RESPONSIVE BREAKPOINTS */
+    /* ADAPTACIÓN MÓVIL */
     @media (max-width: 1024px) {
       .store-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -704,36 +677,36 @@
       header {
         flex-direction: column;
         gap: 15px;
-        padding: 16px 4%;
       }
 
       nav {
         justify-content: center;
+        flex-wrap: wrap;
         gap: 15px;
       }
 
       .hero-title-main {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
       }
 
       .store-grid {
         grid-template-columns: 1fr;
       }
 
-      .whatsapp-float-btn {
-        width: 55px;
-        height: 55px;
-        font-size: 28px;
-        bottom: 20px;
-        right: 20px;
+      .form-container {
+        padding: 25px 18px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- EFECTOS DE LUZ AMBIENTAL DE FONDO -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
   <!-- BOTÓN FLOTANTE OFICIAL DE WHATSAPP -->
-  <a href="https://wa.me/5492634722710" class="whatsapp-float-btn" target="_blank" aria-label="Contacto por WhatsApp" title="Contactar a ONE PLAYER por WhatsApp">
+  <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20hacer%20una%20consulta." class="whatsapp-float" target="_blank" aria-label="Contacto WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -748,39 +721,39 @@
     </nav>
   </header>
 
-  <!-- HERO SECTION PRINCIPAL -->
+  <!-- HERO PRINCIPAL -->
   <section id="inicio" class="hero">
     <h1 class="hero-title-main">ONE <span>PLAYER</span></h1>
     
     <div class="badge-status">
       <span class="dot"></span>
-      LABORATORIO ACTIVO - RIVADAVIA, MENDOZA
+      LABORATORIO ACTIVO - RIVADAVIA
     </div>
 
     <div class="section-title" style="margin-bottom: 15px;">
       <h2>¿QUIÉNES SOMOS?</h2>
     </div>
     
-    <p class="description">Con una trayectoria de más de 4 años, nos enfocamos en la necesidad de cada cliente. Brindamos respuestas rápidas, efectivas y con la máxima responsabilidad, garantizando que tu dispositivo vuelva a tus manos en óptimas condiciones.</p>
+    <p>Con una trayectoria de 4 años, nos enfocamos en la necesidad del cliente, al alcance y siempre teniendo la eficacia de trabajar con responsabilidad y rapidez, entregando el dispositivo como debe ser.</p>
 
     <!-- ESTADÍSTICAS -->
     <div class="stats-grid">
       <div class="stat-card">
         <span class="stat-number">4+ Años</span>
-        <span class="stat-label">Experiencia Técnica</span>
+        <span class="stat-label">De Experiencia Técnica</span>
       </div>
       <div class="stat-card">
         <span class="stat-number">100%</span>
-        <span class="stat-label">Prueba Frente al Cliente</span>
+        <span class="stat-label">Prueba frente al cliente</span>
       </div>
       <div class="stat-card">
-        <span class="stat-number">Rivadavia</span>
-        <span class="stat-label">Atención Local Directa</span>
+        <span class="stat-number">Rivadavia, Mendoza</span>
+        <span class="stat-label">Atención y Local</span>
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS / LABORATORIO TÉCNICO -->
+  <!-- LABORATORIO TÉCNICO -->
   <section id="servicios">
     <div class="section-title">
       <h2>LABORATORIO TÉCNICO</h2>
@@ -789,7 +762,7 @@
     <div class="cards-grid">
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Modulo.jpg" alt="Cambio de Módulo" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Cambio+de+Modulo'">
+          <img src="Modulo.jpg" alt="Cambio de Módulo">
         </div>
         <h3>CAMBIO DE MÓDULO</h3>
         <p>Reparaciones e instalaciones de pantallas y displays táctiles para todas las marcas con repuestos de calidad garantizada.</p>
@@ -797,7 +770,7 @@
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Baterias.jpg" alt="Cambio de Batería" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Cambio+de+Bateria'">
+          <img src="Baterias.jpg" alt="Cambio de Batería">
         </div>
         <h3>CAMBIO DE BATERÍA</h3>
         <p>Reemplazo de baterías agotadas para devolverle la autonomía y el máximo rendimiento original a tu celular.</p>
@@ -805,7 +778,7 @@
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Placa de carga.jpg" alt="Pin / Placa de Carga" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Pin+de+Carga'">
+          <img src="Placa de carga.jpg" alt="Pin / Placa de Carga">
         </div>
         <h3>PIN / PLACA DE CARGA</h3>
         <p>Solución definitiva a problemas de carga, conectores dañados, pines sulfatados o falsos contactos en tus dispositivos.</p>
@@ -813,38 +786,38 @@
     </div>
   </section>
 
-  <!-- MARQUESINA DE MARCAS ANDROID -->
+  <!-- MARQUESINA INFINITA DE MARCAS ANDROID -->
   <div class="brand-marquee-container">
-    <div class="brand-title"><i class="fa-solid fa-microchip"></i> ESPECIALIZACIÓN EXCLUSIVA - SISTEMA ANDROID</div>
+    <div class="brand-title">ESPECIALIZACIÓN EXCLUSIVA - SISTEMA ANDROID</div>
     <div class="marquee">
       <div class="marquee-content">
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> SAMSUNG</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> MOTOROLA</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> XIAOMI</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> REDMI</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> HUAWEI</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> LG</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> ZTE</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> ALCATEL</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> TCL</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> NOKIA</div>
+        <span class="brand-pill">SAMSUNG</span>
+        <span class="brand-pill">MOTOROLA</span>
+        <span class="brand-pill">XIAOMI</span>
+        <span class="brand-pill">REDMI</span>
+        <span class="brand-pill">HUAWEI</span>
+        <span class="brand-pill">LG</span>
+        <span class="brand-pill">ZTE</span>
+        <span class="brand-pill">ALCATEL</span>
+        <span class="brand-pill">TCL</span>
+        <span class="brand-pill">NOKIA</span>
       </div>
       <div class="marquee-content" aria-hidden="true">
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> SAMSUNG</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> MOTOROLA</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> XIAOMI</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> REDMI</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> HUAWEI</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> LG</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> ZTE</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> ALCATEL</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> TCL</div>
-        <div class="brand-pill"><i class="fa-brands fa-android"></i> NOKIA</div>
+        <span class="brand-pill">SAMSUNG</span>
+        <span class="brand-pill">MOTOROLA</span>
+        <span class="brand-pill">XIAOMI</span>
+        <span class="brand-pill">REDMI</span>
+        <span class="brand-pill">HUAWEI</span>
+        <span class="brand-pill">LG</span>
+        <span class="brand-pill">ZTE</span>
+        <span class="brand-pill">ALCATEL</span>
+        <span class="brand-pill">TCL</span>
+        <span class="brand-pill">NOKIA</span>
       </div>
     </div>
   </div>
 
-  <!-- STORE & GEAR (DIRECT WHATSAPP CONSULTATION LINKS) -->
+  <!-- STORE & GEAR (4 EN FILA EN DESKTOP) -->
   <section id="store">
     <div class="section-title">
       <h2>STORE Y GEAR</h2>
@@ -853,38 +826,46 @@
     <div class="cards-grid store-grid">
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Auriculares.jpg" alt="Auriculares" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Auriculares'">
+          <img src="Auriculares.jpg" alt="Auriculares">
         </div>
         <h3>AURICULARES</h3>
-        <p>Con cable, Bluetooth, gaming y vinchas con sonido de alta definición.</p>
-        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BC!%20Quisiera%20consultar%20disponibilidad%20y%20precios%20de%20*Auriculares*." target="_blank" class="btn-action">CONSULTAR</a>
+        <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición.</p>
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20AURICULARES." target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+        </a>
       </div>
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Cargadores.png" alt="Cargadores" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Cargadores'">
+          <img src="Cargadores.png" alt="Cargadores">
         </div>
         <h3>CARGADORES</h3>
         <p>Cargadores de carga normal, rápidos y originales para cuidar tu batería.</p>
-        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BC!%20Quisiera%20consultar%20disponibilidad%20y%20precios%20de%20*Cargadores*." target="_blank" class="btn-action">CONSULTAR</a>
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20CARGADORES." target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+        </a>
       </div>
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="USB.jpg" alt="Cables USB" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Cables+USB'">
+          <img src="USB.jpg" alt="Cables USB">
         </div>
         <h3>CABLES USB</h3>
-        <p>Cables con entrada Tipo C, V8 y Lightning de alta durabilidad.</p>
-        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BC!%20Quisiera%20consultar%20disponibilidad%20y%20precios%20de%20*Cables%20USB*." target="_blank" class="btn-action">CONSULTAR</a>
+        <p>Cables con entrada Tipo C, V8 y Lightning (iPhone) de alta resistencia.</p>
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20CABLES%20USB." target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+        </a>
       </div>
 
       <div class="card">
         <div class="card-img-wrapper">
-          <img src="Convertidores.png" alt="Convertidores TV" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=Convertidores+TV'">
+          <img src="Convertidores.png" alt="Convertidores TV">
         </div>
         <h3>CONVERTIDORES TV</h3>
-        <p>Transforma tu televisor tradicional en un Smart TV con todas tus aplicaciones.</p>
-        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BC!%20Quisiera%20consultar%20disponibilidad%20y%20precios%20de%20*Convertidores%20TV*." target="_blank" class="btn-action">CONSULTAR</a>
+        <p>Transforma tu televisor tradicional en un Smart TV con todas tus apps.</p>
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20CONVERTIDORES%20TV." target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+        </a>
       </div>
     </div>
   </section>
@@ -895,13 +876,15 @@
       <h2>TV ENTERTAINMENT</h2>
     </div>
 
-    <div class="card" style="max-width: 620px; margin: 0 auto;">
-      <div class="card-img-wrapper" style="height: 260px;">
-        <img src="Tv.jpg" alt="TV Entertainment" onerror="this.src='https://placehold.co/600x400/121620/00f0ff?text=TV+Entertainment'">
+    <div class="card" style="max-width: 600px; margin: 0 auto;">
+      <div class="card-img-wrapper" style="height: 250px;">
+        <img src="Tv.jpg" alt="TV Entertainment">
       </div>
-      <h3 style="font-size: 1.4rem; color: var(--cyan-neon);">EXPERIENCIA TV FAMILIAR</h3>
-      <p style="margin-top: 8px;">Una solución de TV integrada para compartir en familia el mejor entretenimiento, directo desde el confort de tu hogar.</p>
-      <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BC!%20Quisiera%20solicitar%20informaci%C3%B3n%20sobre%20*TV%20Entertainment*." target="_blank" class="btn-action" style="margin-top: 20px;">CONSULTAR</a>
+      <h3 style="font-size: 1.5rem; color: var(--cyan-neon);">EXPERIENCIA TV FAMILIAR</h3>
+      <p style="margin-bottom: 15px;">Una solución de TV integrada para compartir en familia el mejor entretenimiento, directo desde el confort de tu hogar.</p>
+      <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20EXPERIENCIA%20TV%20FAMILIAR." target="_blank" class="btn-action">
+        <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+      </a>
     </div>
   </section>
 
@@ -915,12 +898,12 @@
       <div class="card">
         <span class="stat-number" style="font-size: 1.5rem;">01</span>
         <h3>DIAGNÓSTICO RÁPIDO</h3>
-        <p>Revisión técnica inmediata para darte la solución precisa sin demoras innecesarias.</p>
+        <p>Revisión inmediata de la falla para darte la solución precisa sin demoras innecesarias.</p>
       </div>
 
       <div class="card">
         <span class="stat-number" style="font-size: 1.5rem;">02</span>
-        <h3>REPUESTOS DE CALIDAD</h3>
+        <h3>REPUESTOS CALIDAD</h3>
         <p>Utilizamos repuestos testeados para garantizar la máxima durabilidad de tu dispositivo.</p>
       </div>
 
@@ -933,7 +916,7 @@
       <div class="card">
         <span class="stat-number" style="font-size: 1.5rem;">04</span>
         <h3>ATENCIÓN DIRECTA</h3>
-        <p>Trato personalizado vía WhatsApp o presencial para responder todas tus inquietudes.</p>
+        <p>Trato personalizado y directo vía WhatsApp o presencial para sacarte todas las dudas.</p>
       </div>
     </div>
   </section>
@@ -943,23 +926,23 @@
     <div class="section-title">
       <h2>MEDIOS DE PAGO</h2>
     </div>
-    <p style="color: var(--text-muted); margin-bottom: 30px;">Aceptamos múltiples opciones de pago para tu mayor comodidad:</p>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">Pensando en tu comodidad, aceptamos múltiples opciones de pago en todos nuestros servicios y productos:</p>
     
-    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));">
+    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
       <div class="card">
-        <i class="fa-solid fa-money-bill-wave" style="font-size: 2.2rem; color: var(--cyan-neon); margin-bottom: 12px;"></i>
+        <i class="fa-solid fa-money-bill-wave" style="font-size: 2rem; color: var(--cyan-neon); margin-bottom: 10px;"></i>
         <h3>EFECTIVO</h3>
       </div>
       <div class="card">
-        <i class="fa-solid fa-building-columns" style="font-size: 2.2rem; color: var(--cyan-neon); margin-bottom: 12px;"></i>
+        <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--cyan-neon); margin-bottom: 10px;"></i>
         <h3>TRANSFERENCIA</h3>
       </div>
       <div class="card">
-        <i class="fa-solid fa-wallet" style="font-size: 2.2rem; color: var(--cyan-neon); margin-bottom: 12px;"></i>
+        <i class="fa-solid fa-wallet" style="font-size: 2rem; color: var(--cyan-neon); margin-bottom: 10px;"></i>
         <h3>MERCADO PAGO</h3>
       </div>
       <div class="card">
-        <i class="fa-solid fa-credit-card" style="font-size: 2.2rem; color: var(--cyan-neon); margin-bottom: 12px;"></i>
+        <i class="fa-solid fa-credit-card" style="font-size: 2rem; color: var(--cyan-neon); margin-bottom: 10px;"></i>
         <h3>TARJETAS</h3>
       </div>
     </div>
@@ -967,47 +950,42 @@
 
   <!-- GARANTÍA Y CONFIANZA REDISEÑADO -->
   <section>
-    <div class="trust-container">
-      <div class="trust-header">
-        <div class="trust-badge-icon">
-          <i class="fa-solid fa-shield-halved"></i>
-        </div>
-        <h3 class="trust-title">GARANTÍA Y CONFIANZA</h3>
-        <p class="trust-subtitle">
-          Ofrecemos total transparencia desde que ingresa tu equipo hasta que vuelve a tus manos. Trabajos eficientes, veloces y garantizados.
-        </p>
+    <div class="garantia-box">
+      <div class="section-title" style="margin-bottom: 20px;">
+        <h2>GARANTÍA Y CONFIANZA</h2>
       </div>
+      <p style="max-width: 750px; margin: 0 auto; color: var(--text-main); font-size: 1.1rem;">
+        Transparencia total desde la recepción hasta la entrega. Tu equipo en manos de expertos.
+      </p>
 
-      <div class="trust-grid">
-        <div class="trust-item">
-          <i class="fa-solid fa-eye"></i>
+      <div class="garantia-grid">
+        <div class="garantia-item">
+          <i class="fa-solid fa-microscope"></i>
           <h4>DIAGNÓSTICO 100% TRANSPARENTE</h4>
-          <p>Explicación clara del procedimiento, sin sorpresas ni costos ocultos durante la reparación.</p>
+          <p>Evaluamos tu celular de manera clara sin costos ocultos.</p>
         </div>
-
-        <div class="trust-item">
-          <i class="fa-solid fa-bolt"></i>
+        <div class="garantia-item">
+          <i class="fa-solid fa-vial-circle-check"></i>
           <h4>TESTEO EN VIVO</h4>
-          <p>Cada reparación se entrega probada al 100% frente al cliente en el momento de la entrega.</p>
+          <p>Probamos el funcionamiento completo frente a vos antes de entregártelo.</p>
         </div>
-
-        <div class="trust-item">
-          <i class="fa-solid fa-certificate"></i>
-          <h4>GARANTÍA REAL ESCRITA</h4>
-          <p>Respaldamos la calidad de nuestros módulos, baterías y trabajos técnicos con garantía oficial.</p>
+        <div class="garantia-item">
+          <i class="fa-solid fa-bolt"></i>
+          <h4>TRABAJO EFICIENTE</h4>
+          <p>Tiempos de entrega rápidos para que no te quedes desconectado.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRESUPUESTO EN LÍNEA (SÓLO CELULARES - MÓDULO, BATERÍA, PIN DE CARGA) -->
+  <!-- FORMULARIO PRESUPUESTO SIMPLIFICADO Y CENTRADO -->
   <section id="presupuesto">
     <div class="section-title">
       <h2>SOLICITAR PRESUPUESTO EN LÍNEA</h2>
     </div>
 
     <div class="form-container">
-      <p style="text-align: center; color: var(--text-muted); margin-bottom: 28px;">Completá los datos de tu celular y recibí atención personalizada en tu WhatsApp.</p>
+      <p class="form-container-subtitle">Completá los datos de tu celular y recibí atención personalizada en tu WhatsApp.</p>
       
       <form id="presupuestoForm">
         <div class="form-group">
@@ -1026,10 +1004,11 @@
 
         <div class="form-group">
           <label for="falla">DETALLE DE LA FALLA</label>
-          <textarea id="falla" class="form-control" rows="4" placeholder="Describí brevemente qué le sucede a tu celular (ej: pantalla rota, no carga, batería dura poco)..." required></textarea>
+          <textarea id="falla" class="form-control" rows="4" placeholder="Describí brevemente qué le sucede a tu celular..." required></textarea>
         </div>
 
         <button type="submit" class="btn-submit">
+          <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
           Enviar tu falla
         </button>
       </form>
@@ -1041,17 +1020,17 @@
     <div class="footer-grid">
       <div class="footer-col">
         <h4>UBICACIÓN</h4>
-        <p><i class="fa-solid fa-location-dot" style="color: var(--cyan-neon);"></i> Rivadavia, Mendoza, Argentina</p>
+        <p><i class="fa-solid fa-location-dot" style="color: var(--cyan-neon);"></i> Rivadavia, Mendoza</p>
       </div>
 
       <div class="footer-col">
-        <h4>TELÉFONO DE CONTACTO</h4>
-        <p><i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green);"></i> 2634722710</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>ESPECIALIZACIÓN</h4>
+        <h4>ESPECIALIDAD</h4>
         <p><i class="fa-solid fa-mobile-button" style="color: var(--cyan-neon);"></i> Exclusivo Reparaciones Android</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>ATENCIÓN DIRECTA</h4>
+        <p><i class="fa-solid fa-phone" style="color: var(--cyan-neon);"></i> 2634722710</p>
       </div>
     </div>
 
@@ -1060,7 +1039,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT DE ENVÍO DE FALLA POR WHATSAPP (+5492634722710) -->
+  <!-- SCRIPT ENVÍO AUTOMÁTICO WHATSAPP -->
   <script>
     document.getElementById('presupuestoForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -1071,10 +1050,10 @@
       const tipo = document.getElementById('tipoReparacion').value;
       const falla = document.getElementById('falla').value;
 
-      const mensaje = `Hola *ONE PLAYER* 👋! Quisiera consultar por la reparación de mi celular:%0A%0A` +
-                      `📱 *Modelo:* ${encodeURIComponent(modelo)}%0A` +
-                      `🛠️ *Reparación:* ${encodeURIComponent(tipo)}%0A` +
-                      `📝 *Falla:* ${encodeURIComponent(falla)}`;
+      const mensaje = `Hola *ONE PLAYER* 👋! Quisiera solicitar un presupuesto para mi celular:%0A%0A` +
+                      `📱 *Marca y Modelo:* ${encodeURIComponent(modelo)}%0A` +
+                      `🛠️ *Tipo de Reparación:* ${encodeURIComponent(tipo)}%0A` +
+                      `📝 *Detalle de Falla:* ${encodeURIComponent(falla)}`;
 
       window.open(`https://wa.me/${numeroTelefono}?text=${mensaje}`, '_blank');
     });
