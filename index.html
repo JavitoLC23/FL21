@@ -742,27 +742,6 @@
 
       .form-container {
         padding: 30px 20px;
-        /* Ajuste de contenedores de imagen para tarjetas de Store & Gear */
-#store .card-img-box, 
-#store .img-box {
-  width: 100%;
-  height: 180px;            /* Limita la altura como en Laboratorio */
-  border-radius: 12px;       /* Bordes redondeados */
-  overflow: hidden;          /* Recorta lo que sobresale */
-  background: #080a0f;       /* Fondo oscuro interno */
-  border: 1px solid rgba(0, 240, 255, 0.2); /* Borde con neón */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-#store .card-img-box img, 
-#store .img-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;       /* O usa 'cover' según prefieras que se encuadre */
-}
       }
     }
   </style>
@@ -882,57 +861,57 @@
     </div>
   </div>
 
-<!-- SECCIÓN STORE Y GEAR -->
-<section id="store" class="store-section">
-  <h2 class="section-title">STORE Y <span>GEAR</span></h2>
-  <p style="color: var(--text-muted); margin-bottom: 40px;">Encontrá los mejores accesorios y tecnología para tus dispositivos.</p>
-
-  <div class="cards-grid">
-    <!-- Card Auriculares -->
-    <div class="card">
-      <div class="card-icon"><i class="fa-solid fa-headphones"></i></div>
-      <div style="width: 100%; height: 180px; border-radius: 12px; overflow: hidden; background: #080a0f; border: 1px solid rgba(0, 240, 255, 0.2); margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
-        <img src="Auriculares.jpg" alt="Auriculares" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
-      <h3>AURICULARES</h3>
-      <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición.</p>
-      <a href="store.html" class="btn-primary" style="margin-top: 15px; display: inline-block;">CONSULTAR</a>
+  <section id="store">
+    <div class="section-title">
+      <h2>STORE Y GEAR</h2>
     </div>
 
-    <!-- Card Cargadores -->
-    <div class="card">
-      <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-      <div style="width: 100%; height: 180px; border-radius: 12px; overflow: hidden; background: #080a0f; border: 1px solid rgba(0, 240, 255, 0.2); margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
-        <img src="Cargadores.png" alt="Cargadores" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <div class="cards-grid store-grid">
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="Auriculares.jpg" alt="Auriculares">
+        </div>
+        <h3>AURICULARES</h3>
+        <p>Con cable, bluetooth, gaming y vinchas con sonido de alta definición.</p>
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20AURICULARES." target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+        </a>
       </div>
-      <h3>CARGADORES</h3>
-      <p>Cargadores de carga normal, rápidos y originales para cuidar tu batería.</p>
-      <a href="store.html" class="btn-primary" style="margin-top: 15px; display: inline-block;">CONSULTAR</a>
-    </div>
 
-    <!-- Card Cables USB -->
-    <div class="card">
-      <div class="card-icon"><i class="fa-solid fa-plug"></i></div>
-      <div style="width: 100%; height: 180px; border-radius: 12px; overflow: hidden; background: #080a0f; border: 1px solid rgba(0, 240, 255, 0.2); margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
-        <img src="USB.jpg" alt="Cables USB" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="Cargadores.png" alt="Cargadores">
+        </div>
+        <h3>CARGADORES</h3>
+        <p>Cargadores de carga normal, rápidos y originales para cuidar tu batería.</p>
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20CARGADORES." target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+        </a>
       </div>
-      <h3>CABLES USB</h3>
-      <p>Cables con entrada Tipo C, V8 y Lightning (iPhone) de alta resistencia.</p>
-      <a href="store.html" class="btn-primary" style="margin-top: 15px; display: inline-block;">CONSULTAR</a>
-    </div>
 
-    <!-- Card Convertidores TV -->
-    <div class="card">
-      <div class="card-icon"><i class="fa-solid fa-tv"></i></div>
-      <div style="width: 100%; height: 180px; border-radius: 12px; overflow: hidden; background: #080a0f; border: 1px solid rgba(0, 240, 255, 0.2); margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
-        <img src="Convertidores.png" alt="Convertidores TV" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="USB.jpg" alt="Cables USB">
+        </div>
+        <h3>CABLES USB</h3>
+        <p>Cables con entrada Tipo C, V8 y Lightning (iPhone) de alta resistencia.</p>
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20CABLES%20USB." target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+        </a>
       </div>
-      <h3>CONVERTIDORES TV</h3>
-      <p>Transforma tu televisor tradicional en un Smart TV con todas tus apps.</p>
-      <a href="store.html" class="btn-primary" style="margin-top: 15px; display: inline-block;">CONSULTAR</a>
+
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="Convertidores.png" alt="Convertidores TV">
+        </div>
+        <h3>CONVERTIDORES TV</h3>
+        <p>Transforma tu televisor tradicional en un Smart TV con todas tus apps.</p>
+        <a href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20CONVERTIDORES%20TV." target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> CONSULTAR
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- TV ENTERTAINMENT -->
   <section id="tv">
