@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#030509">
-  <meta name="description" content="ONE PLAYER - Servicio Técnico Android, reparación de celulares, accesorios y tecnología en Rivadavia, Mendoza. Diagnóstico, reparación y atención directa por WhatsApp.">
+  <meta name="description" content="ONE PLAYER: servicio técnico Android, reparación de celulares y accesorios tecnológicos en Rivadavia, Mendoza. Atención directa y diagnóstico transparente.">
   <meta name="keywords" content="servicio técnico celulares, reparación celulares, Android, Rivadavia Mendoza, cambio módulo, batería, pin de carga, accesorios">
   <meta name="author" content="ONE PLAYER">
   <meta name="robots" content="index, follow">
@@ -22,8 +22,8 @@
 
   <style>
     /* =========================================================
-       ONE PLAYER V2
-       Sistema visual premium / cyber-neon
+       ONE PLAYER V4
+       Sistema visual premium / cyber-neon · optimización y accesibilidad
        ========================================================= */
 
     :root {
@@ -2312,7 +2312,133 @@
         transform: none;
       }
     }
+  
+
+    /* =========================================================
+       V4 POWER-UP: ACCESIBILIDAD, RESPONSIVE Y MICRODETALLES
+       ========================================================= */
+    :focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+
+    .desktop-nav a,
+    .mobile-nav a,
+    .btn,
+    .store-card,
+    .service-card,
+    .stat-card {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn,
+    .whatsapp-float,
+    .back-top,
+    .menu-toggle {
+      touch-action: manipulation;
+    }
+
+    img {
+      height: auto;
+    }
+
+    img[loading="lazy"] {
+      content-visibility: auto;
+    }
+
+    .mobile-nav-inner a[aria-current="location"],
+    .desktop-nav a[aria-current="location"] {
+      color: var(--white);
+    }
+
+    .form-status:empty {
+      display: none;
+    }
+
+    .image-unavailable {
+      background: linear-gradient(135deg, rgba(0,240,255,0.06), rgba(217,0,255,0.06));
+    }
+
+    @media (hover: none) {
+      .tilt:hover,
+      .service-card:hover,
+      .store-card:hover {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .nav-shell {
+        width: min(100% - 28px, var(--container));
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .mobile-nav-inner a {
+        min-height: 48px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .nav-shell {
+        width: calc(100% - 22px);
+      }
+
+      .brand-text {
+        font-size: 0.82rem;
+        letter-spacing: 1px;
+      }
+
+      .menu-toggle {
+        min-width: 42px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.45rem, 14vw, 3.1rem);
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ambient,
+      .page-noise,
+      .grid-overlay {
+        animation: none !important;
+      }
+    }
+
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ONE PLAYER",
+    "description": "Servicio técnico Android, reparación de celulares y accesorios tecnológicos.",
+    "areaServed": {
+      "@type": "City",
+      "name": "Rivadavia, Mendoza, Argentina"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rivadavia",
+      "addressRegion": "Mendoza",
+      "addressCountry": "AR"
+    },
+    "knowsAbout": ["Servicio técnico Android", "Reparación de celulares", "Accesorios tecnológicos"]
+  }
+  </script>
+
 </head>
 
 <body>
@@ -2567,7 +2693,7 @@
 
         <article class="service-card reveal tilt">
           <div class="service-image">
-            <img
+            <img decoding="async"
               src="Modulo.jpg"
               alt="Cambio de módulo y pantalla de celular"
               loading="lazy"
@@ -2600,7 +2726,7 @@
 
         <article class="service-card reveal tilt">
           <div class="service-image">
-            <img
+            <img decoding="async"
               src="Baterias.jpg"
               alt="Cambio de batería de celular"
               loading="lazy"
@@ -2633,7 +2759,7 @@
 
         <article class="service-card reveal tilt">
           <div class="service-image">
-            <img
+            <img decoding="async"
               src="Placa de carga.jpg"
               alt="Reparación de pin o placa de carga"
               loading="lazy"
@@ -2777,7 +2903,7 @@
 
         <article class="store-card reveal tilt">
           <div class="store-image">
-            <img
+            <img decoding="async"
               src="Auriculares.jpg"
               alt="Auriculares disponibles en ONE PLAYER"
               loading="lazy"
@@ -2806,7 +2932,7 @@
 
         <article class="store-card reveal tilt">
           <div class="store-image">
-            <img
+            <img decoding="async"
               src="Cargadores.png"
               alt="Cargadores disponibles en ONE PLAYER"
               loading="lazy"
@@ -2835,7 +2961,7 @@
 
         <article class="store-card reveal tilt">
           <div class="store-image">
-            <img
+            <img decoding="async"
               src="USB.jpg"
               alt="Cables USB disponibles en ONE PLAYER"
               loading="lazy"
@@ -2864,7 +2990,7 @@
 
         <article class="store-card reveal tilt">
           <div class="store-image">
-            <img
+            <img decoding="async"
               src="Convertidores.png"
               alt="Convertidores TV disponibles en ONE PLAYER"
               loading="lazy"
@@ -2909,7 +3035,7 @@
       <div class="tv-feature reveal">
 
         <div class="tv-visual">
-          <img
+          <img decoding="async"
             src="Tv.jpg"
             alt="TV Entertainment de ONE PLAYER"
             loading="lazy"
@@ -3611,6 +3737,21 @@
       );
     });
 
+    /* V4: cierre accesible del menú móvil con Escape o clic exterior. */
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobileNav?.classList.contains("open")) {
+        closeMobileMenu();
+        menuToggle?.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!mobileNav?.classList.contains("open")) return;
+      const clickedInsideMenu = mobileNav.contains(event.target);
+      const clickedToggle = menuToggle?.contains(event.target);
+      if (!clickedInsideMenu && !clickedToggle) closeMobileMenu();
+    });
+
     window.addEventListener(
       "resize",
       () => {
@@ -3627,10 +3768,8 @@
     const sectionIds = [
       "inicio",
       "servicios",
-      "proceso",
       "store",
-      "tv",
-      "presupuesto"
+      "tv"
     ];
 
     const navLinks = $$(".nav-link");
@@ -3658,19 +3797,23 @@
       });
 
       navLinks.forEach((link) => {
-        link.classList.toggle(
-          "active",
-          link.getAttribute("href") ===
-            "#" + currentId
-        );
+        const isActive = link.getAttribute("href") === "#" + currentId;
+        link.classList.toggle("active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
       });
 
       allMobileLinks.forEach((link) => {
-        link.classList.toggle(
-          "active",
-          link.getAttribute("href") ===
-            "#" + currentId
-        );
+        const isActive = link.getAttribute("href") === "#" + currentId;
+        link.classList.toggle("active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
       });
     };
 
@@ -3919,50 +4062,26 @@
             return;
           }
 
-          const message =
-            "Hola *ONE PLAYER* 👋! " +
-            "Quisiera solicitar un presupuesto para mi celular:%0A%0A" +
-            "📱 *Marca y Modelo:* " +
-            modelo +
-            "%0A" +
-            "🛠️ *Tipo de Reparación:* " +
-            tipo +
-            "%0A" +
-            "📝 *Detalle de Falla:* " +
-            falla;
+          const message = [
+            "Hola *ONE PLAYER* 👋!",
+            "Quisiera solicitar un presupuesto para mi celular:",
+            "",
+            "📱 *Marca y Modelo:* " + modelo,
+            "🛠️ *Tipo de Reparación:* " + tipo,
+            "📝 *Detalle de Falla:* " + falla
+          ].join("\n");
 
-          showFormStatus(
-            "Abriendo WhatsApp..."
-          );
+          showFormStatus("Abriendo WhatsApp...");
 
-          const url =
-            whatsappBase +
-            "?text=" +
-            encodeURIComponent(
-              "Hola *ONE PLAYER* 👋! " +
-              "Quisiera solicitar un presupuesto para mi celular:\n\n" +
-              "📱 *Marca y Modelo:* " +
-              modelo +
-              "\n" +
-              "🛠️ *Tipo de Reparación:* " +
-              tipo +
-              "\n" +
-              "📝 *Detalle de Falla:* " +
-              falla
+          const url = whatsappBase + "?text=" + encodeURIComponent(message);
+          const openedWindow = window.open(url, "_blank", "noopener,noreferrer");
+
+          if (!openedWindow) {
+            showFormStatus(
+              "El navegador bloqueó la ventana. Permití las ventanas emergentes o escribinos desde el botón de WhatsApp.",
+              "error"
             );
-
-          window.open(
-            url,
-            "_blank",
-            "noopener,noreferrer"
-          );
-
-          /* Se mantiene la variable message construida
-             arriba como referencia del formato anterior,
-             pero el envío final usa encodeURIComponent
-             para mayor seguridad con caracteres especiales. */
-
-          void message;
+          }
         }
       );
     }
@@ -4071,10 +4190,12 @@
               return;
             }
 
-            const target =
-              document.querySelector(
-                targetId
-              );
+            let target = null;
+            try {
+              target = document.querySelector(targetId);
+            } catch (error) {
+              return;
+            }
 
             if (!target) {
               return;
@@ -4128,6 +4249,20 @@
 
       }
     );
+
+    /* =========================================================
+       V4 POWER-UP: IMÁGENES, RENDIMIENTO Y ARRANQUE SEGURO
+       ========================================================= */
+
+    // Evita decodificación síncrona de imágenes y retrasa las no prioritarias.
+    $$('img').forEach((image, index) => {
+      if (!image.hasAttribute("decoding")) image.decoding = "async";
+      if (index > 0 && !image.hasAttribute("loading")) image.loading = "lazy";
+      image.addEventListener("error", () => {
+        image.classList.add("image-unavailable");
+        image.setAttribute("aria-label", image.alt || "Imagen no disponible");
+      }, { once: true });
+    });
 
     /* =========================================================
        INIT
