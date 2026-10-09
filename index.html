@@ -3201,6 +3201,285 @@
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
     }
 
+
+
+    /* =========================================================
+       ONE PLAYER V7 — LATINO NEON OVERDRIVE
+       Argentina + Bolivia palette, stronger motion, readable type.
+       Pure CSS overlay: preserves existing content and interactions.
+       ========================================================= */
+    :root {
+      --ar-sky: #74d7ff;
+      --ar-white: #f8fcff;
+      --bo-red: #ff3153;
+      --bo-yellow: #ffd84a;
+      --bo-green: #19ff8a;
+      --electric-blue: #237bff;
+      --ultra-violet: #bc42ff;
+      --hot-orange: #ff6b27;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      isolation: isolate;
+      background: #02040b !important;
+      background-image:
+        radial-gradient(ellipse at 12% 8%, rgba(116,215,255,.22), transparent 34%),
+        radial-gradient(ellipse at 91% 17%, rgba(188,66,255,.23), transparent 33%),
+        radial-gradient(ellipse at 7% 58%, rgba(255,49,83,.15), transparent 31%),
+        radial-gradient(ellipse at 83% 83%, rgba(255,216,74,.10), transparent 28%),
+        radial-gradient(ellipse at 51% 112%, rgba(25,255,138,.11), transparent 32%),
+        linear-gradient(135deg, #02040b 0%, #071020 42%, #10061a 72%, #02040b 100%) !important;
+      background-size: 150% 150%;
+      animation: v7BackdropDrift 22s ease-in-out infinite alternate;
+    }
+    @keyframes v7BackdropDrift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 75% 35%; }
+      100% { background-position: 20% 100%; }
+    }
+
+    /* Moving aurora and ember field. Behind all content, never catches clicks. */
+    body::before {
+      content: "" !important;
+      display: block !important;
+      position: fixed !important;
+      inset: -18% !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+      width: auto !important;
+      height: auto !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      opacity: .78 !important;
+      filter: blur(26px) saturate(1.35) !important;
+      background:
+        radial-gradient(ellipse at 12% 25%, rgba(255,65,78,.22), transparent 18%),
+        radial-gradient(ellipse at 28% 76%, rgba(255,184,56,.15), transparent 19%),
+        radial-gradient(ellipse at 68% 22%, rgba(0,225,255,.21), transparent 21%),
+        radial-gradient(ellipse at 82% 67%, rgba(186,47,255,.23), transparent 24%),
+        radial-gradient(ellipse at 53% 90%, rgba(25,255,138,.12), transparent 19%);
+      animation: v7AuroraFlow 18s ease-in-out infinite alternate;
+      transform: translateZ(0);
+    }
+    @keyframes v7AuroraFlow {
+      0% { transform: translate3d(-2%, -1%, 0) rotate(-3deg) scale(1); filter: blur(28px) saturate(1.25); }
+      50% { transform: translate3d(2%, 1%, 0) rotate(3deg) scale(1.08); filter: blur(35px) saturate(1.55); }
+      100% { transform: translate3d(-1%, 2%, 0) rotate(-2deg) scale(1.03); filter: blur(24px) saturate(1.35); }
+    }
+    body::after {
+      content: "" !important;
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+      opacity: .24 !important;
+      mix-blend-mode: screen;
+      background-image:
+        radial-gradient(circle at 8% 22%, rgba(255,255,255,.8) 0 1px, transparent 2px),
+        radial-gradient(circle at 72% 15%, rgba(116,215,255,.9) 0 1px, transparent 2px),
+        radial-gradient(circle at 42% 76%, rgba(255,216,74,.8) 0 1px, transparent 2px),
+        radial-gradient(circle at 91% 58%, rgba(255,49,83,.9) 0 1px, transparent 2px),
+        radial-gradient(circle at 22% 89%, rgba(25,255,138,.8) 0 1px, transparent 2px);
+      background-size: 210px 240px, 260px 290px, 300px 260px, 280px 320px, 240px 280px;
+      animation: v7SparkDrift 34s linear infinite;
+    }
+    @keyframes v7SparkDrift {
+      from { background-position: 0 0, 30px 0, 0 20px, 20px 0, 0 0; }
+      to { background-position: 0 -500px, 30px -650px, 0 -450px, 20px -720px, 0 -560px; }
+    }
+
+    /* The header logo stays left; the four requested links sit at the far right. */
+    .nav-shell {
+      grid-template-columns: auto minmax(0, 1fr) auto !important;
+      gap: clamp(18px, 3vw, 54px) !important;
+    }
+    .nav-shell .desktop-nav {
+      justify-self: end !important;
+      margin-left: auto !important;
+      margin-right: clamp(0px, 1.6vw, 24px) !important;
+      gap: clamp(18px, 2vw, 32px) !important;
+    }
+    .desktop-nav a, .nav-link {
+      font-size: .82rem !important;
+      letter-spacing: .055em !important;
+      transition: color .25s ease, text-shadow .25s ease, transform .25s ease !important;
+    }
+    .desktop-nav a:hover, .nav-link:hover {
+      color: var(--ar-sky) !important;
+      text-shadow: 0 0 10px rgba(116,215,255,.8), 0 0 25px rgba(188,66,255,.5) !important;
+      transform: translateY(-2px);
+    }
+    .nav-link.active::after {
+      background: linear-gradient(90deg, var(--ar-sky), var(--ar-white), var(--bo-green), var(--bo-yellow), var(--bo-red)) !important;
+      box-shadow: 0 0 12px rgba(116,215,255,.8), 0 0 25px rgba(188,66,255,.45) !important;
+    }
+
+    /* Hero headline: animated Argentina sky-white + Bolivia red-yellow-green, with real layered depth. */
+    .hero-title {
+      position: relative !important;
+      isolation: isolate;
+      font-size: clamp(4rem, 10.4vw, 9.4rem) !important;
+      line-height: 1.02 !important;
+      font-weight: 900 !important;
+      letter-spacing: clamp(-.035em, -.18vw, -.005em) !important;
+      color: #f9fdff !important;
+      text-shadow:
+        0 2px 0 rgba(255,255,255,.8),
+        0 4px 0 rgba(116,215,255,.28),
+        0 7px 0 rgba(20,45,83,.8),
+        0 12px 20px rgba(0,0,0,.8),
+        0 0 16px rgba(255,255,255,.9),
+        0 0 38px rgba(116,215,255,.9),
+        0 0 80px rgba(35,123,255,.52) !important;
+      animation: v7TitlePower 4.2s ease-in-out infinite !important;
+      transform-origin: center;
+    }
+    .hero-title span {
+      background: linear-gradient(105deg,
+        #74d7ff 0%, #f9fdff 14%, #74d7ff 25%,
+        #ff3153 38%, #ffd84a 52%, #19ff8a 66%,
+        #00f0ff 79%, #bc42ff 91%, #f9fdff 100%) !important;
+      background-size: 300% 100% !important;
+      background-position: 0% 50%;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      text-shadow: none !important;
+      filter: drop-shadow(0 3px 0 rgba(14,27,56,.95))
+              drop-shadow(0 7px 0 rgba(0,0,0,.68))
+              drop-shadow(0 0 8px rgba(255,255,255,.8))
+              drop-shadow(0 0 24px rgba(0,240,255,.95))
+              drop-shadow(0 0 48px rgba(188,66,255,.58));
+      animation: v7FlagSpectrum 7s linear infinite, v7WordPulse 3.4s ease-in-out infinite alternate !important;
+    }
+    @keyframes v7FlagSpectrum { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+    @keyframes v7TitlePower {
+      0%,100% { filter: brightness(1); transform: perspective(900px) rotateX(0deg) translateY(0); }
+      50% { filter: brightness(1.15); transform: perspective(900px) rotateX(1deg) translateY(-3px); }
+    }
+    @keyframes v7WordPulse {
+      from { filter: drop-shadow(0 3px 0 rgba(14,27,56,.95)) drop-shadow(0 0 12px rgba(0,240,255,.7)) drop-shadow(0 0 25px rgba(255,49,83,.45)); }
+      to { filter: drop-shadow(0 4px 0 rgba(14,27,56,.95)) drop-shadow(0 0 18px rgba(255,216,74,.85)) drop-shadow(0 0 38px rgba(25,255,138,.65)) drop-shadow(0 0 54px rgba(188,66,255,.48)); }
+    }
+    .hero::before {
+      width: min(1000px, 92vw) !important;
+      height: min(650px, 72vw) !important;
+      border-color: rgba(116,215,255,.17) !important;
+      box-shadow: 0 0 90px rgba(0,240,255,.11), 0 0 150px rgba(188,66,255,.11), inset 0 0 120px rgba(255,49,83,.08) !important;
+      animation: v7HeroHalo 9s ease-in-out infinite alternate;
+    }
+    @keyframes v7HeroHalo {
+      from { opacity: .42; transform: translateX(-50%) scale(.97); }
+      to { opacity: .95; transform: translateX(-50%) scale(1.035); }
+    }
+    .hero-badge {
+      border-color: rgba(25,255,138,.72) !important;
+      box-shadow: 0 0 16px rgba(25,255,138,.16), 0 0 38px rgba(25,255,138,.12), inset 0 0 18px rgba(25,255,138,.06) !important;
+    }
+
+    /* Always-on animated LED rails on every important card, not hover-only. */
+    .stat-card, .service-card, .repair-card, .store-card, .tv-card,
+    .payment-card, .warranty-card, .quote-card, .why-card, .process-card,
+    .guarantee-card, .brands-panel {
+      position: relative;
+      isolation: isolate;
+      border-color: rgba(116,215,255,.32) !important;
+      background-image: linear-gradient(135deg, rgba(7,16,31,.92), rgba(5,8,20,.9) 48%, rgba(23,7,31,.84)) !important;
+      box-shadow: 0 0 0 1px rgba(0,240,255,.045), 0 12px 35px rgba(0,0,0,.25), inset 0 0 28px rgba(116,215,255,.045) !important;
+      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease !important;
+    }
+    .stat-card::before, .service-card::before, .repair-card::before,
+    .store-card::before, .tv-card::before, .payment-card::before,
+    .warranty-card::before, .quote-card::before, .why-card::before,
+    .process-card::before, .guarantee-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(115deg, var(--ar-sky), transparent 19%, var(--bo-red) 37%, var(--bo-yellow) 53%, var(--bo-green) 69%, var(--ultra-violet) 84%, var(--ar-sky));
+      background-size: 260% 260%;
+      animation: v7LedTravel 7s linear infinite;
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: .8;
+      z-index: 2;
+    }
+    @keyframes v7LedTravel { 0% { background-position: 0% 50%; opacity: .48; } 50% { opacity: 1; } 100% { background-position: 260% 50%; opacity: .58; } }
+    .stat-card::after, .service-card::after, .repair-card::after, .store-card::after, .tv-card::after {
+      opacity: .7;
+      background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.11) 42%, rgba(116,215,255,.12) 48%, transparent 67%) !important;
+      animation: v7CardShine 6.5s ease-in-out infinite;
+    }
+    @keyframes v7CardShine { 0%, 15% { transform: translateX(-130%) skewX(-18deg); } 55%,100% { transform: translateX(160%) skewX(-18deg); } }
+    .stat-card:hover, .service-card:hover, .repair-card:hover, .store-card:hover,
+    .tv-card:hover, .payment-card:hover, .warranty-card:hover, .quote-card:hover,
+    .why-card:hover, .process-card:hover, .guarantee-card:hover {
+      transform: translateY(-8px) scale(1.012) !important;
+      border-color: rgba(255,255,255,.7) !important;
+      box-shadow: 0 20px 55px rgba(0,0,0,.42), 0 0 20px rgba(116,215,255,.28), 0 0 44px rgba(188,66,255,.2), inset 0 0 32px rgba(255,255,255,.045) !important;
+    }
+    .stat-number, .section-title span, .brands-label, .eyebrow {
+      text-shadow: 0 0 10px rgba(116,215,255,.72), 0 0 24px rgba(188,66,255,.35) !important;
+    }
+    .brand-pill {
+      border-color: rgba(116,215,255,.55) !important;
+      box-shadow: 0 0 13px rgba(116,215,255,.13), inset 0 0 18px rgba(188,66,255,.055) !important;
+      animation: v7BrandGlow 4.8s ease-in-out infinite alternate;
+    }
+    .brand-pill:nth-child(3n+1) { border-color: rgba(255,49,83,.62) !important; }
+    .brand-pill:nth-child(3n+2) { border-color: rgba(255,216,74,.62) !important; }
+    .brand-pill:nth-child(3n) { border-color: rgba(25,255,138,.62) !important; }
+    @keyframes v7BrandGlow { from { box-shadow: 0 0 8px rgba(116,215,255,.1); } to { box-shadow: 0 0 22px rgba(188,66,255,.2), 0 0 12px rgba(116,215,255,.18); } }
+
+    /* Increase readable sizes without deleting or rewriting copy. */
+    .hero-kicker { font-size: clamp(1rem, 1.45vw, 1.22rem) !important; letter-spacing: .085em !important; }
+    .hero-copy { font-size: clamp(1.08rem, 1.55vw, 1.3rem) !important; line-height: 1.85 !important; }
+    .hero-meta { font-size: .96rem !important; }
+    .section-title { font-size: clamp(2.15rem, 4.3vw, 3.35rem) !important; }
+    .section-copy, .service-card p, .store-card p, .why-card p, .repair-card p,
+    .tv-card p, .warranty-card p, .payment-card p, .quote-card p, .footer-col p {
+      font-size: clamp(1rem, 1.12vw, 1.12rem) !important;
+      line-height: 1.82 !important;
+    }
+    .stat-label { font-size: .82rem !important; line-height: 1.5 !important; }
+    .btn { font-size: .84rem !important; }
+
+    @media (max-width: 1180px) {
+      .nav-shell { grid-template-columns: auto 1fr auto !important; }
+      .nav-shell .desktop-nav { justify-self: end !important; }
+    }
+    @media (max-width: 960px) {
+      .nav-shell { grid-template-columns: 1fr auto !important; }
+      .nav-shell .desktop-nav { display: none !important; }
+    }
+    @media (max-width: 720px) {
+      body { animation: none; background-attachment: scroll !important; }
+      body::before { inset: -8% !important; opacity: .56 !important; filter: blur(34px) saturate(1.2) !important; }
+      body::after { opacity: .12 !important; }
+      .hero-title { font-size: clamp(2.8rem, 13vw, 5rem) !important; line-height: 1.08 !important; letter-spacing: -.045em !important; overflow-wrap: normal !important; }
+      .hero-title span { filter: drop-shadow(0 2px 0 rgba(14,27,56,.95)) drop-shadow(0 0 12px rgba(0,240,255,.8)) drop-shadow(0 0 25px rgba(188,66,255,.45)) !important; }
+      .hero-kicker { font-size: .92rem !important; letter-spacing: .045em !important; }
+      .hero-copy { font-size: 1.04rem !important; }
+      .section-title { font-size: clamp(1.9rem, 8.5vw, 2.6rem) !important; }
+      .stat-card, .service-card, .repair-card, .store-card, .tv-card, .payment-card, .warranty-card, .quote-card, .why-card { transform: none !important; }
+      .stat-card::before, .service-card::before, .repair-card::before, .store-card::before, .tv-card::before, .payment-card::before, .warranty-card::before, .quote-card::before, .why-card::before { animation-duration: 12s; }
+      .mobile-nav { backdrop-filter: blur(18px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body, body::before, body::after, .hero-title, .hero-title span, .hero::before,
+      .brand-pill, .stat-card::before, .service-card::before, .repair-card::before,
+      .store-card::before, .tv-card::before, .payment-card::before, .warranty-card::before,
+      .quote-card::before, .why-card::before, .process-card::before, .guarantee-card::before,
+      .stat-card::after, .service-card::after, .repair-card::after, .store-card::after, .tv-card::after {
+        animation: none !important;
+      }
+    }
+
   </style>
 
   <script type="application/ld+json">
