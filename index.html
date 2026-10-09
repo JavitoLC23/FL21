@@ -2763,6 +2763,194 @@
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
 
+
+
+    /* =========================================================
+       V5.1 REAL VISUAL PATCH — impacto visible sin rehacer secciones
+       ========================================================= */
+    :root {
+      --font-display: 'Orbitron', 'Space Grotesk', sans-serif;
+      --font-body: 'Manrope', 'Segoe UI', sans-serif;
+      --fire-orange: rgba(255, 75, 20, .19);
+      --fire-amber: rgba(255, 145, 25, .12);
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 12% 20%, var(--fire-orange), transparent 29%),
+        radial-gradient(ellipse at 88% 26%, rgba(217,0,255,.16), transparent 32%),
+        radial-gradient(ellipse at 52% 78%, rgba(0,240,255,.11), transparent 37%),
+        radial-gradient(ellipse at 78% 90%, var(--fire-amber), transparent 24%),
+        #020308;
+      background-attachment: fixed;
+    }
+
+    /* Capas de luz cálida y energía: decorativas, no bloquean clics. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: auto -12% -35% -12%;
+      height: 68vh;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 18% 80%, rgba(255,65,20,.20), transparent 42%),
+        radial-gradient(ellipse at 80% 72%, rgba(255,125,0,.14), transparent 38%),
+        linear-gradient(0deg, rgba(255,60,20,.035), transparent 75%);
+      filter: blur(30px);
+      animation: opFirePulse 8s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: .22;
+      background: linear-gradient(115deg, transparent 0 42%, rgba(0,240,255,.035) 48%, transparent 54% 100%);
+      background-size: 220% 100%;
+      animation: opEnergySweep 18s linear infinite;
+    }
+
+    @keyframes opFirePulse {
+      from { opacity: .58; transform: translateY(0) scale(1); }
+      to { opacity: 1; transform: translateY(-2.5%) scale(1.04); }
+    }
+    @keyframes opEnergySweep {
+      from { background-position: 120% 0; }
+      to { background-position: -120% 0; }
+    }
+
+    /* Títulos más geométricos y con altura visual; evitamos el aspecto achatado. */
+    .hero-title {
+      font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+      font-size: clamp(3.15rem, 8.2vw, 7.15rem);
+      line-height: 1.04;
+      letter-spacing: clamp(.01em, .025em, .045em);
+      font-stretch: normal;
+      transform: scaleY(1.035);
+      transform-origin: center;
+      text-shadow: 0 0 10px rgba(255,255,255,.82), 0 0 28px rgba(0,240,255,.9), 0 0 74px rgba(0,240,255,.42), 0 0 110px rgba(217,0,255,.17);
+    }
+    .hero-title span {
+      text-shadow: 0 0 12px #00f0ff, 0 0 34px rgba(0,240,255,.85), 0 0 76px rgba(217,0,255,.52);
+    }
+    .section-title,
+    .stat-number,
+    .brand-text {
+      font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+    }
+
+    /* Navegación desplazada claramente a la izquierda en escritorio ancho. */
+    @media (min-width: 1200px) {
+      .nav-shell .desktop-nav {
+        transform: translateX(-115px);
+      }
+    }
+
+    /* Iluminación LED permanente y borde vivo en las tarjetas. */
+    .stat-card,
+    .service-card,
+    .repair-card,
+    .store-card,
+    .tv-card,
+    .payment-card,
+    .warranty-card,
+    .quote-card {
+      isolation: isolate;
+      border-color: rgba(0,240,255,.32);
+      box-shadow: 0 0 0 1px rgba(0,240,255,.035), 0 8px 28px rgba(0,0,0,.22), 0 0 24px rgba(0,240,255,.075), inset 0 0 25px rgba(0,240,255,.025);
+    }
+    .stat-card::before,
+    .service-card::before,
+    .repair-card::before,
+    .store-card::before,
+    .tv-card::before,
+    .payment-card::before,
+    .warranty-card::before,
+    .quote-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(0,240,255,.09), transparent 35%, rgba(217,0,255,.075) 78%, transparent);
+      opacity: .9;
+    }
+    .stat-card::after {
+      width: 90%;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,.12), rgba(255,255,255,.14), rgba(217,0,255,.12), transparent);
+    }
+    .stat-card:hover,
+    .service-card:hover,
+    .repair-card:hover,
+    .store-card:hover,
+    .tv-card:hover,
+    .payment-card:hover,
+    .warranty-card:hover,
+    .quote-card:hover {
+      border-color: rgba(0,240,255,.78);
+      box-shadow: 0 18px 55px rgba(0,0,0,.35), 0 0 16px rgba(0,240,255,.22), 0 0 42px rgba(0,240,255,.12), 0 0 54px rgba(217,0,255,.07), inset 0 0 28px rgba(0,240,255,.055);
+    }
+    .stat-number { text-shadow: 0 0 8px rgba(0,240,255,.95), 0 0 25px rgba(0,240,255,.48), 0 0 42px rgba(217,0,255,.22); }
+
+    /* Sección de marcas Android: chips más visibles y animación LED suave. */
+    .brands-panel {
+      position: relative;
+      overflow: hidden;
+      border-color: rgba(0,240,255,.3) !important;
+      background: linear-gradient(120deg, rgba(3,12,22,.94), rgba(13,7,27,.9), rgba(3,12,22,.94)) !important;
+      box-shadow: 0 0 35px rgba(0,240,255,.08), inset 0 0 45px rgba(0,240,255,.035);
+    }
+    .brands-label {
+      color: #e9fbff !important;
+      text-shadow: 0 0 12px rgba(0,240,255,.48);
+      letter-spacing: .13em !important;
+    }
+    .brand-pill {
+      position: relative;
+      border: 1px solid rgba(0,240,255,.42) !important;
+      background: linear-gradient(135deg, rgba(0,240,255,.105), rgba(7,12,24,.92) 55%, rgba(217,0,255,.09)) !important;
+      color: #f2fbff !important;
+      text-shadow: 0 0 10px rgba(0,240,255,.2);
+      box-shadow: inset 0 0 15px rgba(0,240,255,.045), 0 0 13px rgba(0,240,255,.065);
+    }
+    .brand-pill:hover {
+      color: #fff !important;
+      border-color: #00f0ff !important;
+      box-shadow: 0 0 12px rgba(0,240,255,.42), 0 0 28px rgba(217,0,255,.16), inset 0 0 20px rgba(0,240,255,.1) !important;
+      transform: translateY(-3px);
+    }
+    .stat-detail {
+      color: #9edfed !important;
+      font-size: .78rem;
+      line-height: 1.55;
+      margin-top: 7px;
+    }
+
+    /* Mobile: mantener el impacto sin provocar scroll horizontal ni exceso de efectos. */
+    @media (max-width: 1199px) {
+      .nav-shell .desktop-nav { transform: none; }
+    }
+    @media (max-width: 760px) {
+      body { background-attachment: scroll; }
+      body::before { height: 38vh; filter: blur(42px); animation-duration: 12s; }
+      body::after { opacity: .12; animation-duration: 26s; }
+      .hero-title { font-size: clamp(2.35rem, 10.8vw, 4.2rem); line-height: 1.08; letter-spacing: -.035em; transform: none; overflow-wrap: anywhere; }
+      .hero-badge { max-width: 100%; white-space: normal; letter-spacing: .07em; font-size: .64rem; }
+      .hero-copy { max-width: 38rem; font-size: 1rem; line-height: 1.72; }
+      .stat-card { min-height: 125px; padding: 20px 12px; }
+      .stat-number { font-size: clamp(1.25rem, 6vw, 1.7rem); }
+      .stat-label { font-size: .66rem; letter-spacing: .055em; }
+      .brand-pill { padding: 10px 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body::before, body::after, .hero-title, .ambient, .status-dot, .brand-track, .trust-track { animation: none !important; }
+      .stat-card, .service-card, .brand-pill, .btn { transition: none !important; }
+    }
+
   </style>
 
   <script type="application/ld+json">
