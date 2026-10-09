@@ -3766,6 +3766,105 @@
   }
   </script>
 
+
+<style id="v9-neon-matrix-overdrive">
+  :root {
+    --v9-cyan: #35d9ff;
+    --v9-blue: #148bff;
+    --v9-white: #e9f7ff;
+    --v9-gold: #ffc928;
+    --v9-red: #ff344f;
+    --v9-green: #21f59a;
+    --v9-ink: #03060b;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body {
+    background: #03060b !important;
+    color: #e7edf7;
+    isolation: isolate;
+  }
+  /* A discreet Matrix-like rain, behind the content rather than over the text. */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    opacity: .13;
+    background-image:
+      repeating-linear-gradient(180deg, transparent 0 22px, rgba(53,217,255,.25) 23px, transparent 24px 44px),
+      repeating-linear-gradient(180deg, transparent 0 37px, rgba(33,245,154,.18) 38px, transparent 39px 67px);
+    background-size: 3px 180px, 2px 230px;
+    background-position: 12px 0, 71px -20px;
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.65) 48%, transparent 100%);
+    animation: v9MatrixFall 13s linear infinite;
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events:none;
+    background:
+      radial-gradient(ellipse at 15% 12%, rgba(20,139,255,.16), transparent 38%),
+      radial-gradient(ellipse at 85% 22%, rgba(255,52,79,.11), transparent 35%),
+      radial-gradient(ellipse at 48% 80%, rgba(255,201,40,.07), transparent 40%);
+    animation: v9Aura 12s ease-in-out infinite alternate;
+  }
+  @keyframes v9MatrixFall { from { background-position: 12px -180px, 71px -230px; } to { background-position: 12px 720px, 71px 690px; } }
+  @keyframes v9Aura { from { filter:hue-rotate(0deg); opacity:.72; } to { filter:hue-rotate(35deg); opacity:1; } }
+  .hero-title {
+    color: #f1f8ff !important;
+    text-shadow: 0 1px 0 #fff, 0 3px 0 #b9dfff, 0 7px 0 #397cb4,
+      0 12px 24px rgba(0,0,0,.9), 0 0 13px rgba(53,217,255,.95),
+      0 0 34px rgba(20,139,255,.75), 0 0 70px rgba(255,201,40,.26) !important;
+    letter-spacing: .045em !important;
+    animation: v9TitlePower 4s ease-in-out infinite alternate;
+  }
+  .hero-title span {
+    color: transparent !important;
+    background: linear-gradient(105deg,#fff 0%,#9feaff 20%,#fff 32%,#ffc928 49%,#fff 60%,#8cecff 77%,#fff 100%) !important;
+    background-size: 250% 100% !important;
+    -webkit-background-clip: text !important; background-clip: text !important;
+    -webkit-text-stroke: 1px rgba(211,243,255,.8);
+    filter: drop-shadow(0 0 4px rgba(53,217,255,.9)) drop-shadow(0 0 15px rgba(20,139,255,.55));
+    animation: v9FlagSweep 7s linear infinite !important;
+  }
+  @keyframes v9FlagSweep { from { background-position: 100% 50%; } to { background-position: -150% 50%; } }
+  @keyframes v9TitlePower { from { filter: brightness(.95); } to { filter: brightness(1.14); } }
+  .section-title, h2, .section-heading h2 {
+    text-shadow: 0 0 18px rgba(53,217,255,.24);
+    text-wrap: balance;
+  }
+  .card, .service-card, .store-card, .brand-card, .feature-card, .tv-card, .product-card,
+  [class*="card"] {
+    border-color: rgba(53,217,255,.32);
+    box-shadow: 0 0 0 1px rgba(53,217,255,.045), 0 12px 32px rgba(0,0,0,.24);
+    transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease, filter .28s ease;
+  }
+  .card:hover, .service-card:hover, .store-card:hover, .brand-card:hover, .feature-card:hover, .tv-card:hover, .product-card:hover,
+  [class*="card"]:hover {
+    border-color: rgba(53,217,255,.82);
+    box-shadow: 0 0 0 1px rgba(53,217,255,.16), 0 0 24px rgba(20,139,255,.19), 0 18px 42px rgba(0,0,0,.4);
+    transform: translateY(-5px);
+  }
+  .btn, button, .button, a.btn {
+    transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+  }
+  .btn:hover, button:hover, .button:hover, a.btn:hover {
+    filter: brightness(1.12); box-shadow: 0 0 20px rgba(53,217,255,.22); transform: translateY(-2px);
+  }
+  .footer-bottom { margin-bottom: 0 !important; padding-bottom: max(18px, env(safe-area-inset-bottom)) !important; }
+  footer { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+  body > :last-child { margin-bottom: 0; }
+  @media (min-width: 900px) {
+    nav, .nav-links, .navbar-nav { margin-left: auto; }
+  }
+  @media (max-width: 700px) {
+    .hero-title { font-size: clamp(2.6rem, 12vw, 4.5rem) !important; line-height: 1.04 !important; }
+    .hero-copy, p { line-height: 1.7; }
+    body::before { opacity: .075; }
+    .card:hover, [class*="card"]:hover { transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body::before, body::after, .hero-title, .hero-title span { animation: none !important; scroll-behavior: auto !important; }
+    *, *::before, *::after { transition-duration: .01ms !important; }
+  }
+</style>
+
 </head>
 
 <body>
@@ -3837,10 +3936,7 @@
         <h1 class="hero-title reveal">
           ONE <span>PLAYER</span>
         </h1>
-        <button class="v8-palette-switch reveal" id="v8PaletteSwitch" type="button" aria-pressed="false" aria-label="Cambiar la paleta de colores entre Argentina y Bolivia">
-          <span class="v8-palette-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span id="v8PaletteLabel">Argentina ↔ Bolivia · colores animados</span>
-        </button>
+
 
         <p class="hero-kicker reveal">
           Servicio Técnico · Store Tech · Experiencia Digital
@@ -5604,28 +5700,7 @@
       "js-ready"
     );
 
-    /* V8: manual Argentina/Bolivia palette control; auto mode is the default. */
-    (() => {
-      const switchButton = document.getElementById("v8PaletteSwitch");
-      const label = document.getElementById("v8PaletteLabel");
-      if (!switchButton || !label) return;
-      let mode = "auto";
-      const setMode = (nextMode) => {
-        mode = nextMode;
-        document.body.classList.remove("v8-mode-argentina", "v8-mode-bolivia");
-        if (mode === "argentina") document.body.classList.add("v8-mode-argentina");
-        if (mode === "bolivia") document.body.classList.add("v8-mode-bolivia");
-        switchButton.setAttribute("aria-pressed", String(mode !== "auto"));
-        label.textContent = mode === "argentina"
-          ? "Argentina · celeste, blanco y sol"
-          : mode === "bolivia"
-            ? "Bolivia · rojo, amarillo y verde"
-            : "Argentina ↔ Bolivia · colores animados";
-      };
-      switchButton.addEventListener("click", () => {
-        setMode(mode === "auto" ? "bolivia" : mode === "bolivia" ? "argentina" : "auto");
-      });
-    })();
+
 
   </script>
 
