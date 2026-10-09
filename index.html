@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -54,8 +54,8 @@
       --radius-xl: 32px;
       --shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
       --shadow-cyan: 0 0 35px rgba(0, 240, 255, 0.18);
-      --font-display: 'Orbitron', sans-serif;
-      --font-body: 'Syne', sans-serif;
+      --font-display: 'Space Grotesk', 'Manrope', sans-serif;
+      --font-body: 'Manrope', sans-serif;
       --container: 1320px;
       --header-height: 78px;
       --transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2415,6 +2415,149 @@
       .grid-overlay {
         animation: none !important;
       }
+    }
+
+
+
+    /* =========================================================
+       V4.1 VISUAL POWER-UP: TIPOGRAFÍA, AMBIENTE LED Y MÓVILES
+       Añadido como capa de mejora para preservar estructura y JS.
+       ========================================================= */
+    body {
+      background-color: #02050b;
+      background-image:
+        radial-gradient(ellipse at 12% 8%, rgba(0, 240, 255, .13), transparent 32%),
+        radial-gradient(ellipse at 88% 22%, rgba(116, 42, 255, .14), transparent 34%),
+        radial-gradient(ellipse at 52% 72%, rgba(0, 100, 190, .09), transparent 42%),
+        linear-gradient(145deg, #02050b 0%, #06101c 48%, #080615 100%);
+      background-attachment: fixed;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Retira el aspecto excesivamente comprimido de la tipografía display. */
+    .hero-title {
+      font-family: 'Space Grotesk', 'Manrope', sans-serif;
+      font-weight: 700;
+      letter-spacing: clamp(-1px, .25vw, 2px);
+      line-height: 1.02;
+      font-stretch: normal;
+    }
+    .hero-kicker,
+    .btn,
+    .stat-label,
+    .section-title,
+    .section-eyebrow,
+    .hero-badge,
+    .nav-link,
+    .desktop-nav a,
+    .mobile-nav-inner a {
+      font-family: 'Manrope', sans-serif;
+      letter-spacing: .055em;
+    }
+    .hero-kicker { font-weight: 800; letter-spacing: .09em; }
+    .btn { font-weight: 800; letter-spacing: .045em; }
+    .stat-number { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+    /* Fondo ambiental con profundidad y retícula sutil, sin imágenes extra. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .2;
+      background-image:
+        linear-gradient(rgba(0, 240, 255, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, .045) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    /* Iluminación LED por capas en las tarjetas existentes. */
+    .stat-card,
+    .service-card,
+    .store-card,
+    .why-card,
+    .payment-card {
+      isolation: isolate;
+      border-color: rgba(0, 240, 255, .34);
+      background-image: linear-gradient(145deg, rgba(10, 22, 39, .92), rgba(3, 8, 17, .88));
+      box-shadow: 0 0 0 1px rgba(0, 240, 255, .035),
+                  0 10px 32px rgba(0, 0, 0, .2),
+                  inset 0 1px 0 rgba(255, 255, 255, .035);
+      transition: border-color .28s ease, box-shadow .28s ease, transform .28s ease;
+    }
+    .stat-card::before,
+    .service-card::before,
+    .store-card::before,
+    .why-card::before,
+    .payment-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      border-radius: inherit;
+      background: linear-gradient(125deg, rgba(0,240,255,.11), transparent 32%, transparent 68%, rgba(217,0,255,.09));
+      opacity: .68;
+    }
+    .stat-card:hover,
+    .service-card:hover,
+    .store-card:hover,
+    .why-card:hover,
+    .payment-card:hover {
+      border-color: rgba(0, 240, 255, .78);
+      box-shadow: 0 0 10px rgba(0,240,255,.14),
+                  0 0 28px rgba(0,240,255,.13),
+                  0 0 48px rgba(217,0,255,.07),
+                  inset 0 0 22px rgba(0,240,255,.045);
+    }
+    .stat-card .stat-number,
+    .service-card h3,
+    .store-card h3 {
+      text-shadow: 0 0 12px rgba(0,240,255,.24);
+    }
+
+    /* Ajustes específicos de legibilidad y tacto en móviles. */
+    @media (max-width: 720px) {
+      body { background-attachment: scroll; font-size: 15px; }
+      .hero { min-height: auto; padding-top: 54px; padding-bottom: 42px; }
+      .hero-title {
+        max-width: 100%;
+        font-size: clamp(2.8rem, 12.5vw, 5.2rem);
+        line-height: 1.02;
+        letter-spacing: -.035em;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+      .hero-kicker { font-size: clamp(.76rem, 3vw, .95rem); line-height: 1.55; }
+      .hero-copy { max-width: 39rem; padding-inline: 4px; line-height: 1.75; }
+      .hero-actions { gap: 11px; margin-top: 26px; }
+      .hero-actions .btn { width: min(100%, 390px); min-height: 52px; padding-inline: 15px; }
+      .hero-meta { gap: 12px 18px; font-size: .82rem; }
+      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
+      .stat-card { min-width: 0; min-height: 120px; padding: 20px 12px; }
+      .stat-label { line-height: 1.45; letter-spacing: .035em; overflow-wrap: anywhere; }
+      .service-card, .store-card, .why-card, .payment-card { min-width: 0; }
+      .service-card p, .store-card p, .why-card p { overflow-wrap: break-word; }
+      .whatsapp-float { width: 54px; height: 54px; right: 14px; bottom: 14px; }
+      .back-top { right: 17px; bottom: 78px; }
+    }
+    @media (max-width: 390px) {
+      .hero-title { font-size: clamp(2.45rem, 12vw, 3.2rem); letter-spacing: -.045em; }
+      .hero-badge { max-width: 100%; white-space: normal; justify-content: center; font-size: .63rem; letter-spacing: .045em; padding: 8px 11px; }
+      .stats-grid { gap: 9px; }
+      .stat-card { min-height: 112px; padding: 17px 9px; }
+      .stat-number { font-size: 1.55rem; }
+      .stat-label { font-size: .66rem; }
+      .section-title { overflow-wrap: anywhere; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body { background-attachment: scroll; }
+      .stat-card, .service-card, .store-card, .why-card, .payment-card,
+      .hero-title { transition: none !important; animation: none !important; }
     }
 
   </style>
