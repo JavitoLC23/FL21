@@ -22,8 +22,8 @@
 
   <style>
     /* =========================================================
-       ONE PLAYER V5 FINAL
-       Sistema visual ULTRA · Android service · optimización y accesibilidad
+       ONE PLAYER V6 FINAL — NEON FIRE EDITION
+       Sistema visual NEON FIRE · tipografía legible · experiencia responsive
        ========================================================= */
 
     :root {
@@ -2563,7 +2563,7 @@
 
 
     /* =========================================================
-       ONE PLAYER V5 FINAL — ULTRA POWER-UP
+       ONE PLAYER V6 FINAL — NEON FIRE EDITION — ULTRA POWER-UP
        Capa visual adicional: energía cálida + neon, cards premium,
        tipografía legible, marcas Android y navegación responsive.
        No reemplaza ni modifica los flujos de JavaScript existentes.
@@ -2949,6 +2949,256 @@
     @media (prefers-reduced-motion: reduce) {
       body::before, body::after, .hero-title, .ambient, .status-dot, .brand-track, .trust-track { animation: none !important; }
       .stat-card, .service-card, .brand-pill, .btn { transition: none !important; }
+    }
+
+
+
+    /* =========================================================
+       ONE PLAYER V6 FINAL — NEON FIRE / LEGIBILIDAD / NAV A LA DERECHA
+       Capa visual añadida sin borrar secciones ni textos de versiones previas.
+       ========================================================= */
+    :root {
+      --v6-cyan: #00f4ff;
+      --v6-blue: #318bff;
+      --v6-violet: #a855f7;
+      --v6-hot: #ff3b30;
+      --v6-orange: #ff7a18;
+      --v6-gold: #ffd166;
+    }
+
+    /* Fondo con energía tipo fuego + neón, manteniendo la base oscura. */
+    body {
+      background-color: #03040a;
+      background-image:
+        radial-gradient(ellipse at 8% 16%, rgba(0, 244, 255, .18), transparent 32%),
+        radial-gradient(ellipse at 92% 12%, rgba(168, 85, 247, .18), transparent 34%),
+        radial-gradient(ellipse at 80% 58%, rgba(255, 59, 48, .105), transparent 29%),
+        radial-gradient(ellipse at 15% 78%, rgba(255, 122, 24, .09), transparent 32%),
+        linear-gradient(135deg, #02040a 0%, #06121b 38%, #0b0618 70%, #03040a 100%);
+      background-attachment: fixed;
+      font-size: 17px;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -18%;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 22% 35%, rgba(0, 244, 255, .15), transparent 25%),
+        radial-gradient(ellipse at 75% 30%, rgba(255, 70, 36, .13), transparent 25%),
+        radial-gradient(ellipse at 56% 76%, rgba(168, 85, 247, .15), transparent 29%);
+      filter: blur(36px);
+      opacity: .9;
+      animation: v6AmbientShift 15s ease-in-out infinite alternate;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .16;
+      background: repeating-linear-gradient(0deg, transparent 0 4px, rgba(255,255,255,.025) 5px, transparent 6px);
+      mix-blend-mode: screen;
+    }
+    @keyframes v6AmbientShift {
+      0% { transform: translate3d(-2%, 1%, 0) scale(1); filter: blur(38px) hue-rotate(0deg); }
+      50% { transform: translate3d(2%, -1%, 0) scale(1.07); filter: blur(44px) hue-rotate(28deg); }
+      100% { transform: translate3d(0, 2%, 0) scale(1.02); filter: blur(40px) hue-rotate(-24deg); }
+    }
+
+    /* Navegación: marca a la izquierda y links bien hacia la derecha, nunca centrados. */
+    .nav-shell {
+      grid-template-columns: auto minmax(0, 1fr) auto !important;
+      gap: clamp(18px, 3vw, 48px) !important;
+    }
+    .nav-shell .brand { grid-column: 1; justify-self: start; }
+    .nav-shell .desktop-nav {
+      grid-column: 2;
+      justify-self: end !important;
+      transform: none !important;
+      margin-left: auto;
+      margin-right: clamp(0px, 1.2vw, 20px);
+      gap: clamp(18px, 2vw, 34px) !important;
+    }
+    .nav-shell .menu-toggle { grid-column: 3; justify-self: end; }
+    .nav-link {
+      font-size: .91rem !important;
+      letter-spacing: .055em !important;
+      padding-block: 12px !important;
+    }
+
+    /* ONE PLAYER: volumen 3D, brillo cálido tipo llama y gradiente de color animado. */
+    .hero {
+      isolation: isolate;
+      position: relative;
+    }
+    .hero::before {
+      width: min(1000px, 90vw) !important;
+      height: min(620px, 70vw) !important;
+      border-color: rgba(0,244,255,.14) !important;
+      background:
+        radial-gradient(ellipse at 50% 56%, rgba(255, 98, 25, .10), transparent 47%),
+        radial-gradient(ellipse at 50% 45%, rgba(0, 244, 255, .08), transparent 65%);
+      box-shadow: 0 0 90px rgba(0,244,255,.09), 0 0 140px rgba(255,70,36,.055), inset 0 0 100px rgba(168,85,247,.07) !important;
+      animation: v6HeroHalo 7s ease-in-out infinite alternate;
+    }
+    @keyframes v6HeroHalo {
+      from { opacity: .68; filter: hue-rotate(-12deg) saturate(1); transform: translateX(-50%) scale(.98); }
+      to { opacity: 1; filter: hue-rotate(22deg) saturate(1.35); transform: translateX(-50%) scale(1.035); }
+    }
+    .hero-title {
+      position: relative;
+      z-index: 1;
+      max-width: 1250px !important;
+      font-family: 'Orbitron', 'Space Grotesk', sans-serif !important;
+      font-size: clamp(4rem, 9.2vw, 8.7rem) !important;
+      line-height: 1.08 !important;
+      letter-spacing: clamp(.015em, .035em, .055em) !important;
+      transform: perspective(700px) rotateX(3deg) scaleY(1.04) !important;
+      transform-origin: center;
+      color: #fff !important;
+      -webkit-text-stroke: .45px rgba(255,255,255,.55);
+      text-shadow:
+        0 1px 0 #b7faff,
+        0 2px 0 rgba(80,220,255,.72),
+        0 4px 0 rgba(10,80,115,.72),
+        0 7px 0 rgba(0,0,0,.55),
+        0 0 9px rgba(255,255,255,.95),
+        0 0 22px rgba(0,244,255,.95),
+        0 0 48px rgba(0,244,255,.65),
+        0 0 76px rgba(255,95,25,.32),
+        0 0 105px rgba(168,85,247,.32) !important;
+      animation: v6TitlePulse 4.8s ease-in-out infinite alternate !important;
+    }
+    .hero-title span {
+      color: transparent !important;
+      -webkit-text-fill-color: transparent !important;
+      background: linear-gradient(110deg, #fff8d7 0%, #ffd166 12%, #ff7a18 26%, #ff3b30 39%, #ff7a18 51%, #00f4ff 68%, #62f6ff 80%, #d7a5ff 93%, #fff8d7 100%);
+      background-size: 280% 100%;
+      background-position: 0% 50%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter:
+        drop-shadow(0 2px 0 rgba(80,20,5,.9))
+        drop-shadow(0 4px 0 rgba(10,10,20,.8))
+        drop-shadow(0 0 9px rgba(255,110,28,.95))
+        drop-shadow(0 0 24px rgba(255,55,45,.8))
+        drop-shadow(0 0 38px rgba(0,244,255,.7));
+      animation: v6FlameText 7s linear infinite, v6TextFire 2.6s ease-in-out infinite alternate !important;
+    }
+    @keyframes v6FlameText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes v6TextFire {
+      from { filter: drop-shadow(0 2px 0 rgba(80,20,5,.9)) drop-shadow(0 4px 0 rgba(10,10,20,.8)) drop-shadow(0 0 8px rgba(255,110,28,.9)) drop-shadow(0 0 22px rgba(255,55,45,.65)) drop-shadow(0 0 34px rgba(0,244,255,.55)); }
+      to { filter: drop-shadow(0 2px 0 rgba(80,20,5,.9)) drop-shadow(0 4px 0 rgba(10,10,20,.8)) drop-shadow(0 0 15px rgba(255,190,70,1)) drop-shadow(0 0 31px rgba(255,55,45,.9)) drop-shadow(0 0 48px rgba(0,244,255,.78)); }
+    }
+    @keyframes v6TitlePulse {
+      from { filter: brightness(1) saturate(1.05); }
+      to { filter: brightness(1.12) saturate(1.22); }
+    }
+
+    /* Lectura: se conservan todos los textos existentes y se aumenta su tamaño/aire. */
+    .hero-badge { font-size: .82rem !important; padding: 11px 20px !important; letter-spacing: .12em !important; }
+    .hero-kicker { font-size: clamp(1rem, 1.55vw, 1.25rem) !important; line-height: 1.65 !important; letter-spacing: .11em !important; }
+    .hero-copy { font-size: clamp(1.12rem, 1.45vw, 1.32rem) !important; line-height: 1.9 !important; max-width: 900px !important; }
+    .hero-meta { font-size: .96rem !important; gap: 14px 25px !important; }
+    .section-title { font-size: clamp(2.05rem, 3.4vw, 3.2rem) !important; line-height: 1.2 !important; }
+    .section-copy { font-size: 1.12rem !important; line-height: 1.85 !important; }
+    .service-card p, .store-card p, .why-card p, .repair-card p, .tv-card p,
+    .warranty-card p, .payment-card p, .quote-card p, .footer-col p {
+      font-size: 1.03rem !important;
+      line-height: 1.8 !important;
+    }
+    .stat-number { font-size: clamp(1.8rem, 2.5vw, 2.35rem) !important; }
+    .stat-label { font-size: .84rem !important; line-height: 1.55 !important; letter-spacing: .075em !important; }
+    .stat-detail { font-size: .9rem !important; line-height: 1.65 !important; }
+    .service-card h3, .store-card h3, .repair-card h3, .tv-card h3,
+    .why-card h3, .warranty-card h3, .payment-card h3 { font-size: 1.25rem !important; line-height: 1.4 !important; }
+    .brand-pill { font-size: .9rem !important; font-weight: 800 !important; letter-spacing: .08em !important; padding: 12px 17px !important; }
+    .btn { font-size: .92rem !important; letter-spacing: .06em !important; min-height: 54px; }
+
+    /* Cards LED con ciclo cromático sutil, sin esconder contenido ni depender del hover. */
+    .stat-card, .service-card, .repair-card, .store-card, .tv-card,
+    .payment-card, .warranty-card, .quote-card, .brands-panel {
+      border: 1px solid rgba(0,244,255,.52) !important;
+      background-image: linear-gradient(145deg, rgba(0,244,255,.075), rgba(5,9,19,.82) 42%, rgba(168,85,247,.095)) !important;
+      box-shadow: 0 0 0 1px rgba(0,244,255,.08), 0 0 22px rgba(0,244,255,.13), 0 12px 34px rgba(0,0,0,.28), inset 0 0 26px rgba(0,244,255,.045) !important;
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease, filter .28s ease !important;
+    }
+    .stat-card:hover, .service-card:hover, .repair-card:hover, .store-card:hover,
+    .tv-card:hover, .payment-card:hover, .warranty-card:hover, .quote-card:hover {
+      transform: translateY(-6px) !important;
+      border-color: rgba(255,122,24,.88) !important;
+      filter: saturate(1.18);
+      box-shadow: 0 0 0 1px rgba(255,122,24,.14), 0 0 24px rgba(255,75,35,.18), 0 0 42px rgba(0,244,255,.16), 0 18px 45px rgba(0,0,0,.35), inset 0 0 32px rgba(255,122,24,.055) !important;
+    }
+    .stat-android, .stat-android .stat-number, .stat-android .stat-label, .stat-android .stat-detail {
+      text-shadow: 0 0 9px rgba(0,244,255,.48), 0 0 22px rgba(168,85,247,.2);
+    }
+    .brands-panel { box-shadow: 0 0 26px rgba(0,244,255,.14), 0 0 44px rgba(168,85,247,.09), inset 0 0 36px rgba(0,244,255,.055) !important; }
+    .brand-pill { animation: v6BrandGlow 5s ease-in-out infinite alternate; }
+    .brand-pill:nth-child(3n + 1) { animation-delay: -.8s; }
+    .brand-pill:nth-child(3n + 2) { animation-delay: -2.1s; }
+    @keyframes v6BrandGlow {
+      from { box-shadow: inset 0 0 13px rgba(0,244,255,.045), 0 0 8px rgba(0,244,255,.07); }
+      to { box-shadow: inset 0 0 16px rgba(255,122,24,.07), 0 0 14px rgba(0,244,255,.15), 0 0 20px rgba(168,85,247,.08); }
+    }
+
+    /* Tablet + móvil: textos legibles, botones amplios, título que no se corta. */
+    @media (max-width: 1199px) {
+      .nav-shell { grid-template-columns: minmax(0,1fr) auto !important; }
+      .nav-shell .brand { grid-column: 1; }
+      .nav-shell .desktop-nav { display: none !important; }
+      .nav-shell .menu-toggle { grid-column: 2; display: flex !important; }
+    }
+    @media (max-width: 760px) {
+      body { font-size: 16px !important; background-attachment: scroll !important; }
+      .hero { padding: 54px 0 44px !important; min-height: auto !important; }
+      .hero-title {
+        font-size: clamp(2.8rem, 12.2vw, 5.1rem) !important;
+        line-height: 1.13 !important;
+        letter-spacing: -.025em !important;
+        transform: none !important;
+        overflow-wrap: normal !important;
+        word-break: normal !important;
+      }
+      .hero-title span { display: inline-block; }
+      .hero-badge { font-size: .76rem !important; line-height: 1.6 !important; max-width: calc(100vw - 30px); white-space: normal !important; }
+      .hero-kicker { font-size: .98rem !important; line-height: 1.7 !important; letter-spacing: .055em !important; }
+      .hero-copy { font-size: 1.08rem !important; line-height: 1.8 !important; }
+      .hero-actions { align-items: stretch; }
+      .hero-actions .btn { width: min(100%, 420px); min-height: 56px; font-size: .9rem !important; }
+      .hero-meta { font-size: .9rem !important; line-height: 1.6 !important; }
+      .section-title { font-size: clamp(1.85rem, 7.3vw, 2.5rem) !important; }
+      .section-copy, .service-card p, .store-card p, .why-card p, .repair-card p, .tv-card p,
+      .warranty-card p, .payment-card p, .quote-card p, .footer-col p { font-size: 1rem !important; line-height: 1.8 !important; }
+      .stat-label { font-size: .78rem !important; }
+      .stat-detail { font-size: .8rem !important; }
+      .brand-pill { font-size: .83rem !important; padding: 11px 13px !important; }
+      .stat-card:hover, .service-card:hover, .repair-card:hover, .store-card:hover, .tv-card:hover { transform: none !important; }
+      body::before { opacity: .7; filter: blur(42px); }
+    }
+    @media (max-width: 390px) {
+      .container { width: min(var(--container), calc(100% - 28px)) !important; }
+      .brand-text { font-size: 1rem !important; }
+      .hero-title { font-size: clamp(2.45rem, 11.8vw, 3.15rem) !important; letter-spacing: -.04em !important; }
+      .hero-copy { font-size: 1rem !important; }
+      .hero-actions .btn { padding-inline: 12px !important; font-size: .82rem !important; }
+      .stats-grid { gap: 10px !important; }
+      .stat-card { padding: 18px 10px !important; min-width: 0; }
+      .stat-number { font-size: 1.6rem !important; }
+      .stat-label { font-size: .73rem !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body::before, body::after, .hero::before, .hero-title, .hero-title span,
+      .brand-pill, .ambient, .status-dot { animation: none !important; }
+      .hero-title span { background-position: 50% 50% !important; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
     }
 
   </style>
