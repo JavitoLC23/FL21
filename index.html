@@ -2686,6 +2686,69 @@
       }
     }
 
+
+
+    /* =========================================================
+       V5 — REFINAMIENTO VISUAL Y NAVEGACIÓN
+       Capa aditiva: no reemplaza estilos ni componentes existentes.
+       ========================================================= */
+    @media (min-width: 900px) {
+      .nav-shell {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+      }
+      .nav-shell .desktop-nav {
+        justify-self: end;
+        margin-right: clamp(12px, 9vw, 150px);
+      }
+    }
+
+    /* Un acabado más definido sin cambiar la identidad de marca. */
+    .site-header {
+      border-bottom-color: rgba(0, 240, 255, 0.2);
+      box-shadow: 0 5px 28px rgba(0, 0, 0, 0.12);
+    }
+    .desktop-nav a {
+      transition: color 180ms ease, text-shadow 180ms ease;
+    }
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
+      text-shadow: 0 0 16px rgba(0, 240, 255, 0.22);
+    }
+    .desktop-nav a::after {
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+    }
+    .stat-card, .metric-card, .feature-card, .service-card, .product-card {
+      transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .stat-card:hover, .metric-card:hover, .feature-card:hover, .service-card:hover, .product-card:hover {
+        border-color: rgba(0, 240, 255, 0.42);
+        box-shadow: 0 14px 38px rgba(0, 240, 255, 0.07);
+      }
+    }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--cyan, #00f0ff);
+      outline-offset: 4px;
+    }
+    img { height: auto; }
+    section[id], main[id] { scroll-margin-top: calc(var(--header-height, 78px) + 18px); }
+
+    @media (max-width: 899px) {
+      .nav-shell { gap: 12px; }
+      .site-header { backdrop-filter: blur(16px) saturate(130%); }
+      .brand-text { letter-spacing: 1.2px; }
+    }
+    @media (max-width: 480px) {
+      .brand-text { font-size: 1rem; }
+      .brand-mark { width: 36px; height: 36px; border-radius: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .desktop-nav a, .stat-card, .metric-card, .feature-card,
+      .service-card, .product-card { transition: none !important; }
+    }
+
   </style>
 </head>
 
