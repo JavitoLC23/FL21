@@ -13,16 +13,16 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
-  <title>ONE PLAYER | Servicio Técnico & Store Tech | Rivadavia, Mendoza</title>
+  <title>ONE PLAYER V6 | Servicio Técnico & Store Tech | Rivadavia, Mendoza</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     /* =========================================================
-       ONE PLAYER V4 — base compatible con V2/V3
+       ONE PLAYER V6 — base compatible con V2/V3/V4
        Sistema visual premium / cyber-neon
        ========================================================= */
 
@@ -2315,7 +2315,7 @@
   
 
     /* =========================================================
-       ONE PLAYER V4 — MEJORAS ADITIVAS RESPONSIVE
+       ONE PLAYER V6 — MEJORAS ADITIVAS RESPONSIVE
        Se agregan ajustes sin reemplazar los estilos ni funciones existentes.
        ========================================================= */
 
@@ -2747,6 +2747,113 @@
     @media (prefers-reduced-motion: reduce) {
       .desktop-nav a, .stat-card, .metric-card, .feature-card,
       .service-card, .product-card { transition: none !important; }
+    }
+
+
+
+    /* =========================================================
+       ONE PLAYER V6 — POLISH LAYER
+       Capa aditiva: no reemplaza componentes ni lógica existente.
+       ========================================================= */
+    :root {
+      --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+      --mobile-gutter: clamp(16px, 4.5vw, 30px);
+      --tap-target: 46px;
+      --v6-surface: rgba(10, 16, 28, .88);
+      --v6-line: rgba(180, 210, 235, .13);
+    }
+
+    html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+    body {
+      font-family: var(--font-body);
+      line-height: 1.65;
+      letter-spacing: .005em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2, h3, h4, .section-title, .hero-title {
+      font-family: var(--font-display);
+      letter-spacing: -.035em;
+      line-height: 1.12;
+      text-wrap: balance;
+    }
+    p, li, label, input, select, textarea, button, .btn, .nav-link {
+      font-family: var(--font-body);
+    }
+    p { text-wrap: pretty; }
+    img, video, iframe { max-width: 100%; }
+    button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+    a, button { touch-action: manipulation; }
+    :focus-visible { outline: 3px solid var(--cyan, #00d9e8); outline-offset: 4px; }
+    ::selection { background: rgba(0, 220, 235, .28); color: #fff; }
+
+    /* Superficies más limpias, conservando el tema original */
+    .service-card, .store-card, .why-card, .payment-card,
+    .process-step, .guarantee-item, .form-box, .quote-info {
+      border-color: var(--v6-line);
+    }
+    .service-card, .store-card, .why-card, .payment-card,
+    .process-step, .guarantee-item {
+      overflow: hidden;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    .btn, .header-cta, .menu-toggle {
+      min-height: var(--tap-target);
+      justify-content: center;
+    }
+    .form-control { min-height: 48px; font-size: 16px; }
+    textarea.form-control { min-height: 132px; }
+    .section-description { max-width: 66ch; margin-inline: auto; }
+    .section-header { margin-inline: auto; }
+
+    @media (max-width: 720px) {
+      html { scroll-padding-top: calc(var(--header-height, 76px) + 14px); }
+      body { font-size: 15.5px; padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .container, .section {
+        width: calc(100% - (var(--mobile-gutter) * 2));
+        max-width: 100%;
+      }
+      .section { padding-top: clamp(42px, 10vw, 64px); padding-bottom: clamp(42px, 10vw, 64px); }
+      .hero-title { font-size: clamp(2rem, 9vw, 3.35rem); line-height: 1.06; }
+      .section-title { font-size: clamp(1.7rem, 7vw, 2.45rem); line-height: 1.12; }
+      .section-description { font-size: 15px; line-height: 1.7; }
+      .section-header { margin-bottom: 28px; }
+      .service-card, .store-card, .why-card, .payment-card,
+      .process-step, .guarantee-item { border-radius: 16px; }
+      .service-content, .store-content { padding: 18px; }
+      .btn, .header-cta { width: 100%; }
+      .form-grid { grid-template-columns: minmax(0, 1fr) !important; }
+      .form-group, .form-control, .form-submit { min-width: 0; width: 100%; }
+      .quote-layout { gap: 20px; }
+      .contact-banner { gap: 18px; }
+      .whatsapp-float { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+      .back-top { right: 18px; bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
+      .trust-track, .brand-track { will-change: auto; }
+    }
+
+    @media (max-width: 380px) {
+      :root { --mobile-gutter: 14px; }
+      .brand-text { font-size: .92rem; }
+      .hero-title { font-size: clamp(1.85rem, 8.5vw, 2.4rem); }
+      .service-content, .store-content { padding: 15px; }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .service-card:hover, .store-card:hover, .why-card:hover,
+      .payment-card:hover, .process-step:hover, .guarantee-item:hover,
+      .btn:hover, .header-cta:hover { transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
 
   </style>
