@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
-  <title>ONE PLAYER V6 | Servicio Técnico & Store Tech | Rivadavia, Mendoza</title>
+  <title>ONE PLAYER V7 | Servicio Técnico & Store Tech | Rivadavia, Mendoza</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
 
   <style>
     /* =========================================================
-       ONE PLAYER V6 — base compatible con V2/V3/V4
+       ONE PLAYER V7 — base compatible con V2/V3/V4/V6
        Sistema visual premium / cyber-neon
        ========================================================= */
 
@@ -2315,7 +2315,7 @@
   
 
     /* =========================================================
-       ONE PLAYER V6 — MEJORAS ADITIVAS RESPONSIVE
+       ONE PLAYER V7 — MEJORAS ADITIVAS RESPONSIVE
        Se agregan ajustes sin reemplazar los estilos ni funciones existentes.
        ========================================================= */
 
@@ -2752,7 +2752,7 @@
 
 
     /* =========================================================
-       ONE PLAYER V6 — POLISH LAYER
+       ONE PLAYER V7 — POLISH LAYER
        Capa aditiva: no reemplaza componentes ni lógica existente.
        ========================================================= */
     :root {
@@ -2856,7 +2856,36 @@
       }
     }
 
-  </style>
+  
+
+    /* =========================================================
+       ONE PLAYER V7 — acceso al catálogo independiente
+       Capa aditiva: no reemplaza estilos ni lógica existentes.
+       ========================================================= */
+    .catalog-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-top: clamp(1.5rem, 4vw, 3rem);
+      padding: clamp(1.25rem, 3vw, 2rem);
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      background: linear-gradient(115deg, rgba(0,240,255,.08), rgba(9,15,27,.92) 60%, rgba(217,0,255,.06));
+      box-shadow: 0 16px 45px rgba(0,0,0,.16);
+    }
+    .catalog-cta h3 { margin: .35rem 0 .5rem; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.25rem, 2.4vw, 1.8rem); }
+    .catalog-cta p { margin: 0; color: var(--text-soft); line-height: 1.65; max-width: 58ch; }
+    .catalog-cta-button { flex-shrink: 0; white-space: nowrap; }
+    .desktop-nav .nav-link[href="catalogo.html"], .mobile-link[href="catalogo.html"] { color: var(--cyan); }
+    @media (max-width: 640px) {
+      .catalog-cta { flex-direction: column; align-items: stretch; gap: 1.1rem; border-radius: 16px; }
+      .catalog-cta-button { width: 100%; justify-content: center; text-align: center; white-space: normal; min-height: 48px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .catalog-cta, .catalog-cta * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+</style>
 </head>
 
 <body>
@@ -2884,6 +2913,7 @@
         <a href="#inicio" class="nav-link active">Inicio</a>
         <a href="#servicios" class="nav-link">Laboratorio</a>
         <a href="#store" class="nav-link">Store & Gear</a>
+        <a href="catalogo.html" class="nav-link">Catálogo</a>
         <a href="#tv" class="nav-link">TV</a>
       </nav>
 
@@ -2907,6 +2937,7 @@
         <a href="#inicio" class="mobile-link active">Inicio</a>
         <a href="#servicios" class="mobile-link">Laboratorio</a>
         <a href="#store" class="mobile-link">Store & Gear</a>
+        <a href="catalogo.html" class="mobile-link">Catálogo de accesorios</a>
         <a href="#tv" class="mobile-link">TV Entertainment</a>
       </nav>
     </div>
@@ -3435,6 +3466,18 @@
           </div>
         </article>
 
+      </div>
+
+      <div class="catalog-cta reveal">
+        <div>
+          <span class="eyebrow">Explorá la store</span>
+          <h3>¿Buscás algún accesorio?</h3>
+          <p>Entrá al catálogo orientativo y consultá por WhatsApp precio y disponibilidad.</p>
+        </div>
+        <a href="catalogo.html" class="btn btn-primary catalog-cta-button">
+          <i class="fa-solid fa-grid-2"></i>
+          Ver catálogo completo
+        </a>
       </div>
     </section>
 
