@@ -22,7 +22,7 @@
 
   <style>
     /* =========================================================
-       ONE PLAYER V2
+       ONE PLAYER V4 — base compatible con V2/V3
        Sistema visual premium / cyber-neon
        ========================================================= */
 
@@ -2312,6 +2312,380 @@
         transform: none;
       }
     }
+  
+
+    /* =========================================================
+       ONE PLAYER V4 — MEJORAS ADITIVAS RESPONSIVE
+       Se agregan ajustes sin reemplazar los estilos ni funciones existentes.
+       ========================================================= */
+
+    :root {
+      --tap-target: 44px;
+      --mobile-gutter: clamp(16px, 4vw, 28px);
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      scroll-padding-top: calc(var(--header-height) + 18px);
+    }
+
+    body {
+      min-width: 320px;
+      -webkit-tap-highlight-color: transparent;
+      overflow-wrap: break-word;
+    }
+
+    button, a, input, select, textarea {
+      touch-action: manipulation;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+    img {
+      height: auto;
+    }
+
+    .site-header {
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    .mobile-nav {
+      max-height: calc(100dvh - var(--header-height) - env(safe-area-inset-top, 0px));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .mobile-nav a,
+    .menu-toggle,
+    .btn,
+    .header-cta,
+    .back-top,
+    .whatsapp-float {
+      min-height: var(--tap-target);
+    }
+
+    .form-control {
+      width: 100%;
+      min-width: 0;
+      font-size: 16px;
+    }
+
+    .service-card,
+    .store-card,
+    .why-card,
+    .payment-card,
+    .process-step,
+    .guarantee-item {
+      min-width: 0;
+    }
+
+    .hero-title,
+    .section-title,
+    .brand-text {
+      overflow-wrap: anywhere;
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .service-card:hover,
+      .store-card:hover,
+      .why-card:hover,
+      .process-step:hover,
+      .payment-card:hover,
+      .guarantee-item:hover,
+      .stat-card:hover {
+        transform: none;
+      }
+
+      .service-card:hover .service-image img,
+      .store-card:hover .store-image img,
+      .tv-feature:hover .tv-visual img {
+        transform: none;
+      }
+
+      .btn:hover,
+      .header-cta:hover {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .nav-shell {
+        width: calc(100% - 28px);
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+      }
+
+      .brand {
+        min-width: 0;
+        gap: 9px;
+      }
+
+      .brand-text {
+        letter-spacing: 1px;
+      }
+
+      .mobile-nav.open {
+        display: block;
+        animation: mobileNavIn 180ms ease-out both;
+      }
+
+      @keyframes mobileNavIn {
+        from { opacity: 0; transform: translateY(-6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container,
+      .section {
+        width: calc(100% - (var(--mobile-gutter) * 2));
+      }
+
+      .section {
+        padding-block: clamp(48px, 12vw, 72px);
+      }
+
+      .section-header {
+        margin-bottom: 30px;
+      }
+
+      .eyebrow {
+        font-size: 0.64rem;
+        letter-spacing: 1.8px;
+        line-height: 1.5;
+      }
+
+      .hero {
+        padding-top: clamp(38px, 9vw, 62px);
+        padding-bottom: 48px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.65rem, 15vw, 5.1rem);
+        line-height: 0.98;
+        letter-spacing: clamp(1px, 0.7vw, 3px);
+        text-shadow: 0 0 10px rgba(255,255,255,.45), 0 0 25px rgba(0,240,255,.5);
+      }
+
+      .hero-title,
+      .hero-badge,
+      .hero-kicker,
+      .hero-copy {
+        max-width: 100%;
+      }
+
+      .hero-kicker {
+        letter-spacing: 1.5px;
+        line-height: 1.5;
+      }
+
+      .hero-copy {
+        margin-top: 16px;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        gap: 11px;
+        margin-top: 25px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        max-width: 420px;
+        min-height: 50px;
+        padding-inline: 16px;
+      }
+
+      .hero-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        width: fit-content;
+        max-width: 100%;
+        margin-inline: auto;
+        text-align: left;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stat-card {
+        min-height: 105px;
+        padding: 18px 10px;
+      }
+
+      .stat-number {
+        font-size: clamp(1.35rem, 6vw, 1.8rem);
+      }
+
+      .stat-label {
+        font-size: 0.64rem;
+        letter-spacing: 0.6px;
+      }
+
+      .service-grid,
+      .store-grid,
+      .why-grid,
+      .guarantee-grid,
+      .payment-grid,
+      .process-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .service-card,
+      .store-card {
+        padding: 12px;
+      }
+
+      .service-image,
+      .store-image {
+        height: clamp(175px, 55vw, 260px);
+      }
+
+      .service-content,
+      .store-content {
+        padding-inline: 4px;
+      }
+
+      .tv-feature {
+        border-radius: 20px;
+      }
+
+      .tv-visual {
+        min-height: 0;
+        height: clamp(190px, 58vw, 300px);
+      }
+
+      .tv-copy {
+        padding: 25px 20px;
+      }
+
+      .guarantee {
+        padding: 28px 16px;
+        border-radius: 22px;
+      }
+
+      .quote-info,
+      .form-box {
+        padding: 24px 16px;
+        border-radius: 20px;
+      }
+
+      .form-grid {
+        gap: 14px;
+      }
+
+      .form-control {
+        min-height: 48px;
+        padding: 12px;
+      }
+
+      textarea.form-control {
+        min-height: 120px;
+      }
+
+      .form-submit {
+        width: 100%;
+        min-height: 50px;
+      }
+
+      .trust-track,
+      .brand-track {
+        animation-duration: 48s;
+      }
+
+      .whatsapp-float {
+        right: max(14px, env(safe-area-inset-right, 0px));
+        bottom: max(14px, env(safe-area-inset-bottom, 0px));
+        width: 54px;
+        height: 54px;
+      }
+
+      .back-top {
+        right: 17px;
+        bottom: max(78px, calc(env(safe-area-inset-bottom, 0px) + 72px));
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav-shell {
+        width: calc(100% - 22px);
+      }
+
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+      }
+
+      .brand-text {
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+      }
+
+      .menu-toggle {
+        width: 42px;
+        height: 42px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.35rem, 14.5vw, 3.5rem);
+      }
+
+      .hero-badge {
+        padding: 8px 11px;
+        letter-spacing: 0.7px;
+        font-size: 0.54rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.45rem, 7vw, 1.7rem);
+        letter-spacing: 0.7px;
+      }
+
+      .stats-grid {
+        gap: 8px;
+      }
+
+      .stat-label {
+        font-size: 0.58rem;
+      }
+    }
+
+    @media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+      .ambient {
+        filter: blur(35px);
+        animation-duration: 18s;
+      }
+
+      .page-noise {
+        opacity: 0.025;
+      }
+
+      .grid-overlay {
+        opacity: 0.1;
+        background-size: 44px 44px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mobile-nav.open {
+        animation: none;
+      }
+
+      .ambient {
+        animation: none !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -3619,6 +3993,23 @@
         }
       }
     );
+
+
+    /* V4: mejoras seguras de interacción móvil */
+    document.addEventListener("click", (event) => {
+      if (!menuToggle || !mobileNav || !mobileNav.classList.contains("open")) {
+        return;
+      }
+      if (!menuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    /* Si el usuario rota el teléfono o cambia el viewport, evitamos
+       dejar bloqueado el scroll al cerrar el menú. */
+    window.addEventListener("orientationchange", () => {
+      closeMobileMenu();
+    }, { passive: true });
 
     /* =========================================================
        ACTIVE NAVIGATION
