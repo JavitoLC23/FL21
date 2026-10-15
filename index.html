@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
-  <title>ONE PLAYER V8 | Reparación de Celulares & Accesorios</title>
+  <title>ONE PLAYER V9 | Reparación de Celulares & Accesorios</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
 
   <style>
     /* =========================================================
-       ONE PLAYER V8 — identidad premium mobile-first
+       ONE PLAYER V9 — identidad premium mobile-first
        Sistema visual premium / cyber-neon
        ========================================================= */
 
@@ -2200,7 +2200,7 @@
   
 
     /* =========================================================
-       ONE PLAYER V8 — MEJORAS ADITIVAS RESPONSIVE
+       ONE PLAYER V9 — MEJORAS ADITIVAS RESPONSIVE
        Se agregan ajustes sin reemplazar los estilos ni funciones existentes.
        ========================================================= */
 
@@ -2623,7 +2623,7 @@
 
 
     /* =========================================================
-       ONE PLAYER V8 — POLISH LAYER
+       ONE PLAYER V9 — POLISH LAYER
        Capa aditiva: no reemplaza componentes ni lógica existente.
        ========================================================= */
     :root {
@@ -2730,7 +2730,7 @@
   
 
     /* =========================================================
-       ONE PLAYER V8 — acceso al catálogo independiente
+       ONE PLAYER V9 — acceso al catálogo independiente
        Capa aditiva: no reemplaza estilos ni lógica existentes.
        ========================================================= */
     .catalog-cta {
@@ -2759,7 +2759,7 @@
 
 
     /* =========================================================
-       ONE PLAYER V8 — SIGNATURE HERO / PREMIUM TECH
+       ONE PLAYER V9 — SIGNATURE HERO / PREMIUM TECH
        Animación ligera, alto contraste y prioridad móvil.
        ========================================================= */
     :root {
@@ -2895,6 +2895,71 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .hero::before, .hero::after, .hero-title { animation: none !important; }
+    }
+
+
+    /* ONE PLAYER V9 — premium color depth, subtle motion, and refined cards */
+    :root {
+      --v9-lime: #b8ff3b;
+      --v9-cyan: #40d9ff;
+      --v9-violet: #a78bfa;
+      --v9-ink: #080b10;
+    }
+    body {
+      background-image:
+        radial-gradient(ellipse at 10% 8%, rgba(64,217,255,.075), transparent 28%),
+        radial-gradient(ellipse at 88% 24%, rgba(167,139,250,.065), transparent 30%),
+        radial-gradient(ellipse at 55% 78%, rgba(184,255,59,.035), transparent 35%);
+    }
+    .site-header {
+      background: rgba(4, 7, 12, .78);
+      border-bottom-color: rgba(184,255,59,.13);
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+    }
+    .brand-text { text-shadow: 0 0 22px rgba(184,255,59,.12); }
+    .brand-text span { color: var(--v9-lime); }
+    .hero {
+      isolation: isolate;
+      background-image: radial-gradient(ellipse at 50% 35%, rgba(64,217,255,.055), transparent 42%);
+    }
+    .hero-title {
+      text-shadow: 0 0 34px rgba(184,255,59,.09), 0 10px 42px rgba(0,0,0,.3);
+    }
+    .hero-title span {
+      background: linear-gradient(100deg, #f8fff0 2%, var(--v9-lime) 34%, var(--v9-cyan) 72%, #d7cbff 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 0 22px rgba(64,217,255,.12));
+    }
+    .hero-badge { border-color: rgba(184,255,59,.24); box-shadow: 0 0 26px rgba(184,255,59,.045); }
+    .status-dot { box-shadow: 0 0 12px rgba(184,255,59,.6); }
+    .btn-primary {
+      background: linear-gradient(115deg, #c5ff62, var(--v9-lime) 55%, #d4ff8b);
+      box-shadow: 0 8px 26px rgba(184,255,59,.13);
+      color: #101608;
+    }
+    .btn-primary:hover { box-shadow: 0 10px 32px rgba(184,255,59,.22); filter: saturate(1.08) brightness(1.03); }
+    .btn-secondary { border-color: rgba(64,217,255,.28); }
+    .btn-secondary:hover { border-color: rgba(64,217,255,.55); box-shadow: 0 8px 28px rgba(64,217,255,.08); }
+    .section-title span { color: var(--v9-lime); }
+    .section-line { background: linear-gradient(90deg, var(--v9-lime), var(--v9-cyan), var(--v9-violet)); }
+    .store-card, .why-card, .service-card, .process-step, .stat-card {
+      border-color: rgba(255,255,255,.085);
+      box-shadow: 0 14px 38px rgba(0,0,0,.12);
+    }
+    .store-card:hover, .why-card:hover, .service-card:hover {
+      border-color: rgba(64,217,255,.28);
+      box-shadow: 0 18px 44px rgba(0,0,0,.2), 0 0 28px rgba(64,217,255,.045);
+    }
+    .store-image { background: linear-gradient(135deg, rgba(64,217,255,.06), rgba(167,139,250,.06), rgba(184,255,59,.035)); }
+    .store-image img { transition: transform .45s ease, filter .45s ease; }
+    .store-card:hover .store-image img { transform: scale(1.035); }
+    .catalog-cta { border-color: rgba(64,217,255,.2); background: linear-gradient(110deg, rgba(64,217,255,.055), rgba(167,139,250,.045), rgba(8,12,19,.8)); }
+    .scroll-progress { background: linear-gradient(90deg, var(--v9-lime), var(--v9-cyan), var(--v9-violet)); }
+    .wa-float { background: var(--v9-lime); color: #101608; box-shadow: 0 8px 28px rgba(184,255,59,.18); }
+    .footer { border-top-color: rgba(64,217,255,.12); }
+    @media (prefers-reduced-motion: reduce) {
+      .store-image img { transition: none !important; }
+      .store-card:hover .store-image img { transform: none; }
     }
 
   </style>
@@ -3348,7 +3413,7 @@
         </h2>
         <div class="section-line"></div>
         <p class="section-description">
-          Accesorios y productos tecnológicos para complementar tus dispositivos.
+          Explorá nuestras categorías de accesorios. Consultá por WhatsApp para confirmar opciones, compatibilidad y disponibilidad.
         </p>
       </div>
 
@@ -3358,7 +3423,7 @@
           <div class="store-image">
             <img
               src="Auriculares.jpg"
-              alt="Auriculares disponibles en ONE PLAYER"
+              alt="Categoría de auriculares y audio de ONE PLAYER"
               loading="lazy"
             >
           </div>
@@ -3366,7 +3431,7 @@
           <div class="store-content">
             <h3>Auriculares</h3>
             <p>
-              Con cable, Bluetooth, gaming y vinchas para diferentes necesidades.
+              Opciones de audio para distintos usos. Consultá modelos y disponibilidad.
             </p>
 
             <div class="store-button">
@@ -3387,7 +3452,7 @@
           <div class="store-image">
             <img
               src="Cargadores.png"
-              alt="Cargadores disponibles en ONE PLAYER"
+              alt="Categoría de cargadores de ONE PLAYER"
               loading="lazy"
             >
           </div>
@@ -3395,7 +3460,7 @@
           <div class="store-content">
             <h3>Cargadores</h3>
             <p>
-              Opciones de carga normal y rápida para distintos dispositivos.
+              Categoría de carga para distintos dispositivos. Consultá compatibilidad y disponibilidad.
             </p>
 
             <div class="store-button">
@@ -3416,7 +3481,7 @@
           <div class="store-image">
             <img
               src="USB.jpg"
-              alt="Cables USB disponibles en ONE PLAYER"
+              alt="Categoría de cables USB de ONE PLAYER"
               loading="lazy"
             >
           </div>
@@ -3424,7 +3489,7 @@
           <div class="store-content">
             <h3>Cables USB</h3>
             <p>
-              Tipo C, V8 y Lightning para diferentes equipos y necesidades.
+              Cables y conexiones para diferentes equipos. Consultá cuál corresponde a tu modelo.
             </p>
 
             <div class="store-button">
