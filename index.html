@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#030509">
-  <meta name="description" content="ONE PLAYER - Servicio Técnico Android, reparación de celulares, accesorios y tecnología en Rivadavia, Mendoza. Diagnóstico, reparación y atención directa por WhatsApp.">
+  <meta name="description" content="ONE PLAYER: reparación de celulares Android y accesorios en Rivadavia, Mendoza. Consultá por diagnóstico, reparaciones y accesorios por WhatsApp.">
   <meta name="keywords" content="servicio técnico celulares, reparación celulares, Android, Rivadavia Mendoza, cambio módulo, batería, pin de carga, accesorios">
   <meta name="author" content="ONE PLAYER">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="ONE PLAYER | Servicio Técnico & Store Tech">
-  <meta property="og:description" content="Servicio técnico Android, accesorios y tecnología en Rivadavia, Mendoza.">
+  <meta property="og:title" content="ONE PLAYER | Reparación de Celulares & Accesorios">
+  <meta property="og:description" content="Reparación de celulares y accesorios en Rivadavia, Mendoza.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
-  <title>ONE PLAYER V7 | Servicio Técnico & Store Tech | Rivadavia, Mendoza</title>
+  <title>ONE PLAYER V8 | Reparación de Celulares & Accesorios</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
 
   <style>
     /* =========================================================
-       ONE PLAYER V7 — base compatible con V2/V3/V4/V6
+       ONE PLAYER V8 — identidad premium mobile-first
        Sistema visual premium / cyber-neon
        ========================================================= */
 
@@ -1281,104 +1281,6 @@
     }
 
     /* =========================================================
-       TV FEATURE
-       ========================================================= */
-
-    .tv-feature {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      min-height: 450px;
-      overflow: hidden;
-      border: 1px solid rgba(0,240,255,0.22);
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 90% 20%, rgba(217,0,255,0.12), transparent 35%),
-        linear-gradient(135deg, rgba(9,16,29,0.95), rgba(3,6,12,0.92));
-      box-shadow: 0 25px 80px rgba(0,0,0,0.34);
-    }
-
-    .tv-visual {
-      min-height: 450px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tv-visual::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(3,6,12,0.1), rgba(3,6,12,0.72)),
-        linear-gradient(0deg, rgba(0,240,255,0.08), transparent);
-    }
-
-    .tv-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1s ease;
-    }
-
-    .tv-feature:hover .tv-visual img {
-      transform: scale(1.04);
-    }
-
-    .tv-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 48px;
-      text-align: left;
-    }
-
-    .tv-copy .eyebrow {
-      justify-content: flex-start;
-    }
-
-    .tv-copy .eyebrow::before {
-      display: none;
-    }
-
-    .tv-copy h3 {
-      font-family: var(--font-display);
-      font-size: clamp(1.7rem, 3vw, 2.6rem);
-      line-height: 1.1;
-      font-weight: 900;
-      color: var(--cyan);
-      text-shadow: 0 0 22px rgba(0,240,255,0.25);
-    }
-
-    .tv-copy p {
-      margin-top: 17px;
-      color: var(--text-soft);
-      font-size: 0.98rem;
-    }
-
-    .tv-list {
-      display: grid;
-      gap: 8px;
-      margin-top: 19px;
-    }
-
-    .tv-list div {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--text-soft);
-      font-size: 0.84rem;
-    }
-
-    .tv-list i {
-      color: var(--green);
-    }
-
-    .tv-copy .btn {
-      margin-top: 25px;
-    }
-
-    /* =========================================================
        WHY US
        ========================================================= */
 
@@ -2075,17 +1977,8 @@
         display: none;
       }
 
-      .tv-feature,
       .quote-layout {
         grid-template-columns: 1fr;
-      }
-
-      .tv-visual {
-        min-height: 330px;
-      }
-
-      .tv-copy {
-        padding: 38px;
       }
 
       .quote-info {
@@ -2186,14 +2079,6 @@
 
       .store-image {
         height: 210px;
-      }
-
-      .tv-visual {
-        min-height: 250px;
-      }
-
-      .tv-copy {
-        padding: 28px 23px 31px;
       }
 
       .guarantee {
@@ -2315,7 +2200,7 @@
   
 
     /* =========================================================
-       ONE PLAYER V7 — MEJORAS ADITIVAS RESPONSIVE
+       ONE PLAYER V8 — MEJORAS ADITIVAS RESPONSIVE
        Se agregan ajustes sin reemplazar los estilos ni funciones existentes.
        ========================================================= */
 
@@ -2405,8 +2290,7 @@
       }
 
       .service-card:hover .service-image img,
-      .store-card:hover .store-image img,
-      .tv-feature:hover .tv-visual img {
+      .store-card:hover .store-image img {
         transform: none;
       }
 
@@ -2553,19 +2437,6 @@
       .service-content,
       .store-content {
         padding-inline: 4px;
-      }
-
-      .tv-feature {
-        border-radius: 20px;
-      }
-
-      .tv-visual {
-        min-height: 0;
-        height: clamp(190px, 58vw, 300px);
-      }
-
-      .tv-copy {
-        padding: 25px 20px;
       }
 
       .guarantee {
@@ -2752,7 +2623,7 @@
 
 
     /* =========================================================
-       ONE PLAYER V7 — POLISH LAYER
+       ONE PLAYER V8 — POLISH LAYER
        Capa aditiva: no reemplaza componentes ni lógica existente.
        ========================================================= */
     :root {
@@ -2859,7 +2730,7 @@
   
 
     /* =========================================================
-       ONE PLAYER V7 — acceso al catálogo independiente
+       ONE PLAYER V8 — acceso al catálogo independiente
        Capa aditiva: no reemplaza estilos ni lógica existentes.
        ========================================================= */
     .catalog-cta {
@@ -2885,7 +2756,148 @@
     @media (prefers-reduced-motion: reduce) {
       .catalog-cta, .catalog-cta * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
-</style>
+
+
+    /* =========================================================
+       ONE PLAYER V8 — SIGNATURE HERO / PREMIUM TECH
+       Animación ligera, alto contraste y prioridad móvil.
+       ========================================================= */
+    :root {
+      --cyan: #b8ff3b;
+      --cyan-soft: rgba(184,255,59,.12);
+      --cyan-glow: rgba(184,255,59,.38);
+      --violet: #6f9f83;
+      --violet-soft: rgba(111,159,131,.10);
+      --violet-glow: rgba(111,159,131,.28);
+      --green: #b8ff3b;
+      --green-soft: rgba(184,255,59,.12);
+      --green-glow: rgba(184,255,59,.35);
+      --border: rgba(184,255,59,.16);
+      --border-strong: rgba(184,255,59,.42);
+      --shadow-cyan: 0 0 42px rgba(184,255,59,.12);
+    }
+    body {
+      background:
+        radial-gradient(ellipse at 50% -12%, rgba(184,255,59,.095), transparent 34%),
+        radial-gradient(ellipse at 92% 42%, rgba(111,159,131,.055), transparent 29%),
+        #050706;
+    }
+    ::selection { background: rgba(184,255,59,.3); color: #fff; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--cyan), #5b7964); }
+    .hero {
+      min-height: min(900px, calc(100svh - var(--header-height)));
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      padding-top: clamp(60px, 8vw, 110px);
+      padding-bottom: clamp(60px, 8vw, 110px);
+      background-image:
+        linear-gradient(rgba(184,255,59,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,255,59,.025) 1px, transparent 1px);
+      background-size: 54px 54px;
+      background-position: center center;
+    }
+    .hero::before {
+      top: 50%; left: 50%; width: min(78vw, 760px); height: auto;
+      aspect-ratio: 1 / 1; transform: translate(-50%,-50%);
+      border-color: rgba(184,255,59,.10);
+      box-shadow: 0 0 120px rgba(184,255,59,.055), inset 0 0 90px rgba(184,255,59,.025);
+      animation: heroRingBreathe 7s ease-in-out infinite alternate;
+    }
+    .hero::after {
+      content: ""; position: absolute; z-index: -1; pointer-events: none;
+      top: 50%; left: 50%; width: min(88vw, 900px); aspect-ratio: 1 / 1;
+      transform: translate(-50%,-50%); border-radius: 50%; opacity: .7;
+      background: conic-gradient(from 20deg, transparent 0 67%, rgba(184,255,59,.32) 70%, transparent 74% 100%);
+      -webkit-mask: radial-gradient(circle, transparent 61%, #000 61.5%, #000 62.1%, transparent 62.6%);
+      mask: radial-gradient(circle, transparent 61%, #000 61.5%, #000 62.1%, transparent 62.6%);
+      animation: heroOrbit 30s linear infinite;
+    }
+    @keyframes heroOrbit { to { rotate: 360deg; } }
+    @keyframes heroRingBreathe {
+      from { opacity: .55; scale: .985; }
+      to { opacity: 1; scale: 1.015; }
+    }
+    .hero-content { max-width: 1160px; margin-inline: auto; text-align: center; }
+    .hero-badge {
+      border-color: rgba(184,255,59,.35); background: rgba(184,255,59,.055);
+      color: #d3ff8c; box-shadow: 0 0 36px rgba(184,255,59,.075);
+      letter-spacing: .17em; backdrop-filter: blur(14px);
+    }
+    .status-dot { box-shadow: 0 0 13px var(--cyan); }
+    .hero-title {
+      position: relative; z-index: 1; max-width: none;
+      font-family: 'Space Grotesk','Inter',sans-serif;
+      font-size: clamp(4rem, 12.5vw, 10.5rem); font-weight: 800;
+      line-height: .88; letter-spacing: -.075em; text-wrap: nowrap;
+      text-shadow: 0 2px 0 rgba(255,255,255,.08), 0 0 24px rgba(255,255,255,.08), 0 0 75px rgba(184,255,59,.12);
+      animation: heroGlowV8 4.5s ease-in-out infinite alternate;
+    }
+    .hero-title span {
+      color: transparent;
+      background: linear-gradient(115deg, #f6ffe9 8%, #caff72 43%, #8bbd46 75%, #e9ffd1 100%);
+      -webkit-background-clip: text; background-clip: text;
+      text-shadow: none; filter: drop-shadow(0 0 24px rgba(184,255,59,.22));
+    }
+    .hero-title::after {
+      content: ""; display: block; width: clamp(90px, 14vw, 180px); height: 3px;
+      margin: clamp(20px, 3vw, 32px) auto 0; border-radius: 99px;
+      background: linear-gradient(90deg, transparent, #b8ff3b, #f4ffd9, #b8ff3b, transparent);
+      box-shadow: 0 0 22px rgba(184,255,59,.5);
+    }
+    @keyframes heroGlowV8 {
+      from { filter: brightness(.96); }
+      to { filter: brightness(1.08); }
+    }
+    .hero-kicker {
+      margin-top: 30px; color: #d9e3d1; font-size: clamp(.72rem, 1.5vw, .92rem);
+      font-weight: 800; letter-spacing: clamp(1px, .32vw, 3.2px); line-height: 1.7;
+    }
+    .hero-kicker span { color: var(--cyan); padding-inline: .3em; }
+    .hero-copy { max-width: 660px; margin-top: 16px; color: #aeb9aa; font-size: clamp(1rem, 1.7vw, 1.12rem); line-height: 1.8; }
+    .hero-actions { margin-top: 30px; gap: 14px; }
+    .hero-actions .btn { min-width: 218px; border-radius: 999px; letter-spacing: .04em; }
+    .btn-primary { background: var(--cyan); box-shadow: 0 8px 32px rgba(184,255,59,.18); }
+    .btn-primary:hover { box-shadow: 0 10px 40px rgba(184,255,59,.3); }
+    .btn-secondary { border-color: rgba(184,255,59,.32); background: rgba(184,255,59,.045); color: #d8ff9a; }
+    .btn-secondary:hover { border-color: var(--cyan); background: rgba(184,255,59,.1); box-shadow: 0 8px 30px rgba(184,255,59,.1); }
+    .hero-meta { margin-top: 28px; gap: 10px 24px; color: #9ba795; }
+    .hero-meta i { color: var(--cyan); }
+    .site-header { border-bottom-color: rgba(184,255,59,.1); background: rgba(5,7,6,.78); }
+    .brand-text span { color: var(--cyan); }
+    .nav-link::after { background: var(--cyan); }
+    .desktop-nav .nav-link[href="catalogo.html"], .mobile-link[href="catalogo.html"] { color: var(--cyan); }
+    .section-line { background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+    .store-card { background: linear-gradient(145deg, rgba(16,22,16,.94), rgba(7,10,8,.94)); }
+    .store-card:hover { border-color: rgba(184,255,59,.38); box-shadow: 0 24px 60px rgba(184,255,59,.07); }
+    .store-image { border-color: rgba(184,255,59,.12); }
+    .catalog-cta { border-color: rgba(184,255,59,.22); background: linear-gradient(115deg, rgba(184,255,59,.07), rgba(9,14,10,.94) 62%, rgba(111,159,131,.055)); }
+    .catalog-cta h3 { color: #f1f8e8; }
+    .why-card, .service-card, .process-step, .payment-card, .guarantee-item { background-color: rgba(10,15,11,.76); }
+    .whatsapp-float, .wa-float { box-shadow: 0 0 30px rgba(184,255,59,.12); }
+    @media (max-width: 720px) {
+      .hero { min-height: auto; padding-top: 74px; padding-bottom: 64px; }
+      .hero::before { width: 118vw; }
+      .hero::after { width: 132vw; }
+      .hero-title { font-size: clamp(2.8rem, 12.5vw, 5.1rem); letter-spacing: -.075em; line-height: .95; }
+      .hero-kicker { margin-top: 24px; font-size: .72rem; letter-spacing: 1.2px; }
+      .hero-copy { max-width: 36ch; margin-top: 13px; }
+      .hero-actions { gap: 10px; margin-top: 24px; }
+      .hero-actions .btn { width: 100%; min-width: 0; max-width: 390px; min-height: 52px; }
+      .hero-meta { max-width: 330px; margin-inline: auto; gap: 10px 14px; font-size: .78rem; }
+      .hero-meta span { justify-content: center; }
+      .hero { background-size: 38px 38px; }
+    }
+    @media (max-width: 380px) {
+      .hero-title { font-size: clamp(2.4rem, 11.5vw, 3rem); letter-spacing: -.08em; }
+      .hero-badge { padding: 8px 12px; font-size: .58rem; letter-spacing: .09em; }
+      .hero-kicker { font-size: .66rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero::before, .hero::after, .hero-title { animation: none !important; }
+    }
+
+  </style>
 </head>
 
 <body>
@@ -2914,7 +2926,6 @@
         <a href="#servicios" class="nav-link">Laboratorio</a>
         <a href="#store" class="nav-link">Store & Gear</a>
         <a href="catalogo.html" class="nav-link">Catálogo</a>
-        <a href="#tv" class="nav-link">TV</a>
       </nav>
 
 
@@ -2938,7 +2949,6 @@
         <a href="#servicios" class="mobile-link">Laboratorio</a>
         <a href="#store" class="mobile-link">Store & Gear</a>
         <a href="catalogo.html" class="mobile-link">Catálogo de accesorios</a>
-        <a href="#tv" class="mobile-link">TV Entertainment</a>
       </nav>
     </div>
   </header>
@@ -2961,13 +2971,12 @@
         </h1>
 
         <p class="hero-kicker reveal">
-          Servicio Técnico · Store Tech · Experiencia Digital
+          REPARACIÓN DE CELULARES <span aria-hidden="true">/</span> ACCESORIOS <span aria-hidden="true">/</span> TECNOLOGÍA
         </p>
 
         <p class="hero-copy reveal">
-          Tecnología, reparación y accesorios con atención directa.
-          Diagnosticamos, reparamos y testeamos tu equipo para que vuelva
-          a funcionar como corresponde.
+          Tu celular en buenas manos. Diagnóstico claro, reparación con criterio técnico
+          y accesorios para acompañarte todos los días.
         </p>
 
         <div class="hero-actions reveal">
@@ -2979,29 +2988,24 @@
             Solicitar presupuesto
           </a>
 
-          <a
-            href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20una%20reparaci%C3%B3n."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-secondary"
-          >
-            <i class="fa-brands fa-whatsapp"></i>
-            Hablar por WhatsApp
+          <a href="catalogo.html" class="btn btn-secondary">
+            <i class="fa-solid fa-grid-2"></i>
+            Explorar accesorios
           </a>
         </div>
 
         <div class="hero-meta reveal">
           <span>
             <i class="fa-solid fa-circle-check"></i>
-            Atención personalizada
+            Atención directa
           </span>
           <span>
             <i class="fa-solid fa-microscope"></i>
-            Diagnóstico transparente
+            Diagnóstico claro
           </span>
           <span>
-            <i class="fa-solid fa-bolt"></i>
-            Trabajo eficiente
+            <i class="fa-solid fa-shield-halved"></i>
+            Cuidado de tu equipo
           </span>
         </div>
 
@@ -3440,21 +3444,21 @@
         <article class="store-card reveal tilt">
           <div class="store-image">
             <img
-              src="Convertidores.png"
-              alt="Convertidores TV disponibles en ONE PLAYER"
+              src="Baterias.jpg"
+              alt="Baterías y componentes para reparación de celulares"
               loading="lazy"
             >
           </div>
 
           <div class="store-content">
-            <h3>Convertidores TV</h3>
+            <h3>Baterías y repuestos</h3>
             <p>
-              Soluciones para convertir televisores tradicionales en Smart TV.
+              Consultá por baterías y componentes compatibles con tu equipo.
             </p>
 
             <div class="store-button">
               <a
-                href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20CONVERTIDORES%20TV."
+                href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20bater%C3%ADas%20y%20repuestos%20para%20celular."
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn btn-secondary"
@@ -3478,69 +3482,6 @@
           <i class="fa-solid fa-grid-2"></i>
           Ver catálogo completo
         </a>
-      </div>
-    </section>
-
-    <!-- =====================================================
-         TV
-         ===================================================== -->
-    <section class="section" id="tv">
-      <div class="section-header reveal">
-        <div class="eyebrow">TV Entertainment</div>
-        <h2 class="section-title">
-          Más tecnología, <span>más entretenimiento</span>
-        </h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="tv-feature reveal">
-
-        <div class="tv-visual">
-          <img
-            src="Tv.jpg"
-            alt="TV Entertainment de ONE PLAYER"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="tv-copy">
-          <div class="eyebrow">Experiencia familiar</div>
-
-          <h3>Tu entretenimiento, conectado.</h3>
-
-          <p>
-            Una solución de TV integrada para disfrutar contenido
-            desde la comodidad de tu hogar.
-          </p>
-
-          <div class="tv-list">
-            <div>
-              <i class="fa-solid fa-check"></i>
-              Solución práctica para tu TV
-            </div>
-
-            <div>
-              <i class="fa-solid fa-check"></i>
-              Experiencia pensada para compartir
-            </div>
-
-            <div>
-              <i class="fa-solid fa-check"></i>
-              Consultá disponibilidad
-            </div>
-          </div>
-
-          <a
-            href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE!%20Quisiera%20consultar%20por%20EXPERIENCIA%20TV%20FAMILIAR."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-primary"
-          >
-            <i class="fa-brands fa-whatsapp"></i>
-            Consultar por TV
-          </a>
-        </div>
-
       </div>
     </section>
 
@@ -3983,8 +3924,8 @@
           </p>
 
           <p>
-            <i class="fa-solid fa-tv"></i>
-            TV Entertainment
+            <i class="fa-solid fa-shield-halved"></i>
+            Accesorios y repuestos
           </p>
         </div>
 
@@ -4233,7 +4174,6 @@
       "servicios",
       "proceso",
       "store",
-      "tv",
       "presupuesto"
     ];
 
