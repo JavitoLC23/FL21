@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
-  <title>ONE PLAYER V10 | Servicio Técnico & Accesorios</title>
+  <title>ONE PLAYER V11 | Servicio Técnico & Accesorios</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -3166,7 +3166,39 @@
       .hero::before, .hero::after, .hero-title { animation: none !important; }
     }
 
-  </style>
+  
+
+/* ONE PLAYER V11 — correcciones estructurales + neon premium responsive */
+:root{--v11-white:#f7f9ff;--v11-cyan:#42e8ff;--v11-violet:#a78bfa;--v11-pink:#ff5bd6;--v11-lime:#c6ff55}
+html,body{max-width:100%;overflow-x:clip}
+.hero{width:100%;overflow:visible}
+.hero-content{width:min(100% - 32px,1220px)!important;max-width:1220px!important;margin-inline:auto!important;text-align:center!important}
+.hero-title{box-sizing:border-box!important;width:100%!important;max-width:100%!important;margin-inline:auto!important;padding:.08em .12em .18em!important;justify-content:center!important;align-items:center!important;gap:0 .16em!important;overflow:visible!important;text-align:center!important;letter-spacing:-.045em!important;font-size:clamp(2.5rem,9.4vw,8.2rem)!important;line-height:1.12!important;min-width:0!important}
+.hero-title span{flex:0 1 auto!important;min-width:0!important;max-width:100%!important;white-space:nowrap!important;letter-spacing:-.045em!important;filter:drop-shadow(0 0 15px rgba(66,232,255,.2)) drop-shadow(0 0 25px rgba(255,91,214,.12))!important}
+.hero-title::after{flex:0 0 100%!important;margin-inline:auto!important}
+/* Las palabras de marca y títulos de datos son blancos; color solo como acento */
+.hero-kicker,.section-title,.guarantee-item h3,.brand-pill,.trust-item,.stat-card h3{color:#f7f9ff!important}
+.section-title span{color:#f7f9ff!important;background:none!important;-webkit-text-fill-color:#f7f9ff!important}
+/* Evita que el nombre decorativo invada el bloque de confianza */
+#confianza,.guarantee-section,.guarantee-grid{position:relative;isolation:isolate}
+#confianza::before,.guarantee-section::before{content:none!important;display:none!important}
+.guarantee-grid{z-index:1}
+.guarantee-item{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.11)!important;background:linear-gradient(145deg,rgba(20,26,42,.96),rgba(9,13,23,.96))!important;box-shadow:0 12px 36px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.035)!important;transition:transform .25s,border-color .25s,box-shadow .25s!important}
+.guarantee-item::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,var(--v11-cyan),var(--v11-violet),var(--v11-pink));opacity:.85}
+.guarantee-item:hover{transform:translateY(-4px)!important;border-color:rgba(66,232,255,.35)!important;box-shadow:0 18px 42px rgba(0,0,0,.26),0 0 24px rgba(66,232,255,.07)!important}
+.brand-strip,.brand-marquee,.brand-track-wrap,.trust-strip{max-width:100%;overflow:hidden!important}
+.brand-track,.trust-track{width:max-content!important;max-width:none!important;flex-shrink:0!important;will-change:transform;animation-timing-function:linear!important;animation-iteration-count:infinite!important}
+.brand-track{animation-duration:38s!important}
+.trust-track{animation-duration:42s!important}
+.brand-pill{border-color:rgba(66,232,255,.28)!important;background:linear-gradient(135deg,rgba(66,232,255,.07),rgba(167,139,250,.07),rgba(255,91,214,.045))!important;box-shadow:inset 0 0 16px rgba(66,232,255,.025),0 0 16px rgba(167,139,250,.025);transition:border-color .2s,box-shadow .2s,transform .2s}
+.brand-pill:hover{border-color:rgba(255,91,214,.55)!important;box-shadow:0 0 22px rgba(255,91,214,.1)!important;transform:translateY(-2px)}
+.trust-item{border-color:rgba(167,139,250,.25)!important;background:linear-gradient(120deg,rgba(66,232,255,.055),rgba(167,139,250,.07),rgba(255,91,214,.04))!important;box-shadow:0 0 18px rgba(66,232,255,.035)}
+.trust-item i{color:var(--v11-cyan)!important;filter:drop-shadow(0 0 7px rgba(66,232,255,.55))}
+@media(max-width:700px){.hero-content{width:calc(100% - 24px)!important}.hero-title{font-size:clamp(2.25rem,10.2vw,4.3rem)!important;letter-spacing:-.035em!important;line-height:1.15!important;padding:.12em .06em .2em!important;gap:0 .12em!important}.hero-title span{letter-spacing:-.035em!important}.hero-title::after{margin-top:15px!important}.brand-track{animation-duration:46s!important}.trust-track{animation-duration:48s!important}.guarantee-item:hover{transform:none!important}}
+@media(max-width:380px){.hero-title{font-size:clamp(1.95rem,9.5vw,2.45rem)!important;letter-spacing:-.025em!important}.hero-title span{letter-spacing:-.025em!important}}
+@media(prefers-reduced-motion:reduce){.brand-track,.trust-track{animation-play-state:paused!important;transform:none!important}.guarantee-item,.brand-pill{transition:none!important}.guarantee-item:hover,.brand-pill:hover{transform:none!important}}
+
+</style>
 </head>
 
 <body>
