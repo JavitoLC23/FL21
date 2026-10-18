@@ -153,9 +153,9 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
 <body>
   <a class="v15-skip-link" href="#catalogGrid">Saltar a las categorías</a>
   <header class="topbar"><div class="wrap topbar-inner">
-    <a class="brand" href="./ONE_PLAYER_V14.html" aria-label="ONE PLAYER, página principal">ONE <span>PLAYER</span></a>
+    <a class="brand" href="./index.html" aria-label="ONE PLAYER, página principal">ONE <span>PLAYER</span></a>
     <div class="brand-caption">Servicio técnico · Accesorios</div>
-    <a class="back" href="./ONE_PLAYER_V14.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a la web principal</a>
+    <a class="back" href="./index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a la web principal</a>
   </div></header>
   <main class="wrap">
     <section class="hero" aria-labelledby="page-title">
@@ -198,3 +198,16 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
 </body>
 </html>
 
+
+<style id="one-player-v17-performance">
+/* V17 performance: catálogo fluido en teléfonos */
+html{scroll-behavior:smooth;overscroll-behavior-y:contain}
+@media(max-width:768px){
+ html{scroll-behavior:auto!important}
+ .topbar{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(7,9,16,.97)!important}
+ .grid-overlay,.background-grid,.ambient{animation:none!important;filter:none!important;backdrop-filter:none!important}
+ .card,.visual,.category-ask{transition:none!important;transform:none!important}
+ .card:hover{transform:none!important;box-shadow:none!important}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
