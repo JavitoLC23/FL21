@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#080b10">
   <meta name="description" content="Catálogo de accesorios ONE PLAYER. Categorías organizadas y próximas novedades. Consultas por WhatsApp.">
-  <title>Catálogo de accesorios | ONE PLAYER V11</title>
+  <title>Catálogo de accesorios | ONE PLAYER V12</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
     @media(prefers-reduced-motion:reduce){.card,.card:before,.visual:after,.visual-icon,.filter,.back,.all-ask{transition:none!important}.card:hover,.filter:hover,.back:hover,.all-ask:hover{transform:none}}
 
   
-/* ONE PLAYER V11 — catálogo: título legible, alineación y responsive real */
+/* ONE PLAYER V12 — catálogo: título legible, alineación y responsive real */
 html,body{width:100%;max-width:100%;overflow-x:clip}
 .wrap{width:min(1160px,calc(100% - 40px))!important;margin-left:auto!important;margin-right:auto!important}
 .topbar-inner{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;padding:25px 0 22px!important}
@@ -62,9 +62,9 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 </head>
 <body>
   <header class="topbar"><div class="wrap topbar-inner">
-    <a class="brand" href="./ONE_PLAYER_V11.html" aria-label="ONE PLAYER, página principal">ONE <span>PLAYER</span></a>
+    <a class="brand" href="./ONE_PLAYER_V12.html" aria-label="ONE PLAYER, página principal">ONE <span>PLAYER</span></a>
     <div class="brand-caption">Servicio técnico · Accesorios</div>
-    <a class="back" href="./ONE_PLAYER_V11.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a la web principal</a>
+    <a class="back" href="./ONE_PLAYER_V12.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a la web principal</a>
   </div></header>
   <main class="wrap">
     <section class="hero" aria-labelledby="page-title">
@@ -106,3 +106,31 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   </script>
 </body>
 </html>
+<style id="one-player-catalog-v12-alignment">
+/* FIX definitivo: el icono queda centrado en el círculo; la etiqueta vive abajo sin desplazarlo */
+html{scroll-padding-top:20px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:clip}
+.wrap{width:min(1160px,calc(100% - 32px));margin-inline:auto}
+.hero{width:100%;min-width:0;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero .eyebrow{width:100%;text-align:center}
+#page-title{display:block!important;width:100%!important;max-width:900px!important;margin:14px auto 16px!important;padding:0 10px .12em!important;text-align:center!important;line-height:1.15!important;letter-spacing:-.045em!important;overflow:visible!important;overflow-wrap:normal!important}
+#page-title span{display:inline!important;white-space:normal!important;background:linear-gradient(100deg,var(--cyan),var(--violet),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.intro{width:100%;max-width:650px;padding-inline:8px;text-align:center}
+.notice{width:min(700px,100%);max-width:100%;flex-wrap:wrap;text-align:center;line-height:1.45;overflow-wrap:anywhere}
+.tools{width:100%;min-width:0}.search{min-width:0}.search input{min-width:0;width:100%}
+.filters{width:100%;max-width:100%;justify-content:center;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.grid{width:100%;align-items:stretch;grid-template-columns:repeat(4,minmax(0,1fr));}
+.card{min-width:0;position:relative;isolation:isolate}
+.visual{position:relative;display:block!important;aspect-ratio:1/0.88!important;min-height:190px;overflow:hidden;}
+.visual:before{position:absolute!important;left:50%!important;top:45%!important;transform:translate(-50%,-50%)!important;width:68%!important;max-width:180px;pointer-events:none}
+.visual:after{pointer-events:none}
+.visual-icon{position:absolute!important;left:50%!important;top:43%!important;transform:translate(-50%,-50%)!important;display:block!important;margin:0!important;line-height:1!important;text-align:center!important;font-size:clamp(2.25rem,4vw,3.1rem)!important;z-index:1!important}
+.coming{position:absolute!important;left:50%!important;right:auto!important;top:auto!important;bottom:12px!important;transform:translateX(-50%)!important;margin:0!important;max-width:calc(100% - 16px);white-space:nowrap!important;z-index:3!important}
+.card-body{width:100%;min-width:0;align-items:center;text-align:center}
+.card h2,.card p{max-width:100%;overflow-wrap:anywhere}
+.bottom-cta{min-width:0}.bottom-cta>div{min-width:0}.all-ask{white-space:normal;text-align:center}
+@media(max-width:960px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.visual{min-height:170px}}
+@media(max-width:680px){.wrap{width:calc(100% - 24px)}#page-title{font-size:clamp(1.85rem,7.6vw,3rem)!important;letter-spacing:-.04em!important;line-height:1.18!important;padding-inline:8px!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.visual{min-height:150px;aspect-ratio:1/0.9!important}.visual:before{width:70%!important}.visual-icon{top:42%!important;font-size:2.35rem!important}.coming{bottom:9px!important;font-size:.56rem!important;letter-spacing:.06em!important;padding:6px 7px!important}.filters{justify-content:flex-start}.notice{gap:7px}}
+@media(max-width:360px){.wrap{width:calc(100% - 20px)}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.visual{min-height:132px}.visual-icon{font-size:2rem!important}.coming{font-size:.49rem!important;letter-spacing:.025em!important;padding:5px 5px!important}.card-body{padding-inline:7px}}
+@media(prefers-reduced-motion:reduce){.card,.all-ask{transition:none!important}.card:hover{transform:none!important}}
+</style>
