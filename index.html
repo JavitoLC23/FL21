@@ -4796,7 +4796,7 @@ img,video,iframe,svg{max-width:100%}button,a,input,select,textarea{-webkit-tap-h
         () => {
           window.scrollTo({
             top: 0,
-            behavior: prefersReducedMotion
+            behavior: (prefersReducedMotion || window.matchMedia("(max-width: 768px)").matches)
               ? "auto"
               : "smooth"
           });
@@ -5402,3 +5402,24 @@ body{overflow-x:clip;max-width:100%}img,video,iframe{max-width:100%}
 
 </body>
 </html>
+
+<style id="one-player-v17-performance">
+/* V17 performance: efectos más económicos, scroll móvil ágil y controles estables */
+html{scroll-behavior:smooth;scroll-padding-top:84px;overscroll-behavior-y:contain}
+.scroll-progress{box-shadow:none;will-change:width}
+@media(max-width:768px){
+  html{scroll-behavior:auto!important}
+  .ambient{animation:none!important;filter:none!important;will-change:auto!important;opacity:.12!important}
+  .ambient-one{width:100vw;height:100vw;top:-42vw;left:0;transform:none;background:radial-gradient(circle,rgba(66,232,255,.14),transparent 68%)}
+  .ambient-two,.ambient-three{display:none!important}
+  .site-header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(3,7,13,.97)!important;transition:none!important}
+  .site-header.scrolled{box-shadow:0 5px 18px rgba(0,0,0,.22)!important}
+  .page-noise,.grid-overlay{opacity:.12!important}
+  .back-top{right:16px!important;bottom:88px!important;transition:opacity .15s ease,visibility .15s ease!important;transform:none!important}
+  .back-top.visible{transform:none!important}
+  .whatsapp-float{will-change:auto!important;animation:none!important}
+  .scroll-progress{transition:none!important}
+  .service-card,.store-card,.why-card,.payment-card,.process-step,.guarantee-item,.reveal{transition:none!important}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+</style>
