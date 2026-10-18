@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
-  <title>ONE PLAYER V11 | Servicio Técnico & Accesorios</title>
+  <title>ONE PLAYER V12 | Servicio Técnico & Accesorios</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -3168,7 +3168,7 @@
 
   
 
-/* ONE PLAYER V11 — correcciones estructurales + neon premium responsive */
+/* ONE PLAYER V12 — ajuste final de alineación, contraste y rendimiento */
 :root{--v11-white:#f7f9ff;--v11-cyan:#42e8ff;--v11-violet:#a78bfa;--v11-pink:#ff5bd6;--v11-lime:#c6ff55}
 html,body{max-width:100%;overflow-x:clip}
 .hero{width:100%;overflow:visible}
@@ -4986,3 +4986,26 @@ html,body{max-width:100%;overflow-x:clip}
 
 </body>
 </html>
+
+<style id="one-player-v12-final">
+/* Alineación y legibilidad reforzadas */
+html{scroll-padding-top:80px; -webkit-text-size-adjust:100%; text-size-adjust:100%}
+body{overflow-x:clip}
+.hero-content,.hero-inner,.hero-copy{min-width:0;max-width:100%}
+.hero-title{display:flex!important;justify-content:center!important;align-items:center!important;flex-wrap:wrap!important;text-align:center!important;width:100%!important;max-width:100%!important;overflow:visible!important;line-height:1.12!important;padding:.08em .08em .2em!important;margin-inline:auto!important;box-sizing:border-box!important}
+.hero-title span{display:inline-block!important;max-width:100%!important;overflow:visible!important}
+.hero-title::after{display:block;flex-basis:100%;}
+.brands-label{color:#f4f7fb!important;text-shadow:0 0 18px rgba(66,232,255,.2)}
+.trust-item{color:#f4f7fb!important}
+.brand-track,.trust-track{backface-visibility:hidden;transform:translateZ(0);animation-timing-function:linear!important}
+.brand-pill{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.brand-pill:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(66,232,255,.16)}
+.guarantee{position:relative;isolation:isolate}
+.guarantee:before{content:none!important}
+.guarantee-item{background:linear-gradient(145deg,rgba(20,27,40,.94),rgba(10,14,22,.96));border:1px solid rgba(255,255,255,.09);box-shadow:0 12px 32px rgba(0,0,0,.15);transition:transform .22s,border-color .22s,box-shadow .22s}
+.guarantee-item:hover{border-color:rgba(66,232,255,.35);box-shadow:0 0 25px rgba(66,232,255,.07),0 16px 35px rgba(0,0,0,.22)}
+img{max-width:100%;height:auto}
+@media(max-width:700px){.hero-title{font-size:clamp(2rem,9.2vw,4rem)!important;letter-spacing:-.04em!important;line-height:1.13!important;padding:.12em .12em .24em!important}.hero-title::after{margin-top:12px!important}.brand-pill{white-space:nowrap}.guarantee-grid{grid-template-columns:minmax(0,1fr)!important}.section{scroll-margin-top:72px}}
+@media(max-width:390px){.hero-title{font-size:clamp(1.8rem,8.5vw,2.5rem)!important;letter-spacing:-.045em!important}.hero-title span{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+</style>
