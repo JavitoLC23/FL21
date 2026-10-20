@@ -5393,6 +5393,39 @@ body{overflow-x:clip;max-width:100%}img,video,iframe{max-width:100%}
 
   </style>
 
+
+<style id="one-player-v21-mobile-final-alignment">
+/* V21: centrar el aviso de WhatsApp y el pie de página en pantallas móviles */
+@media (max-width: 768px) {
+  #presupuesto .quote-points {
+    display:flex!important; flex-direction:column!important; align-items:center!important;
+    width:100%!important; max-width:100%!important; margin-inline:auto!important; gap:12px!important;
+  }
+  #presupuesto .quote-point {
+    display:grid!important; grid-template-columns:18px minmax(0,1fr)!important;
+    align-items:start!important; justify-content:center!important;
+    width:fit-content!important; max-width:min(100%, 340px)!important; margin-inline:auto!important;
+    text-align:center!important; gap:8px!important;
+  }
+  #presupuesto .quote-point i { margin-top:3px!important; text-align:center!important; }
+  #presupuesto .quote-point span { text-align:center!important; overflow-wrap:break-word!important; word-break:normal!important; }
+  #servicios .service-features { align-items:center!important; }
+  #servicios .service-feature {
+    display:grid!important; grid-template-columns:18px minmax(0,1fr)!important;
+    width:fit-content!important; max-width:100%!important; margin-inline:auto!important;
+    align-items:start!important; gap:8px!important; text-align:left!important;
+  }
+  #servicios .service-feature i { margin-top:3px!important; }
+  footer .footer-bottom {
+    display:flex!important; flex-direction:column!important; align-items:center!important;
+    justify-content:center!important; width:100%!important; gap:10px!important;
+    text-align:center!important;
+  }
+  footer .footer-bottom > span { display:block!important; width:100%!important; text-align:center!important;
+    margin-inline:auto!important; overflow-wrap:anywhere!important; }
+}
+</style>
+
 </body>
 </html>
 
