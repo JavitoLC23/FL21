@@ -4281,7 +4281,6 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
 
         <div class="footer-brand">
           <a href="#inicio" class="brand">
-            <span class="brand-mark">OP</span>
             <span class="brand-text">ONE <span>PLAYER</span></span>
           </a>
 
@@ -5458,6 +5457,83 @@ body{overflow-x:clip;max-width:100%}img,video,iframe{max-width:100%}
   #presupuesto .quote-points .quote-point > span { display:block !important; width:100% !important; text-align:center !important; }
 }
 </style>
+
+<style id="one-player-mobile-footer-improvements">
+/* Ajustes específicos para el pie de página en celular */
+@media (max-width: 768px) {
+  footer .footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px 8px !important;
+    align-items: start !important;
+  }
+  footer .footer-brand {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  footer .footer-brand > .brand {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  footer .footer-brand .brand-mark { display: none !important; }
+  footer .footer-brand .brand-text {
+    font-size: clamp(.92rem, 4vw, 1.1rem) !important;
+    letter-spacing: 1.2px !important;
+  }
+  footer .footer-brand p {
+    width: 100% !important;
+    max-width: 36rem !important;
+    margin: 12px auto 0 !important;
+    text-align: center !important;
+    font-size: .88rem !important;
+  }
+  footer .footer-brand .social-row { margin-top: 18px !important; }
+  footer .footer-col {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 0 2px !important;
+    text-align: center !important;
+    overflow-wrap: anywhere !important;
+  }
+  footer .footer-title {
+    font-size: clamp(.58rem, 2.5vw, .72rem) !important;
+    letter-spacing: 1px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 10px !important;
+    overflow-wrap: anywhere !important;
+  }
+  footer .footer-col p,
+  footer .footer-col a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 5px !important;
+    width: 100% !important;
+    margin: 0 auto 11px !important;
+    font-size: clamp(.61rem, 2.65vw, .76rem) !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+  footer .footer-col p i,
+  footer .footer-col a i { margin: 0 !important; }
+  footer .footer-bottom { margin-top: 24px !important; }
+}
+@media (max-width: 360px) {
+  footer .footer-grid { column-gap: 5px !important; }
+  footer .footer-title { letter-spacing: .6px !important; }
+  footer .footer-col p, footer .footer-col a { font-size: .59rem !important; }
+}
+</style>
+
 </body>
 </html>
 
