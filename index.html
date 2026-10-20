@@ -3260,7 +3260,32 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
 img,video,iframe,svg{max-width:100%}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 @media(max-width:420px){.container,.wrap,.content,.section-inner{max-width:100%}h1{overflow-wrap:anywhere}button,a{touch-action:manipulation}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-</style></head>
+</style>
+<style id="one-player-v18-layout">
+/* V18: menos repetición, textos centrados y tarjetas alineadas */
+#garantia .section-header,#garantia .guarantee-item,#como-consultar .section-header,#como-consultar .v15-guide-card,
+#preguntas-frecuentes .section-header,#preguntas-frecuentes .v13-faq-list,#presupuesto .section-header,
+main .section-header,main .section-description,main .eyebrow {text-align:center}
+#garantia .guarantee-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+#garantia .guarantee-item{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-width:0;padding:22px 18px}
+#garantia .guarantee-item h3,#garantia .guarantee-item p{width:100%;text-align:center}
+#como-consultar .v15-guide-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+#como-consultar .v15-guide-card{align-items:center;text-align:center}
+#como-consultar .v15-guide-card h3,#como-consultar .v15-guide-card p{width:100%;text-align:center}
+#como-consultar .v15-guide-number{right:14px}
+#preguntas-frecuentes .v13-faq-list{text-align:left;margin-inline:auto}
+@media(max-width:680px){
+  #garantia .guarantee-grid{grid-template-columns:1fr;gap:10px}
+  #garantia .guarantee-item{padding:18px 16px}
+  #como-consultar .v15-guide-grid{grid-template-columns:1fr;gap:10px}
+  #como-consultar .v15-guide-card{padding:18px 16px}
+  #garantia .section-header,#como-consultar .section-header,#preguntas-frecuentes .section-header,#presupuesto .section-header{padding-inline:8px}
+  main .section-description{margin-inline:auto;max-width:42ch}
+}
+@media(min-width:681px) and (max-width:900px){#garantia .guarantee-grid,#como-consultar .v15-guide-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}#garantia .guarantee-item,#como-consultar .v15-guide-card{padding:17px 12px}}
+</style>
+
+</head>
 
 <body>
   <a class="v15-skip-link" href="#contenido-principal">Saltar al contenido</a>
@@ -3950,25 +3975,7 @@ img,video,iframe,svg{max-width:100%}button,a,input,select,textarea{-webkit-tap-h
     </section>
 
 
-    <!-- V13: acceso rápido por problema, sin prometer diagnósticos ni tiempos -->
-    <section class="section v13-repair" id="problemas">
-      <div class="section-header reveal">
-        <div class="eyebrow">Encontrá el camino más rápido</div>
-        <h2 class="section-title">¿Qué le pasa a <span>tu celular?</span></h2>
-        <div class="section-line"></div>
-        <p class="section-description">Elegí el problema y contanos qué sucede. Revisamos tu consulta y te orientamos sobre los próximos pasos.</p>
-      </div>
-      <div class="v13-repair-grid">
-        <a class="v13-repair-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%2C%20quiero%20consultar%20por%20una%20pantalla%20da%C3%B1ada." target="_blank" rel="noopener noreferrer"><span class="v13-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></span><span class="v13-card-title">Pantalla o vidrio</span><span class="v13-card-desc">Rotura, imagen o respuesta táctil.</span><span class="v13-card-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>
-        <a class="v13-repair-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%2C%20quiero%20consultar%20por%20la%20bater%C3%ADa%20de%20mi%20celular." target="_blank" rel="noopener noreferrer"><span class="v13-icon"><i class="fa-solid fa-battery-half" aria-hidden="true"></i></span><span class="v13-card-title">Batería</span><span class="v13-card-desc">Duración, carga o apagados.</span><span class="v13-card-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>
-        <a class="v13-repair-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%2C%20quiero%20consultar%20por%20el%20pin%20de%20carga%20de%20mi%20celular." target="_blank" rel="noopener noreferrer"><span class="v13-icon"><i class="fa-solid fa-plug" aria-hidden="true"></i></span><span class="v13-card-title">Pin de carga</span><span class="v13-card-desc">No carga o el cable hace falso contacto.</span><span class="v13-card-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>
-        <a class="v13-repair-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%2C%20quiero%20consultar%20por%20una%20falla%20de%20audio%20en%20mi%20celular." target="_blank" rel="noopener noreferrer"><span class="v13-icon"><i class="fa-solid fa-volume-high" aria-hidden="true"></i></span><span class="v13-card-title">Audio o micrófono</span><span class="v13-card-desc">Sonido bajo, fallas de parlante o micrófono.</span><span class="v13-card-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>
-        <a class="v13-repair-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%2C%20quiero%20consultar%20por%20un%20problema%20de%20software%20en%20mi%20celular." target="_blank" rel="noopener noreferrer"><span class="v13-icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></span><span class="v13-card-title">Sistema o software</span><span class="v13-card-desc">Errores, lentitud o reinicios.</span><span class="v13-card-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>
-        <a class="v13-repair-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%2C%20mi%20celular%20tiene%20otra%20falla%20y%20quiero%20consultar." target="_blank" rel="noopener noreferrer"><span class="v13-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span><span class="v13-card-title">Otra falla</span><span class="v13-card-desc">Contanos el modelo y qué está pasando.</span><span class="v13-card-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>
-      </div>
-      <p class="v13-honesty"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> La causa y la posibilidad de reparación se confirman luego de revisar el equipo.</p>
-    </section>
-
+    <!-- V18: se elimina el primer bloque repetido de consultas de reparación -->
     <!-- =====================================================
          GUARANTEE
          ===================================================== -->
@@ -3976,9 +3983,9 @@ img,video,iframe,svg{max-width:100%}button,a,input,select,textarea{-webkit-tap-h
       <div class="guarantee reveal">
 
         <div class="section-header">
-          <div class="eyebrow">Confianza</div>
+          <div class="eyebrow">Así trabajamos</div>
           <h2 class="section-title">
-            Garantía y <span>transparencia</span>
+            Claridad en cada <span>paso</span>
           </h2>
           <div class="section-line"></div>
           <p class="section-description">
@@ -4033,22 +4040,7 @@ img,video,iframe,svg{max-width:100%}button,a,input,select,textarea{-webkit-tap-h
       </div>
     </section>
 
-    <section class="section v14-quick" id="consulta-rapida" aria-labelledby="v14-quick-title">
-      <div class="section-header reveal">
-        <div class="eyebrow">Empezá por acá</div>
-        <h2 class="section-title" id="v14-quick-title">¿Qué le pasa a tu <span>celular?</span></h2>
-        <div class="section-line"></div>
-        <p class="section-description">Elegí el motivo y prepará una consulta por WhatsApp. El diagnóstico y el presupuesto se confirman según cada caso.</p>
-      </div>
-      <div class="v14-quick-grid">
-        <a class="v14-quick-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER.%20Quiero%20consultar%20por%20una%20pantalla%20rota%20o%20con%20fallas.%20Marca%20y%20modelo%3A%20" target="_blank" rel="noopener noreferrer"><span class="v14-quick-icon"><i class="fa-solid fa-mobile-screen"></i></span><span class="v14-quick-title">Pantalla</span><span class="v14-quick-desc">Rotura, imagen o táctil</span><span class="v14-quick-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
-        <a class="v14-quick-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER.%20Quiero%20consultar%20por%20la%20bater%C3%ADa%20de%20mi%20celular.%20Marca%20y%20modelo%3A%20" target="_blank" rel="noopener noreferrer"><span class="v14-quick-icon"><i class="fa-solid fa-battery-half"></i></span><span class="v14-quick-title">Batería</span><span class="v14-quick-desc">Duración o carga</span><span class="v14-quick-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
-        <a class="v14-quick-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER.%20Quiero%20consultar%20por%20el%20pin%20de%20carga%20de%20mi%20celular.%20Marca%20y%20modelo%3A%20" target="_blank" rel="noopener noreferrer"><span class="v14-quick-icon"><i class="fa-solid fa-plug"></i></span><span class="v14-quick-title">Pin de carga</span><span class="v14-quick-desc">No carga o hace falso contacto</span><span class="v14-quick-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
-        <a class="v14-quick-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER.%20Quiero%20consultar%20por%20audio%2C%20micr%C3%B3fono%20o%20parlante.%20Marca%20y%20modelo%3A%20" target="_blank" rel="noopener noreferrer"><span class="v14-quick-icon"><i class="fa-solid fa-volume-high"></i></span><span class="v14-quick-title">Audio</span><span class="v14-quick-desc">Micrófono, parlante o sonido</span><span class="v14-quick-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
-        <a class="v14-quick-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER.%20Quiero%20consultar%20por%20la%20c%C3%A1mara%20de%20mi%20celular.%20Marca%20y%20modelo%3A%20" target="_blank" rel="noopener noreferrer"><span class="v14-quick-icon"><i class="fa-solid fa-camera"></i></span><span class="v14-quick-title">Cámara</span><span class="v14-quick-desc">Enfoque o funcionamiento</span><span class="v14-quick-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
-        <a class="v14-quick-card" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER.%20Quiero%20consultar%20por%20otra%20falla%20de%20mi%20celular.%20Marca%20y%20modelo%3A%20" target="_blank" rel="noopener noreferrer"><span class="v14-quick-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span><span class="v14-quick-title">Otra falla</span><span class="v14-quick-desc">Te contamos qué sucede</span><span class="v14-quick-link">Consultar <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
-      </div>
-    </section>
+    <!-- V18: se elimina el segundo bloque repetido de consultas rápidas -->
 
     <section class="section v13-faq" id="preguntas-frecuentes">
       <div class="section-header reveal">
