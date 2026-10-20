@@ -5633,3 +5633,65 @@ footer .footer-col a{justify-content:center}
   #presupuesto .form-header h3,#presupuesto .form-header p { text-align:center!important; margin-left:auto!important; margin-right:auto!important; }
 }
 </style>
+
+
+<style id="one-player-v21-mobile-polish">
+/* V21 — pulido móvil: jerarquía visual, lectura, accesibilidad y contacto */
+@media (max-width: 768px) {
+  :root { --header-height: 64px; }
+  .nav-shell { width: calc(100% - 28px) !important; min-height: 64px !important; gap: 10px !important; }
+  .site-header { min-height: 64px !important; }
+  .nav-shell .brand-text { font-size: clamp(.84rem, 4vw, 1rem) !important; letter-spacing: 1.1px !important; }
+  .menu-toggle { width: 44px !important; height: 44px !important; flex: 0 0 44px !important; }
+  .section { width: calc(100% - 28px) !important; padding-top: 58px !important; padding-bottom: 58px !important; }
+  .section.compact { padding-top: 42px !important; padding-bottom: 42px !important; }
+  .section-header { margin-bottom: 28px !important; }
+  .section-title { font-size: clamp(1.55rem, 7vw, 2.25rem) !important; letter-spacing: 1px !important; }
+  .section-description { font-size: .92rem !important; line-height: 1.65 !important; }
+  .hero { min-height: auto !important; padding-top: 58px !important; padding-bottom: 56px !important; }
+  .hero-content { width: 100% !important; }
+  .hero-badge { margin-bottom: 20px !important; padding: 8px 12px !important; font-size: .62rem !important; letter-spacing: .7px !important; }
+  .hero-title { margin-bottom: 0 !important; }
+  .hero-kicker { margin-top: 17px !important; font-size: .72rem !important; line-height: 1.6 !important; letter-spacing: 1px !important; }
+  .hero-copy { margin-top: 15px !important; font-size: .95rem !important; line-height: 1.7 !important; }
+  .hero-actions { gap: 10px !important; margin-top: 24px !important; }
+  .hero-actions .btn { min-height: 48px !important; padding: 0 15px !important; font-size: .68rem !important; letter-spacing: .6px !important; }
+  .service-grid, .store-grid, .why-grid, .payment-grid, .process-grid { gap: 12px !important; }
+  .service-card, .store-card { min-height: 0 !important; border-radius: 17px !important; }
+  .service-image { height: clamp(145px, 42vw, 205px) !important; }
+  .store-image { height: clamp(135px, 38vw, 185px) !important; }
+  .service-content, .store-content { padding-top: 16px !important; }
+  .service-content h3, .store-content h3 { font-size: .95rem !important; line-height: 1.35 !important; }
+  .service-content p, .store-content p { font-size: .82rem !important; line-height: 1.55 !important; }
+  .btn { min-height: 46px !important; }
+  #presupuesto .form-box { padding: 22px 16px !important; border-radius: 18px !important; }
+  #presupuesto .quote-info { padding: 24px 18px !important; }
+  #presupuesto .form-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 13px !important; }
+  #presupuesto .form-group.full { grid-column: auto !important; }
+  #presupuesto .form-control { min-height: 48px !important; font-size: 16px !important; }
+  .whatsapp-float, .wa-float { width: 58px !important; height: 58px !important; right: 14px !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; z-index: 4000 !important; }
+  .back-top { width: 48px !important; height: 48px !important; right: 19px !important; bottom: calc(86px + env(safe-area-inset-bottom, 0px)) !important; }
+  footer { padding-top: 30px !important; padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px)) !important; }
+  footer .footer-brand .brand-mark { display: none !important; }
+  footer .footer-brand > .brand { justify-content: center !important; }
+  footer .footer-brand .brand-text { font-size: 1rem !important; letter-spacing: 1.3px !important; }
+  footer .footer-bottom { padding-inline: 2px !important; font-size: .68rem !important; }
+}
+@media (max-width: 390px) {
+  .nav-shell { width: calc(100% - 22px) !important; }
+  .section { width: calc(100% - 22px) !important; }
+  .hero-actions .btn { width: 100% !important; }
+  .hero-badge { max-width: 100% !important; white-space: normal !important; justify-content: center !important; }
+  footer .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 18px 5px !important; }
+  footer .footer-title { font-size: .57rem !important; letter-spacing: .45px !important; }
+  footer .footer-col p, footer .footer-col a { font-size: .59rem !important; }
+}
+@media (hover: none) and (pointer: coarse) {
+  .service-card:hover, .store-card:hover, .why-card:hover, .payment-card:hover,
+  .process-step:hover, .guarantee-item:hover { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
+</style>
+
