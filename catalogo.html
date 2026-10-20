@@ -149,7 +149,32 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
 @media(max-width:680px){.wrap{width:calc(100% - 24px)}.topbar-inner{padding:20px 0 18px;gap:10px}.brand-caption{font-size:.65rem;letter-spacing:.15em}.hero{padding:30px 0 20px}.hero h1{font-size:clamp(1.9rem,8vw,2.65rem);line-height:1.06}.intro{font-size:.95rem;max-width:38ch}.notice{align-items:flex-start;text-align:left;font-size:.82rem;padding:12px}.tools{margin-top:20px}.filters{margin-inline:-2px;scrollbar-width:thin;scroll-snap-type:x proximity}.filter{scroll-snap-align:start}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{border-radius:15px}.visual{aspect-ratio:1/0.8;min-height:110px}.visual-icon{font-size:clamp(2rem,10vw,2.8rem)}.card-body{padding:13px 9px 14px}.card h2{font-size:.9rem;line-height:1.22}.card p{font-size:.76rem;line-height:1.4}.index{font-size:.62rem}.coming{max-width:calc(100% - 12px);overflow:hidden;text-overflow:ellipsis;font-size:.55rem;letter-spacing:.05em}.bottom-cta{gap:14px}.bottom-cta h2{line-height:1.18}.wa-float{bottom:calc(12px + env(safe-area-inset-bottom));right:12px}}
 @media(max-width:360px){.wrap{width:calc(100% - 20px)}.grid{grid-template-columns:1fr;gap:12px}.visual{aspect-ratio:16/7;min-height:125px}.card-body{padding:14px}.card h2{font-size:1rem}.card p{max-width:38ch;font-size:.82rem}.filters{gap:7px}.filter{padding:9px 11px;font-size:.85rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-</style></head>
+</style>
+<style id="one-player-v18-catalog-polish">
+/* Catálogo V18: textos centrados y controles cómodos en móvil */
+.topbar-inner,.brand-caption,.hero,.hero .eyebrow,.hero h1,.hero .intro,.notice,.count,.filters,.card-body,.card h2,.card p,.bottom-cta,.bottom-cta h2,.bottom-cta p,.footer-inner{text-align:center}
+.topbar-inner{justify-content:center;flex-wrap:wrap}
+.card-body{align-items:center}
+.card p{margin-inline:auto;max-width:34ch}
+.bottom-cta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+.bottom-cta>div{max-width:62ch}
+.bottom-cta .all-ask{margin-inline:auto}
+@media(max-width:680px){
+ .topbar-inner{gap:12px}
+ .hero{padding-top:28px}
+ .hero .intro{margin-inline:auto;max-width:36ch}
+ .notice{justify-content:center}
+ .filters{justify-content:flex-start}
+ .card-body{justify-content:flex-start}
+ .card p{max-width:30ch}
+ .bottom-cta{padding:22px 16px;gap:16px}
+ .bottom-cta .all-ask{width:100%;min-height:48px}
+ .footer-inner{justify-content:center;gap:8px;flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){.card,.category-ask,.filter{transition:none!important}}
+</style>
+
+</head>
 <body>
   <a class="v15-skip-link" href="#catalogGrid">Saltar a las categorías</a>
   <header class="topbar"><div class="wrap topbar-inner">
@@ -197,17 +222,3 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
   </script>
 </body>
 </html>
-
-
-<style id="one-player-v17-performance">
-/* V17 performance: catálogo fluido en teléfonos */
-html{scroll-behavior:smooth;overscroll-behavior-y:contain}
-@media(max-width:768px){
- html{scroll-behavior:auto!important}
- .topbar{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(7,9,16,.97)!important}
- .grid-overlay,.background-grid,.ambient{animation:none!important;filter:none!important;backdrop-filter:none!important}
- .card,.visual,.category-ask{transition:none!important;transform:none!important}
- .card:hover{transform:none!important;box-shadow:none!important}
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-</style>
