@@ -328,4 +328,33 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 @media (hover: none) and (pointer: coarse) { .card:hover { transform: none !important; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } .card, .filter, .all-ask { transition: none !important; } }
 </style>
+
+<style id="one-player-v29-catalog-compact-three-columns">
+/* V29: tres columnas en celular, tarjetas compactas sin desbordes. */
+@media (max-width: 680px) {
+  .grid { grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:8px !important; align-items:stretch !important; }
+  .card { min-width:0 !important; height:100% !important; border-radius:12px !important; }
+  .visual { aspect-ratio:1 / .82 !important; min-height:0 !important; }
+  .visual-icon { font-size:clamp(1.25rem,6vw,2rem) !important; }
+  .coming { font-size:.48rem !important; letter-spacing:0 !important; padding:4px 4px !important; max-width:calc(100% - 6px) !important; }
+  .card-body { padding:9px 7px 10px !important; gap:6px !important; }
+  .index { font-size:.5rem !important; letter-spacing:.04em !important; }
+  .card h2 { font-size:clamp(.68rem,2.5vw,.82rem) !important; line-height:1.2 !important; min-height:2.4em !important; overflow-wrap:anywhere !important; }
+  .card p { font-size:clamp(.58rem,2vw,.68rem) !important; line-height:1.35 !important; }
+  .category-ask { width:100% !important; min-height:38px !important; padding:6px 4px !important; font-size:clamp(.55rem,1.9vw,.66rem) !important; line-height:1.15 !important; gap:3px !important; }
+}
+@media (max-width: 390px) {
+  .grid { gap:6px !important; }
+  .card { border-radius:10px !important; }
+  .visual { aspect-ratio:1 / .78 !important; }
+  .card-body { padding:8px 5px 9px !important; gap:5px !important; }
+  .index { font-size:.45rem !important; }
+  .card h2 { font-size:.65rem !important; }
+  .card p { font-size:.56rem !important; }
+  .coming { font-size:.42rem !important; bottom:5px !important; }
+  .category-ask { font-size:.52rem !important; min-height:36px !important; }
+}
+@media (hover:none) and (pointer:coarse) { .card:hover { transform:none !important; } }
+</style>
+
 </html>
