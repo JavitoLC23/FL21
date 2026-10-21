@@ -193,6 +193,28 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
 
 </style>
 
+
+<style id="one-player-v27-catalog-mobile">
+@media(max-width:680px){
+  .topbar { position: relative; }
+  .topbar-inner { padding-left: 4px; padding-right: 4px; }
+  .tools { gap: 10px; }
+  .search { min-height: 48px; }
+  .filters { padding-left: 2px; padding-right: 2px; scroll-padding-inline: 8px; -webkit-overflow-scrolling: touch; }
+  .filter { min-height: 44px; }
+  .grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 10px !important; }
+  .card { min-width: 0; }
+  .visual { min-width: 0; }
+  .card-body { min-width: 0; }
+  .card h2, .card p, .category-ask, .coming { overflow-wrap: anywhere; }
+  .category-ask { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
+  .wa-float { width: 54px; height: 54px; right: max(12px,env(safe-area-inset-right,0px)); bottom: max(12px,env(safe-area-inset-bottom,0px)); }
+  .footer-inner { row-gap: 8px; overflow-wrap: anywhere; }
+}
+@media(max-width:359px){.grid{grid-template-columns:minmax(0,1fr)!important}.visual{aspect-ratio:16/8!important}.card h2{font-size:1rem!important}.card p{font-size:.82rem!important}}
+@media(hover:none) and (pointer:coarse){.card:hover,.all-ask:hover,.back:hover{transform:none!important}}
+</style>
+
 </head>
 <body>
   <a class="v15-skip-link" href="#catalogGrid">Saltar a las categorías</a>
@@ -215,7 +237,7 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
     <section class="grid" id="catalogGrid" aria-label="Categorías próximas a llegar"></section>
     <section class="bottom-cta"><div><h2>¿Buscás algo en particular?</h2><p>¿No encontrás lo que buscás? Mandanos el modelo de tu celular y el accesorio que necesitás. Consultaremos las opciones y te confirmaremos cuando tengamos información.</p></div><a class="all-ask" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE%21%20Quisiera%20consultar%20por%20accesorios%20para%20celular." target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Consultar por WhatsApp</a></section>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><span>© <span id="year"></span> ONE PLAYER</span><span>Rivadavia · Mendoza</span></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><span>© <span id="year"></span> ONE PLAYER</span><span>Rivadavia · Mendoza</span><a href="mailto:soporte.oneplayer@gmail.com" aria-label="Enviar correo a soporte ONE PLAYER">soporte.oneplayer@gmail.com</a></div></footer>
   <a class="wa-float" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE%21%20Quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
   <script>
     const categories = [
@@ -244,4 +266,41 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
 @media(max-width:380px){.grid{gap:8px!important}.card-body{padding-left:8px!important;padding-right:8px!important}.card h2{font-size:.84rem!important;line-height:1.3!important}.card p{font-size:.72rem!important;line-height:1.45!important}.category-ask{padding:10px 8px!important;font-size:.75rem!important}}
 </style>
 </body>
+<style id="one-player-catalog-v26-mobile-refinement">
+/* V26: catálogo compacto y cómodo al tacto, conservando tarjetas en columnas. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (max-width: 680px) {
+  .wrap { min-width: 0; }
+  .topbar-inner, .hero, .tools, .filters, .grid, .bottom-cta, .footer-inner { min-width: 0; }
+  .search { min-width: 0; }
+  .search input { font-size: 16px; }
+  .filter { min-height: 42px; touch-action: manipulation; }
+  .card { height: 100%; min-width: 0; }
+  .card-body { min-width: 0; }
+  .card h2 { text-wrap: balance; overflow-wrap: anywhere; }
+  .card p { overflow-wrap: break-word; }
+  .category-ask { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding-inline: 8px; line-height: 1.25; }
+  .wa-float { bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+}
+/* Dos columnas incluso en teléfonos pequeños, con contenido ajustado para no aplastar tarjetas. */
+@media (max-width: 370px) {
+  .wrap { width: calc(100% - 20px) !important; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+  .card { border-radius: 13px; }
+  .visual { min-height: 0 !important; aspect-ratio: 1 / .82 !important; }
+  .visual:before { width: 64% !important; }
+  .visual:after { inset: 6px !important; }
+  .visual-icon { font-size: 2rem !important; }
+  .coming { max-width: calc(100% - 8px) !important; padding: 5px 5px !important; font-size: .48rem !important; letter-spacing: .02em !important; bottom: 7px !important; }
+  .card-body { padding: 10px 7px 11px !important; gap: 6px !important; }
+  .index { font-size: .55rem !important; letter-spacing: .08em !important; }
+  .card h2 { font-size: .82rem !important; line-height: 1.25 !important; }
+  .card p { font-size: .68rem !important; line-height: 1.4 !important; }
+  .category-ask { font-size: .67rem !important; padding: 8px 5px !important; min-height: 42px !important; }
+  .filters { justify-content: flex-start !important; }
+  .bottom-cta { padding: 15px 12px !important; }
+}
+@media (hover: none) and (pointer: coarse) { .card:hover { transform: none !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } .card, .filter, .all-ask { transition: none !important; } }
+</style>
 </html>
