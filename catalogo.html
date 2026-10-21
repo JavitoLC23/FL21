@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#080b10">
   <meta name="description" content="Catálogo de accesorios ONE PLAYER. Categorías organizadas y próximas novedades. Consultas por WhatsApp.">
-  <title>Catálogo de accesorios | ONE PLAYER V24</title>
+  <title>Catálogo de accesorios | ONE PLAYER V25</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -193,54 +193,6 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
 
 </style>
 
-
-<style id="one-player-catalog-v22-mobile">
-@media(max-width:768px){html{overflow-x:clip}body{overflow-x:clip}.container,.hero,.tools,.count,.grid,.bottom-cta,.footer-inner{min-width:0!important;max-width:100%!important}.grid{align-items:stretch!important}.card{min-width:0!important;overflow:hidden}.card h2,.card p,.card .index{max-width:100%!important;overflow-wrap:break-word!important;word-break:normal!important}.card-body{min-width:0!important}.category-ask{max-width:100%!important;white-space:normal!important}input,button,a{max-width:100%}.footer,.footer-inner{text-align:center!important}}
-@media(max-width:380px){.grid{gap:8px!important}.card-body{padding-left:8px!important;padding-right:8px!important}.card h2{font-size:.84rem!important;line-height:1.3!important}.card p{font-size:.72rem!important;line-height:1.45!important}.category-ask{padding:10px 8px!important;font-size:.75rem!important}}
-</style>
-
-<style id="one-player-catalog-v24-mobile-safety">
-/* V24: catálogo más cómodo en móvil; conserva buscador, filtros y consultas por WhatsApp. */
-html { max-width:100%; overflow-x:hidden; }
-@supports (overflow:clip) { html { overflow-x:clip; } }
-body { min-width:0; max-width:100%; overflow-x:hidden; -webkit-text-size-adjust:100%; }
-@supports (overflow:clip) { body { overflow-x:clip; } }
-img, video, iframe { max-width:100%; }
-@media (max-width:680px) {
-  .wrap, .container { width:calc(100% - 24px) !important; max-width:100% !important; min-width:0 !important; }
-  .tools { grid-template-columns:minmax(0,1fr) !important; gap:10px !important; }
-  .tools .count { white-space:normal !important; text-align:center; }
-  .search { width:100%; min-width:0; }
-  .search input { min-width:0; font-size:16px !important; }
-  .filters { justify-content:center; gap:7px; }
-  .filter { min-height:44px; max-width:100%; white-space:normal; padding:10px 12px; }
-  .grid { grid-template-columns:minmax(0,1fr) !important; gap:14px !important; }
-  .card { width:100%; min-width:0; }
-  .visual { aspect-ratio:16/7; min-height:135px; }
-  .card-body { min-width:0; padding:17px 16px 18px !important; }
-  .card h2 { font-size:clamp(1rem,4.5vw,1.25rem) !important; line-height:1.3 !important; overflow-wrap:break-word; }
-  .card p { font-size:.9rem !important; line-height:1.55 !important; overflow-wrap:break-word; }
-  .category-ask, .back, .all-ask { min-height:46px; width:100%; max-width:100%; justify-content:center; white-space:normal; touch-action:manipulation; }
-  .notice { align-items:flex-start; text-align:left; }
-  .footer, .footer-inner { min-width:0; max-width:100%; overflow-wrap:anywhere; }
-}
-@media (max-width:380px) {
-  .wrap, .container { width:calc(100% - 20px) !important; }
-  .topbar-inner { padding-inline:0 !important; }
-  .brand { font-size:clamp(1.4rem,7vw,1.8rem) !important; letter-spacing:.07em !important; }
-  .brand-caption { font-size:.64rem; letter-spacing:.13em; }
-  .hero h1 { font-size:clamp(1.7rem,8vw,2rem) !important; overflow-wrap:normal; }
-  .grid { grid-template-columns:minmax(0,1fr) !important; gap:12px !important; }
-  .visual { aspect-ratio:16/8; min-height:120px; }
-  .card-body { padding-inline:13px !important; }
-  .filter { font-size:.8rem; padding-inline:10px; }
-}
-@media (prefers-reduced-motion:reduce) {
-  html { scroll-behavior:auto !important; }
-  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; }
-}
-</style>
-
 </head>
 <body>
   <a class="v15-skip-link" href="#catalogGrid">Saltar a las categorías</a>
@@ -287,6 +239,9 @@ img, video, iframe { max-width:100%; }
     function renderCards(){const term=search.value.trim().toLocaleLowerCase('es-AR');const list=categories.filter(c=>(activeGroup==='Todas'||c.group===activeGroup)&&`${c.name} ${c.group} ${c.desc}`.toLocaleLowerCase('es-AR').includes(term));count.textContent=`${list.length} ${list.length===1?'categoría':'categorías'}`;if(!list.length){grid.innerHTML='<div class="empty">No encontramos esa categoría. Probá con otra búsqueda.</div>';return;}grid.innerHTML=list.map((c,i)=>{const msg=`Hola ONE PLAYER. Quisiera consultar por ${c.name.toLocaleLowerCase('es-AR')}. ¿Qué opciones y disponibilidad pueden confirmarme?`;const url='https://wa.me/5492634722710?text='+encodeURIComponent(msg);return `<article class="card" style="--accent:${c.accent}"><div class="visual" aria-label="Categoría ${c.name}"><i class="visual-icon fa-solid ${c.icon}" aria-hidden="true"></i><span class="coming">PRÓXIMAMENTE</span></div><div class="card-body"><span class="index">CATEGORÍA ${(categories.indexOf(c)+1).toString().padStart(2,'0')}</span><h2>${c.name}</h2><p>${c.desc}</p><a class="category-ask" href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Consultar por ${c.name} por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Consultar categoría</a></div></article>`}).join('');}
     search.addEventListener('input',()=>{clearSearch.hidden=!search.value;renderCards()});clearSearch.addEventListener('click',()=>{search.value='';clearSearch.hidden=true;search.focus();renderCards()});document.getElementById('year').textContent=new Date().getFullYear();renderFilters();renderCards();
   </script>
-
+<style id="one-player-catalog-v22-mobile">
+@media(max-width:768px){html{overflow-x:clip}body{overflow-x:clip}.container,.hero,.tools,.count,.grid,.bottom-cta,.footer-inner{min-width:0!important;max-width:100%!important}.grid{align-items:stretch!important}.card{min-width:0!important;overflow:hidden}.card h2,.card p,.card .index{max-width:100%!important;overflow-wrap:break-word!important;word-break:normal!important}.card-body{min-width:0!important}.category-ask{max-width:100%!important;white-space:normal!important}input,button,a{max-width:100%}.footer,.footer-inner{text-align:center!important}}
+@media(max-width:380px){.grid{gap:8px!important}.card-body{padding-left:8px!important;padding-right:8px!important}.card h2{font-size:.84rem!important;line-height:1.3!important}.card p{font-size:.72rem!important;line-height:1.45!important}.category-ask{padding:10px 8px!important;font-size:.75rem!important}}
+</style>
 </body>
 </html>
