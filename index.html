@@ -3544,44 +3544,7 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
       </div>
 
       <div class="why-grid">
-
-        <article class="why-card reveal">
-          <span class="why-number">01</span>
-          <div class="why-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-          <h3>Evaluación inicial</h3>
-          <p>Escuchamos el problema y revisamos el equipo antes de proponer un trabajo.</p>
-        </article>
-
-        <article class="why-card reveal">
-          <span class="why-number">02</span>
-          <div class="why-icon">
-            <i class="fa-solid fa-microchip"></i>
-          </div>
-          <h3>Procedimiento cuidado</h3>
-          <p>Trabajamos con orden y atención a cada detalle del dispositivo.</p>
-        </article>
-
-        <article class="why-card reveal">
-          <span class="why-number">03</span>
-          <div class="why-icon">
-            <i class="fa-solid fa-eye"></i>
-          </div>
-          <h3>Explicación clara</h3>
-          <p>Te contamos qué observamos y cuáles son las opciones posibles.</p>
-        </article>
-
-        <article class="why-card reveal">
-          <span class="why-number">04</span>
-          <div class="why-icon">
-            <i class="fa-solid fa-handshake"></i>
-          </div>
-          <h3>Contacto cercano</h3>
-          <p>Podés consultar por WhatsApp o acercarte personalmente.</p>
-        </article>
-
-      </div>
+      </div></div>
     </section>
 
     <!-- =====================================================
@@ -5605,6 +5568,54 @@ body{overflow-x:clip;max-width:100%}img,video,iframe{max-width:100%}
   footer .footer-grid { column-gap: 5px !important; }
   footer .footer-title { letter-spacing: .6px !important; }
   footer .footer-col p, footer .footer-col a { font-size: .59rem !important; }
+}
+</style>
+
+
+<style id="one-player-v29-mobile-card-refinement">
+/* V29: tarjetas compactas, proporciones consistentes y menos repetición visual. */
+#nosotros .why-grid { display:none !important; }
+@media (max-width: 680px) {
+  /* Laboratorio técnico: tres tarjetas compactas, alineadas y de tamaño uniforme. */
+  #servicios .service-grid { display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:9px !important; align-items:stretch !important; }
+  #servicios .service-card { min-width:0 !important; height:100% !important; min-height:0 !important; display:flex !important; flex-direction:column !important; border-radius:14px !important; overflow:hidden !important; }
+  #servicios .service-image { height:auto !important; aspect-ratio:1 / .88 !important; min-height:0 !important; flex:0 0 auto !important; }
+  #servicios .service-image img { width:100% !important; height:100% !important; object-fit:cover !important; }
+  #servicios .service-icon { transform:scale(.82); }
+  #servicios .service-content { padding:10px 9px 11px !important; display:flex !important; flex:1 1 auto !important; flex-direction:column !important; gap:6px !important; min-width:0 !important; }
+  #servicios .service-content .card-tag { font-size:.56rem !important; letter-spacing:.04em !important; line-height:1.25 !important; }
+  #servicios .service-content h3 { font-size:clamp(.75rem,2.5vw,.9rem) !important; line-height:1.2 !important; margin:0 !important; overflow-wrap:anywhere !important; }
+  #servicios .service-content p { font-size:.68rem !important; line-height:1.4 !important; margin:0 !important; }
+  #servicios .service-features { margin-top:auto !important; padding-top:5px !important; }
+  #servicios .service-feature { font-size:.61rem !important; line-height:1.3 !important; gap:4px !important; }
+  #servicios .service-feature i { font-size:.58rem !important; }
+
+  /* Store & Gear: dos columnas, imagen casi cuadrada y contenido reducido. */
+  #store .store-grid { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; align-items:stretch !important; }
+  #store .store-card { min-width:0 !important; height:100% !important; min-height:0 !important; display:flex !important; flex-direction:column !important; overflow:hidden !important; border-radius:15px !important; }
+  #store .store-image { height:auto !important; aspect-ratio:1 / .82 !important; min-height:0 !important; flex:0 0 auto !important; }
+  #store .store-image img { width:100% !important; height:100% !important; object-fit:cover !important; }
+  #store .store-content { padding:11px 10px 12px !important; display:flex !important; flex:1 1 auto !important; flex-direction:column !important; gap:7px !important; min-width:0 !important; }
+  #store .store-content h3 { font-size:.86rem !important; line-height:1.25 !important; margin:0 !important; }
+  #store .store-content p { font-size:.72rem !important; line-height:1.4 !important; margin:0 !important; }
+  #store .store-button { margin-top:auto !important; padding-top:3px !important; }
+  #store .store-button .btn { min-height:40px !important; padding:8px 10px !important; font-size:.72rem !important; }
+}
+@media (max-width: 390px) {
+  #servicios .service-grid { gap:6px !important; }
+  #servicios .service-card { border-radius:11px !important; }
+  #servicios .service-content { padding:8px 6px 9px !important; gap:5px !important; }
+  #servicios .service-content .card-tag { font-size:.49rem !important; }
+  #servicios .service-content h3 { font-size:.7rem !important; }
+  #servicios .service-content p { font-size:.61rem !important; line-height:1.35 !important; }
+  #servicios .service-feature { font-size:.54rem !important; }
+  #store .store-grid { gap:8px !important; }
+  #store .store-content { padding:9px 8px 10px !important; }
+  #store .store-content h3 { font-size:.8rem !important; }
+  #store .store-content p { font-size:.67rem !important; }
+}
+@media (hover:none) and (pointer:coarse) {
+  #servicios .service-card:hover, #store .store-card:hover { transform:none !important; }
 }
 </style>
 
