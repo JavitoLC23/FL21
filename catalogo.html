@@ -215,6 +215,31 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
 @media(hover:none) and (pointer:coarse){.card:hover,.all-ask:hover,.back:hover{transform:none!important}}
 </style>
 
+
+<style id="one-player-v28-catalog-three-columns">
+/* V28: tres columnas en móviles habituales, dos solo en pantallas muy angostas */
+@media (max-width: 680px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
+  .visual { min-height: 0 !important; aspect-ratio: 1 / .88 !important; }
+  .visual-icon { font-size: clamp(1.35rem, 6vw, 2rem) !important; }
+  .coming { bottom: 6px !important; max-width: calc(100% - 8px) !important; white-space: normal !important; font-size: clamp(.42rem, 1.8vw, .55rem) !important; line-height: 1.15 !important; padding: 4px 4px !important; }
+  .card-body { min-height: 0 !important; padding: 10px 6px !important; gap: 7px !important; }
+  .card h2 { min-height: 0 !important; font-size: clamp(.7rem, 2.8vw, .86rem) !important; line-height: 1.25 !important; overflow-wrap: normal !important; hyphens: auto; }
+  .card p { font-size: clamp(.62rem, 2.35vw, .73rem) !important; line-height: 1.35 !important; }
+  .category-ask { min-height: 38px !important; padding: 7px 4px !important; font-size: clamp(.58rem, 2.2vw, .7rem) !important; line-height: 1.2 !important; gap: 4px !important; }
+  .tools { gap: 8px !important; }
+  .filters { gap: 7px !important; }
+}
+@media (max-width: 380px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+  .visual { aspect-ratio: 1 / .82 !important; }
+  .visual-icon { font-size: 1.9rem !important; }
+  .card-body { padding: 12px 8px !important; }
+  .card h2 { font-size: .86rem !important; }
+  .card p { font-size: .74rem !important; }
+  .category-ask { font-size: .72rem !important; padding-inline: 8px !important; }
+}
+</style>
 </head>
 <body>
   <a class="v15-skip-link" href="#catalogGrid">Saltar a las categorías</a>
