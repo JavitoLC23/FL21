@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
-  <title>ONE PLAYER V16 | Servicio Técnico & Accesorios</title>
+  <title>ONE PLAYER V24 | Servicio Técnico & Accesorios</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -3285,6 +3285,638 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
 @media(min-width:681px) and (max-width:900px){#garantia .guarantee-grid,#como-consultar .v15-guide-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}#garantia .guarantee-item,#como-consultar .v15-guide-card{padding:17px 12px}}
 </style>
 
+
+<style id="one-player-v13-premium">
+:root{--v13-cyan:#42e8ff;--v13-violet:#a78bfa;--v13-pink:#ff5bd6}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:clip;max-width:100%}img,video,iframe{max-width:100%}
+.v13-repair,.v13-faq{position:relative;isolation:isolate}
+.v13-repair:before,.v13-faq:before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:8% -2vw 8%;border-radius:32px;background:radial-gradient(ellipse at 8% 20%,rgba(66,232,255,.065),transparent 42%),radial-gradient(ellipse at 90% 70%,rgba(255,91,214,.055),transparent 42%)}
+.v13-repair-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.v13-repair-card{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:20px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(145deg,rgba(20,27,40,.96),rgba(10,14,22,.98));box-shadow:0 12px 32px rgba(0,0,0,.16);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.v13-repair-card:hover{transform:translateY(-3px);border-color:rgba(66,232,255,.4);box-shadow:0 0 26px rgba(66,232,255,.08),0 16px 34px rgba(0,0,0,.2)}
+.v13-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;color:var(--v13-cyan);font-size:1.25rem;background:linear-gradient(135deg,rgba(66,232,255,.14),rgba(167,139,250,.12));border:1px solid rgba(66,232,255,.2);box-shadow:inset 0 0 18px rgba(66,232,255,.045)}
+.v13-repair-card:nth-child(3n+2) .v13-icon{color:var(--v13-violet);border-color:rgba(167,139,250,.24);background:rgba(167,139,250,.09)}.v13-repair-card:nth-child(3n) .v13-icon{color:var(--v13-pink);border-color:rgba(255,91,214,.22);background:rgba(255,91,214,.07)}
+.v13-card-title{font-weight:800;color:#f7f9fc;font-size:1.04rem}.v13-card-desc{color:#aeb9c9;font-size:.9rem;line-height:1.55}.v13-card-link{margin-top:auto;padding-top:5px;color:#f5f8fc;font-size:.84rem;font-weight:800}.v13-card-link i{color:var(--v13-cyan);margin-left:5px}.v13-honesty{display:flex;gap:9px;align-items:flex-start;color:#aeb9c9;font-size:.86rem;margin:18px 0 0}.v13-honesty i{color:var(--v13-cyan);margin-top:4px;flex-shrink:0}
+.v13-faq-list{max-width:900px;margin-inline:auto;display:grid;gap:10px}.v13-faq-list details{border:1px solid rgba(255,255,255,.1);border-radius:15px;background:linear-gradient(140deg,rgba(19,25,37,.95),rgba(10,14,22,.96));padding:0 18px}.v13-faq-list summary{cursor:pointer;list-style:none;padding:17px 28px 17px 0;font-weight:750;color:#f5f7fb;position:relative}.v13-faq-list summary::-webkit-details-marker{display:none}.v13-faq-list summary:after{content:"+";position:absolute;right:0;top:12px;color:var(--v13-cyan);font-size:1.5rem;font-weight:500}.v13-faq-list details[open] summary:after{content:"−"}.v13-faq-list details p{margin:0;padding:0 0 17px;color:#aeb9c9;line-height:1.7}
+@media(max-width:800px){.v13-repair-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.v13-repair-grid{grid-template-columns:minmax(0,1fr);gap:10px}.v13-repair-card{padding:16px;display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:13px;align-items:center}.v13-icon{grid-row:span 2}.v13-card-title,.v13-card-desc,.v13-card-link{grid-column:2}.v13-card-link{padding-top:0}.v13-repair-card:hover{transform:none}.v13-faq-list details{padding-inline:14px}.v13-faq-list summary{font-size:.95rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.v13-repair-card{transition:none}.v13-repair-card:hover{transform:none}}
+
+    /* ONE PLAYER — ajuste responsive y títulos centrados de la guía */
+    .v15-guide-card {
+      align-items: center;
+      text-align: center;
+    }
+    .v15-guide-number {
+      left: 16px;
+      right: auto;
+      top: 16px;
+    }
+    .v15-guide-icon {
+      margin-top: 8px;
+    }
+    .v15-guide-card h3,
+    .v15-guide-card p {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Tablet: aprovechar el ancho sin comprimir el contenido */
+    @media (min-width: 561px) and (max-width: 900px) {
+      .container,
+      .section {
+        width: min(var(--container), calc(100% - 32px));
+      }
+      .service-grid,
+      .store-grid,
+      .why-grid,
+      .payment-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .process-line {
+        display: none;
+      }
+      .quote-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Android y iPhone: layout fluido, sin desbordes ni apariencia de PC encogida */
+    @media (max-width: 560px) {
+      html {
+        scroll-padding-top: 78px;
+      }
+      body {
+        font-size: 15px;
+        -webkit-text-size-adjust: 100%;
+      }
+      .container,
+      .section {
+        width: calc(100% - 28px);
+      }
+      .section {
+        padding-top: 58px;
+        padding-bottom: 58px;
+      }
+      .section.compact {
+        padding-top: 44px;
+        padding-bottom: 44px;
+      }
+      .section-header {
+        margin-bottom: 28px;
+      }
+      .section-title {
+        font-size: clamp(1.55rem, 7vw, 2.15rem);
+        letter-spacing: 1px;
+        line-height: 1.16;
+        overflow-wrap: anywhere;
+      }
+      .section-description {
+        font-size: .94rem;
+        line-height: 1.65;
+      }
+      .hero {
+        min-height: auto;
+        padding-top: 54px;
+        padding-bottom: 48px;
+      }
+      .hero-title {
+        font-size: clamp(2.35rem, 12vw, 4rem);
+        letter-spacing: 1px;
+        line-height: 1.02;
+        overflow-wrap: anywhere;
+      }
+      .hero-kicker {
+        font-size: .72rem;
+        letter-spacing: 1.6px;
+        line-height: 1.6;
+      }
+      .hero-copy {
+        font-size: .96rem;
+        line-height: 1.7;
+      }
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 25px;
+      }
+      .hero-actions .btn {
+        width: 100%;
+        min-height: 50px;
+      }
+      .hero-meta {
+        gap: 10px 14px;
+        font-size: .78rem;
+      }
+      .stats-grid,
+      .service-grid,
+      .store-grid,
+      .why-grid,
+      .payment-grid,
+      .process-grid,
+      .guarantee-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .stat-card {
+        min-height: 112px;
+        padding: 17px 10px;
+      }
+      .stat-number {
+        font-size: 1.45rem;
+      }
+      .stat-label {
+        font-size: .64rem;
+        letter-spacing: .5px;
+      }
+      .service-card,
+      .store-card {
+        min-height: 0;
+        padding: 10px;
+        border-radius: 16px;
+      }
+      .service-image {
+        height: 135px;
+      }
+      .store-image {
+        height: 125px;
+      }
+      .service-content,
+      .store-content {
+        padding: 14px 2px 4px;
+      }
+      .service-content h3,
+      .store-content h3 {
+        font-size: .88rem;
+        line-height: 1.35;
+      }
+      .service-content p,
+      .store-content p {
+        font-size: .78rem;
+        line-height: 1.5;
+      }
+      .service-features {
+        gap: 5px;
+      }
+      .service-feature {
+        font-size: .7rem;
+      }
+      .process-line {
+        display: none;
+      }
+      .process-step {
+        padding: 15px 10px;
+      }
+      .process-step h3 {
+        font-size: .75rem;
+        line-height: 1.4;
+      }
+      .process-step p {
+        font-size: .75rem;
+      }
+      .why-card {
+        min-height: 0;
+        padding: 19px 12px;
+      }
+      .why-card h3 {
+        font-size: .75rem;
+        line-height: 1.4;
+      }
+      .why-card p {
+        font-size: .74rem;
+      }
+      .payment-card {
+        min-height: 115px;
+      }
+      .guarantee {
+        padding: 25px 14px;
+        border-radius: 20px;
+      }
+      .guarantee-grid {
+        margin-top: 22px;
+      }
+      .guarantee-item {
+        padding: 17px 10px;
+      }
+      .quote-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+      .quote-info,
+      .form-box {
+        padding: 22px 16px;
+        border-radius: 19px;
+      }
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+      .contact-banner {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 23px 17px;
+        gap: 18px;
+      }
+      .contact-banner h3,
+      .contact-banner p {
+        text-align: center;
+      }
+      .v15-guide-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .v15-guide-card {
+        padding: 17px 12px;
+        border-radius: 16px;
+      }
+      .v15-guide-number {
+        top: 12px;
+        left: 12px;
+        font-size: .66rem;
+      }
+      .v15-guide-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 12px;
+      }
+      .v15-guide-card h3 {
+        font-size: .9rem;
+      }
+      .v15-guide-card p {
+        font-size: .79rem;
+        line-height: 1.55;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .stats-grid,
+      .service-grid,
+      .store-grid,
+      .why-grid,
+      .payment-grid,
+      .process-grid,
+      .guarantee-grid,
+      .v15-guide-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .service-image,
+      .store-image {
+        height: 175px;
+      }
+    }
+
+  </style>
+<style id="one-player-v21-mobile-final-alignment">
+/* V21: centrar el aviso de WhatsApp y el pie de página en pantallas móviles */
+@media (max-width: 768px) {
+  #presupuesto .quote-points {
+    display:flex!important; flex-direction:column!important; align-items:center!important;
+    width:100%!important; max-width:100%!important; margin-inline:auto!important; gap:12px!important;
+  }
+  #presupuesto .quote-point {
+    display:grid!important; grid-template-columns:18px minmax(0,1fr)!important;
+    align-items:start!important; justify-content:center!important;
+    width:fit-content!important; max-width:min(100%, 340px)!important; margin-inline:auto!important;
+    text-align:center!important; gap:8px!important;
+  }
+  #presupuesto .quote-point i { margin-top:3px!important; text-align:center!important; }
+  #presupuesto .quote-point span { text-align:center!important; overflow-wrap:break-word!important; word-break:normal!important; }
+  #servicios .service-features { align-items:center!important; }
+  #servicios .service-feature {
+    display:grid!important; grid-template-columns:18px minmax(0,1fr)!important;
+    width:fit-content!important; max-width:100%!important; margin-inline:auto!important;
+    align-items:start!important; gap:8px!important; text-align:left!important;
+  }
+  #servicios .service-feature i { margin-top:3px!important; }
+  footer .footer-bottom {
+    display:flex!important; flex-direction:column!important; align-items:center!important;
+    justify-content:center!important; width:100%!important; gap:10px!important;
+    text-align:center!important;
+  }
+  footer .footer-bottom > span { display:block!important; width:100%!important; text-align:center!important;
+    margin-inline:auto!important; overflow-wrap:anywhere!important; }
+}
+</style>
+<style id="one-player-v22-mobile-layout-fix">
+@media (max-width: 768px) {
+ #presupuesto .quote-points{display:flex!important;flex-direction:column!important;align-items:center!important;width:100%!important;max-width:100%!important;gap:12px!important}
+ #presupuesto .quote-point{display:flex!important;flex-direction:row!important;align-items:flex-start!important;justify-content:flex-start!important;width:max-content!important;max-width:100%!important;margin-inline:auto!important;gap:10px!important;text-align:left!important}
+ #presupuesto .quote-point i{flex:0 0 18px!important;width:18px!important;margin:4px 0 0!important}
+ #presupuesto .quote-point span{display:block!important;flex:1 1 auto!important;min-width:0!important;text-align:left!important;overflow-wrap:break-word!important;word-break:normal!important}
+ #presupuesto .quote-info{width:100%!important;min-width:0!important}
+ #presupuesto .quote-info h3,#presupuesto .quote-info p,#presupuesto .form-header h3,#presupuesto .form-header p{text-align:center!important;max-width:100%!important;overflow-wrap:break-word!important}
+ #presupuesto .quote-contact{width:100%!important;text-align:center!important;align-items:center!important}
+ #presupuesto .form-header{width:100%!important}
+ #presupuesto .form-header p{margin-inline:auto!important}
+ footer .footer-brand,footer .footer-bottom{width:100%!important;text-align:center!important}
+ footer .footer-brand>.brand{display:flex!important;justify-content:center!important;flex-wrap:wrap!important}
+ footer .footer-brand p,footer .footer-bottom p,footer .footer-bottom span{ text-align:center!important;margin-inline:auto!important;max-width:100%!important;overflow-wrap:break-word!important}
+ footer .footer-bottom{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:8px!important}
+ footer .footer-bottom *{text-align:center!important}
+ #servicios .service-feature{align-items:flex-start!important}
+ #servicios .service-feature span{min-width:0!important;overflow-wrap:break-word!important}
+ .container,.section-container,.quote-layout,.quote-form,.quote-info{min-width:0!important;max-width:100%!important}
+ img,input,select,textarea,button{max-width:100%}
+}
+@media(max-width:380px){#presupuesto .quote-point{width:100%!important;max-width:100%!important}#presupuesto .quote-point span{overflow-wrap:break-word!important}footer .footer-brand .brand{gap:6px!important}#presupuesto .form-card,#presupuesto .quote-form{padding-left:14px!important;padding-right:14px!important}}
+</style>
+<style id="one-player-v23-remove-green-checks">
+/* V23: quitar únicamente los tildes decorativos de la lista de indicaciones */
+#presupuesto .quote-points .quote-point > i.fa-circle-check { display:none !important; }
+@media (max-width: 768px) {
+  #presupuesto .quote-points .quote-point { gap:0 !important; justify-content:center !important; text-align:center !important; }
+  #presupuesto .quote-points .quote-point > span { display:block !important; width:100% !important; text-align:center !important; }
+}
+</style>
+<style id="one-player-mobile-footer-improvements">
+/* Ajustes específicos para el pie de página en celular */
+@media (max-width: 768px) {
+  footer .footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px 8px !important;
+    align-items: start !important;
+  }
+  footer .footer-brand {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  footer .footer-brand > .brand {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  footer .footer-brand .brand-mark { display: none !important; }
+  footer .footer-brand .brand-text {
+    font-size: clamp(.92rem, 4vw, 1.1rem) !important;
+    letter-spacing: 1.2px !important;
+  }
+  footer .footer-brand p {
+    width: 100% !important;
+    max-width: 36rem !important;
+    margin: 12px auto 0 !important;
+    text-align: center !important;
+    font-size: .88rem !important;
+  }
+  footer .footer-brand .social-row { margin-top: 18px !important; }
+  footer .footer-col {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 0 2px !important;
+    text-align: center !important;
+    overflow-wrap: anywhere !important;
+  }
+  footer .footer-title {
+    font-size: clamp(.58rem, 2.5vw, .72rem) !important;
+    letter-spacing: 1px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 10px !important;
+    overflow-wrap: anywhere !important;
+  }
+  footer .footer-col p,
+  footer .footer-col a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 5px !important;
+    width: 100% !important;
+    margin: 0 auto 11px !important;
+    font-size: clamp(.61rem, 2.65vw, .76rem) !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+  footer .footer-col p i,
+  footer .footer-col a i { margin: 0 !important; }
+  footer .footer-bottom { margin-top: 24px !important; }
+}
+@media (max-width: 360px) {
+  footer .footer-grid { column-gap: 5px !important; }
+  footer .footer-title { letter-spacing: .6px !important; }
+  footer .footer-col p, footer .footer-col a { font-size: .59rem !important; }
+}
+</style>
+<style id="one-player-v17-performance">
+/* V17 performance: efectos más económicos, scroll móvil ágil y controles estables */
+html{scroll-behavior:smooth;scroll-padding-top:84px;overscroll-behavior-y:contain}
+.scroll-progress{box-shadow:none;will-change:width}
+@media(max-width:768px){
+  html{scroll-behavior:auto!important}
+  .ambient{animation:none!important;filter:none!important;will-change:auto!important;opacity:.12!important}
+  .ambient-one{width:100vw;height:100vw;top:-42vw;left:0;transform:none;background:radial-gradient(circle,rgba(66,232,255,.14),transparent 68%)}
+  .ambient-two,.ambient-three{display:none!important}
+  .site-header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(3,7,13,.97)!important;transition:none!important}
+  .site-header.scrolled{box-shadow:0 5px 18px rgba(0,0,0,.22)!important}
+  .page-noise,.grid-overlay{opacity:.12!important}
+  .back-top{right:16px!important;bottom:88px!important;transition:opacity .15s ease,visibility .15s ease!important;transform:none!important}
+  .back-top.visible{transform:none!important}
+  .whatsapp-float{will-change:auto!important;animation:none!important}
+  .scroll-progress{transition:none!important}
+  .service-card,.store-card,.why-card,.payment-card,.process-step,.guarantee-item,.reveal{transition:none!important}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+
+
+/* V19: alineación centrada y tarjetas adaptadas a móviles */
+#servicios .section-header,#servicios .service-content,
+#store .section-header,#store .store-content,
+#garantia .section-header,#garantia .guarantee-item,
+#como-consultar .section-header,#como-consultar .v15-guide-card,
+#preguntas-frecuentes .section-header,#preguntas-frecuentes .v13-faq-list,
+#presupuesto .section-header,#presupuesto .quote-info,
+footer .footer-brand,footer .footer-col,footer .footer-bottom {
+  text-align:center!important;
+}
+#servicios .service-content,#store .store-content,
+#garantia .guarantee-item,#como-consultar .v15-guide-card,
+#presupuesto .quote-info,footer .footer-brand,footer .footer-col {
+  align-items:center!important;
+}
+#servicios .service-features{justify-content:center!important;align-items:center!important}
+#store .store-button{display:flex;justify-content:center;width:100%}
+#store .store-button .btn{justify-content:center}
+#garantia .guarantee-grid{align-items:stretch}
+#garantia .guarantee-item{display:flex;flex-direction:column;justify-content:flex-start}
+#como-consultar .v15-guide-grid{align-items:stretch}
+#como-consultar .v15-guide-card{display:flex;flex-direction:column;justify-content:flex-start}
+#presupuesto .quote-points{width:100%;max-width:420px;margin-inline:auto;text-align:left}
+#presupuesto label,#presupuesto .form-label{display:block;text-align:center}
+#presupuesto input,#presupuesto select,#presupuesto textarea{text-align:left}
+#preguntas-frecuentes .v13-faq-list{margin-inline:auto}
+footer .footer-grid{align-items:start}
+footer .footer-col a{justify-content:center}
+@media(max-width:680px){
+  #servicios .service-content,#store .store-content{padding-left:12px!important;padding-right:12px!important}
+  #garantia .guarantee-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+  #garantia .guarantee-item{padding:12px 7px!important;border-radius:13px!important;min-width:0}
+  #garantia .guarantee-item>i{font-size:1.15rem!important;margin-bottom:7px}
+  #garantia .guarantee-item h3{font-size:clamp(.68rem,2.8vw,.83rem)!important;line-height:1.25!important;overflow-wrap:anywhere}
+  #garantia .guarantee-item p{font-size:clamp(.61rem,2.45vw,.72rem)!important;line-height:1.4!important;overflow-wrap:anywhere}
+  #como-consultar .v15-guide-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+  #como-consultar .v15-guide-card{padding:13px 7px!important;min-width:0}
+  #como-consultar .v15-guide-card h3{font-size:clamp(.68rem,2.8vw,.83rem)!important;line-height:1.25!important;overflow-wrap:anywhere}
+  #como-consultar .v15-guide-card p{font-size:clamp(.61rem,2.45vw,.72rem)!important;line-height:1.4!important;overflow-wrap:anywhere}
+  #como-consultar .v15-guide-number{left:7px!important;top:7px!important;font-size:.58rem!important}
+  #presupuesto .quote-layout{gap:18px}
+  #presupuesto .quote-info h3{margin-inline:auto}
+  footer .footer-grid{gap:24px}
+  footer .footer-col p,footer .footer-col a,footer .footer-brand p{margin-inline:auto}
+}
+@media(max-width:360px){
+  #garantia .guarantee-grid,#como-consultar .v15-guide-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
+  #garantia .guarantee-item,#como-consultar .v15-guide-card{padding:10px 5px!important}
+  #garantia .guarantee-item h3,#como-consultar .v15-guide-card h3{font-size:.65rem!important}
+  #garantia .guarantee-item p,#como-consultar .v15-guide-card p{font-size:.59rem!important}
+}
+
+</style>
+<style id="one-player-v20-mobile-alignment">
+/* V20: correcciones puntuales basadas en capturas reales de celular */
+@media (max-width: 768px) {
+  footer .social-row { display:flex!important; justify-content:center!important; align-items:center!important; width:100%; margin:22px auto 0!important; gap:14px!important; }
+  footer .footer-brand { display:flex!important; flex-direction:column!important; align-items:center!important; text-align:center!important; }
+  footer .footer-brand > .brand { justify-content:center!important; margin-inline:auto!important; }
+  footer .footer-brand p { max-width:36rem!important; text-align:center!important; }
+  #servicios .service-features { display:flex!important; flex-direction:column!important; align-items:stretch!important; width:100%!important; gap:9px!important; }
+  #servicios .service-feature { display:flex!important; flex-flow:row nowrap!important; align-items:flex-start!important; justify-content:flex-start!important; gap:9px!important; width:100%!important; text-align:left!important; white-space:normal!important; overflow-wrap:normal!important; word-break:normal!important; }
+  #servicios .service-feature i { flex:0 0 18px!important; width:18px!important; margin:3px 0 0!important; text-align:center!important; }
+  #servicios .service-feature { max-width:100%!important; }
+  #presupuesto .quote-info { display:flex!important; flex-direction:column!important; align-items:center!important; text-align:center!important; }
+  #presupuesto .quote-info h3,#presupuesto .quote-info p { width:100%!important; text-align:center!important; margin-left:auto!important; margin-right:auto!important; }
+  #presupuesto .quote-points { display:flex!important; flex-direction:column!important; align-items:center!important; max-width:100%!important; text-align:center!important; }
+  #presupuesto .quote-point { display:flex!important; flex-direction:row!important; align-items:flex-start!important; justify-content:center!important; width:100%!important; text-align:center!important; gap:9px!important; }
+  #presupuesto .quote-point i { flex:0 0 18px!important; margin-top:4px!important; }
+  #presupuesto .quote-point span { text-align:center!important; }
+  #presupuesto .quote-contact { display:flex!important; flex-direction:column!important; align-items:center!important; text-align:center!important; width:100%!important; }
+  #presupuesto .form-header { text-align:center!important; }
+  #presupuesto .form-header h3,#presupuesto .form-header p { text-align:center!important; margin-left:auto!important; margin-right:auto!important; }
+}
+</style>
+<style id="one-player-v21-mobile-polish">
+/* V21 — pulido móvil: jerarquía visual, lectura, accesibilidad y contacto */
+@media (max-width: 768px) {
+  :root { --header-height: 64px; }
+  .nav-shell { width: calc(100% - 28px) !important; min-height: 64px !important; gap: 10px !important; }
+  .site-header { min-height: 64px !important; }
+  .nav-shell .brand-text { font-size: clamp(.84rem, 4vw, 1rem) !important; letter-spacing: 1.1px !important; }
+  .menu-toggle { width: 44px !important; height: 44px !important; flex: 0 0 44px !important; }
+  .section { width: calc(100% - 28px) !important; padding-top: 58px !important; padding-bottom: 58px !important; }
+  .section.compact { padding-top: 42px !important; padding-bottom: 42px !important; }
+  .section-header { margin-bottom: 28px !important; }
+  .section-title { font-size: clamp(1.55rem, 7vw, 2.25rem) !important; letter-spacing: 1px !important; }
+  .section-description { font-size: .92rem !important; line-height: 1.65 !important; }
+  .hero { min-height: auto !important; padding-top: 58px !important; padding-bottom: 56px !important; }
+  .hero-content { width: 100% !important; }
+  .hero-badge { margin-bottom: 20px !important; padding: 8px 12px !important; font-size: .62rem !important; letter-spacing: .7px !important; }
+  .hero-title { margin-bottom: 0 !important; }
+  .hero-kicker { margin-top: 17px !important; font-size: .72rem !important; line-height: 1.6 !important; letter-spacing: 1px !important; }
+  .hero-copy { margin-top: 15px !important; font-size: .95rem !important; line-height: 1.7 !important; }
+  .hero-actions { gap: 10px !important; margin-top: 24px !important; }
+  .hero-actions .btn { min-height: 48px !important; padding: 0 15px !important; font-size: .68rem !important; letter-spacing: .6px !important; }
+  .service-grid, .store-grid, .why-grid, .payment-grid, .process-grid { gap: 12px !important; }
+  .service-card, .store-card { min-height: 0 !important; border-radius: 17px !important; }
+  .service-image { height: clamp(145px, 42vw, 205px) !important; }
+  .store-image { height: clamp(135px, 38vw, 185px) !important; }
+  .service-content, .store-content { padding-top: 16px !important; }
+  .service-content h3, .store-content h3 { font-size: .95rem !important; line-height: 1.35 !important; }
+  .service-content p, .store-content p { font-size: .82rem !important; line-height: 1.55 !important; }
+  .btn { min-height: 46px !important; }
+  #presupuesto .form-box { padding: 22px 16px !important; border-radius: 18px !important; }
+  #presupuesto .quote-info { padding: 24px 18px !important; }
+  #presupuesto .form-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 13px !important; }
+  #presupuesto .form-group.full { grid-column: auto !important; }
+  #presupuesto .form-control { min-height: 48px !important; font-size: 16px !important; }
+  .whatsapp-float, .wa-float { width: 58px !important; height: 58px !important; right: 14px !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; z-index: 4000 !important; }
+  .back-top { width: 48px !important; height: 48px !important; right: 19px !important; bottom: calc(86px + env(safe-area-inset-bottom, 0px)) !important; }
+  footer { padding-top: 30px !important; padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px)) !important; }
+  footer .footer-brand .brand-mark { display: none !important; }
+  footer .footer-brand > .brand { justify-content: center !important; }
+  footer .footer-brand .brand-text { font-size: 1rem !important; letter-spacing: 1.3px !important; }
+  footer .footer-bottom { padding-inline: 2px !important; font-size: .68rem !important; }
+}
+@media (max-width: 390px) {
+  .nav-shell { width: calc(100% - 22px) !important; }
+  .section { width: calc(100% - 22px) !important; }
+  .hero-actions .btn { width: 100% !important; }
+  .hero-badge { max-width: 100% !important; white-space: normal !important; justify-content: center !important; }
+  footer .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 18px 5px !important; }
+  footer .footer-title { font-size: .57rem !important; letter-spacing: .45px !important; }
+  footer .footer-col p, footer .footer-col a { font-size: .59rem !important; }
+}
+@media (hover: none) and (pointer: coarse) {
+  .service-card:hover, .store-card:hover, .why-card:hover, .payment-card:hover,
+  .process-step:hover, .guarantee-item:hover { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
+</style>
+
+<style id="one-player-v24-mobile-safety">
+/* V24: refuerzo responsive conservador. No modifica textos, enlaces ni lógica JS. */
+html { max-width:100%; overflow-x:hidden; }
+@supports (overflow: clip) { html { overflow-x:clip; } }
+body { min-width:0; max-width:100%; overflow-x:hidden; -webkit-text-size-adjust:100%; }
+@supports (overflow: clip) { body { overflow-x:clip; } }
+img, video, iframe { max-width:100%; }
+button, input, select, textarea { font:inherit; }
+:where(main, section, article, aside, nav, header, footer, form, .section, .nav-shell,
+.hero-content, .section-header, .form-box, .form-grid, .form-group, .footer-grid,
+.footer-col, .service-grid, .store-grid, .why-grid, .payment-grid, .process-grid) { min-width:0; }
+@media (max-width:768px) {
+  html { scroll-padding-top:72px; }
+  body { width:100%; }
+  .section, .nav-shell { max-width:100%; }
+  .section-title, .section-description, .hero-copy, .hero-kicker,
+  .service-content p, .store-content p, footer p, footer a {
+    overflow-wrap:break-word;
+  }
+  .service-grid, .store-grid, .why-grid, .payment-grid, .process-grid {
+    min-width:0;
+    grid-template-columns:minmax(0,1fr);
+  }
+  .service-card, .store-card, .why-card, .payment-card, .process-step, .guarantee-item {
+    min-width:0; max-width:100%; overflow-wrap:break-word;
+  }
+  .btn, .menu-toggle, .whatsapp-float, .wa-float, .back-top,
+  #presupuesto button, #presupuesto input[type="submit"] {
+    touch-action:manipulation;
+  }
+  #presupuesto input, #presupuesto select, #presupuesto textarea {
+    font-size:16px !important;
+    max-width:100%;
+  }
+  #presupuesto textarea { resize:vertical; }
+  .whatsapp-float, .wa-float, .back-top { max-width:calc(100vw - 24px); }
+  footer .footer-grid > *, footer .footer-col { min-width:0; }
+}
+@media (max-width:420px) {
+  .nav-shell { gap:8px !important; }
+  .nav-shell .brand-text { min-width:0; overflow-wrap:anywhere; }
+  .section-title { overflow-wrap:normal; }
+  #presupuesto .form-box, #presupuesto .quote-info { padding-left:14px !important; padding-right:14px !important; }
+  .hero-actions { width:100%; }
+  .hero-actions .btn { max-width:100%; white-space:normal; }
+  footer .footer-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  footer .footer-col a, footer .footer-col p { overflow-wrap:anywhere; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto !important; }
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+}
+</style>
+
 </head>
 
 <body>
@@ -5107,591 +5739,23 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
   </script>
 
 
-<style id="one-player-v13-premium">
-:root{--v13-cyan:#42e8ff;--v13-violet:#a78bfa;--v13-pink:#ff5bd6}
-html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{overflow-x:clip;max-width:100%}img,video,iframe{max-width:100%}
-.v13-repair,.v13-faq{position:relative;isolation:isolate}
-.v13-repair:before,.v13-faq:before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:8% -2vw 8%;border-radius:32px;background:radial-gradient(ellipse at 8% 20%,rgba(66,232,255,.065),transparent 42%),radial-gradient(ellipse at 90% 70%,rgba(255,91,214,.055),transparent 42%)}
-.v13-repair-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.v13-repair-card{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:20px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(145deg,rgba(20,27,40,.96),rgba(10,14,22,.98));box-shadow:0 12px 32px rgba(0,0,0,.16);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
-.v13-repair-card:hover{transform:translateY(-3px);border-color:rgba(66,232,255,.4);box-shadow:0 0 26px rgba(66,232,255,.08),0 16px 34px rgba(0,0,0,.2)}
-.v13-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;color:var(--v13-cyan);font-size:1.25rem;background:linear-gradient(135deg,rgba(66,232,255,.14),rgba(167,139,250,.12));border:1px solid rgba(66,232,255,.2);box-shadow:inset 0 0 18px rgba(66,232,255,.045)}
-.v13-repair-card:nth-child(3n+2) .v13-icon{color:var(--v13-violet);border-color:rgba(167,139,250,.24);background:rgba(167,139,250,.09)}.v13-repair-card:nth-child(3n) .v13-icon{color:var(--v13-pink);border-color:rgba(255,91,214,.22);background:rgba(255,91,214,.07)}
-.v13-card-title{font-weight:800;color:#f7f9fc;font-size:1.04rem}.v13-card-desc{color:#aeb9c9;font-size:.9rem;line-height:1.55}.v13-card-link{margin-top:auto;padding-top:5px;color:#f5f8fc;font-size:.84rem;font-weight:800}.v13-card-link i{color:var(--v13-cyan);margin-left:5px}.v13-honesty{display:flex;gap:9px;align-items:flex-start;color:#aeb9c9;font-size:.86rem;margin:18px 0 0}.v13-honesty i{color:var(--v13-cyan);margin-top:4px;flex-shrink:0}
-.v13-faq-list{max-width:900px;margin-inline:auto;display:grid;gap:10px}.v13-faq-list details{border:1px solid rgba(255,255,255,.1);border-radius:15px;background:linear-gradient(140deg,rgba(19,25,37,.95),rgba(10,14,22,.96));padding:0 18px}.v13-faq-list summary{cursor:pointer;list-style:none;padding:17px 28px 17px 0;font-weight:750;color:#f5f7fb;position:relative}.v13-faq-list summary::-webkit-details-marker{display:none}.v13-faq-list summary:after{content:"+";position:absolute;right:0;top:12px;color:var(--v13-cyan);font-size:1.5rem;font-weight:500}.v13-faq-list details[open] summary:after{content:"−"}.v13-faq-list details p{margin:0;padding:0 0 17px;color:#aeb9c9;line-height:1.7}
-@media(max-width:800px){.v13-repair-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.v13-repair-grid{grid-template-columns:minmax(0,1fr);gap:10px}.v13-repair-card{padding:16px;display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:13px;align-items:center}.v13-icon{grid-row:span 2}.v13-card-title,.v13-card-desc,.v13-card-link{grid-column:2}.v13-card-link{padding-top:0}.v13-repair-card:hover{transform:none}.v13-faq-list details{padding-inline:14px}.v13-faq-list summary{font-size:.95rem}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.v13-repair-card{transition:none}.v13-repair-card:hover{transform:none}}
-
-    /* ONE PLAYER — ajuste responsive y títulos centrados de la guía */
-    .v15-guide-card {
-      align-items: center;
-      text-align: center;
-    }
-    .v15-guide-number {
-      left: 16px;
-      right: auto;
-      top: 16px;
-    }
-    .v15-guide-icon {
-      margin-top: 8px;
-    }
-    .v15-guide-card h3,
-    .v15-guide-card p {
-      width: 100%;
-      text-align: center;
-    }
-
-    /* Tablet: aprovechar el ancho sin comprimir el contenido */
-    @media (min-width: 561px) and (max-width: 900px) {
-      .container,
-      .section {
-        width: min(var(--container), calc(100% - 32px));
-      }
-      .service-grid,
-      .store-grid,
-      .why-grid,
-      .payment-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .process-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .process-line {
-        display: none;
-      }
-      .quote-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Android y iPhone: layout fluido, sin desbordes ni apariencia de PC encogida */
-    @media (max-width: 560px) {
-      html {
-        scroll-padding-top: 78px;
-      }
-      body {
-        font-size: 15px;
-        -webkit-text-size-adjust: 100%;
-      }
-      .container,
-      .section {
-        width: calc(100% - 28px);
-      }
-      .section {
-        padding-top: 58px;
-        padding-bottom: 58px;
-      }
-      .section.compact {
-        padding-top: 44px;
-        padding-bottom: 44px;
-      }
-      .section-header {
-        margin-bottom: 28px;
-      }
-      .section-title {
-        font-size: clamp(1.55rem, 7vw, 2.15rem);
-        letter-spacing: 1px;
-        line-height: 1.16;
-        overflow-wrap: anywhere;
-      }
-      .section-description {
-        font-size: .94rem;
-        line-height: 1.65;
-      }
-      .hero {
-        min-height: auto;
-        padding-top: 54px;
-        padding-bottom: 48px;
-      }
-      .hero-title {
-        font-size: clamp(2.35rem, 12vw, 4rem);
-        letter-spacing: 1px;
-        line-height: 1.02;
-        overflow-wrap: anywhere;
-      }
-      .hero-kicker {
-        font-size: .72rem;
-        letter-spacing: 1.6px;
-        line-height: 1.6;
-      }
-      .hero-copy {
-        font-size: .96rem;
-        line-height: 1.7;
-      }
-      .hero-actions {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-top: 25px;
-      }
-      .hero-actions .btn {
-        width: 100%;
-        min-height: 50px;
-      }
-      .hero-meta {
-        gap: 10px 14px;
-        font-size: .78rem;
-      }
-      .stats-grid,
-      .service-grid,
-      .store-grid,
-      .why-grid,
-      .payment-grid,
-      .process-grid,
-      .guarantee-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
-      .stat-card {
-        min-height: 112px;
-        padding: 17px 10px;
-      }
-      .stat-number {
-        font-size: 1.45rem;
-      }
-      .stat-label {
-        font-size: .64rem;
-        letter-spacing: .5px;
-      }
-      .service-card,
-      .store-card {
-        min-height: 0;
-        padding: 10px;
-        border-radius: 16px;
-      }
-      .service-image {
-        height: 135px;
-      }
-      .store-image {
-        height: 125px;
-      }
-      .service-content,
-      .store-content {
-        padding: 14px 2px 4px;
-      }
-      .service-content h3,
-      .store-content h3 {
-        font-size: .88rem;
-        line-height: 1.35;
-      }
-      .service-content p,
-      .store-content p {
-        font-size: .78rem;
-        line-height: 1.5;
-      }
-      .service-features {
-        gap: 5px;
-      }
-      .service-feature {
-        font-size: .7rem;
-      }
-      .process-line {
-        display: none;
-      }
-      .process-step {
-        padding: 15px 10px;
-      }
-      .process-step h3 {
-        font-size: .75rem;
-        line-height: 1.4;
-      }
-      .process-step p {
-        font-size: .75rem;
-      }
-      .why-card {
-        min-height: 0;
-        padding: 19px 12px;
-      }
-      .why-card h3 {
-        font-size: .75rem;
-        line-height: 1.4;
-      }
-      .why-card p {
-        font-size: .74rem;
-      }
-      .payment-card {
-        min-height: 115px;
-      }
-      .guarantee {
-        padding: 25px 14px;
-        border-radius: 20px;
-      }
-      .guarantee-grid {
-        margin-top: 22px;
-      }
-      .guarantee-item {
-        padding: 17px 10px;
-      }
-      .quote-layout {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 14px;
-      }
-      .quote-info,
-      .form-box {
-        padding: 22px 16px;
-        border-radius: 19px;
-      }
-      .form-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 14px;
-      }
-      .contact-banner {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 23px 17px;
-        gap: 18px;
-      }
-      .contact-banner h3,
-      .contact-banner p {
-        text-align: center;
-      }
-      .v15-guide-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
-      .v15-guide-card {
-        padding: 17px 12px;
-        border-radius: 16px;
-      }
-      .v15-guide-number {
-        top: 12px;
-        left: 12px;
-        font-size: .66rem;
-      }
-      .v15-guide-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 12px;
-      }
-      .v15-guide-card h3 {
-        font-size: .9rem;
-      }
-      .v15-guide-card p {
-        font-size: .79rem;
-        line-height: 1.55;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .stats-grid,
-      .service-grid,
-      .store-grid,
-      .why-grid,
-      .payment-grid,
-      .process-grid,
-      .guarantee-grid,
-      .v15-guide-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .service-image,
-      .store-image {
-        height: 175px;
-      }
-    }
-
-  </style>
 
 
-<style id="one-player-v21-mobile-final-alignment">
-/* V21: centrar el aviso de WhatsApp y el pie de página en pantallas móviles */
-@media (max-width: 768px) {
-  #presupuesto .quote-points {
-    display:flex!important; flex-direction:column!important; align-items:center!important;
-    width:100%!important; max-width:100%!important; margin-inline:auto!important; gap:12px!important;
-  }
-  #presupuesto .quote-point {
-    display:grid!important; grid-template-columns:18px minmax(0,1fr)!important;
-    align-items:start!important; justify-content:center!important;
-    width:fit-content!important; max-width:min(100%, 340px)!important; margin-inline:auto!important;
-    text-align:center!important; gap:8px!important;
-  }
-  #presupuesto .quote-point i { margin-top:3px!important; text-align:center!important; }
-  #presupuesto .quote-point span { text-align:center!important; overflow-wrap:break-word!important; word-break:normal!important; }
-  #servicios .service-features { align-items:center!important; }
-  #servicios .service-feature {
-    display:grid!important; grid-template-columns:18px minmax(0,1fr)!important;
-    width:fit-content!important; max-width:100%!important; margin-inline:auto!important;
-    align-items:start!important; gap:8px!important; text-align:left!important;
-  }
-  #servicios .service-feature i { margin-top:3px!important; }
-  footer .footer-bottom {
-    display:flex!important; flex-direction:column!important; align-items:center!important;
-    justify-content:center!important; width:100%!important; gap:10px!important;
-    text-align:center!important;
-  }
-  footer .footer-bottom > span { display:block!important; width:100%!important; text-align:center!important;
-    margin-inline:auto!important; overflow-wrap:anywhere!important; }
-}
-</style>
 
-<style id="one-player-v22-mobile-layout-fix">
-@media (max-width: 768px) {
- #presupuesto .quote-points{display:flex!important;flex-direction:column!important;align-items:center!important;width:100%!important;max-width:100%!important;gap:12px!important}
- #presupuesto .quote-point{display:flex!important;flex-direction:row!important;align-items:flex-start!important;justify-content:flex-start!important;width:max-content!important;max-width:100%!important;margin-inline:auto!important;gap:10px!important;text-align:left!important}
- #presupuesto .quote-point i{flex:0 0 18px!important;width:18px!important;margin:4px 0 0!important}
- #presupuesto .quote-point span{display:block!important;flex:1 1 auto!important;min-width:0!important;text-align:left!important;overflow-wrap:break-word!important;word-break:normal!important}
- #presupuesto .quote-info{width:100%!important;min-width:0!important}
- #presupuesto .quote-info h3,#presupuesto .quote-info p,#presupuesto .form-header h3,#presupuesto .form-header p{text-align:center!important;max-width:100%!important;overflow-wrap:break-word!important}
- #presupuesto .quote-contact{width:100%!important;text-align:center!important;align-items:center!important}
- #presupuesto .form-header{width:100%!important}
- #presupuesto .form-header p{margin-inline:auto!important}
- footer .footer-brand,footer .footer-bottom{width:100%!important;text-align:center!important}
- footer .footer-brand>.brand{display:flex!important;justify-content:center!important;flex-wrap:wrap!important}
- footer .footer-brand p,footer .footer-bottom p,footer .footer-bottom span{ text-align:center!important;margin-inline:auto!important;max-width:100%!important;overflow-wrap:break-word!important}
- footer .footer-bottom{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:8px!important}
- footer .footer-bottom *{text-align:center!important}
- #servicios .service-feature{align-items:flex-start!important}
- #servicios .service-feature span{min-width:0!important;overflow-wrap:break-word!important}
- .container,.section-container,.quote-layout,.quote-form,.quote-info{min-width:0!important;max-width:100%!important}
- img,input,select,textarea,button{max-width:100%}
-}
-@media(max-width:380px){#presupuesto .quote-point{width:100%!important;max-width:100%!important}#presupuesto .quote-point span{overflow-wrap:break-word!important}footer .footer-brand .brand{gap:6px!important}#presupuesto .form-card,#presupuesto .quote-form{padding-left:14px!important;padding-right:14px!important}}
-</style>
 
-<style id="one-player-v23-remove-green-checks">
-/* V23: quitar únicamente los tildes decorativos de la lista de indicaciones */
-#presupuesto .quote-points .quote-point > i.fa-circle-check { display:none !important; }
-@media (max-width: 768px) {
-  #presupuesto .quote-points .quote-point { gap:0 !important; justify-content:center !important; text-align:center !important; }
-  #presupuesto .quote-points .quote-point > span { display:block !important; width:100% !important; text-align:center !important; }
-}
-</style>
 
-<style id="one-player-mobile-footer-improvements">
-/* Ajustes específicos para el pie de página en celular */
-@media (max-width: 768px) {
-  footer .footer-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 18px 8px !important;
-    align-items: start !important;
-  }
-  footer .footer-brand {
-    grid-column: 1 / -1 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    text-align: center !important;
-    align-items: center !important;
-  }
-  footer .footer-brand > .brand {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-  }
-  footer .footer-brand .brand-mark { display: none !important; }
-  footer .footer-brand .brand-text {
-    font-size: clamp(.92rem, 4vw, 1.1rem) !important;
-    letter-spacing: 1.2px !important;
-  }
-  footer .footer-brand p {
-    width: 100% !important;
-    max-width: 36rem !important;
-    margin: 12px auto 0 !important;
-    text-align: center !important;
-    font-size: .88rem !important;
-  }
-  footer .footer-brand .social-row { margin-top: 18px !important; }
-  footer .footer-col {
-    min-width: 0 !important;
-    width: 100% !important;
-    padding: 0 2px !important;
-    text-align: center !important;
-    overflow-wrap: anywhere !important;
-  }
-  footer .footer-title {
-    font-size: clamp(.58rem, 2.5vw, .72rem) !important;
-    letter-spacing: 1px !important;
-    line-height: 1.35 !important;
-    margin-bottom: 10px !important;
-    overflow-wrap: anywhere !important;
-  }
-  footer .footer-col p,
-  footer .footer-col a {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 5px !important;
-    width: 100% !important;
-    margin: 0 auto 11px !important;
-    font-size: clamp(.61rem, 2.65vw, .76rem) !important;
-    line-height: 1.4 !important;
-    text-align: center !important;
-    overflow-wrap: anywhere !important;
-    word-break: normal !important;
-  }
-  footer .footer-col p i,
-  footer .footer-col a i { margin: 0 !important; }
-  footer .footer-bottom { margin-top: 24px !important; }
-}
-@media (max-width: 360px) {
-  footer .footer-grid { column-gap: 5px !important; }
-  footer .footer-title { letter-spacing: .6px !important; }
-  footer .footer-col p, footer .footer-col a { font-size: .59rem !important; }
-}
-</style>
+
+
+
+
+
 
 </body>
 </html>
 
-<style id="one-player-v17-performance">
-/* V17 performance: efectos más económicos, scroll móvil ágil y controles estables */
-html{scroll-behavior:smooth;scroll-padding-top:84px;overscroll-behavior-y:contain}
-.scroll-progress{box-shadow:none;will-change:width}
-@media(max-width:768px){
-  html{scroll-behavior:auto!important}
-  .ambient{animation:none!important;filter:none!important;will-change:auto!important;opacity:.12!important}
-  .ambient-one{width:100vw;height:100vw;top:-42vw;left:0;transform:none;background:radial-gradient(circle,rgba(66,232,255,.14),transparent 68%)}
-  .ambient-two,.ambient-three{display:none!important}
-  .site-header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(3,7,13,.97)!important;transition:none!important}
-  .site-header.scrolled{box-shadow:0 5px 18px rgba(0,0,0,.22)!important}
-  .page-noise,.grid-overlay{opacity:.12!important}
-  .back-top{right:16px!important;bottom:88px!important;transition:opacity .15s ease,visibility .15s ease!important;transform:none!important}
-  .back-top.visible{transform:none!important}
-  .whatsapp-float{will-change:auto!important;animation:none!important}
-  .scroll-progress{transition:none!important}
-  .service-card,.store-card,.why-card,.payment-card,.process-step,.guarantee-item,.reveal{transition:none!important}
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
 
 
-/* V19: alineación centrada y tarjetas adaptadas a móviles */
-#servicios .section-header,#servicios .service-content,
-#store .section-header,#store .store-content,
-#garantia .section-header,#garantia .guarantee-item,
-#como-consultar .section-header,#como-consultar .v15-guide-card,
-#preguntas-frecuentes .section-header,#preguntas-frecuentes .v13-faq-list,
-#presupuesto .section-header,#presupuesto .quote-info,
-footer .footer-brand,footer .footer-col,footer .footer-bottom {
-  text-align:center!important;
-}
-#servicios .service-content,#store .store-content,
-#garantia .guarantee-item,#como-consultar .v15-guide-card,
-#presupuesto .quote-info,footer .footer-brand,footer .footer-col {
-  align-items:center!important;
-}
-#servicios .service-features{justify-content:center!important;align-items:center!important}
-#store .store-button{display:flex;justify-content:center;width:100%}
-#store .store-button .btn{justify-content:center}
-#garantia .guarantee-grid{align-items:stretch}
-#garantia .guarantee-item{display:flex;flex-direction:column;justify-content:flex-start}
-#como-consultar .v15-guide-grid{align-items:stretch}
-#como-consultar .v15-guide-card{display:flex;flex-direction:column;justify-content:flex-start}
-#presupuesto .quote-points{width:100%;max-width:420px;margin-inline:auto;text-align:left}
-#presupuesto label,#presupuesto .form-label{display:block;text-align:center}
-#presupuesto input,#presupuesto select,#presupuesto textarea{text-align:left}
-#preguntas-frecuentes .v13-faq-list{margin-inline:auto}
-footer .footer-grid{align-items:start}
-footer .footer-col a{justify-content:center}
-@media(max-width:680px){
-  #servicios .service-content,#store .store-content{padding-left:12px!important;padding-right:12px!important}
-  #garantia .guarantee-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
-  #garantia .guarantee-item{padding:12px 7px!important;border-radius:13px!important;min-width:0}
-  #garantia .guarantee-item>i{font-size:1.15rem!important;margin-bottom:7px}
-  #garantia .guarantee-item h3{font-size:clamp(.68rem,2.8vw,.83rem)!important;line-height:1.25!important;overflow-wrap:anywhere}
-  #garantia .guarantee-item p{font-size:clamp(.61rem,2.45vw,.72rem)!important;line-height:1.4!important;overflow-wrap:anywhere}
-  #como-consultar .v15-guide-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
-  #como-consultar .v15-guide-card{padding:13px 7px!important;min-width:0}
-  #como-consultar .v15-guide-card h3{font-size:clamp(.68rem,2.8vw,.83rem)!important;line-height:1.25!important;overflow-wrap:anywhere}
-  #como-consultar .v15-guide-card p{font-size:clamp(.61rem,2.45vw,.72rem)!important;line-height:1.4!important;overflow-wrap:anywhere}
-  #como-consultar .v15-guide-number{left:7px!important;top:7px!important;font-size:.58rem!important}
-  #presupuesto .quote-layout{gap:18px}
-  #presupuesto .quote-info h3{margin-inline:auto}
-  footer .footer-grid{gap:24px}
-  footer .footer-col p,footer .footer-col a,footer .footer-brand p{margin-inline:auto}
-}
-@media(max-width:360px){
-  #garantia .guarantee-grid,#como-consultar .v15-guide-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
-  #garantia .guarantee-item,#como-consultar .v15-guide-card{padding:10px 5px!important}
-  #garantia .guarantee-item h3,#como-consultar .v15-guide-card h3{font-size:.65rem!important}
-  #garantia .guarantee-item p,#como-consultar .v15-guide-card p{font-size:.59rem!important}
-}
-
-</style>
-<style id="one-player-v20-mobile-alignment">
-/* V20: correcciones puntuales basadas en capturas reales de celular */
-@media (max-width: 768px) {
-  footer .social-row { display:flex!important; justify-content:center!important; align-items:center!important; width:100%; margin:22px auto 0!important; gap:14px!important; }
-  footer .footer-brand { display:flex!important; flex-direction:column!important; align-items:center!important; text-align:center!important; }
-  footer .footer-brand > .brand { justify-content:center!important; margin-inline:auto!important; }
-  footer .footer-brand p { max-width:36rem!important; text-align:center!important; }
-  #servicios .service-features { display:flex!important; flex-direction:column!important; align-items:stretch!important; width:100%!important; gap:9px!important; }
-  #servicios .service-feature { display:flex!important; flex-flow:row nowrap!important; align-items:flex-start!important; justify-content:flex-start!important; gap:9px!important; width:100%!important; text-align:left!important; white-space:normal!important; overflow-wrap:normal!important; word-break:normal!important; }
-  #servicios .service-feature i { flex:0 0 18px!important; width:18px!important; margin:3px 0 0!important; text-align:center!important; }
-  #servicios .service-feature { max-width:100%!important; }
-  #presupuesto .quote-info { display:flex!important; flex-direction:column!important; align-items:center!important; text-align:center!important; }
-  #presupuesto .quote-info h3,#presupuesto .quote-info p { width:100%!important; text-align:center!important; margin-left:auto!important; margin-right:auto!important; }
-  #presupuesto .quote-points { display:flex!important; flex-direction:column!important; align-items:center!important; max-width:100%!important; text-align:center!important; }
-  #presupuesto .quote-point { display:flex!important; flex-direction:row!important; align-items:flex-start!important; justify-content:center!important; width:100%!important; text-align:center!important; gap:9px!important; }
-  #presupuesto .quote-point i { flex:0 0 18px!important; margin-top:4px!important; }
-  #presupuesto .quote-point span { text-align:center!important; }
-  #presupuesto .quote-contact { display:flex!important; flex-direction:column!important; align-items:center!important; text-align:center!important; width:100%!important; }
-  #presupuesto .form-header { text-align:center!important; }
-  #presupuesto .form-header h3,#presupuesto .form-header p { text-align:center!important; margin-left:auto!important; margin-right:auto!important; }
-}
-</style>
 
 
-<style id="one-player-v21-mobile-polish">
-/* V21 — pulido móvil: jerarquía visual, lectura, accesibilidad y contacto */
-@media (max-width: 768px) {
-  :root { --header-height: 64px; }
-  .nav-shell { width: calc(100% - 28px) !important; min-height: 64px !important; gap: 10px !important; }
-  .site-header { min-height: 64px !important; }
-  .nav-shell .brand-text { font-size: clamp(.84rem, 4vw, 1rem) !important; letter-spacing: 1.1px !important; }
-  .menu-toggle { width: 44px !important; height: 44px !important; flex: 0 0 44px !important; }
-  .section { width: calc(100% - 28px) !important; padding-top: 58px !important; padding-bottom: 58px !important; }
-  .section.compact { padding-top: 42px !important; padding-bottom: 42px !important; }
-  .section-header { margin-bottom: 28px !important; }
-  .section-title { font-size: clamp(1.55rem, 7vw, 2.25rem) !important; letter-spacing: 1px !important; }
-  .section-description { font-size: .92rem !important; line-height: 1.65 !important; }
-  .hero { min-height: auto !important; padding-top: 58px !important; padding-bottom: 56px !important; }
-  .hero-content { width: 100% !important; }
-  .hero-badge { margin-bottom: 20px !important; padding: 8px 12px !important; font-size: .62rem !important; letter-spacing: .7px !important; }
-  .hero-title { margin-bottom: 0 !important; }
-  .hero-kicker { margin-top: 17px !important; font-size: .72rem !important; line-height: 1.6 !important; letter-spacing: 1px !important; }
-  .hero-copy { margin-top: 15px !important; font-size: .95rem !important; line-height: 1.7 !important; }
-  .hero-actions { gap: 10px !important; margin-top: 24px !important; }
-  .hero-actions .btn { min-height: 48px !important; padding: 0 15px !important; font-size: .68rem !important; letter-spacing: .6px !important; }
-  .service-grid, .store-grid, .why-grid, .payment-grid, .process-grid { gap: 12px !important; }
-  .service-card, .store-card { min-height: 0 !important; border-radius: 17px !important; }
-  .service-image { height: clamp(145px, 42vw, 205px) !important; }
-  .store-image { height: clamp(135px, 38vw, 185px) !important; }
-  .service-content, .store-content { padding-top: 16px !important; }
-  .service-content h3, .store-content h3 { font-size: .95rem !important; line-height: 1.35 !important; }
-  .service-content p, .store-content p { font-size: .82rem !important; line-height: 1.55 !important; }
-  .btn { min-height: 46px !important; }
-  #presupuesto .form-box { padding: 22px 16px !important; border-radius: 18px !important; }
-  #presupuesto .quote-info { padding: 24px 18px !important; }
-  #presupuesto .form-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 13px !important; }
-  #presupuesto .form-group.full { grid-column: auto !important; }
-  #presupuesto .form-control { min-height: 48px !important; font-size: 16px !important; }
-  .whatsapp-float, .wa-float { width: 58px !important; height: 58px !important; right: 14px !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; z-index: 4000 !important; }
-  .back-top { width: 48px !important; height: 48px !important; right: 19px !important; bottom: calc(86px + env(safe-area-inset-bottom, 0px)) !important; }
-  footer { padding-top: 30px !important; padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px)) !important; }
-  footer .footer-brand .brand-mark { display: none !important; }
-  footer .footer-brand > .brand { justify-content: center !important; }
-  footer .footer-brand .brand-text { font-size: 1rem !important; letter-spacing: 1.3px !important; }
-  footer .footer-bottom { padding-inline: 2px !important; font-size: .68rem !important; }
-}
-@media (max-width: 390px) {
-  .nav-shell { width: calc(100% - 22px) !important; }
-  .section { width: calc(100% - 22px) !important; }
-  .hero-actions .btn { width: 100% !important; }
-  .hero-badge { max-width: 100% !important; white-space: normal !important; justify-content: center !important; }
-  footer .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 18px 5px !important; }
-  footer .footer-title { font-size: .57rem !important; letter-spacing: .45px !important; }
-  footer .footer-col p, footer .footer-col a { font-size: .59rem !important; }
-}
-@media (hover: none) and (pointer: coarse) {
-  .service-card:hover, .store-card:hover, .why-card:hover, .payment-card:hover,
-  .process-step:hover, .guarantee-item:hover { transform: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
-}
-</style>
+
 
