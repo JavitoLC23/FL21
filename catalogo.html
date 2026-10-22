@@ -58,6 +58,15 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 @media(max-width:370px){.wrap{width:calc(100% - 22px)!important}.hero h1{font-size:1.72rem!important}.grid{grid-template-columns:minmax(0,1fr)!important}.visual{aspect-ratio:16/7!important}}
 @media(prefers-reduced-motion:reduce){.card,.all-ask{transition:none!important}.card:hover,.all-ask:hover{transform:none!important}}
 
+
+    /* V32: acceso compacto a Trabajos realizados sin romper el encabezado del catálogo. */
+    .works-shortcut { text-decoration: none; }
+    @media (max-width: 520px) {
+      .topbar-inner { flex-wrap: wrap; row-gap: .55rem; }
+      .works-shortcut { margin-left: auto; }
+      .topbar .back:not(.works-shortcut) { width: 100%; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) { .works-shortcut { scroll-behavior: auto; } }
 </style>
 
 <style id="one-player-v13-catalog-fixes">
@@ -246,6 +255,7 @@ html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip;color:#f
   <header class="topbar"><div class="wrap topbar-inner">
     <a class="brand" href="./index.html" aria-label="ONE PLAYER, página principal">ONE <span>PLAYER</span></a>
     <div class="brand-caption">Servicio técnico · Accesorios</div>
+    <a class="back works-shortcut" href="./trabajos.html">Trabajos realizados</a>
     <a class="back" href="./index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a la web principal</a>
   </div></header>
   <main class="wrap">
