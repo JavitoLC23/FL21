@@ -2750,7 +2750,7 @@
     .catalog-cta h3 { margin: .35rem 0 .5rem; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.25rem, 2.4vw, 1.8rem); }
     .catalog-cta p { margin: 0; color: var(--text-soft); line-height: 1.65; max-width: 58ch; }
     .catalog-cta-button { flex-shrink: 0; white-space: nowrap; }
-    .desktop-nav .nav-link[href="catalogo.html"], .mobile-link[href="catalogo.html"] { color: var(--cyan); }
+    .desktop-nav .nav-link[href="catalogo.html"], .mobile-link[href="catalogo.html"], .mobile-link[href="trabajos.html"] { color: var(--cyan) !important; }
     @media (max-width: 640px) {
       .catalog-cta { flex-direction: column; align-items: stretch; gap: 1.1rem; border-radius: 16px; }
       .catalog-cta-button { width: 100%; justify-content: center; text-align: center; white-space: normal; min-height: 48px; }
@@ -2868,7 +2868,7 @@
     .site-header { border-bottom-color: rgba(184,255,59,.1); background: rgba(5,7,6,.78); }
     .brand-text span { color: var(--cyan); }
     .nav-link::after { background: var(--cyan); }
-    .desktop-nav .nav-link[href="catalogo.html"], .mobile-link[href="catalogo.html"] { color: var(--cyan); }
+    .desktop-nav .nav-link[href="catalogo.html"], .mobile-link[href="catalogo.html"], .mobile-link[href="trabajos.html"] { color: var(--cyan) !important; }
     .section-line { background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
     .store-card { background: linear-gradient(145deg, rgba(16,22,16,.94), rgba(7,10,8,.94)); }
     .store-card:hover { border-color: rgba(184,255,59,.38); box-shadow: 0 24px 60px rgba(184,255,59,.07); }
@@ -3411,11 +3411,8 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
 
     <div class="mobile-nav" id="mobileNav">
       <nav class="mobile-nav-inner" aria-label="Navegación móvil">
-        <a href="#inicio" class="mobile-link active">Inicio</a>
-        <a href="#servicios" class="mobile-link">Laboratorio</a>
-        <a href="#store" class="mobile-link">Store & Gear</a>
-        <a href="catalogo.html" class="mobile-link">Catálogo de accesorios</a>
-        <a href="trabajos.html" class="mobile-link">Trabajos realizados</a>
+        <a href="catalogo.html" class="mobile-link mobile-link-catalog">Catálogo</a>
+        <a href="trabajos.html" class="mobile-link mobile-link-trabajos">Trabajos realizados</a>
       </nav>
     </div>
   </header>
@@ -4099,17 +4096,9 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
               <span>Contanos qué falla presenta.</span>
             </div>
 
-            <div class="quote-point">
-              <i class="fa-solid fa-circle-check"></i>
-              <span>Recibiremos la consulta directamente por WhatsApp.</span>
-            </div>
 
           </div>
 
-          <div class="quote-contact">
-            <small>Atención directa</small>
-            <strong>+54 9 263 472 2710</strong>
-          </div>
         </aside>
 
         <div class="form-box reveal">
