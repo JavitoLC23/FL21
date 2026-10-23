@@ -5552,68 +5552,6 @@ body{overflow-x:clip;max-width:100%}img,video,iframe{max-width:100%}
   #servicios .service-card:hover, #store .store-card:hover { transform:none !important; }
 }
 </style>
-
-</body>
-<style id="one-player-v26-mobile-refinement">
-/* V26: mejoras móviles conservadoras. Mantiene el diseño y la lógica existentes. */
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-img, video, iframe, canvas, svg { max-width: 100%; }
-button, input, select, textarea { font: inherit; }
-@media (max-width: 560px) {
-  body { overflow-x: clip; }
-  .section, .container, .section-header, .section-description,
-  .service-card, .store-card, .why-card, .payment-card, .process-step {
-    min-width: 0;
-  }
-  .section-title { max-width: 100%; overflow-wrap: normal; text-wrap: balance; }
-  .section-description { max-width: 38ch; margin-inline: auto; }
-  .service-content h3, .store-content h3, .why-card h3,
-  .payment-card h3, .process-step h3 { text-wrap: balance; overflow-wrap: anywhere; }
-  .service-content p, .store-content p, .why-card p,
-  .payment-card p, .process-step p { overflow-wrap: break-word; }
-  .service-card, .store-card, .why-card, .payment-card, .process-step {
-    height: 100%;
-  }
-  .btn, .menu-toggle, .back-top, .whatsapp-float, .wa-float {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-  }
-  #presupuesto input, #presupuesto select, #presupuesto textarea,
-  input, select, textarea { font-size: 16px; }
-  .hero-title { text-wrap: balance; overflow-wrap: normal; }
-  .hero-copy { max-width: 42ch; margin-inline: auto; }
-  .hero-actions { width: 100%; }
-  .hero-actions .btn { justify-content: center; }
-}
-/* En teléfonos angostos priorizamos tarjetas legibles en dos columnas,
-   en vez de apilarlas todas en una sola columna. */
-@media (max-width: 360px) {
-  .stats-grid, .service-grid, .store-grid, .why-grid,
-  .payment-grid, .process-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 8px !important;
-  }
-  .service-image { height: clamp(100px, 34vw, 125px) !important; }
-  .store-image { height: clamp(100px, 32vw, 120px) !important; }
-  .service-content, .store-content { padding: 12px 9px !important; }
-  .service-content h3, .store-content h3, .why-card h3,
-  .payment-card h3, .process-step h3 { font-size: .82rem !important; line-height: 1.3 !important; }
-  .service-content p, .store-content p, .why-card p,
-  .payment-card p, .process-step p { font-size: .7rem !important; line-height: 1.45 !important; }
-  .service-card, .store-card, .why-card, .payment-card, .process-step { min-width: 0 !important; }
-  .hero-actions .btn { width: 100% !important; }
-}
-@media (hover: none) and (pointer: coarse) {
-  .service-card:hover, .store-card:hover, .why-card:hover, .payment-card:hover,
-  .process-step:hover, .guarantee-item:hover { transform: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto !important; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-}
-</style>
-</html>
-
 <style id="one-player-v17-performance">
 /* V17 performance: efectos más económicos, scroll móvil ágil y controles estables */
 html{scroll-behavior:smooth;scroll-padding-top:84px;overscroll-behavior-y:contain}
@@ -5710,8 +5648,6 @@ footer .footer-col a{justify-content:center}
   #presupuesto .form-header h3,#presupuesto .form-header p { text-align:center!important; margin-left:auto!important; margin-right:auto!important; }
 }
 </style>
-
-
 <style id="one-player-v21-mobile-polish">
 /* V21 — pulido móvil: jerarquía visual, lectura, accesibilidad y contacto */
 @media (max-width: 768px) {
@@ -5771,4 +5707,5 @@ footer .footer-col a{justify-content:center}
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
 </style>
-
+</body>
+</html>
