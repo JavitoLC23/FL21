@@ -24,6 +24,10 @@
     @media(hover:none){.button:hover{transform:none}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
   </style>
+
+  <meta property="og:title" content="Trabajos realizados | ONE PLAYER">
+  <meta property="og:description" content="Trabajos realizados de ONE PLAYER: galería de reparaciones de celulares Android en Rivadavia, Mendoza. Registro de reparaciones y comparaciones antes y después.">
+  <meta property="og:locale" content="es_AR">
 </head>
 <body>
   <header class="site-header">
@@ -87,6 +91,28 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+
+<!-- ONE PLAYER: ajustes responsive y rendimiento V36 -->
+<style id="one-player-v36-responsive">
+  *, *::before, *::after { box-sizing: border-box; }
+  html { max-width: 100%; overflow-x: clip; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { max-width: 100%; overflow-x: clip; }
+  img, video, iframe, canvas, svg { max-width: 100%; }
+  img { height: auto; }
+  button, a, input, select, textarea { touch-action: manipulation; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  @media (max-width: 600px) {
+    body { min-width: 0 !important; }
+    h1 { overflow-wrap: anywhere; }
+    p, a, button, label { overflow-wrap: anywhere; }
+    input, select, textarea { max-width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
 
 </body>
 </html>
