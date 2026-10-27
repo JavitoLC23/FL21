@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://javitolc23.github.io/FL21/sitemap.xml
