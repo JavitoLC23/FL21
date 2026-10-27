@@ -3378,6 +3378,19 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
 .hero-brand-logo img{filter:drop-shadow(0 10px 22px rgba(0,0,0,.28)) drop-shadow(0 0 10px rgba(66,232,255,.07));}
 @media(max-width:768px){.hero-brand-logo img{filter:drop-shadow(0 8px 18px rgba(0,0,0,.24)) drop-shadow(0 0 8px rgba(66,232,255,.06));}}
 </style>
+<style id="one-player-v43-visual-polish">
+/* V43 · refinamiento visual: mismo contenido, mejor acabado y coherencia */
+:root{--op-polish-line:rgba(255,255,255,.10);--op-polish-cyan:rgba(66,232,255,.18);--op-polish-violet:rgba(167,139,250,.16)}
+.site-header{border-bottom-color:var(--op-polish-line);box-shadow:0 10px 34px rgba(0,0,0,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.section{position:relative}.section+.section::before{content:"";position:absolute;top:0;left:50%;width:min(1120px,calc(100% - 36px));height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--op-polish-cyan),rgba(255,255,255,.08),var(--op-polish-violet),transparent);opacity:.72}
+.section-header{position:relative}.section-title{letter-spacing:-.035em;text-wrap:balance}.section-description{text-wrap:pretty}
+.service-card,.stat-card,.store-card,.repair-card,.process-card,.contact-card{border-color:rgba(255,255,255,.105)!important;box-shadow:0 14px 36px rgba(0,0,0,.16);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+@media(hover:hover) and (pointer:fine){.service-card:hover,.stat-card:hover,.store-card:hover,.repair-card:hover,.process-card:hover,.contact-card:hover{transform:translateY(-3px);border-color:rgba(66,232,255,.24)!important;box-shadow:0 18px 42px rgba(0,0,0,.22),0 0 0 1px rgba(66,232,255,.035)}}
+.btn{min-height:46px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease}.btn:active{transform:translateY(1px) scale(.99)}
+.hero-copy,.section-description{line-height:1.7}.wa-float{box-shadow:0 10px 28px rgba(0,0,0,.36)}
+@media(max-width:680px){.section+.section::before{width:calc(100% - 28px);opacity:.58}.section-title{text-wrap:balance}.hero-copy,.section-description{line-height:1.62}.btn{min-height:48px}.site-header{box-shadow:0 8px 24px rgba(0,0,0,.14)}}
+@media(prefers-reduced-motion:reduce){.service-card,.stat-card,.store-card,.repair-card,.process-card,.contact-card,.btn{transition:none!important}}
+</style>
 </head>
 
 <body>
