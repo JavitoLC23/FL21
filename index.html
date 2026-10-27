@@ -3383,7 +3383,7 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
     <div class="nav-shell">
 
       <a href="#inicio" class="brand" aria-label="ONE PLAYER - Inicio">
-        <span class="brand-text">ONE <span>PLAYER</span></span>
+        <img class="brand-logo-img" src="logo-one-players.png" alt="ONE PLAYER" decoding="async">
       </a>
 
       <nav class="desktop-nav" aria-label="Navegación principal">
@@ -5746,5 +5746,13 @@ footer .footer-col a{justify-content:center}
       }
     }
   </style>
+
+<style>
+/* ONE PLAYER V40 — identidad visual unificada con logo oficial */
+.hero::before{display:none!important;content:none!important;}
+.brand-logo-img{display:block;width:auto;height:46px;max-width:132px;object-fit:contain;object-position:left center;}
+@media(max-width:720px){.brand-logo-img{height:40px;max-width:112px;}}
+@media(max-width:380px){.brand-logo-img{height:36px;max-width:100px;}}
+</style>
 </body>
 </html>
