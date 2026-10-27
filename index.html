@@ -3430,9 +3430,9 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
           Servicio técnico · Rivadavia · Mendoza
         </div>
 
-        <h1 class="hero-title reveal">
-          ONE <span>PLAYER</span>
-        </h1>
+        <div class="hero-brand-logo reveal" aria-label="ONE PLAYER">
+          <img src="logo-one-player.jpeg" alt="Logo ONE PLAYER" width="1024" height="1024" decoding="async" fetchpriority="high">
+        </div>
 
         <p class="hero-kicker reveal">
           REPARACIÓN DE CELULARES <span aria-hidden="true">/</span> ACCESORIOS <span aria-hidden="true">/</span> TECNOLOGÍA
@@ -5718,5 +5718,33 @@ footer .footer-col a{justify-content:center}
   }
 </style>
 
+
+  <style id="one-player-v39-hero-logo">
+    /* V39: reemplazo exclusivo del ONE PLAYER central por el logo oficial aportado. */
+    .hero-brand-logo {
+      width: min(430px, 46vw);
+      margin: clamp(1.15rem, 2.6vw, 2rem) auto clamp(1.1rem, 2.2vw, 1.75rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-brand-logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    @media (max-width: 768px) {
+      .hero-brand-logo { width: min(76vw, 360px); }
+    }
+    @media (max-width: 420px) {
+      .hero-brand-logo {
+        width: min(82vw, 310px);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
 </body>
 </html>
