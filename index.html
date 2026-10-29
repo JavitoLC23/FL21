@@ -3391,6 +3391,15 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
 @media(max-width:680px){.section+.section::before{width:calc(100% - 28px);opacity:.58}.section-title{text-wrap:balance}.hero-copy,.section-description{line-height:1.62}.btn{min-height:48px}.site-header{box-shadow:0 8px 24px rgba(0,0,0,.14)}}
 @media(prefers-reduced-motion:reduce){.service-card,.stat-card,.store-card,.repair-card,.process-card,.contact-card,.btn{transition:none!important}}
 </style>
+
+<style id="one-player-v44-hero-ambient-glow">
+/* Iluminación ambiental fija detrás del logo central: sin círculos ni órbitas visibles. */
+.hero-brand-logo{position:relative;isolation:isolate;}
+.hero-brand-logo::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:125%;height:88%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(45,188,255,.18) 0%,rgba(74,118,255,.10) 34%,rgba(156,79,255,.055) 52%,transparent 74%);filter:blur(22px);pointer-events:none;}
+.hero-brand-logo img{position:relative;z-index:1;filter:drop-shadow(0 12px 24px rgba(0,0,0,.34)) drop-shadow(0 0 14px rgba(55,205,255,.13));}
+@media(max-width:768px){.hero-brand-logo::before{width:118%;height:82%;filter:blur(18px);opacity:.88}.hero-brand-logo img{filter:drop-shadow(0 9px 19px rgba(0,0,0,.30)) drop-shadow(0 0 10px rgba(55,205,255,.10));}}
+@media(prefers-reduced-motion:reduce){.hero-brand-logo::before{animation:none!important}}
+</style>
 </head>
 
 <body>
