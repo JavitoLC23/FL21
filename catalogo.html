@@ -276,6 +276,113 @@ main{position:relative}.tools{border-color:rgba(255,255,255,.105)!important;box-
 @media(max-width:680px){.product-img{width:88%;height:84%}.product-price{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:6px 12px;border-radius:9px;background:rgba(64,217,255,.08);border:1px solid rgba(64,217,255,.22);color:#e8fbff;font-size:.82rem;font-weight:850;letter-spacing:.025em;text-shadow:0 0 12px rgba(64,217,255,.12)}.product-card h2{min-height:2.65em}}
 @media(max-width:359px){.product-card h2{min-height:0}.product-img{width:76%;height:86%}}
 </style>
+
+<!-- ONE PLAYER V49 | Renovación visual premium, sin alterar funciones ni contenido -->
+<style id="one-player-v49">
+:root{
+  --op-bg:#060910;--op-panel:rgba(15,21,34,.82);--op-panel-strong:#111a2a;
+  --op-cyan:#43e8ff;--op-blue:#318cff;--op-violet:#a78bfa;--op-pink:#ff61d6;
+  --op-text:#f5f8ff;--op-muted:#a7b4c8;--op-line:rgba(143,190,255,.16);
+  --op-glow:0 0 34px rgba(67,232,255,.10),0 18px 55px rgba(0,0,0,.28);
+}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{
+  background-color:var(--op-bg)!important;
+  background-image:
+    radial-gradient(ellipse at 8% 2%,rgba(49,140,255,.13),transparent 32%),
+    radial-gradient(ellipse at 94% 16%,rgba(167,139,250,.12),transparent 31%),
+    radial-gradient(ellipse at 50% 78%,rgba(67,232,255,.055),transparent 38%)!important;
+  color:var(--op-text);
+}
+::selection{background:rgba(67,232,255,.28);color:#fff}
+a,button{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--op-cyan)!important;outline-offset:4px!important}
+.site-header,.header,.topbar{
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+.site-header,.topbar{
+  background:rgba(6,9,16,.82)!important;
+  border-bottom:1px solid var(--op-line)!important;
+  box-shadow:0 10px 36px rgba(0,0,0,.20);
+}
+.brand-logo-img{filter:drop-shadow(0 0 12px rgba(67,232,255,.20))}
+.hero,.hero-content,.hero-copy{isolation:isolate}
+.hero-badge,.hero-kicker,.eyebrow,.brand-caption,.header-pill{
+  border-color:rgba(67,232,255,.22)!important;
+}
+.section,.section-header,.section-heading{position:relative}
+.section-title,h1,h2{
+  text-wrap:balance;
+  letter-spacing:-.035em;
+}
+p{line-height:1.72}
+.service-card,.why-card,.store-card,.stat-card,.payment-card,.process-step,
+.guarantee-item,.form-box,.quote-info,.v15-guide-card,.product-card,.work-card,
+.notice,.photo-slot{
+  border:1px solid var(--op-line)!important;
+  box-shadow:var(--op-glow);
+  background:linear-gradient(150deg,rgba(20,29,46,.88),rgba(10,15,26,.94))!important;
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease;
+}
+.service-card:hover,.why-card:hover,.store-card:hover,.product-card:hover,.work-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(67,232,255,.42)!important;
+  box-shadow:0 0 0 1px rgba(67,232,255,.08),0 18px 55px rgba(0,0,0,.38),0 0 30px rgba(67,232,255,.10);
+}
+.btn,.button,.form-submit,.store-button,.catalog-cta-button{
+  border-radius:14px!important;
+  transition:transform .22s ease,filter .22s ease,box-shadow .22s ease!important;
+}
+.btn:hover,.button:hover,.form-submit:hover,.store-button:hover,.catalog-cta-button:hover{
+  transform:translateY(-2px);filter:brightness(1.08);
+}
+.btn-primary,.form-submit,.catalog-cta-button{
+  box-shadow:0 8px 28px rgba(49,140,255,.17),inset 0 1px rgba(255,255,255,.12);
+}
+.whatsapp-float,.wa-float{
+  box-shadow:0 0 0 6px rgba(67,232,255,.07),0 8px 30px rgba(0,0,0,.34),0 0 24px rgba(67,232,255,.24);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.whatsapp-float:hover,.wa-float:hover{transform:translateY(-3px) scale(1.04)}
+footer,.footer-bottom{
+  border-color:var(--op-line)!important;
+}
+.product-card{overflow:hidden}
+.product-card .product-visual,.product-card .visual{
+  background:radial-gradient(circle at 50% 45%,rgba(67,232,255,.10),transparent 62%)!important;
+}
+.product-card img,.work-card img,.photo-slot img{
+  transition:transform .35s ease,filter .35s ease;
+}
+.product-card:hover img,.work-card:hover img{transform:scale(1.035)}
+.product-price{
+  border-color:rgba(67,232,255,.34)!important;
+  box-shadow:0 0 22px rgba(67,232,255,.08);
+}
+.filter button,.filters button,.category-ask,.clear-search{
+  transition:all .2s ease;
+}
+input,select,textarea{
+  border-color:var(--op-line)!important;
+  background:rgba(5,10,19,.72)!important;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:rgba(67,232,255,.65)!important;
+  box-shadow:0 0 0 3px rgba(67,232,255,.10)!important;
+}
+@media(max-width:760px){
+  html{scroll-padding-top:82px}
+  body{background-image:
+    radial-gradient(ellipse at 0% 0%,rgba(49,140,255,.12),transparent 38%),
+    radial-gradient(ellipse at 100% 20%,rgba(167,139,250,.10),transparent 38%)!important}
+  .service-card:hover,.why-card:hover,.store-card:hover,.product-card:hover,.work-card:hover{transform:none}
+  .btn,.button,.form-submit,.store-button,.catalog-cta-button{min-height:46px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+
 </head>
 <body>
   <a class="v15-skip-link" href="#catalogGrid">Saltar a las categorías</a>
@@ -301,7 +408,7 @@ main{position:relative}.tools{border-color:rgba(255,255,255,.105)!important;box-
   <footer class="footer"><div class="wrap footer-inner"><span>© <span id="year"></span> ONE PLAYER</span><span>Rivadavia · Mendoza</span><a href="mailto:soporte.oneplayer@gmail.com" aria-label="Enviar correo a soporte ONE PLAYER">soporte.oneplayer@gmail.com</a></div></footer>
   <a class="wa-float" href="https://wa.me/5492634722710?text=Hola%20ONE%20PLAYER%20%F0%9F%90%BE%21%20Quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
   <script>
-    const products = [{"id": "audifonos-galaxy-s10", "name": "Audífonos Galaxy S10+", "group": "Audio", "image": "Audífonos Galaxy S10+.png", "accent": "#a78bfa", "price": 5000}, {"id": "caja-apple-14-pro-max", "name": "Caja Apple 14 Pro Max", "group": "Cargadores", "image": "Caja Apple 14 pro max.png", "accent": "#40d9ff", "price": 13500}, {"id": "caja-m10", "name": "Caja M10", "group": "Audio", "image": "Caja M10.png", "accent": "#b8ff3b", "price": 11000}, {"id": "cable-usb-tipo-c-premium", "name": "Cable USB Tipo C Premium", "group": "Cables", "image": "Cable USB Tipo C premium.png", "accent": "#40d9ff", "price": 3500}, {"id": "cable-usb-iphone", "name": "Cable USB Tipo iPhone", "group": "Cables", "image": "Cable USB Tipo Iphone.png", "accent": "#a78bfa", "price": 7000}, {"id": "caja-apple-15-tipo-c-c", "name": "Caja Apple 15 Tipo C a C", "group": "Cargadores", "image": "Caja Apple 15 Tipo C a C.png", "accent": "#40d9ff", "price": 16000}, {"id": "cargador-samsung-original-tipo-c", "name": "Cargador Samsung Original Tipo C", "group": "Cargadores", "image": "Cargador Samsung Original Tipo C.png", "accent": "#b8ff3b", "price": 14500}, {"id": "cable-c-c-samsung-original", "name": "Cable USB Tipo C a C Samsung Original", "group": "Cables", "image": "Cable USB tipo C a C samsung Original.png", "accent": "#40d9ff", "price": 5500}, {"id": "cargador-rapido-c-legatus", "name": "Cargador rápido Tipo C Legatus", "group": "Cargadores", "image": "Cargador rápido Tipo C Legatus.png", "accent": "#b8ff3b", "price": 7900}, {"id": "audifonos-wireless-p47", "name": "Audífonos Wireless P47 Bluetooth", "group": "Audio", "image": "Audífonos Wireless P47.png", "accent": "#a78bfa", "price": 12500}, {"id": "cable-v8-otawa", "name": "Cable USB Tipo V8 Otawa", "group": "Cables", "image": "Cable usb Tipo V8 Otawa.png", "accent": "#40d9ff", "price": 3000}, {"id": "audifonos-con-cable", "name": "Audífonos con cable", "group": "Audio", "image": "Audifonos con cable.png", "accent": "#a78bfa", "price": 18000}, {"id": "cable-c-motorola-original", "name": "Cable USB Tipo C Motorola Original", "group": "Cables", "image": "Cable Usb Tipo C Motorola Original.png", "accent": "#40d9ff", "price": 3500}, {"id": "cargador-lets-carga-rapida-v8", "name": "Cargador Lets Carga Rapida Tipo V8", "group": "Cargadores", "image": "Cargador Lets Carga Rapida Tipo V8.png", "accent": "#40d9ff", "price": 7900}, {"id": "cargador-xaea-intensify-carga-rapida-c", "name": "Cargador XAEA Intensify Carga Rapida Tipo C", "group": "Cargadores", "image": "Cargador XAEA Intensify Carga Rapida Tipo C.png", "accent": "#b8ff3b", "price": 13000}, {"id": "cargador-yexa-rush-carga-rapida-c", "name": "Cargador Yexa Rush Carga Rapida Tipo C", "group": "Cargadores", "image": "Cargador Yexa Rush Carga Rapida Tipo C.png", "accent": "#40d9ff", "price": 7900}, {"id": "convertidor-i96-tv-stick", "name": "Convertidor I96 TV Stick", "group": "Accesorios", "image": "Convertidor I96 TV Stick.png", "accent": "#a78bfa", "price": 45000}, {"id": "auriculares-manos-libres-mod24-only", "name": "Auriculares Manos libres Mod24 Only", "group": "Audio", "image": "Audífonos Only Manos libres Mod24.png", "accent": "#a78bfa", "price": 4500}, {"id": "cable-auxiliar-only", "name": "Cable Auxiliar Only", "group": "Cables", "image": "Cable Auxiliar Only.png", "accent": "#40d9ff", "price": 5000}, {"id": "cable-hdmi-aitech", "name": "Cable HDMI AiTECH", "group": "Cables", "image": "Cable HDMI AiTECH.png", "accent": "#40d9ff", "price": 8900}];
+    const products = [{"id": "audifonos-galaxy-s10", "name": "Audífonos Galaxy S10+", "group": "Audio", "image": "Audífonos Galaxy S10+.png", "accent": "#a78bfa", "price": 5000}, {"id": "caja-apple-14-pro-max", "name": "Caja Apple 14 Pro Max", "group": "Cargadores", "image": "Caja Apple 14 pro max.png", "accent": "#40d9ff", "price": 13500}, {"id": "caja-m10", "name": "Caja M10", "group": "Audio", "image": "Caja M10.png", "accent": "#b8ff3b", "price": 11000}, {"id": "cable-usb-tipo-c-premium", "name": "Cable USB Tipo C Premium", "group": "Cables", "image": "Cable USB Tipo C premium.png", "accent": "#40d9ff", "price": 3500}, {"id": "cable-usb-iphone", "name": "Cable USB Tipo iPhone", "group": "Cables", "image": "Cable USB Tipo Iphone.png", "accent": "#a78bfa", "price": 7000}, {"id": "caja-apple-15-tipo-c-c", "name": "Caja Apple 15 Tipo C a C", "group": "Cargadores", "image": "Caja Apple 15 Tipo C a C.png", "accent": "#40d9ff", "price": 16000}, {"id": "cargador-samsung-original-tipo-c", "name": "Cargador Samsung Original Tipo C", "group": "Cargadores", "image": "Cargador Samsung Original Tipo C.png", "accent": "#b8ff3b", "price": 14500}, {"id": "cable-c-c-samsung-original", "name": "Cable USB Tipo C a C Samsung Original", "group": "Cables", "image": "Cable USB tipo C a C samsung Original.png", "accent": "#40d9ff", "price": 5500}, {"id": "cargador-rapido-c-legatus", "name": "Cargador rápido Tipo C Legatus", "group": "Cargadores", "image": "Cargador rápido Tipo C Legatus.png", "accent": "#b8ff3b", "price": 7900}, {"id": "audifonos-wireless-p47", "name": "Audífonos Wireless P47 Bluetooth", "group": "Audio", "image": "Audífonos Wireless P47.png", "accent": "#a78bfa", "price": 12500}, {"id": "cable-v8-otawa", "name": "Cable USB Tipo V8 Otawa", "group": "Cables", "image": "Cable usb Tipo V8 Otawa.png", "accent": "#40d9ff", "price": 3000}, {"id": "audifonos-con-cable", "name": "Audífonos con cable", "group": "Audio", "image": "Audifonos con cable.png", "accent": "#a78bfa", "price": 18000}, {"id": "cable-c-motorola-original", "name": "Cable USB Tipo C Motorola Original", "group": "Cables", "image": "Cable Usb Tipo C Motorola Original.png", "accent": "#40d9ff", "price": 3500}, {"id": "cargador-lets-carga-rapida-v8", "name": "Cargador Lets Carga Rapida Tipo V8", "group": "Cargadores", "image": "Cargador Lets Carga Rapida Tipo V8.png", "accent": "#40d9ff", "price": 7900}, {"id": "cargador-xaea-intensify-carga-rapida-c", "name": "Cargador XAEA Intensify Carga Rapida Tipo C", "group": "Cargadores", "image": "Cargador XAEA Intensify Carga Rapida Tipo C.png", "accent": "#b8ff3b", "price": 13000}, {"id": "cargador-yexa-rush-carga-rapida-c", "name": "Cargador Yexa Rush Carga Rapida Tipo C", "group": "Cargadores", "image": "Cargador Yexa Rush Carga Rapida Tipo C.png", "accent": "#40d9ff", "price": 7900}, {"id": "convertidor-i96-tv-stick", "name": "Convertidor I96 TV Stick", "group": "Accesorios", "image": "Convertidor I96 TV Stick.png", "accent": "#a78bfa", "price": 45000}, {"id": "auriculares-manos-libres-mod24-only", "name": "Auriculares Manos libres Mod24 Only", "group": "Audio", "image": "Audifonos Only Manos libres Mod24.png", "accent": "#a78bfa", "price": 4500}, {"id": "cable-auxiliar-only", "name": "Cable Auxiliar Only", "group": "Cables", "image": "Cable Auxiliar Only.png", "accent": "#40d9ff", "price": 5000}, {"id": "cable-hdmi-aitech", "name": "Cable HDMI AiTECH", "group": "Cables", "image": "Cable HDMI AITECH.png", "accent": "#40d9ff", "price": 8900}];
     const grid=document.getElementById('catalogGrid'),filters=document.getElementById('filters'),search=document.getElementById('searchInput'),count=document.getElementById('resultCount'),clearSearch=document.getElementById('clearSearch');
     let activeGroup='Todos';
     const groups=['Todos',...new Set(products.map(p=>p.group))];
