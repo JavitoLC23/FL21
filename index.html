@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#070910">
   <meta name="color-scheme" content="dark">
   <meta name="description" content="ONE PLAYER: reparación de celulares Android y accesorios en Rivadavia, Mendoza. Consultá por diagnóstico, reparaciones y accesorios por WhatsApp.">
@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -3438,6 +3438,21 @@ body{
   .brands-label.iphone-specialization{margin-top:24px!important;padding-inline:14px;font-size:.64rem!important;letter-spacing:2px!important}
 }
 @media(prefers-reduced-motion:reduce){.hero-brand-logo::before{animation:none!important}}
+</style>
+
+
+<style id="one-player-unified-type-mobile-v50">
+/* V50 · Base tipográfica común y ajustes móviles Android/iOS */
+:root{--op-font-body:'Syne',sans-serif;--op-font-display:'Orbitron',sans-serif;--op-text-base:16px;--op-line:1.6}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:clip}
+body{font-family:var(--op-font-body)!important;font-size:var(--op-text-base)!important;line-height:var(--op-line)}
+h1,h2,h3,h4,.section-title,.hero-title,.eyebrow,.card-tag{font-family:var(--op-font-display)!important}
+button,input,select,textarea{font:inherit}
+img,video,svg,canvas{max-width:100%}
+@media(max-width:680px){body{font-size:16px!important}.hero-copy,.section-description{font-size:1rem;line-height:1.6}.btn,.nav-link,.mobile-link{min-height:44px}.hero-actions{gap:10px}.hero-actions .btn{width:100%;justify-content:center}}
+@media(max-width:380px){.hero-title{font-size:clamp(2rem,10vw,2.8rem)}.section-title{font-size:clamp(1.45rem,7vw,2rem)}}
+@supports(padding:max(0px)){.site-header{padding-top:env(safe-area-inset-top)}.wa-float{bottom:calc(18px + env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
 </style>
 
 </head>
