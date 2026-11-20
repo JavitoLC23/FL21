@@ -51,6 +51,17 @@
 @media(max-width:560px){.section+.section::before{width:calc(100% - 28px);opacity:.56}.hero-copy,.section-heading p{line-height:1.62}.work-card{box-shadow:0 10px 26px rgba(0,0,0,.14)!important}.header-pill,.button{min-height:46px}}
 @media(prefers-reduced-motion:reduce){.work-card,.button,.header-pill{transition:none!important}}
 </style>
+
+<style id="one-player-2026-ambient-works">
+/* Identidad ambiental compartida entre las páginas ONE PLAYER. */
+body{position:relative;isolation:isolate;background-color:#050811!important;background-image:radial-gradient(ellipse at 10% 12%,rgba(0,205,255,.115),transparent 32%),radial-gradient(ellipse at 90% 30%,rgba(151,74,255,.105),transparent 35%),radial-gradient(ellipse at 52% 92%,rgba(0,255,190,.045),transparent 38%),linear-gradient(145deg,#050811 0%,#080b16 50%,#070914 100%)!important;background-attachment:fixed!important}
+body::after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 22% 35%,rgba(0,219,255,.075),transparent 30%),radial-gradient(ellipse at 78% 62%,rgba(211,70,255,.065),transparent 32%);filter:blur(38px);opacity:.9;animation:opAmbientDrift-works 24s ease-in-out infinite alternate}
+@keyframes opAmbientDrift-works{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(1%,1%,0) scale(1.035)}}
+.work-card{background:linear-gradient(145deg,rgba(20,29,47,.93),rgba(8,13,24,.97));border-color:rgba(126,177,255,.15);box-shadow:0 18px 42px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.035)}.photo-slot{background:radial-gradient(ellipse at 50% 35%,rgba(0,205,255,.11),transparent 62%),rgba(255,255,255,.025)}.photo-slot.after{background:radial-gradient(ellipse at 50% 35%,rgba(167,139,250,.14),transparent 62%),rgba(255,255,255,.025)}.notice,.cta{backdrop-filter:blur(12px)}
+@media(max-width:680px){body{background-attachment:scroll!important}body::after{inset:-8%;filter:blur(28px);opacity:.7}}
+@media(prefers-reduced-motion:reduce){body::after{animation:none!important}}
+</style>
+
 </head>
 <body>
   <header class="site-header">
