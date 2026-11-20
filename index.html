@@ -3401,19 +3401,43 @@ main .section-header,main .section-description,main .eyebrow {text-align:center}
 @media(prefers-reduced-motion:reduce){.hero-brand-logo::before{animation:none!important}}
 </style>
 
-<style id="one-player-2026-ambient-finish">
-/* Fondo ambiental integrado: profundidad y luz sin competir con el contenido. */
-body{position:relative;isolation:isolate;background-color:#050811!important;background-image:radial-gradient(ellipse at 12% 18%,rgba(0,205,255,.105),transparent 34%),radial-gradient(ellipse at 88% 28%,rgba(151,74,255,.105),transparent 36%),radial-gradient(ellipse at 52% 88%,rgba(0,255,190,.045),transparent 38%),linear-gradient(145deg,#050811 0%,#080b16 48%,#070914 100%)!important;background-attachment:fixed!important}
-body::after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 22% 35%,rgba(0,219,255,.075),transparent 30%),radial-gradient(ellipse at 78% 62%,rgba(211,70,255,.065),transparent 32%);filter:blur(38px);opacity:.9;animation:opAmbientDrift 22s ease-in-out infinite alternate}
-@keyframes opAmbientDrift{from{transform:translate3d(-1.2%,0,0) scale(1)}to{transform:translate3d(1.2%,1%,0) scale(1.035)}}
-.hero-brand-logo{isolation:isolate;position:relative}
-.hero-brand-logo::before{content:"";position:absolute;z-index:-1;inset:8% 2%;border-radius:50%;background:radial-gradient(ellipse,rgba(0,157,255,.25),rgba(72,82,255,.11) 42%,transparent 72%);filter:blur(34px);pointer-events:none}
-.hero-brand-logo img{mix-blend-mode:screen;filter:drop-shadow(0 0 18px rgba(0,157,255,.24)) drop-shadow(0 18px 28px rgba(0,0,0,.3))!important}
-.op-iphone-soon{width:max-content;max-width:calc(100% - 28px);margin:22px auto 0;padding:12px 19px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;border:1px solid rgba(167,139,250,.38);border-radius:999px;background:linear-gradient(105deg,rgba(66,232,255,.075),rgba(167,139,250,.13),rgba(255,91,214,.065));box-shadow:0 0 28px rgba(100,105,255,.08),inset 0 1px rgba(255,255,255,.06);color:#edf5ff;text-align:center;font-size:.78rem;font-weight:800;letter-spacing:.105em}
-.op-iphone-soon strong{color:#a9dfff;font-size:.82rem;letter-spacing:.13em}
-.op-soon-tag{padding:5px 9px;border:1px solid rgba(167,139,250,.3);border-radius:999px;background:rgba(167,139,250,.13);color:#d9c6ff;font-size:.62rem;font-weight:900;letter-spacing:.12em}
-@media(max-width:600px){.op-iphone-soon{gap:8px;margin-top:17px;padding:11px 13px;font-size:.69rem;letter-spacing:.07em}.op-iphone-soon strong{font-size:.73rem}}
-@media(prefers-reduced-motion:reduce){body::after{animation:none!important}}
+<style id="one-player-v48-true-background-and-logo-integration">
+/* V48: emblema sin placa cuadrada y fondo ambiental más visible. */
+body{
+  background-color:#050914!important;
+  background-image:
+    radial-gradient(ellipse at 12% 12%,rgba(0,220,255,.17) 0%,transparent 36%),
+    radial-gradient(ellipse at 88% 24%,rgba(157,92,255,.17) 0%,transparent 38%),
+    radial-gradient(ellipse at 52% 88%,rgba(0,255,190,.075) 0%,transparent 38%),
+    linear-gradient(180deg,#050a14 0%,#080b17 48%,#050812 100%)!important;
+  background-attachment:fixed!important;
+}
+.hero-brand-logo{
+  width:min(560px,58vw)!important;max-width:100%;margin:clamp(1.1rem,2.5vw,2rem) auto!important;
+  position:relative;isolation:isolate;background:transparent!important;border:0!important;
+  box-shadow:none!important;border-radius:0!important;
+}
+.hero-brand-logo::before{
+  content:"";position:absolute;z-index:-1;left:50%;top:52%;width:125%;height:115%;
+  transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(0,180,255,.22) 0%,rgba(50,105,255,.12) 35%,rgba(150,70,255,.07) 56%,transparent 74%);
+  filter:blur(34px);
+}
+.hero-brand-logo img{
+  display:block;width:100%;height:auto;max-width:100%;object-fit:contain;
+  background:transparent!important;mix-blend-mode:normal!important;
+  filter:drop-shadow(0 18px 28px rgba(0,0,0,.40)) drop-shadow(0 0 22px rgba(0,155,255,.22))!important;
+}
+.brands-label.iphone-specialization{margin:30px 0 0!important;color:var(--cyan)!important;
+  font-family:var(--font-display)!important;font-size:.69rem!important;font-weight:900!important;
+  letter-spacing:3px!important;text-transform:uppercase!important;line-height:1.7!important;
+  text-shadow:0 0 18px rgba(0,240,255,.24);}
+@media(max-width:768px){
+  .hero-brand-logo{width:min(86vw,440px)!important;margin:1rem auto!important}
+  .hero-brand-logo::before{filter:blur(25px);width:118%;height:105%}
+  .brands-label.iphone-specialization{margin-top:24px!important;padding-inline:14px;font-size:.64rem!important;letter-spacing:2px!important}
+}
+@media(prefers-reduced-motion:reduce){.hero-brand-logo::before{animation:none!important}}
 </style>
 
 </head>
@@ -3485,7 +3509,7 @@ body::after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;
         </div>
 
         <div class="hero-brand-logo reveal" aria-label="ONE PLAYER">
-          <img src="logo-one-players.png" alt="Logo ONE PLAYER" width="1024" height="1024" decoding="async" fetchpriority="high">
+          <img src="logo-one-players-integrado.png" alt="Emblema ONE PLAYER con herramienta de precisión" width="1536" height="1024" decoding="async" fetchpriority="high">
         </div>
 
         <p class="hero-kicker reveal">
@@ -3716,9 +3740,8 @@ body::after{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;
         </div>
       </div>
 
-      <div class="op-iphone-soon" role="note" aria-label="Próximamente especialización en sistema iPhone">
-        <strong>ESPECIALIZACIÓN · SISTEMA IPHONE</strong>
-        <span class="op-soon-tag">PRÓXIMAMENTE</span>
+      <div class="brands-label iphone-specialization" aria-label="Especialización en sistema iPhone, próximamente">
+        Especialización · Sistema iPhone · PRÓXIMAMENTE
       </div>
     </section>
 
@@ -5829,24 +5852,5 @@ footer .footer-col a{justify-content:center}
 @media(max-width:768px){.hero-brand-logo::before{width:130%!important;height:96%!important;filter:blur(22px)!important;opacity:.82}.hero-brand-logo img{filter:drop-shadow(0 10px 20px rgba(0,0,0,.34)) drop-shadow(0 0 14px rgba(62,213,255,.20))!important}}
 @media(prefers-reduced-motion:reduce){.hero-brand-logo::before{animation:none!important;opacity:.86!important;transform:translate(-50%,-50%) scale(1)!important}}
 </style>
-
-<style id="one-player-refresh-2026">
-/* Renovación visual conservadora: no altera scripts, enlaces ni contenido funcional. */
-:root{color-scheme:dark;scroll-behavior:smooth}
-body{ text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; }
-:where(a,button,input,select,textarea):focus-visible{outline:2px solid #42e8ff!important;outline-offset:4px!important}
-.hero-copy,.section-description{ text-wrap:pretty; }
-.service-card,.stat-card,.brands-panel{backface-visibility:hidden}
-.service-card{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
-@media(hover:hover) and (pointer:fine){.service-card:hover{transform:translateY(-4px);border-color:rgba(66,232,255,.38);box-shadow:0 18px 42px rgba(0,0,0,.28),0 0 22px rgba(66,232,255,.08)}}
-.brands-panel{border:1px solid rgba(66,232,255,.16);border-radius:22px}
-.brands-label{letter-spacing:.08em}
-.op-iphone-soon{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;width:max-content;max-width:100%;margin:12px auto 18px;padding:10px 16px;border:1px solid rgba(66,232,255,.32);border-radius:999px;background:linear-gradient(110deg,rgba(66,232,255,.10),rgba(167,139,250,.10));color:#eafaff;font-size:.88rem;font-weight:700;text-align:center;box-shadow:0 8px 26px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.06)}
-.op-iphone-soon strong{color:#42e8ff;letter-spacing:.04em}
-.op-iphone-soon .op-soon-tag{padding:3px 8px;border-radius:999px;background:rgba(167,139,250,.16);color:#d9c7ff;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
-@media(max-width:560px){.op-iphone-soon{width:100%;gap:7px;margin:10px auto 14px;padding:10px 12px;font-size:.82rem;border-radius:14px}}
-@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-</style>
-
 </body>
 </html>
